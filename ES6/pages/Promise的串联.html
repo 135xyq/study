@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise的串联</title>
+</head>
+
+<body>
+    <script>
+        function biaobai(god) {
+            return new Promise((resolve, reject) => {
+                console.log(`对${god}表白`)
+                if (Math.random() < 0.3) {
+                    resolve(true);
+                } else {
+                    resolve(false);
+                }
+            })
+        }
+
+        const pro1 = biaobai('女神1').then(res => {
+            if (res) {
+                console.log(`表白女神1成功了！`);
+            } else {
+                console.log(`被拒绝了好伤心!`)
+            }
+            return 2;
+        })
+        pro1.then((value) => {
+            console.log(value);
+            return value * 3;
+        }).then(value => {
+            console.log(value)
+            return value * 4;
+        })
+    </script>
+</body>
+
+</html>

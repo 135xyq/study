@@ -1,0 +1,104 @@
+.fs-3 {
+    position: relative;
+}
+
+.fs-3 .login {
+    width: 190px;
+    height: 102px;
+    /* border: 1px solid #f00; */
+    font-size: 12px;
+    position: relative;
+}
+
+.fs-3 .login .login-top {
+    height: 102px;
+    position: relative;
+}
+
+.fs-3 .login .login-top::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+
+/* 头像 */
+
+.fs-3 .login .login-top img {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    margin: 15px 5px 0px 15px;
+}
+
+
+/* 登录注册 */
+
+.fs-3 .login .login-top .login-top-right {
+    position: absolute;
+    float: right;
+    top: 20px;
+    left: 70px;
+}
+
+.fs-3 .login .login-top .login-top-right p {
+    color: #666666;
+}
+
+.fs-3 .login .login-top .login-top-right a {
+    color: #000;
+}
+
+.fs-3 .login .login-top .login-top-right a:hover,
+.fs-3 .login .login-top .login-top-right p:hover {
+    color: #f00;
+    cursor: pointer;
+}
+
+
+/* 下方按钮 */
+
+.fs-3 .login .btns {
+    position: absolute;
+    width: 100%;
+    height: 25px;
+    /* border: 1px solid #ff0; */
+    top: 70px;
+    text-align: center;
+    line-height: 25px;
+    cursor: pointer;
+}
+
+.fs-3 .login .btns .left-btn {
+    background-color: #f00;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+.fs-3 .login .btns .right-btn {
+    background: #363634;
+    color: #e5d790;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.fs-3 .login .btns .right-btn:hover,
+.fs-3 .login .btns .left-btn:hover {
+    background-color: #c81623;
+}
+
+
+/* 分割线 */
+
+.login::after {
+    content: "";
+    width: 160px;
+    height: 1px;
+    position: absolute;
+    top: 101px;
+    background-color: #eeeeee;
+    margin: 0 15px;
+}

@@ -1,0 +1,128 @@
+.game {
+    width: 800px;
+    height: 600px;
+    border: 2px solid #000;
+    position: relative;
+    /* top: 10px; */
+    top: 0;
+    left: calc(50% - 400px);
+    overflow: hidden;
+}
+
+.game .sky {
+    background-image: url(./images/sky.png);
+    width: 200%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.game .land {
+    background-image: url(./images/land.png);
+    width: 200%;
+    height: 112px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.game .bird {
+    background-image: url(./images/bird.png);
+    position: absolute;
+    width: 32px;
+    height: 26px;
+    left: 150px;
+    top: 150px;
+}
+
+.game .bird.swing1 {
+    background-position: -8px -10px;
+}
+
+.game .bird.swing2 {
+    background-position: -60px -10px;
+}
+
+.game .bird.swing3 {
+    background-position: -113px -10px;
+}
+
+.pipe {
+    position: absolute;
+    height: 100px;
+    width: 52px;
+    left: 500px;
+}
+
+.pipe.up {
+    background: url("./images/pipeDown.png");
+    top: 0;
+    background-position: bottom;
+}
+
+.pipe.down {
+    background: url("./images/pipeUp.png");
+    bottom: 112px;
+}
+
+.info {
+    text-align: center;
+}
+
+.start {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    line-height: 600px;
+    font-size: 60px;
+    background-color: rgb(141 133 133 / 72%);
+    display: none;
+}
+
+.pause {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    line-height: 600px;
+    font-size: 60px;
+    background-color: rgb(141 133 133 / 72%);
+    display: none;
+}
+
+.end {
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    position: absolute;
+    background-color: rgb(141 133 133 / 72%);
+    display: none;
+    /* 提高层级 */
+    z-index: 99;
+}
+
+.end .information {
+    color: white;
+    font-size: 60px;
+    position: absolute;
+    top: 20%;
+    left: 35%;
+}
+
+.end .result {
+    position: absolute;
+    top: 270px;
+    font-size: 20px;
+    left: calc(50% - 70px)
+}
+
+.end .history {
+    position: absolute;
+    top: 320px;
+    font-size: 20px;
+    left: calc(50% - 70px)
+}

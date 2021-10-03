@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关系选择器</title>
+    <style>
+        /* div p {
+             父子选择器 
+            color: green;
+            font-size: 25px;
+            background-color: red;
+        }
+        */
+        /*
+        div>span {
+            祖先选择器，直接到这一级
+            color: rgb(0, 255, 221);
+            font-size: larger;
+        } 
+         */
+        
+        p+span {
+            /*紧邻的兄弟元素 */
+            color: blueviolet;
+            font-size: 30px;
+        }
+        
+        p~span {
+            /*下边的所有兄弟选择器*/
+            color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        我是一个div
+
+        <p>
+            我是div中的p元素
+
+            <span>我是p中的span</span>
+        </p>
+
+        <span>我是div中的span元素</span>
+
+    </div>
+
+    <div>
+        <p>你是好人！</p>
+        <span>是我不配了</span>
+    </div>
+
+</body>
+
+</html>

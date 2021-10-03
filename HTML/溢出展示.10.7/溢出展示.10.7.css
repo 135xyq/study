@@ -1,0 +1,32 @@
+p {
+    width: 300px;
+    height: 20px;
+    line-height: 20px;
+    /* border: 1px solid green; */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+div {
+    width: 200px;
+    height: 200px;
+    border: 1px solid green;
+    background-image: url(1.jpg);
+    background-size: 200px 200px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    width: 200px;
+    height: 200px;
+    border: 1px solid red;
+    background-image: url(鞠婧祎.jpg);
+    background-size: 200px 200px;
+    text-indent: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+}

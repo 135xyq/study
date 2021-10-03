@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map</title>
+</head>
+
+<body>
+    <script>
+        // const mp = new Map()
+
+        const mp = new Map([
+            [1, 2],
+            [3, 4],
+            [5, 6],
+            [1, 2]
+        ]);
+
+
+
+        // mp.set({}, 99);
+        // mp.set({}, 100)
+        // console.log(mp.size);
+        // console.log(mp.get(1));
+        // console.log(mp);
+
+        // 装变为数组
+        // const arr = [...mp];
+        // console.log(arr)
+
+        for (const iterator of mp) {
+            console.log(iterator)
+        }
+
+        mp.forEach((value, index, array) => {
+            console.log(value, index, array)
+        })
+    </script>
+</body>
+
+</html>

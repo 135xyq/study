@@ -1,0 +1,88 @@
+/* 京东快报 */
+
+.fs-3 .news {
+    width: 190px;
+    height: 130px;
+    /* border: 1px solid #f00; */
+    padding-top: 10px;
+    overflow: hidden;
+}
+
+.fs-3 .news .news-title:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.fs-3 .news .news-title h5 {
+    display: inline-block;
+    font-size: 14px;
+    margin-left: 15px;
+    color: #333;
+    height: 20px;
+}
+
+.fs-3 .news .news-title span {
+    float: right;
+    font-size: 12px;
+    margin-right: 20px;
+}
+
+.fs-3 .news .news-title span i {
+    margin-left: 5px;
+    color: #666666;
+}
+
+.fs-3 .news .news-title span i:hover {
+    color: #f00;
+    cursor: pointer;
+}
+
+.fs-3 .news .news-content {
+    margin: 0 15px;
+}
+
+.fs-3 .news .news-content p {
+    height: 16px;
+    line-height: 16px;
+    margin: 7px 0;
+    overflow: hidden;
+}
+
+.fs-3 .news .news-content label {
+    display: inline-block;
+    position: relative;
+    font-size: 12px;
+    height: 16px;
+    width: 35px;
+    line-height: 16px;
+    text-align: center;
+    vertical-align: 0;
+    color: #e1251b;
+    background-color: rgba(225, 37, 27, .08);
+    margin-right: 6px;
+}
+
+.fs-3 .news .news-content label:hover {
+    /* color: #f00; */
+    cursor: pointer;
+}
+
+.fs-3 .news .news-content a {
+    width: 100px;
+    font-size: 12px;
+    overflow: hidden;
+}
+
+
+/* 分割线 */
+
+.news::after {
+    content: "";
+    width: 160px;
+    height: 1px;
+    position: absolute;
+    top: 242px;
+    background-color: #eeeeee;
+    margin: 0 15px;
+}

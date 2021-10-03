@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性描述符</title>
+</head>
+
+<body>
+    <script>
+        // const obj = {
+        //     a: 1,
+        //     b: 2
+        // }
+        // Object.defineProperty(obj, 'b', {
+        //     value: 7
+        // })
+
+        // Object.defineProperties(obj, {
+        //     a: {
+        //         value: 3,
+        //     },
+        //     b: {
+        //         value: 4
+        //     }
+        // })
+
+        // console.log(Object.getOwnPropertyDescriptor(obj, 'a'))
+        // console.log(Object.getOwnPropertyDescriptors(obj))
+
+        const obj = {
+            a: 1,
+        }
+
+        Object.defineProperty(obj, 'b', {
+            get() {
+                console.log("调用了get方法!")
+                return obj._a;
+            },
+            set(value) {
+                console.log("调用了set方法！")
+                obj._a = value;
+            }
+        })
+
+        obj.b = 1;
+        console.log(obj.b)
+    </script>
+</body>
+
+</html>

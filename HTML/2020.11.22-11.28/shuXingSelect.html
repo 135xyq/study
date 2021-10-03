@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性选择器</title>
+    <style>
+        /*属性选择器总*/
+        
+        [title] {
+            color: green;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        /* 属性选择器，以指定的属性值 */
+        
+        [title=我草] {
+            color: aqua;
+        }
+        /* 属性选择器，以指定值开头 */
+        
+        [title^=傻] {
+            color: blue;
+        }
+        
+        [title$=可] {
+            color: rgb(184, 107, 14);
+        }
+    </style>
+</head>
+
+<body>
+    <p title="傻瓜蛋">落霞与孤鹜齐飞</p>
+    <p title="不孬">秋水共长天一色</p>
+    <p title="傻蛋">曾经沧海难为水</p>
+    <p title="bu可">除却巫山不是云</p>
+    <p title="怒不是">我自横刀向天笑</p>
+    <p title="我草">去留肝胆两昆仑</p>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+div {
+    display: inline-block;
+}
+
+.circle {
+    /*生成一个矩形*/
+    width: 408px;
+    height: 171px;
+    background-color: red;
+}
+
+.radius {
+    /*生成一个圆环*/
+    width: 100px;
+    height: 100px;
+    border: 10px solid green;
+    border-radius: 50%;
+}
+
+.green {
+    border-color: green;
+    /*!important*/
+    ;
+}
+
+.blue {
+    border-color: blue;
+    /*!important*/
+    ;
+}
+
+.red {
+    border-color: red;
+    /*!importan*/
+    t;
+    */
+}
+
+.yellow {
+    border-color: yellow;
+    /*!important;*/
+}
+
+.black {
+    border-color: black/*!important*/
+    ;
+}
+
+.transparent {
+    /*透明色*/
+    background-color: transparent !important;
+}
+
+.postion1 {
+    position: relative;
+}
+
+.postion2 {
+    position: absolute;
+    left: 76px;
+    top: 50px;
+}
+
+.postion3 {
+    position: absolute;
+    left: 215px;
+    top: 50px;
+}
+
+.margin {
+    margin-left: 10px;
+}
+
+.postion4 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -204px;
+    margin-top: -85px;
+}
+
+
+/* .center {
+    text-align: center;
+} */

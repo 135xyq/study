@@ -1,0 +1,54 @@
+/*字体*/
+#name1{
+	font-size: 20px;
+	font-weight: bolder;
+	font-style: italic;
+	font-family: cursive;
+	color: rgb(0,232,3);
+}
+
+/*边框*/
+
+#name1{
+	border-width: 3px;
+	border-style: solid;
+	border-left-color: red;
+	border-right-color:green;
+	border-top-color: black;
+	border-bottom-color: blue; 
+}
+
+/*画边框（三角形的画法）*/
+.demo{
+	width: 0px;
+	height: 0px;
+	border-width: 100px;
+	border-style: solid;
+	border-left-color: red;
+	border-right-color:transparent;
+	border-top-color: transparent;
+	border-bottom-color: transparent; 
+}
+
+/*文本格式*/
+#name1{
+	text-align: left;
+	line-height: 25px;
+	text-indent: 2em;
+	text-decoration-line: line-through;
+	text-decoration-color: red; 
+}
+
+/*鼠标样式*/
+#name1{
+	cursor: pointer;/*变成小手*/
+}
+
+/伪类选择器*/
+.D:hover{
+	background-color: green;
+	height: 20px;
+	width: 100px;
+	line-height: =20px;
+	text-align: center;
+}

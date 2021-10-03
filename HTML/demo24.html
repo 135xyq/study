@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="其他CSS属性和特性">
+    <link rel="stylesheet" href="demo24.css">
+    <link rel="icon" href="4.png">
+    <title>其他CSS属性和特性</title>
+</head>
+
+<body>
+    <p id="first">
+        红藕香 <span id="second">残玉簟秋</span> 轻解罗裳 ，<a href="demo23.html">demo23.html</a> 独上兰舟。云中谁寄锦书来，雁字回时,月满西楼 。 花自飘零水自流。一种相思，两处闲愁。此情无计可消除，才下眉头，却上心头。
+    </p>
+    <ul>
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+        <li>d</li>
+    </ul>
+    <p>
+        <button value="自动">auto</button>
+        <button>crosshair</button>
+        <button>default</button>
+        <button>help</button>
+        <button>move</button>
+        <button>pointer</button>
+        <button>progress</button>
+        <button>text</button>
+        <button>wait</button>
+        <button>n-resize</button>
+        <button>s-resize</button>
+        <button>e-resize</button>
+        <button>w-resize</button>
+        <button>ne-resize</button>
+        <button>nw-resize</button>
+        <button>se-resize</button>
+        <button>sw-resize</button>
+    </p>
+    <script>
+        var buttons = document.getElementsByTagName("BUTTON");
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].onclick = function(e) {
+                document.getElementById("second").style.cursor = e.target.innerHTML;
+            };
+        }
+    </script>
+
+
+</body>
+
+</html>

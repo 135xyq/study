@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>信息展示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 98%;
+            margin: 0 auto;
+            font-size: 16px;
+            line-height: 40px
+        }
+        
+        th,
+        td {
+            border: 2px solid rgba(95, 9, 165, 0.856);
+            background-color: rgba(24, 156, 145, 0.925);
+            color: white;
+            text-align: center;
+        }
+        
+        button {
+            width: 98%;
+            height: 40px;
+            line-height: 40px;
+            margin: 0 auto;
+            display: block;
+            text-align: center;
+            border: 1px solid black;
+            background-color: rgba(24, 156, 145, 0.925);
+            color: rgb(0, 255, 234);
+            font-size: 25px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .page-index-container {
+            float: right;
+        }
+        
+        .page-index-container div {
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            width: 40px;
+            border: 1px solid #ccc;
+            color: #ccc;
+            margin: 10px 10px;
+            float: left;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table>
+        <thead>
+            <tr>
+                <th>学号</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>邮箱</th>
+                <th>生日</th>
+                <th>家庭住址</th>
+                <th>手机号</th>
+                <th>账号名</th>
+            </tr>
+        </thead>
+        <tbody id="dataContainer">
+        </tbody>
+    </table>
+    <div class="page-index-container">
+        <!-- <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div> -->
+    </div>
+    <button class="hidden">隐藏数据</button>
+    <button class="show">展示数据</button>
+
+    <script src="../js/jquery-3.6.0.js"></script>
+    <script src="../js/mock.js"></script>
+    <script src="../js/mock实例.js"></script>
+</body>
+
+</html>

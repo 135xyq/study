@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body {
+    background-color: rgb(246 203 124);
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+
+/* 最顶端 */
+
+.header {
+    display: flex;
+    height: 40px;
+    line-height: 40px;
+    /* flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: space-between; */
+}
+
+.header a {
+    padding-left: 10px;
+    width: 30%;
+    overflow: hidden;
+}
+
+.header img {
+    width: 72px;
+    vertical-align: middle;
+}
+
+.header .navigation {
+    width: 100%;
+    display: flex;
+    flex: 1 1 auto;
+    height: 28px;
+    font-size: 18px;
+    color: #666;
+    justify-content: space-around;
+}
+
+.header .navigation li {
+    text-align: center;
+    font-size: 14px;
+    /* width: 28px;
+    height: 18px;
+    line-height: 40px; */
+}
+
+
+/*搜索栏  */
+
+.find {
+    height: 40px;
+    display: flex;
+    /* border: 1px solid #666; */
+}
+
+.find input {
+    flex: 1 1 auto;
+    height: 28px;
+    padding: 3px 10px;
+    margin-left: 10px;
+    outline: none;
+    border-top-left-radius: 11px;
+    border-bottom-left-radius: 11px;
+}
+
+.find span {
+    width: 50px;
+    height: 36px;
+    line-height: 38px;
+    text-align: center;
+    border: 1px solid #666;
+    border-left: none;
+    font-weight: 800;
+    background-color: #6663;
+    border-top-right-radius: 11px;
+    border-bottom-right-radius: 11px;
+    margin-right: 5px;
+}
+
+
+/* 图片及内容展示 */
+
+.content {
+    margin-left: 10px;
+    display: flex;
+}
+
+.content img {
+    width: 100px;
+    flex: 1 1 auto;
+}
+
+.content .text-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+    font-size: 12px;
+    margin-left: 20px;
+}
+
+.content .text-description .name {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+
+/* 分类展示 */
+
+.items-show {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 30px;
+    line-height: 30px;
+    display: flex;
+    overflow-x: scroll;
+    flex: 0 0 auto;
+    padding-bottom: 10px;
+}
+
+.items-show li {
+    text-align: center;
+    width: 20%;
+    min-width: 20%;
+    /* background-color: #f0f; */
+}
+
+.items-show-content {
+    width: 100%;
+    height: 200px;
+    /* border: 1px solid #666; */
+}
+
+
+/* .items-show-content>div {
+    display: none;
+} */
+
+.items-show-content div img {
+    width: 100%;
+    /* width: 375px; */
+    /* height: 500px; */
+}
+
+.items-show-content>div:not(:target) {
+    display: none;
+}

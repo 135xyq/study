@@ -1,0 +1,44 @@
+<style>
+    .sliderBanner p {
+        width: 190px;
+        height: 470px;
+    }
+    
+    .sliderBanner p img {
+        width: 190px;
+        height: 150px;
+        margin-bottom: 10px;
+    }
+</style>
+<p>
+    <img src="../images/10.jpg" alt="中间右轮播图第一帧1">
+    <img src="../images/11.png" alt="中间右轮播图第一帧2">
+    <img src="../images/12.jpg" alt="中间右轮播图第一帧3">
+</p>
+<p>
+    <img src="../images/13.jpg" alt="中间右轮播图第二帧1">
+    <img src="../images/14.jpg" alt="中间右轮播图第二帧2">
+    <img src="../images/15.jpg" alt="中间右轮播图第二帧3">
+</p>
+<p>
+    <img src="../images/16.jpg" alt="中间右轮播图第三帧1">
+    <img src="../images/17.jpg" alt="中间右轮播图第三帧2">
+    <img src="../images/18.jpg" alt="中间右轮播图第三帧3">
+</p>
+<p>
+    <img src="../images/19.jpg" alt="中间右轮播图第四帧1">
+    <img src="../images/9.jpg" alt="中间右轮播图第四帧2">
+    <img src="../images/20.jpg" alt="中间右轮播图第四帧3">
+</p>
+
+<script>
+    $('.sliderBanner').swiper({
+        contentList: $('.sliderBanner p'),
+        width: 190,
+        height: 470,
+        showSpots: false,
+        showChangeBtn: 'hover',
+        type: 'fade',
+        autoChangeTime: 5000,
+    })
+</script>

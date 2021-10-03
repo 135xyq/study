@@ -1,0 +1,11 @@
+div {
+    color: green;
+    background-color: black;
+    width: auto;
+    height: auto;
+    font-style: normal;
+    font: bolder;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+}

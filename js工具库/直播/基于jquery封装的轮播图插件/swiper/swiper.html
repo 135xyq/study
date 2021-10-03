@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图插件</title>
+    <link rel="stylesheet" href="./swiper.css">
+    <style>
+        .demo {
+            width: 400px;
+            height: 300px;
+            outline: 1px solid;
+            margin: 20px auto;
+        }
+        
+        .item {
+            width: 400px;
+            height: 300px;
+            text-align: center;
+            line-height: 300px;
+            font-size: 50px;
+        }
+        
+        .item1 {
+            background-color: pink;
+        }
+        
+        .item2 {
+            background-color: greenyellow;
+        }
+        
+        .item3 {
+            background-color: blue;
+        }
+        
+        .item4 {
+            background-color: #f00;
+        }
+        
+        .item5 {
+            background-color: #0ff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo">
+        <div class="item1 item">1</div>
+        <div class="item2 item">2</div>
+        <div class="item3 item">3</div>
+        <div class="item4 item">4</div>
+        <div class="item5 item">5</div>
+    </div>
+    <!-- 引入jquery插件 -->
+    <script src="jquery-3.3.1.js"></script>
+    <script src="./swiper.js"></script>
+    <script>
+        // 引入了 swiper 插件之后，jQuery 对象上面就有一个 swiper 方法
+        // 该方法接收一个配置对象
+        $('.demo').swiper({
+            // 轮播的内容列表
+            contentList: $('.item'),
+            // 自动轮播的间隔时间
+            autoChangeTime: 3000,
+            // 轮播的动画类型：fade 淡入淡出 animate 从左到右
+            type: 'fade',
+            // 是否自动轮播
+            isAuto: true,
+            // 左右按钮的显示状态，共有 3 种 
+            // 1. always 代表一支显示   2. hide 代表隐藏    3. hover 移入显示
+            showChangeBtn: 'hover',
+            // 是否显示小圆点
+            showSpots: true,
+            // 小圆点的大小
+            spotSize: 10,
+            // 小圆点的位置，可选值有 3 个 
+            // 1. left 2. center 3. right
+            spotPosition: 'right',
+            // 小圆点的背景颜色
+            spotColor: 'pink',
+            // 当前图片的小圆点的颜色
+            curSptColor: 'green',
+            // 轮播图内容的大小
+            width: 400,
+            height: 300
+        })
+    </script>
+</body>
+
+</html>

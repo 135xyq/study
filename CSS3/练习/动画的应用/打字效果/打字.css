@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@keyframes show {
+    0% {
+        left: 0;
+    }
+    /* 10% {
+        left: 60px;
+    }
+    20% {
+        left: 120px;
+    }
+    30% {
+        left: 180px;
+    }
+    40% {
+        left: 240px;
+    }
+    50% {
+        left: 300px;
+    }
+    60% {
+        left: 360px;
+    }
+    70% {
+        left: 420px;
+    }
+    80% {
+        left: 480px;
+    }
+    90% {
+        left: 540px;
+    } */
+    100% {
+        left: 600px;
+    }
+}
+
+@keyframes cursor {
+    0% {
+        color: rgba(180, 162, 182, 0);
+    }
+    50% {
+        color: rgba(180, 162, 182, 1);
+    }
+    100% {
+        color: rgba(180, 162, 182, 0);
+    }
+}
+
+div:first-of-type {
+    width: 1000px;
+    color: #000;
+    font-size: 60px;
+    height: 100px;
+    line-height: 100px;
+}
+
+.hidden {
+    height: 100px;
+    width: 1000px;
+    background-color: #fff;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    /* 有多少个字就分多少步 */
+    animation: show 10s steps(10, end) forwards;
+}
+
+.hidden::after {
+    content: "|";
+    position: absolute;
+    top: 5px;
+    font-size: 60px;
+    color: rgb(136, 120, 120);
+    animation: cursor 1s steps(1, start) infinite;
+}

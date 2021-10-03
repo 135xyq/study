@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.video_player {
+    width: 1000px;
+    height: 600px;
+    position: relative;
+    margin: 0 auto;
+    top: 50px;
+}
+
+video {
+    width: 1000px;
+    height: 600px;
+}
+
+.menu {
+    width: 1200px;
+    height: 60px;
+    position: absolute;
+    bottom: 0;
+    background-color: #666;
+    display: none;
+}
+
+.menu .play {
+    width: 60px;
+    color: #fff;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-top: -15px;
+    position: absolute;
+    top: 50%;
+    cursor: pointer;
+}
+
+.menu .time {
+    width: 100px;
+    color: #fff;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 10px;
+    margin-left: 120px;
+    margin-top: -15px;
+    position: absolute;
+    top: 50%;
+    cursor: pointer;
+}
+
+.progroess {
+    width: 100%;
+    height: 2px;
+    position: relative;
+    background-color: #fff;
+    left: 0px;
+    top: -2px;
+}
+
+.progroess .nowpro {
+    position: absolute;
+    width: 0px;
+    background-color: #f0f;
+    height: 2px;
+    top: 0px;
+    left: 0px;
+}
+
+.progroess .now-spot {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
+    left: 0px;
+    background-color: #0ff;
+    top: -2px;
+}
+
+.quick {
+    position: absolute;
+    left: 400px;
+    top: 50%;
+    margin-top: -15px;
+    color: #fff;
+    border: 1px solid #fff;
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.quickList {
+    position: relative;
+    width: 80px;
+    left: 400px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: -120px;
+    color: #fff;
+    display: none;
+}
+
+.quickList li {
+    cursor: pointer;
+    list-style: none;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+}
+
+.quickList li:hover {
+    color: #0ff;
+}
+
+.add {
+    width: 60px;
+    color: #fff;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    left: 500px;
+    margin-top: -15px;
+    position: absolute;
+    top: 50%;
+    cursor: pointer;
+}
+
+.ins {
+    width: 60px;
+    color: #fff;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    left: 600px;
+    margin-top: -15px;
+    position: absolute;
+    top: 50%;
+    cursor: pointer;
+}

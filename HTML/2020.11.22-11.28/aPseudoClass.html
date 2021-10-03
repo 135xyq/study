@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>a元素的伪类</title>
+
+    <style>
+        /* 未访问过的链接 */
+        
+        a:link {
+            color: red;
+        }
+        /* 访问过的链接 */
+        
+        a:visited {
+            color: green;
+        }
+        /* 鼠标移入 */
+        
+        a:hover {
+            color: cyan;
+            font-size: 30px;
+        }
+        /* 鼠标点击 */
+        
+        a:active {
+            color: blueviolet;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <a href="https://www.baidu.com">Baidu访问过的链接</a>
+
+    <br><br>
+
+    <a href="https://www.baidu123.com">Baidu未访问过的链接</a>
+
+</body>
+
+</html>

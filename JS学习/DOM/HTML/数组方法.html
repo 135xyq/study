@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        var personArr = [{
+            name: '谢永强',
+            src: '../image/1.jpg',
+            des: '非常牛逼',
+            sex: 'm'
+        }, {
+            name: '陈世华',
+            src: '../image/2.jpg',
+            des: '装杯狗',
+            sex: 'm'
+        }, {
+            name: '黄双珍',
+            src: '../image/3.jpg',
+            des: 'very good',
+            sex: 'f'
+        }, {
+            name: '余伟娜',
+            src: '../image/4.jpg',
+            des: '可',
+            sex: 'f'
+        }, {
+            name: '梁银行',
+            src: '../image/5.jpg',
+            des: '幼稚',
+            sex: 'm'
+        }];
+        var oUl = document.getElementsByTagName('ul')[0];
+        var oLi = document.getElementsByTagName('li');
+        // personArr.forEach(function(ele, index, self) {
+        //     // console.log(ele, index, self);
+        //     for (var prop in ele) {
+        //         console.log(typeof prop);
+        //         oLi[index].innerHTML += ele[prop];
+        //     }
+
+        // })
+        // var newArry = personArr.filter(function(ele, index, self) {
+        //     console.log(index);
+        //     if (index == 0 || index == 2) {
+        //         return true;
+        //     } else {
+        //         return false;
+        //     }
+        // })
+        // newArry.forEach(function(ele, index, self) {
+        //     // console.log(ele, index, self);
+        //     for (var prop in ele) {
+        //         console.log(typeof prop);
+        //         oLi[index].innerHTML += ele[prop];
+        //     }
+        // })
+        // var newArr = personArr.map(function(ele, index, self) {
+        //     return self[index].name;
+        // })
+        // console.log(newArr);
+        // var flag = personArr.some(function(ele, index, self) {
+        //     console.log(1);
+        //     if (ele.name == "谢永强") {
+        //         return true;
+        //     } else {
+        //         return false;
+        //     }
+
+        // })
+        // console.log(flag);
+
+
+        // Array.prototype.mySome = function(func) {
+        //     var flag = false;
+        //     var _this = arguments[1] || window;
+        //     var len = this.length;
+        //     for (var i = 0; i < len; i++) {
+        //         if (func.apply(_this, [this[i], i, this])) {
+        //             flag = true;
+        //             break;
+        //         }
+        //     }
+        //     return flag;
+        // }
+        // var flag = personArr.mySome(function(ele, index, self) {
+        //     console.log(1);
+        //     if (ele.name == "谢永强") {
+        //         return true;
+        //     } else {
+        //         return false;
+        //     }
+        // })
+        // console.log(flag);
+    </script>
+
+</body>
+
+</html>

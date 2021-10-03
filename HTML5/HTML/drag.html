@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拖拽</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: #ff0;
+        }
+    </style>
+</head>
+
+<body>
+    <div draggable="true"></div>
+    <script>
+        var div = document.getElementsByTagName('div')[0];
+        var startX = 0,
+            startY = 0;
+        div.ondragstart = function(e) {
+            startX = e.clientX;
+            startY = e.clientY;
+        }
+        div.ondragend = function(e) {
+            var x = e.clientX - startX;
+            var y = e.clientY - startY;
+            this.style.left = this.offsetLeft + x + 'px';
+            this.style.top = this.offsetTop + y + 'px';
+        }
+    </script>
+</body>
+
+</html>

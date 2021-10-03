@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="谢永强">
+    <meta name="description" content="表单">
+    <link rel="icon" href="3.jpg">
+    <title>表单</title>
+</head>
+
+<body>
+    <form autocomplete="off" method="POST" action="1.txt" target="_blank">
+        <p><label for="fave">Fruit: <input name="fave" autofocus></label></p>
+        <p><label for="name">Name: <input autocomplete="on" name="name"></label></p>
+        <p><label for="abandon">Abandon: <input disabled name="abandon"></label></p>
+        <button>Submit</button>
+    </form>
+    <br><br><br><br><br><br>
+
+    <form action="1.txt" target="_blank">
+        <fieldset>
+            <legend>Enter Your Details</legend>
+            <p><label for="fave">Fruit: <input name="fave" autofocus></label></p>
+            <p><label for="name">Name: <input name="name"></label></p>
+        </fieldset>
+        <fieldset>
+            <legend>Vote For Your Three Favorite Fruits</legend>
+            <p><label for="fave1">#1: <input id="fave1" name="fave1" autofocus></label></p>
+            <p><label for="fave2">#2: <input id="fave2" name="fave2" autofocus></label></p>
+            <p><label for="fave3">#1: <input id="fave3" name="fave3" autofocus></label></p>
+        </fieldset>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </form>
+
+</body>
+
+</html>

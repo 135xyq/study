@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>canvas</title>
+    <style>
+        canvas {
+            width: 500px;
+            height: 500px;
+            border: 1px solid #0f0;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="500px" height="500px"></canvas>
+
+    <script>
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext('2d');
+        // var ctx1 = canvas.getContext('2d');
+
+        // ctx.moveTo(0, 0);
+        // ctx.lineTo(100, 100);
+        // ctx.lineTo(200, 0);
+        // ctx.closePath();
+        // ctx.stroke();
+
+        // ctx.beginPath();
+        // ctx.moveTo(300, 300);
+        // ctx.lineTo(300, 100);
+        // ctx.lineTo(200, 200);
+        // // ctx.fill();
+        // ctx.stroke();
+
+        // ctx1.beginPath();
+        // ctx1.lineWidth = 20;
+        // ctx1.moveTo(400, 300);
+        // ctx1.lineTo(400, 100);
+        // ctx1.lineTo(500, 500);
+        // // ctx1.fill();
+        // ctx1.stroke();
+
+        // 画矩形
+        // ctx.rect(100, 100, 300, 200);
+        // ctx.stroke();
+
+        // ctx.fillRect(100, 100, 300, 200);
+
+        // ctx.strokeRect(100, 100, 300, 200);
+
+
+        // 落地反弹
+        /* var height = 100;
+        var width = 50;
+        var speed = 5;
+        var flag = true; //为true代表在下降
+        var timer = setInterval(function() {
+            ctx.clearRect(0, 0, 500, 500); //清除全屏的内容
+            ctx.fillRect(width, height, 50, 50);
+            if (height <= 450 && flag) {
+                speed++;
+                height += speed;
+            } else if (height >= 100 && !flag) {
+                if (speed > 1) {
+                    speed--;
+                }
+                height -= speed;
+            }
+
+            if (height >= 450) {
+                flag = false;
+            } else if (height <= 100) {
+                flag = true;
+                width += 5;
+            }
+            console.log(height);
+            console.log(speed)
+        }, 30) */
+
+        // 画弧形，圆
+        // ctx.arc(200, 200, 100, 0, Math.PI * 2, 1);
+        // ctx.stroke();
+
+        // 圆角矩形
+        // ctx.moveTo(100, 110);
+        // ctx.arcTo(100, 200, 200, 200, 10);
+        // ctx.arcTo(200, 200, 200, 100, 10);
+        // ctx.arcTo(200, 100, 100, 100, 10);
+        // ctx.arcTo(100, 100, 100, 200, 10);
+        // ctx.stroke();
+
+        // 贝塞尔曲线
+        /*         ctx.moveTo(0, 200);
+                ctx.quadraticCurveTo(100, 0, 200, 200);
+                ctx.quadraticCurveTo(300, 400, 400, 200);
+                ctx.stroke(); */
+
+        // 变换
+
+        // ctx.translate(200, 200)
+        // ctx.scale(1, 0.5);
+        // ctx.rotate(Math.PI / 6)
+        //     // ctx.strokeRect(0, 0, 100, 100);
+        // ctx.moveTo(0, 0)
+        // ctx.lineTo(100, 100);
+        // ctx.stroke();
+        var img = new Image();
+        img.src = "../images/1.jpeg"
+        img.onload = function() {
+            ctx.beginPath();
+            var bg = ctx.createPattern(img, 'no-repeat')
+            ctx.fillStyle = bg;
+            ctx.fillRect(0, 0, 100, 100)
+        }
+    </script>
+</body>
+
+</html>
