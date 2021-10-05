@@ -38,10 +38,69 @@
     box-sizing: border-box;
 }
 
-#game .end {
-    width: 100%;
-    height: 100%;
+.end {
+    width: 405px;
+    height: 540px;
     font-size: 30px;
-    z-index: 22;
-    /* color: white; */
+    position: absolute;
+    color: rgb(16, 221, 221);
+    background-color: rgba(204, 204, 204, .6);
+    text-align: center;
+    line-height: 540px;
+    top: 8px;
+    left: calc(50% - 203px);
+    cursor: pointer;
+    user-select: none;
+}
+
+.btnWrapper {
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    top: 30px;
+    margin-top: 20px;
+}
+
+.btnWrapper button {
+    width: 80px;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    background-color: rgb(13, 184, 98);
+    cursor: pointer;
+}
+
+.btnWrapper p {
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    color: rgb(16, 194, 61);
+    top: 20px;
+}
+
+.overGame {
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    /* margin-top: 20px; */
+    /* margin: 0; */
+}
+
+.overGame p {
+    height: 30px;
+    color: rgb(3, 23, 202);
+    font-weight: bold;
+}
+
+.show-level {
+    position: relative;
+    top: 10px;
+    width: 300px;
+    left: calc(50% - 150px);
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
 }

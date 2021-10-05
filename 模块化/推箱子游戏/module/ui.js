@@ -1,5 +1,7 @@
 // 此模块将页面展示
 import * as map from './map.js';
+import { nextLevel, count, overGame } from './game.js'
+import { getStorage } from './storage.js';
 
 // 每个小块的宽高
 const pieceWidth = 45;
@@ -7,12 +9,13 @@ const pieceHeight = 45;
 
 const divContent = document.getElementById("game");
 
+let level = 0;
 /**
  * 设置容器的宽高
  */
 function setDivContent() {
     divContent.style.width = `${pieceWidth * map.colNumber}px`;
-    divContent.style.width = `${pieceHeight * map.rowNumber}px`;
+    divContent.style.height = `${pieceHeight * map.rowNumber}px`;
 }
 
 /**
@@ -76,6 +79,28 @@ function setPieces() {
         }
     }
 }
+
+export function showEnd() {
+    const div = document.createElement("div");
+    div.className = "end";
+    div.id = "end";
+    div.innerText = "恭喜你！完成了推箱子！"
+    document.body.appendChild(div);
+    div.innerHTML += `
+    <div class="btnWrapper" id="total">
+        <p>第${level +1}关共走步数：${count}</p>
+        <button id="next">下一关</button>
+        <button id="endGame">结束</button>
+    </div>
+    `
+    next.addEventListener('click', e => {
+        nextLevel(++level);
+    })
+    endGame.addEventListener('click', e => {
+        overGame(++level, div);
+    })
+
+}
 /**
  * 将容器展示
  */
@@ -84,4 +109,18 @@ export function setContent() {
     setDivContent();
     // 设置里面的每一个元素
     setPieces();
+    // 显示关数
+    showLevel();
+    // 显示最好成绩
+    // showBest();
 }
+
+function showLevel() {
+    levels.innerHTML = `${level + 1}`;
+}
+
+function showBest() {
+    let result = getStorage(level + 1);
+    best.innerHTML = `<p>本关的最好成绩是${result}步</p>`;
+}
+export { level };

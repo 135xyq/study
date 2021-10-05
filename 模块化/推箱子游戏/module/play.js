@@ -106,11 +106,3 @@ export function isWin() {
     }
     return true;
 }
-
-export function showEnd() {
-    console.log(1)
-    const div = document.createElement("div");
-    div.className = "end";
-    div.innerText = "恭喜你！完成了推箱子！"
-    document.getElementById("game").appendChild(div);
-}
