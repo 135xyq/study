@@ -2,6 +2,7 @@
 import * as map from './map.js';
 import { nextLevel, count, overGame } from './game.js'
 import { getStorage } from './storage.js';
+import a from './storage.js';
 
 // 每个小块的宽高
 const pieceWidth = 45;
@@ -81,6 +82,11 @@ function setPieces() {
 }
 
 export function showEnd() {
+    let str = "";
+    if (a()) {
+        console.log(14)
+        str = "恭喜你！打破了记录！"
+    }
     const div = document.createElement("div");
     div.className = "end";
     div.id = "end";
@@ -89,6 +95,7 @@ export function showEnd() {
     div.innerHTML += `
     <div class="btnWrapper" id="total">
         <p>第${level +1}关共走步数：${count}</p>
+        <p>1${str}</p>
         <button id="next">下一关</button>
         <button id="endGame">结束</button>
     </div>
@@ -112,7 +119,7 @@ export function setContent() {
     // 显示关数
     showLevel();
     // 显示最好成绩
-    // showBest();
+    showBest();
 }
 
 function showLevel() {
@@ -123,4 +130,5 @@ function showBest() {
     let result = getStorage(level + 1);
     best.innerHTML = `<p>本关的最好成绩是${result}步</p>`;
 }
+
 export { level };

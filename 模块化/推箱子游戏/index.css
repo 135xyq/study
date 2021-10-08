@@ -81,6 +81,10 @@
     top: 20px;
 }
 
+.btnWrapper p:nth-of-type(2) {
+    top: 50px;
+}
+
 .overGame {
     width: 100%;
     height: 50px;
