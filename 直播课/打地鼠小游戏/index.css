@@ -10,6 +10,7 @@ body {
 #game {
     width: 600px;
     margin: 0 auto;
+    user-select: none;
 }
 
 .source-box {
@@ -21,6 +22,7 @@ body {
 }
 
 .holes {
+    cursor: url('./images/h.ico'), pointer;
     width: 100%;
     height: 600px;
     /* background-color: #0ff; */
