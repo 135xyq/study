@@ -1,6 +1,6 @@
 <template>
   <img
-  class="avatar-img"
+  class="avatar-container"
   :src = "url" 
   :style="{
       width:`${size}px`,
@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style scoped>
-.avatar-img{
+.avatar-container {
     border-radius:50%;
     object-fit: cover;
     display: block;

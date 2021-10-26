@@ -1,26 +1,35 @@
-<style>
-    table{
-        width:100%;
-    }
-    table th:nth-of-type(1){
-        width:20%;
-    }
-</style>
-# 各组件的功能及使用方法
-- **Avatar 头像组件**
 
-| 参数名 | 参数介绍|
-|:---------:| :---------------------:|
-|url | 需要传入图片地址|
-|size| 图片大小（默认宽高为150px）|
+# 各组件的功能及使用方法
+### Avatar 头像组件
+#### 属性
+
+| 参数名 | 参数介绍| 类型 | 是否必选|默认值|
+|:---------:| :---------:|:---------:|:---------:|:----:|
+|url | 需要传入图片地址|String|true|无|
+|size| 图片大小|Number|false|150px|
 
 <br>
 
-- **Icon 图标组件**  
+### Icon 图标组件
+#### 属性
 
-| 参数名 | 参数介绍| 可选值 |
-|:---------:| :---------------------:|:---:|
-|type | 图标的类型|home  success error close warn info blog code about weixin mail github qq arrowUp arrowDown empty chat
+| 参数名 | 参数介绍 | 类型 | 是否必选|默认值|
+|:---------:| :----------:|:---:|:---:|:---:|
+|type | 图标的类型|String|true|无|
 
+<img src="http://mdrs.yuanjin.tech/img/20201130155542.jpg" alt="iShot2020-11-30下午03.47.09" style="zoom:33%;" />
 
+### Pager 分页组件
+#### 属性
+|参数名|参数介绍|参数类型|是否必选|默认值|
+|:----:|:----:|:----:|:----:|:----:|
+|total|数据总数|Number|false|0|
+|limit|每页数据|Number|false|10|
+|current|当前页码|Number|false|1|
+|visibleNumber|可见的页码总数|Number|false|10|
+
+#### 事件
+|事件名|介绍|参数|类型|
+|:----:|:----:|:----:|:----:|
+|pagerChange|页码变化|新的页码|Number|
 
