@@ -17,9 +17,9 @@ export default {
 @import '~@/styles/global.less';
 .test-container{
     width:300px;
-    height: 300px;
-    border:1px solid #000;
+    height: 400px;
     background-color:#000;
+    padding-top:200px;
     margin:100px auto;
     position: relative;
 }

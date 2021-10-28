@@ -1,9 +1,9 @@
 <template>
   <ul class="contact-container">
     <li>
-      <a>
+      <a href="https://github.com/135xyq" target="_blank">
         <Icon type="github"></Icon>
-        <span>xyq135</span>
+        <span>135xyq</span>
       </a>
     </li>
     <li>
@@ -21,7 +21,7 @@
       </a>
             <div class="pop">
         <img
-          src="https://cdn4.buysellads.net/uu/1/3386/1525189943-38523.png"
+          src="@/assets/images/qq.jpg"
           alt=""
         />
       </div>
@@ -33,7 +33,7 @@
       </a>
             <div class="pop">
         <img
-          src="https://cdn4.buysellads.net/uu/1/3386/1525189943-38523.png"
+          src="@/assets/images/weixin.jpg"
           alt=""
         />
       </div>
@@ -67,13 +67,11 @@ export default {
     }
     a {
       cursor: pointer;
-      display: block;
-      width: 100%;
-      height: 100%;
+      display: flex;
+      align-items: center;
       font-size: 16px;
       .icon-container {
         font-size: 26px;
-        display: inline-block;
         width: 36px;
       }
     }
@@ -86,7 +84,7 @@ export default {
       border-radius: 5px;
       transform: scaleY(0);
       transform-origin: center bottom;
-      transition: 0.3s;
+      transition: 0.9s;
       img {
         width: 150px;
         height: 150px;
