@@ -9,16 +9,16 @@
         "Avatar:test": "vue serve ./src/components/Avatar/test.vue",
         "Icon:test": "vue serve ./src/components/Icon/test.vue",
         "Empty:test": "vue serve ./src/components/Empty/test.vue",
-        "Contact:test": "vue serve ./src/components/Contact/test.vue",
+        "Contact:test": "vue serve ./src/components/SiteAside/Contact/test.vue",
         "ImageLoader:test": "vue serve ./src/components/ImageLoader/test.vue",
-        "Menu:test": "vue serve ./src/components/Menu/test.vue",
-        "SiteAside:test": "vue serve ./src/components/SiteAside/test.vue"
-
-
+        "Menu:test": "vue serve ./src/components/SiteAside/Menu/test.vue",
+        "SiteAside:test": "vue serve ./src/components/SiteAside/test.vue",
+        "Layout:test": "vue serve ./src/components/Layout/test.vue"
     },
     "dependencies": {
         "core-js": "^3.6.5",
-        "vue": "^2.6.11"
+        "vue": "^2.6.11",
+        "vue-router": "^3.5.3"
     },
     "devDependencies": {
         "@vue/cli-plugin-babel": "~4.5.0",

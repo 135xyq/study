@@ -40,4 +40,7 @@ export default {
 
 <style>
 @import "//at.alicdn.com/t/font_2889319_jqfpmh0raqg.css";
+.icon-container{
+    font-size:inherit;
+}
 </style>

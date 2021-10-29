@@ -27,5 +27,6 @@ export default {
     border-radius:50%;
     object-fit: cover;
     display: block;
+    cursor: pointer;
 }
 </style>

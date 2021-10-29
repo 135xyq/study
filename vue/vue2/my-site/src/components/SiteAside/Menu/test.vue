@@ -13,11 +13,12 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import "~@/styles/global.less";
 .test-container{
-    width:300px;
+    width:250px;
     height:400px;
     background-color:#000;
+    margin:0 auto;
 }
 </style>
