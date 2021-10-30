@@ -35,9 +35,9 @@ export default {
         width:250px;
         height:100%;
     }
-    .main{
-        background-color:red;
-        height:100%;
-    }
+    // .main{
+    //     background-color:red;
+    //     height:100%;
+    // }
 }
 </style>
