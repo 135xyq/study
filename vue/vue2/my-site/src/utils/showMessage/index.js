@@ -16,7 +16,6 @@ export default function(options) {
     const type = options.type || "info";
     const duration = options.duration || 2000;
     const container = options.container || document.body;
-
     const div = document.createElement("div");
     const iconRoot = getComponentRootDom(Icon, {
         type,
@@ -26,15 +25,26 @@ export default function(options) {
     div.className = `${style.message} ${style["message-"+type]}`;
 
     // 判断父容器是否设置了定位
-    if (getComputedStyle(container).position === "static") {
-        container.style.position = "relative";
+    if (options.container) {
+        if (getComputedStyle(container).position === "static") {
+            container.style.position = "relative";
+        }
     }
-
+    container.appendChild(div);
     // 浏览器强行渲染
     div.clientHeight; // 导致reflow
 
     // 回归到正常位置
     div.style.opacity = 1;
     div.style.transform = `translate(-50%, -50%)`;
-    container.appendChild(div);
+
+    setTimeout(() => {
+        div.style.opacity = 1;
+        div.style.transform = `translate(-50%, -50%) translateY(-100px)`;
+        div.addEventListener('transitionend', () => {
+            div.remove();
+            // 回调函数
+            options.callback && options.callback();
+        }, { once: true });
+    }, duration);
 }
