@@ -5,5 +5,7 @@
         "activityBar.background": "#550354",
         "titleBar.activeBackground": "#770476",
         "titleBar.activeForeground": "#FFF7FF"
-    }
+    },
+    "compile-hero.disable-compile-files-on-did-save-code": true,
+    "liveServer.settings.port": 5501
 }
