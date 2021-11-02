@@ -84,7 +84,7 @@ export default {
       
       this.mouseX = this.center.x;
       this.mouseY = this.center.y;
-      console.log(this.mouseX, this.mouseY);
+      // console.log(this.mouseX, this.mouseY);
     },
     // 获取尺寸
     getResize(){

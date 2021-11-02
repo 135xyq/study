@@ -1,4 +1,5 @@
 import './banner';
+import '../api/blog';
 
 import Mock from 'mockjs';
 // 设置延迟时间
