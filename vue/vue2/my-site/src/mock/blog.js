@@ -13,26 +13,26 @@ Mock.mock("/api/blogtype", "get", {
 });
 
 Mock.mock(/^\/api\/blog(\?.+)?$/, "get", function(options) {
-    const query = qs.parse(options.url);
+    const url = qs.parse(options.url)
 
     return Mock.mock({
         code: 0,
         msg: "",
         data: {
             "total|2000-3000": 0,
-            [`rows|${query.limit || 10}`]: [{
+            [`rows|${url.limit||10}`]: [{
                 id: "@guid",
                 title: "@ctitle",
                 description: "@cparagraph(1, 10)",
                 category: {
                     "id|1-10": 0,
-                    name: "分类@id",
+                    name: "分类@id"
                 },
-                "scanNumber|0-3000": 0,
-                "commentNumber|0-300": 30,
-                thumb: Mock.Random.image("300x250", "#000", "#fff", "Random Image"),
+                "scanNumber|0-10000": 0,
+                "commentNUmber|0-1000": 0,
+                "thumb|1": [Mock.Random.image("300x250", "#2d2d2d", "#fff", "Random"), null],
                 createDate: `@date('T')`,
-            }, ],
-        },
-    });
+            }]
+        }
+    })
 });
