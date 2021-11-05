@@ -14,7 +14,8 @@
         "Menu:test": "vue serve ./src/components/SiteAside/Menu/test.vue",
         "SiteAside:test": "vue serve ./src/components/SiteAside/test.vue",
         "Layout:test": "vue serve ./src/components/Layout/test.vue",
-        "RightList:test": "vue serve ./src/views/Blog/RightList/test.vue"
+        "RightList:test": "vue serve ./src/views/Blog/RightList/test.vue",
+        "BlogList:test": "vue serve ./src/views/Blog/BlogList/test.vue"
     },
     "dependencies": {
         "axios": "^0.24.0",
