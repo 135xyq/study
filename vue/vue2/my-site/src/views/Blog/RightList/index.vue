@@ -37,7 +37,7 @@ export default {
 @import "~@/styles/var.less";
 @import "~@/styles/global.less";
 .right-list-container {
-  font-size: 25px;
+  // font-size: 25px;
   .right-list-container {
     margin-left: 1em;
     font-size: 90%;
@@ -52,7 +52,6 @@ export default {
     }
     &:hover{
       font-size:120%;
-      color:@success;
     }
   }
   .count {
