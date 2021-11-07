@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import RightList from '../RightList';
+import RightList from '../../RightList';
 export default {
   components:{
     RightList,

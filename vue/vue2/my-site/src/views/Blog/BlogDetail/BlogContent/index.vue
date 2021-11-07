@@ -4,7 +4,7 @@
     <div class="article-info">
         <span>{{`日期：${formateDate(article.createDate)}`}}</span>
         <span>{{`浏览：${article.scanNumber}`}}</span>
-        <a href="">{{`评论：${article.commentNumber}`}}</a>
+        <a href="#comment">{{`评论：${article.commentNumber}`}}</a>
         <a href="" v-if="article.category">{{article.category.name}}</a>
     </div>
     <div class="aritcle-main-container markdown-body" v-html="article.htmlContent"></div>

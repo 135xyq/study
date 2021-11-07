@@ -3,6 +3,7 @@
     <template #main>
       <div class="left-content-container" v-vLoading="isLoading" v-if="data">
         <BlogContent :article="data"></BlogContent>
+        <BlogComments></BlogComments>
       </div>
     </template>
     <template #right>
@@ -14,8 +15,9 @@
 </template>
 
 <script>
-import BlogContent from "../BlogContent";
-import BlogTOC from "../BlogTOC";
+import BlogContent from "./BlogContent";
+import BlogTOC from "./BlogTOC";
+import BlogComments from './BlogComments';
 import Layout from "@/components/Layout";
 import fetchData from "@/mixins/fetchData.js";
 import {getBlog} from '@/api/blog.js';
@@ -25,6 +27,7 @@ export default {
     Layout,
     BlogTOC,
     BlogContent,
+    BlogComments,
   },
   methods:{
     async fetchData(){
