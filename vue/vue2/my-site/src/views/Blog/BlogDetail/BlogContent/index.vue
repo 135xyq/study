@@ -5,7 +5,13 @@
         <span>{{`日期：${formateDate(article.createDate)}`}}</span>
         <span>{{`浏览：${article.scanNumber}`}}</span>
         <a href="#comment">{{`评论：${article.commentNumber}`}}</a>
-        <a href="" v-if="article.category">{{article.category.name}}</a>
+        <router-link :to="{
+          name:'blogtype',
+          params:{
+            categoryId:article.id
+          }
+        }"
+        v-if="article.category">{{article.category.name}}</router-link>
     </div>
     <div class="aritcle-main-container markdown-body" v-html="article.htmlContent"></div>
   </div>

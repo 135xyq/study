@@ -1,7 +1,12 @@
 <template>
   <Layout>
     <template #main>
-      <div class="left-content-container" v-vLoading="isLoading" v-if="data">
+      <div
+        class="left-content-container"
+        v-vLoading="isLoading"
+        v-if="data"
+        ref="detailContainer"
+      >
         <BlogContent :article="data"></BlogContent>
         <BlogComments></BlogComments>
       </div>
@@ -17,45 +22,64 @@
 <script>
 import BlogContent from "./BlogContent";
 import BlogTOC from "./BlogTOC";
-import BlogComments from './BlogComments';
+import BlogComments from "./BlogComments";
 import Layout from "@/components/Layout";
 import fetchData from "@/mixins/fetchData.js";
-import {getBlog} from '@/api/blog.js';
+import { getBlog } from "@/api/blog.js";
 export default {
-  mixins:[fetchData({})],
+  mixins: [fetchData({})],
   components: {
     Layout,
     BlogTOC,
     BlogContent,
     BlogComments,
   },
-  methods:{
-    async fetchData(){
+  methods: {
+    async fetchData() {
       return await getBlog(this.$route.params.id);
-    }
-  }
+    },
+    handlerScroll() {
+      this.$bus.$emit("mainScroll", this.$refs.detailContainer);
+    },
+  },
+  mounted() {
+    this.$refs.detailContainer.addEventListener("scroll", this.handlerScroll);
+  },
+  beforeDestroy() {
+    this.$refs.detailContainer.removeEventListener(
+      "scroll",
+      this.handlerScroll
+    );
+  },
+  updated() {
+    console.log(123)
+    const hash = location.hash;
+    location.hash = "";
+    setTimeout(() => {
+      location.hash = hash;
+    }, 50);
+  },
 };
 </script>
 
 <style lang="less" scoped="true">
-.left-content-container{
+.left-content-container {
   height: 100%;
   overflow-y: scroll;
-  width:100%;
+  width: 100%;
   padding: 20px;
   box-sizing: border-box;
-  overflow-x:hidden;
+  overflow-x: hidden;
   position: relative;
-  scroll-behavior:smooth;
+  scroll-behavior: smooth;
 }
 
-.right-container{
-  width:300px;
+.right-container {
+  width: 300px;
   height: 100%;
   overflow-y: scroll;
   box-sizing: border-box;
   padding: 20px;
   position: relative;
 }
-
 </style>

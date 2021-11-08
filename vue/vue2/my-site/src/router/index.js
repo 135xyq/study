@@ -5,5 +5,5 @@ Vue.use(VueRouter);
 
 export default new VueRouter({
     routes,
-    module: 'history'
+    mode: 'history'
 });
