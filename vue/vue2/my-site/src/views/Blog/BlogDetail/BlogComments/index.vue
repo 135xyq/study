@@ -21,9 +21,26 @@ export default {
   components: {
     MessageComment,
   },
+  data(){
+    return{
+      pager:1,
+      limit:10
+    }
+  },
+  computed:{
+    isHasMore(){
+      return this.data.rows.length < this.data.total;
+    }
+  },
+  created(){
+    this.$bus.$on("mainScroll",this.handleScroll);
+  },
+  destroyed(){
+    this.$bus.$off("mainScroll",this.handleScroll);
+  },
   methods:{
     async fetchData(){
-      return await getComments(this.$route.params.id,1,10);
+      return await getComments(this.$route.params.id,this.pager,this.limit);
     },
     async handleSubmit(formDate,callback){
       const resp = await postComment({
@@ -40,10 +57,34 @@ export default {
       this.data.rows.unshift(show);
       this.data.total++;
       callback("评论成功");
+    },
+    // 评论加载下一页
+    async showMore(){
+      // 评论都已经加载完毕
+      if(!this.isHasMore){
+        return;
+      }
+      this.isLoading = true;
+      this.pager++;
+      const resp = await this.fetchData();
+      this.data.total = resp.total;
+      this.data.rows = this.data.rows.concat(resp.rows);
+        this.isLoading = false;
+    },
+    handleScroll(dom){
+      if(this.isLoading || !dom){
+        // 如果dom不存在或正在加载则直接返回
+        return;
+      }
+      const ranger = 100;//波动的范围
+      const desc = Math.abs(dom.scrollTop + dom.clientHeight - dom.scrollHeight );
+      if(desc <= ranger){
+        this.showMore();
+      }
     }
   }
 };
 </script>
 
-<style>
+<style lang="less" scoped>
 </style>

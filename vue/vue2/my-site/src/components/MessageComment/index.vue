@@ -6,7 +6,7 @@
       <span>{{`(${subTitle})` }}</span>
     </h3>
     <CommentsList :list="list"></CommentsList>
-    <!-- <div class="loading" v-loading="isListLoading"></div> -->
+    <div class="loading" v-vLoading="isListLoading"></div>
   </div>
 </template>
 
@@ -42,6 +42,6 @@ export default {
 <style lang="less" scoped>
 .loading {
   position: relative;
-  height: 100px;
+  height: 200px;
 }
 </style>

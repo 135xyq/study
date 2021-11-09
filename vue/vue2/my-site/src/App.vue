@@ -12,6 +12,7 @@
                 </div>
             </template>
         </Layout>
+        <ToTop></ToTop>
     </div>
 </template>
 
@@ -19,10 +20,12 @@
 import '@/styles/global.less';
 import Layout from '@/components/Layout';
 import SiteAside from '@/components/SiteAside';
+import ToTop from '@/components/ToTop';
 export default {
     components:{
         Layout,
         SiteAside,
+        ToTop
     }
 }
 </script>

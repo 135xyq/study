@@ -8,7 +8,7 @@
         ref="detailContainer"
       >
         <BlogContent :article="data"></BlogContent>
-        <BlogComments></BlogComments>
+        <BlogComments v-if="!isLoading"></BlogComments>
       </div>
     </template>
     <template #right>
@@ -26,8 +26,9 @@ import BlogComments from "./BlogComments";
 import Layout from "@/components/Layout";
 import fetchData from "@/mixins/fetchData.js";
 import { getBlog } from "@/api/blog.js";
+import mainScroll from '@/mixins/mainScroll.js';
 export default {
-  mixins: [fetchData({})],
+  mixins: [fetchData({}),mainScroll("detailContainer")],
   components: {
     Layout,
     BlogTOC,
@@ -38,26 +39,6 @@ export default {
     async fetchData() {
       return await getBlog(this.$route.params.id);
     },
-    handlerScroll() {
-      this.$bus.$emit("mainScroll", this.$refs.detailContainer);
-    },
-  },
-  mounted() {
-    this.$refs.detailContainer.addEventListener("scroll", this.handlerScroll);
-  },
-  beforeDestroy() {
-    this.$refs.detailContainer.removeEventListener(
-      "scroll",
-      this.handlerScroll
-    );
-  },
-  updated() {
-    console.log(123)
-    const hash = location.hash;
-    location.hash = "";
-    setTimeout(() => {
-      location.hash = hash;
-    }, 50);
   },
 };
 </script>
