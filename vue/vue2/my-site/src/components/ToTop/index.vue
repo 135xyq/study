@@ -18,6 +18,7 @@ export default {
   data() {
     return {
       show: false,
+      count:0,//防止重复点击
     };
   },
   created() {
@@ -35,8 +36,17 @@ export default {
       this.show = dom.scrollTop > 500;
     },
     handleClick() {
+      if(this.count){
+        return;
+      }
       // 回到顶部
       this.$bus.$emit("setMainScroll", 0);
+      this.count = 1;
+      this.$refs.toTopContainer.style.transform = "translateY(-300px)";
+      setTimeout(() => {
+        this.$refs.toTopContainer.style.transform = "none";
+        this.count = 0;
+      },700);
     },
   },
 };
@@ -46,16 +56,16 @@ export default {
 .to-top-container {
   position: fixed;
   bottom: 30px;
-  right: 100px;
+  right: 60px;
   z-index: 99;
   font-size: 60px;
   color: #0ff;
   cursor: pointer;
-  transition: all 0.7;
-  animation: rotate 3.6s infinite;
+  transition: all .7s;
+  animation: rotate 1.6s steps(360) infinite;
   &:hover {
     animation: none;
-    color:rgb(30, 153, 96);
+    color: rgb(30, 153, 96);
   }
 }
 
@@ -63,17 +73,8 @@ export default {
   0% {
     transform: rotate(0);
   }
-  25% {
-    transform: rotate(-30deg);
-  }
-  50% {
-    transform: rotate(0deg);
-  }
-  75% {
-    transform: rotate(30deg);
-  }
   100% {
-    transform: rotate(0deg);
+    transform: rotate(360deg);
   }
 }
 </style>

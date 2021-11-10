@@ -9,7 +9,7 @@
               id:item.id,
             }
           }">
-            <img :src="item.thumb" :alt="item.title" :title="item.title" />
+            <img v-vLazy="item.thumb" :alt="item.title" :title="item.title" />
           </router-link>
         </div>
         <div class="main">

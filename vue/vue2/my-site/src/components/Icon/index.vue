@@ -22,7 +22,7 @@ const iconMap = {
     arrowDown: "icon-iconfonticonfonti2",
     empty: "icon-empty",
     chat: "icon-liuyan",
-    top:"icon-icon-test"
+    top:"icon-huojian"
 }
 export default {
     props:{
@@ -40,7 +40,7 @@ export default {
 </script>
 
 <style>
-@import "//at.alicdn.com/t/font_2889319_8orpz089dl6.css";
+@import "//at.alicdn.com/t/font_2889319_7saoc2n0xw5.css";
 .icon-container{
     font-size:inherit;
 }

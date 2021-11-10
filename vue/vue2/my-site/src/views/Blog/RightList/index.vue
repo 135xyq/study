@@ -51,7 +51,7 @@ export default {
       font-weight: bolder;
     }
     &:hover{
-      font-size:120%;
+      font-size:110%;
     }
   }
   .count {
