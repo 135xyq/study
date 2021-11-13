@@ -5,7 +5,7 @@
     <h2 id="comment">评论</h2>
     <MessageComment
     title="评论列表"
-    :subTitle="data.total"
+    :subTitle="`(${data.total})`"
     :list="data.rows"
     :isListLoading = "isLoading"
     @submit="handleSubmit"></MessageComment>

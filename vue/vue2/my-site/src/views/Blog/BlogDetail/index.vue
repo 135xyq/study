@@ -27,6 +27,7 @@ import Layout from "@/components/Layout";
 import fetchData from "@/mixins/fetchData.js";
 import { getBlog } from "@/api/blog.js";
 import mainScroll from '@/mixins/mainScroll.js';
+import controlTitle from '@/utils/controlTitle';
 export default {
   mixins: [fetchData({}),mainScroll("detailContainer")],
   components: {
@@ -37,7 +38,11 @@ export default {
   },
   methods: {
     async fetchData() {
-      return await getBlog(this.$route.params.id);
+      const resp =  await getBlog(this.$route.params.id);
+      if(resp.title){
+        controlTitle.setRouteTitle(resp.title);
+      }
+      return resp;
     },
   },
 };

@@ -1,39 +1,39 @@
 <template>
   <ul class="contact-container">
     <li>
-      <a href="https://github.com/135xyq" target="_blank">
+      <a :href="data.github" target="_blank">
         <Icon type="github"></Icon>
-        <span>135xyq</span>
+        <span>{{data.githubName}}</span>
       </a>
     </li>
     <li>
-      <a href="mailto:xyq135@gmail.com">
+      <a :href="`mailto:${data.mail}`">
         <Icon type="mail"></Icon>
-        <span>xyq135@gmail.com</span>
+        <span>{{data.mail}}</span>
       </a>
     </li>
     <li>
       <a
-        href="tencent://message/?Menu=yes&uin=2420711995&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45"
+        :href="`tencent://message/?Menu=yes&uin=${data.qq}&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45`"
       >
         <Icon type="qq"></Icon>
-        <span>2420711995</span>
+        <span>{{data.qq}}</span>
       </a>
             <div class="pop">
         <img
-          src="@/assets/images/qq.jpg"
+          :src="data.qqQrCode"
           alt=""
         />
       </div>
     </li>
     <li>
-      <a href="">
+      <a>
         <Icon type="weixin"></Icon>
-        <span>xyq010305</span>
+        <span>{{data.weixin}}</span>
       </a>
             <div class="pop">
         <img
-          src="@/assets/images/weixin.jpg"
+          :src="data.weixinQrCode"
           alt=""
         />
       </div>
@@ -43,10 +43,12 @@
 
 <script>
 import Icon from "@/components/Icon";
+import {mapState} from 'vuex';
 export default {
   components: {
     Icon,
   },
+  computed: mapState("setting", ["data"]),
 };
 </script>
 

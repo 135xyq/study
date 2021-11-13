@@ -3,7 +3,7 @@
     <FormData v-on="$listeners"></FormData>
     <h3>
       {{ title }}
-      <span>{{`(${subTitle})` }}</span>
+      <span>{{subTitle}}</span>
     </h3>
     <CommentsList :list="list"></CommentsList>
     <div class="loading" v-vLoading="isListLoading"></div>
@@ -24,7 +24,7 @@ export default {
       default:""
     },
     subTitle:{
-      type:Number,
+      type:String,
       default:""
     },
     list:{

@@ -1,9 +1,21 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import routes from '@/router/routes.js';
-Vue.use(VueRouter);
+import controlTitle from '@/utils/controlTitle';
+if (!window.VueRouter) {
+    Vue.use(VueRouter); // 使用一个vue插件
+}
 
-export default new VueRouter({
+
+const router = new VueRouter({
     routes,
     mode: 'history'
 });
+
+router.afterEach((to, from) => {
+    if (to.meta.title) {
+        controlTitle.setRouteTitle(to.meta.title);
+    }
+});
+
+export default router;
