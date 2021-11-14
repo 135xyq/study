@@ -1,4 +1,4 @@
-import imgUrl from '@/assets/gif/loading.gif';
+import imgUrl from '@/assets/svg/loading.svg';
 import styles from './index.module.less';
 // 判断是否生成了img元素
 function excitedImage(el) {

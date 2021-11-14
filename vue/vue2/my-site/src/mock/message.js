@@ -7,7 +7,7 @@ Mock.mock(/^\/api\/message\/?(\?.+)?$/, 'get', function(options) {
         code: 0,
         msg: "",
         data: {
-            total: 99,
+            total: 52,
             [`rows|${query.limit || 10}`]: [{
                 id: "@guid",
                 nickname: "@cname",

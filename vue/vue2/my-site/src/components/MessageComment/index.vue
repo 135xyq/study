@@ -42,6 +42,6 @@ export default {
 <style lang="less" scoped>
 .loading {
   position: relative;
-  height: 200px;
+  height: 80px;
 }
 </style>

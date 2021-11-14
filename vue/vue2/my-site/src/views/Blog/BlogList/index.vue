@@ -46,6 +46,7 @@
       :visibleNumber="10"
       @pagerChange="handlePageChange"
     ></Pager>
+    <Empty v-if="data.total ===0 &&!isLoading"></Empty>
   </div>
 </template>
 
@@ -55,10 +56,12 @@ import { getBlogs } from "@/api/blog.js";
 import Pager from "@/components/Pager";
 import formateDate from '@/utils/formateDate';
 import mainScroll from '@/mixins/mainScroll.js';
+import Empty from "@/components/Empty";
 export default {
-  mixins: [fetchData({}),mainScroll('container')],
+  mixins: [fetchData({total : 0,rows : []}),mainScroll('container')],
   components: {
     Pager,
+    Empty
   },
   computed: {
     getRouteIfo() {
