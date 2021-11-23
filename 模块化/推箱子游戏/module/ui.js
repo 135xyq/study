@@ -95,11 +95,12 @@ export function showEnd() {
     div.innerHTML += `
     <div class="btnWrapper" id="total">
         <p>第${level +1}关共走步数：${count}</p>
-        <p>1${str}</p>
+        <p>${str}</p>
         <button id="next">下一关</button>
         <button id="endGame">结束</button>
     </div>
     `
+    console.log(str)
     next.addEventListener('click', e => {
         nextLevel(++level);
     })
