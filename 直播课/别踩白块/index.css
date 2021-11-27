@@ -1,0 +1,79 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+.wrapper{
+	width: 400px;
+	height: 600px;
+	border: 1px solid #000;
+	position: relative;
+	margin: 50px auto;
+	overflow: hidden;
+	user-select: none;
+}
+
+.start{
+	width: 200px;
+	height: 80px;
+	font-size: 60px;
+	line-height: 80px;
+	text-align: center;
+	background-color: #0ff;
+	position: absolute;
+	top: calc(50% - 40px);
+	left: calc(50% - 100px);
+	color: rgba(213, 215, 222, 1.0);
+	border-radius: 15px;
+	cursor: pointer;
+	z-index: 99;
+}
+
+.main{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	top: -150px;
+}
+.row{
+	width: 100%;
+	height: 150px;
+}
+
+.row div{
+	display: inline-block;
+	width: 25%;
+	height: 100%;
+	box-sizing: border-box;
+	border: 1px solid #000;
+	cursor: pointer;
+}
+
+.end{
+	display: none;
+	width: 300px;
+	height: 80px;
+	font-size: 30px;
+	line-height: 80px;
+	text-align: center;
+	background-color: #0ff;
+	position: absolute;
+	top: calc(50% - 40px);
+	left: calc(50% - 150px);
+	color: rgba(213, 215, 222, 1.0);
+	border-radius: 15px;
+	cursor: pointer;
+	z-index: 99;
+}
+
+.choice{
+	width: 500px;
+	margin: -30px auto;
+}
+
+.choice button{
+	width: 75px;
+	margin: 0 10px;
+	background-color: #0ff;
+	cursor: pointer;
+}
