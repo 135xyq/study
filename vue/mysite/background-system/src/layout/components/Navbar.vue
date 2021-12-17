@@ -7,7 +7,7 @@
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
+          <img src="https://ts1.cn.mm.bing.net/th?id=OIP-C.kdYpr87ildd5Xx6srwADWQAAAA&w=96&h=96&c=8&rs=1&qlt=90&o=6&dpr=1.25&pid=3.1&rm=2" class="user-avatar">
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">

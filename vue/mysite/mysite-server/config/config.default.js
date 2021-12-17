@@ -5,7 +5,7 @@ exports.keys = 'mysite-server_1619336153310_6069';
 
 // 初始化的管理员信息
 exports.admin = {
-    loginId: 'admin',
+    loginId: 'xyq',
     loginPwd: '123123',
     name: '超级管理员',
 };

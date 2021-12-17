@@ -1,13 +1,18 @@
 <template>
-  <div>添加文章</div>
+  <div class="app-container">
+    <EditArticle mode="add"/>
+  </div>
 </template>
 
 <script>
-export default {
-
-}
+  import EditArticle from '@/components/EditArticle.vue'
+  export default {
+    components : {
+      EditArticle
+    }
+  }
 </script>
 
-<style>
+<style lang="scss" scoped>
 
 </style>
