@@ -15,8 +15,17 @@ export default function useEdit(todosRef) {
     }
 
     // 完成编辑
-    const doneEdit = () => {
+    const doneEdit = (todo) => {
         editingTodoRef.value = null;
+        const title = todo.title.trim();
+        if (title) {
+            todo.title = title;
+        } else {
+            const index = todosRef.value.indexOf(todo);
+            if (index >= 0) {
+                todosRef.value.splice(index, 1);
+            }
+        }
     }
 
 

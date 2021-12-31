@@ -156,6 +156,10 @@ body {
     border-bottom: 1px solid #ededed;
 }
 
+.todo-list li:hover {
+    background-color: rgba(78, 73, 73, 0.151);
+}
+
 .todo-list li:last-child {
     border-bottom: none;
 }
@@ -222,6 +226,15 @@ body {
     text-decoration: line-through;
 }
 
+.todo-list li .create-date {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 55px;
+    font-size: 14px;
+    color: #ccc;
+}
+
 .todo-list li .destroy {
     display: none;
     position: absolute;
@@ -243,6 +256,7 @@ body {
 
 .todo-list li .destroy:after {
     content: "×";
+    cursor: pointer;
 }
 
 .todo-list li:hover .destroy {
@@ -302,6 +316,7 @@ body {
 
 .filters li a.selected {
     border-color: rgba(175, 47, 47, 0.2);
+    background-color: #ccc;
 }
 
 .clear-completed,
