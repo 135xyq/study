@@ -339,7 +339,7 @@ export default {
 
   .to-login {
     position: absolute;
-    left: 565px;
+    left: 888px;
     top: 620px;
     color: @transparent;
     text-decoration: underline;

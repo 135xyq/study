@@ -10,7 +10,6 @@ export async function login(params) {
 
 export async function getCode(email) {
     return await request.post('/passport/getCode', {
-        appkey: 'xyq_1643957776189',
         email
     })
 }
@@ -19,7 +18,22 @@ export async function getCode(email) {
 
 export async function logon(option) {
     return await request.post('/passport/logon', {
-        appkey: 'xyq_1643957776189',
+        ...option
+    })
+}
+
+// 找回密码
+
+export async function findBack(option) {
+    return await request.post('/passport/findBack', {
+        ...option
+    })
+}
+
+// 修改用户信息
+
+export async function changeUserInfo(option) {
+    return await request.put('/passport/changeUserInfo', {
         ...option
     })
 }
