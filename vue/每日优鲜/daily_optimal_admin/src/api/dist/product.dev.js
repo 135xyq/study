@@ -9,6 +9,9 @@ exports.productDelete = productDelete;
 exports.productDetail = productDetail;
 exports.productEdit = productEdit;
 exports.productAdd = productAdd;
+exports.categoryAdd = categoryAdd;
+exports.categoryEdit = categoryEdit;
+exports.categoryDelete = categoryDelete;
 
 var _store = _interopRequireDefault(require("@/store"));
 
@@ -186,6 +189,89 @@ function productAdd(option) {
         case 3:
         case "end":
           return _context6.stop();
+      }
+    }
+  });
+}
+/**
+ * 类目新增
+ * @param {Object} option 
+ * @returns 
+ */
+
+
+function categoryAdd(option) {
+  return regeneratorRuntime.async(function categoryAdd$(_context7) {
+    while (1) {
+      switch (_context7.prev = _context7.next) {
+        case 0:
+          _context7.next = 2;
+          return regeneratorRuntime.awrap(_request["default"].post('/category/add', _objectSpread({
+            appkey: appkey
+          }, option)));
+
+        case 2:
+          return _context7.abrupt("return", _context7.sent);
+
+        case 3:
+        case "end":
+          return _context7.stop();
+      }
+    }
+  });
+}
+/**
+ * 类目编辑
+ * @param {*} option 
+ * @returns 
+ */
+
+
+function categoryEdit(option) {
+  return regeneratorRuntime.async(function categoryEdit$(_context8) {
+    while (1) {
+      switch (_context8.prev = _context8.next) {
+        case 0:
+          _context8.next = 2;
+          return regeneratorRuntime.awrap(_request["default"].put('/category/edit', _objectSpread({
+            appkey: appkey
+          }, option)));
+
+        case 2:
+          return _context8.abrupt("return", _context8.sent);
+
+        case 3:
+        case "end":
+          return _context8.stop();
+      }
+    }
+  });
+}
+/**
+ * 删除类目
+ * @param {String} id 
+ * @returns 
+ */
+
+
+function categoryDelete(id) {
+  return regeneratorRuntime.async(function categoryDelete$(_context9) {
+    while (1) {
+      switch (_context9.prev = _context9.next) {
+        case 0:
+          _context9.next = 2;
+          return regeneratorRuntime.awrap(_request["default"]["delete"]("/category/".concat(id), {
+            params: {
+              appkey: appkey
+            }
+          }));
+
+        case 2:
+          return _context9.abrupt("return", _context9.sent);
+
+        case 3:
+        case "end":
+          return _context9.stop();
       }
     }
   });

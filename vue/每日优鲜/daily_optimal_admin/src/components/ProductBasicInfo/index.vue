@@ -54,7 +54,7 @@
 			</el-form-item>
 
 			<el-form-item>
-				<el-button @click="resetForm('formData')">重置</el-button
+				<el-button @click="cancel">取消</el-button
 				><el-button type="primary" @click="next">下一步</el-button>
 			</el-form-item>
 		</el-form>
@@ -126,9 +126,6 @@ export default {
 		});
 	},
 	methods: {
-		resetForm(formName) {
-			this.$refs[formName].resetFields();
-		},
 		// 改变不同目录的子目录
 		handleChangeItems(category) {
 			this.totalCategoryList.forEach((item) => {
@@ -149,6 +146,10 @@ export default {
 				}
 			});
 		},
+		// 取消编辑
+		cancel(){
+			this.$emit('cancelEdit');
+		}
 	},
 };
 </script>

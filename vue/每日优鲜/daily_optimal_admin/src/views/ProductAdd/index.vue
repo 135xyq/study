@@ -11,6 +11,7 @@
 		<div class="step" v-if="showWhichOne === 0">
 			<ProductBasicInfo
 				:formData="formData"
+				@cancelEdit="onHandleCancelEdit"
 				@next="onHandleNext"
 			></ProductBasicInfo>
 		</div>
@@ -92,7 +93,7 @@ export default {
 									});
 								} else {
 									this.$message({
-										type: "danger",
+										type: "error",
 										message: "更改失败!",
 									});
 								}
@@ -146,6 +147,30 @@ export default {
 		onHandlePrev() {
 			// console.log(1);
 			this.showWhichOne = 0;
+		},
+		// 取消填写，返回商品列表
+		onHandleCancelEdit() {
+			this.$confirm("此操作将永久清空已填写内容, 是否继续?", "提示", {
+				confirmButtonText: "确定",
+				cancelButtonText: "取消",
+				type: "warning",
+			})
+				.then(() => {
+					// 返回商品列表
+					this.$router.push({
+						name:'productList'
+					});
+					this.$message({
+						type: "success",
+						message: "已清空输入内容!",
+					});
+				})
+				.catch(() => {
+					this.$message({
+						type: "info",
+						message: "请继续编辑",
+					});
+				});
 		},
 	},
 };

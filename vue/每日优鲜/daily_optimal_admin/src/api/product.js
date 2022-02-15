@@ -81,3 +81,42 @@ export async function productAdd(option) {
         ...option
     })
 }
+
+/**
+ * 类目新增
+ * @param {Object} option 
+ * @returns 
+ */
+
+export async function categoryAdd(option) {
+    return await request.post('/category/add', {
+        appkey,
+        ...option
+    })
+}
+
+/**
+ * 类目编辑
+ * @param {*} option 
+ * @returns 
+ */
+
+export async function categoryEdit(option) {
+    return await request.put('/category/edit', {
+        appkey,
+        ...option
+    })
+}
+/**
+ * 删除类目
+ * @param {String} id 
+ * @returns 
+ */
+
+export async function categoryDelete(id) {
+    return await request.delete(`/category/${id}`, {
+        params: {
+            appkey,
+        }
+    })
+}
