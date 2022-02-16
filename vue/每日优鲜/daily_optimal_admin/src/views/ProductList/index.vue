@@ -62,7 +62,7 @@ export default {
 				}
 				// 处理上架状态
 				for (const item of this.tableData) {
-					if (item.status === 1) {
+					if (item.status == 1) {
 						item.status = "上架";
 					} else {
 						item.status = "下架";

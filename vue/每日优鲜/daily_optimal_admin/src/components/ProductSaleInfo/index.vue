@@ -40,21 +40,36 @@
 					label="库存"
 				></el-input-number>
 			</el-form-item>
-			<!-- <el-form-item label="库存" prop="type">
+			<el-form-item label="商品相册" prop="images">
 				<el-upload
-					:action='"https://mallapi.duyiedu.com/upload/images?appkey=" + $store.state.user.appkey'
+					:action="
+						'https://mallapi.duyiedu.com/upload/images?appkey=' +
+						$store.state.user.appkey
+					"
 					list-type="picture-card"
+					:on-success="handleSuccess"
 					:on-preview="handlePictureCardPreview"
 					:on-remove="handleRemove"
+					:file-list="fileList"
+					name="avatar"
 				>
 					<i class="el-icon-plus"></i>
 				</el-upload>
 				<el-dialog :visible.sync="dialogVisible">
 					<img width="100%" :src="dialogImageUrl" alt="" />
 				</el-dialog>
-			</el-form-item> -->
+			</el-form-item>
 			<el-form-item label="上架" prop="status">
-				<el-switch v-model="formData.status"></el-switch>
+				<el-tooltip :content="getStatus" placement="top">
+					<el-switch
+						v-model="formData.status"
+						active-color="#13ce66"
+						inactive-color="#ff4949"
+						:active-value="1"
+						:inactive-value="0"
+					>
+					</el-switch>
+				</el-tooltip>
 			</el-form-item>
 			<el-form-item>
 				<el-button type="primary" @click="prev">上一页</el-button>
@@ -95,7 +110,10 @@ export default {
 	},
 	data() {
 		return {
+			dialogImageUrl: "",
+			dialogVisible: false,
 			productUnit,
+			fileList: [],
 			rules: {
 				price: [
 					{
@@ -139,16 +157,25 @@ export default {
 			},
 		};
 	},
-	// created() {
-	// 	// 处理上架状态
-	// 	console.log(this.formData.status)
-	// 	if (this.formData.status === 1) {
-	// 		console.log(1)
-	// 		this.formData.status = true;
-	// 	} else {
-	// 		this.formData.status = false;
-	// 	}
-	// },
+	computed: {
+		getStatus() {
+			if (this.formData.status === 1) {
+				return "上架";
+			} else {
+				return "下架";
+			}
+		},
+	},
+	created() {
+		// 处理图片信息
+		if (this.formData.images.length > 0) {
+			this.fileList = this.formData.images.map((item, index) => ({
+				name: `images-${index}.jpg`,
+				url: item,
+				status: "done",
+			}));
+		}
+	},
 	methods: {
 		// 提交
 		next() {
@@ -167,6 +194,39 @@ export default {
 		prev() {
 			// console.log('返回上一个表单！');
 			this.$emit("prev");
+		},
+		// 移出照片
+		handleRemove(file, fileList) {
+			// console.log(file, fileList);
+			file.status = "removed";
+			// 被删除了
+			const  url  = file.url;
+			this.formData.images = this.formData.images.filter(
+				(item) => item !== url
+			);
+
+			this.fileList = fileList;
+			this.$message({
+				type: "success",
+				message: "删除成功！",
+			});
+		},
+		// 预览
+		handlePictureCardPreview(file) {
+			this.dialogImageUrl = file.url;
+			this.dialogVisible = true;
+		},
+		// 上传成功
+		handleSuccess(response, file, fileList) {
+			// console.log(response);
+			this.fileList.push(response.data);
+			// console.log(file);
+			this.formData.images.push(file.response.data.url);
+			this.fileList = fileList;
+			this.$message({
+				type: "success",
+				message: "上传成功！",
+			});
 		},
 	},
 };
