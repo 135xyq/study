@@ -42,171 +42,180 @@ _vueRouter["default"].prototype.push = function push(location, onResolve, onReje
 
 
 var changeRouterMap = [{
-  name: 'product',
-  path: '/product',
+  name: "product",
+  path: "/product",
   component: function component() {
     return Promise.resolve().then(function () {
-      return _interopRequireWildcard(require('@/views/Layout/index'));
+      return _interopRequireWildcard(require("@/views/Layout/index"));
     });
   },
   meta: {
-    title: '商品',
+    title: "商品",
     auth: true,
     hidden: false,
-    icon: ''
+    icon: ""
   },
   children: [{
-    name: 'productList',
-    path: 'list',
+    name: "productList",
+    path: "list",
     component: function component() {
       return Promise.resolve().then(function () {
-        return _interopRequireWildcard(require('@/views/ProductList/index'));
+        return _interopRequireWildcard(require("@/views/ProductList/index"));
       });
     },
     meta: {
-      title: '商品列表',
+      title: "商品列表",
       auth: true,
       hidden: false,
-      icon: 'el-icon-s-grid'
+      icon: "el-icon-s-grid"
     }
   }, {
-    name: 'productAdd',
-    path: 'add',
+    name: "productAdd",
+    path: "add",
     component: function component() {
       return Promise.resolve().then(function () {
-        return _interopRequireWildcard(require('@/views/ProductAdd/index'));
+        return _interopRequireWildcard(require("@/views/ProductAdd/index"));
       });
     },
     meta: {
-      title: '新增商品',
+      title: "新增商品",
       auth: true,
       hidden: false,
-      icon: 'el-icon-circle-plus'
+      icon: "el-icon-circle-plus"
     }
   }, {
-    name: 'productEdit',
-    path: 'edit',
+    name: "productEdit",
+    path: "edit",
     component: function component() {
       return Promise.resolve().then(function () {
-        return _interopRequireWildcard(require('@/views/ProductAdd/index'));
+        return _interopRequireWildcard(require("@/views/ProductAdd/index"));
       });
     },
     meta: {
-      title: '编辑商品',
+      title: "编辑商品",
       auth: true,
       hidden: true,
-      icon: 'el-icon-edit-outline'
+      icon: "el-icon-edit-outline"
     }
   }, {
-    name: 'category',
-    path: 'category',
+    name: "category",
+    path: "category",
     component: function component() {
       return Promise.resolve().then(function () {
-        return _interopRequireWildcard(require('@/views/Category/index'));
+        return _interopRequireWildcard(require("@/views/Category/index"));
       });
     },
     meta: {
-      title: '商品类目',
+      title: "商品类目",
       auth: true,
       hidden: false,
-      icon: 'el-icon-s-operation'
+      icon: "el-icon-s-operation"
     }
   }]
 }];
 var routes = [{
-  name: 'login',
-  path: '/login',
+  name: "login",
+  path: "/login",
   component: function component() {
     return Promise.resolve().then(function () {
-      return _interopRequireWildcard(require('@/views/Login/index'));
+      return _interopRequireWildcard(require("@/views/Login/index"));
     });
   },
   meta: {
-    title: '登录',
+    title: "登录",
     auth: false,
     hidden: true
   }
 }, {
-  name: 'register',
-  path: '/register',
+  name: "register",
+  path: "/register",
   component: function component() {
     return Promise.resolve().then(function () {
-      return _interopRequireWildcard(require('@/views/Register/index'));
+      return _interopRequireWildcard(require("@/views/Register/index"));
     });
   },
   meta: {
-    title: '注册',
+    title: "注册",
     auth: false,
     hidden: true
   }
 }, {
-  name: 'findback',
-  path: '/findback',
+  name: "findback",
+  path: "/findback",
   component: function component() {
     return Promise.resolve().then(function () {
-      return _interopRequireWildcard(require('@/views/FindBack/index'));
+      return _interopRequireWildcard(require("@/views/FindBack/index"));
     });
   },
   meta: {
-    title: '找回密码',
+    title: "找回密码",
     auth: false,
     hidden: true
   }
 }, {
-  name: 'home',
-  path: '/',
+  name: "home",
+  path: "/",
   component: function component() {
     return Promise.resolve().then(function () {
-      return _interopRequireWildcard(require('@/views/Layout/index'));
+      return _interopRequireWildcard(require("@/views/Layout/index"));
     });
   },
   meta: {
-    title: '首页',
+    title: "首页",
     auth: true,
     hidden: false,
-    icon: 'el-icon-s-home'
+    icon: "el-icon-s-home"
   },
   children: [{
-    name: 'index',
-    path: 'index',
+    name: "index",
+    path: "index",
     component: function component() {
       return Promise.resolve().then(function () {
-        return _interopRequireWildcard(require('@/views/Index/index'));
+        return _interopRequireWildcard(require("@/views/Index/index"));
       });
     },
     meta: {
-      title: '统计',
+      title: "统计",
       auth: true,
       hidden: false,
-      icon: 'el-icon-s-data'
+      icon: "el-icon-s-data"
     }
   }]
 }];
 var router = new _vueRouter["default"]({
   routes: routes,
-  mode: 'history'
+  mode: "history"
 }); // 路由守卫
 
+var flag = false;
 router.beforeEach(function (to, from, next) {
-  // console.log(to, from)
+  console.log(1);
+
+  if (to.meta.title) {
+    document.title = to.meta.title;
+  }
+
+  console.log(to, from);
+
   if (to.meta.auth) {
     if (_store["default"].state.user != null) {
       // console.log(store.state.isAdded)
-      if (!_store["default"].state.isAdded) {
+      if (_store["default"].state.routerMenus.length === 0) {
         var changeRouters = (0, _getRouterMenus["default"])(_store["default"].state.user.role, changeRouterMap); // console.log(2)
 
-        _store["default"].dispatch('changeRouterMenus', routes.concat(changeRouters)).then(function () {
+        _store["default"].dispatch("changeRouterMenus", routes.concat(changeRouters)).then(function () {
           router.addRoutes(changeRouters);
 
-          _store["default"].dispatch('routesAdded');
+          _store["default"].dispatch("routesAdded");
 
+          flag = true;
           next();
         });
       } else {
         next();
       }
     } else {
-      next('/login');
+      next("/login");
     }
   } else {
     next();

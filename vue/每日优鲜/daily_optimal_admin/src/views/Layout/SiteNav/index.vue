@@ -15,7 +15,7 @@
 						:key="routes.name"
 					>
 						<template slot="title">
-							<i class="el-icon-s-home"></i>
+							<i :class="routes.meta.icon"></i>
 							<span>{{ routes.meta.title }}</span>
 						</template>
 						<template v-for="(route, index1) in routes.children">

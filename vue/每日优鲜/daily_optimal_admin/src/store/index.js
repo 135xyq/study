@@ -8,7 +8,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        user: myLocalStorage.getStorage(), // 用户信息
+        // user: myLocalStorage.getStorage(), // 用户信息
+        user: myLocalStorage.getStorage() ? myLocalStorage.getStorage() : {
+            username: '',
+            appkey: '',
+            role: '',
+            email: '',
+        },
         routerMenus: [], // 用户路由
         isAdded: false, // 路由是否已经添加过
     },

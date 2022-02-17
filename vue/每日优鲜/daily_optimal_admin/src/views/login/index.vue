@@ -123,7 +123,7 @@ export default {
             duration: 1000,
           });
           setTimeout(() => {
-            this.$router.push({ name: "index"});
+            this.$router.push({ name: "home"});
           }, 1000);
         }
       });
