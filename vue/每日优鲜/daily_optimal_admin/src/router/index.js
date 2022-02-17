@@ -144,7 +144,8 @@ const routes = [{
 
 const router = new VueRouter({
     routes,
-    mode: "history",
+    // mode: "history",
+    base: 'daily_options'
 });
 
 // 路由守卫
@@ -218,5 +219,4 @@ router.beforeEach((to, from, next) => {
 });
 
 // console.log(router)
-
 export default router;
