@@ -14,3 +14,14 @@ export async function getSearchInfo() {
         },
     });
 }
+
+/**
+ * 最近热门搜索
+ */
+export async function getHotWords() {
+    return await request.get('/api/meituan/header/searchHotWords.json', {
+        params: {
+            appkey,
+        }
+    })
+}
