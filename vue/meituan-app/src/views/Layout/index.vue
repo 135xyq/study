@@ -3,7 +3,7 @@
     <el-header class="header" style="height:162px">
       <SelfHeader></SelfHeader>
     </el-header>
-    <el-main>
+    <el-main class="main">
       <router-view></router-view>
     </el-main>
     <el-footer>
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.header{
+.header,.main{
   width: 100%;
   margin: 0;
   padding: 0;

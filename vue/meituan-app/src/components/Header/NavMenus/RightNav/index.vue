@@ -2,7 +2,7 @@
   <div class="right-nav-container">
     <ul class="nav">
       <li class="list my">
-        <router-link :to="{ name: 'my' }">我的美团</router-link>
+        <router-link :to="{ name: 'home' }">我的美团</router-link>
         <dl>
           <dd>
             <router-link :to="{ path: '/' }">我的订单</router-link>
@@ -148,7 +148,7 @@ export default {};
   float: right;
   margin-right: 164px;
   padding: 0;
-  z-index: 999;
+  z-index: 888;
   .nav {
     list-style: none;
     float: right;
@@ -184,7 +184,7 @@ export default {};
       dl {
         background: #fff;
         display: none;
-        z-index: 999;
+        z-index: 888;
 
         dd {
           line-height: 35px;
@@ -192,6 +192,12 @@ export default {};
           &:hover {
             color: @linkHoverColor;
           }
+        }
+      }
+
+      &.my{
+        dl{
+          position: relative;
         }
       }
 

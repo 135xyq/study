@@ -176,11 +176,13 @@ export default {
     }
     .hot-place,
     .search-list {
+      position: relative;
       width: 85.45%;
       background: #fff;
       font-size: 12px;
       color: #666;
       padding-bottom: 10px;
+      z-index: 9999;
       .title {
         color: #999;
         margin: 10px 5px;
@@ -195,8 +197,8 @@ export default {
       }
       .delete-history {
         position: absolute;
-        bottom: -25px;
-        right: 100px;
+        top: 1px;
+        right: 20px;
         cursor: pointer;
       }
     }
