@@ -9,10 +9,10 @@
       [
       <a
         href="#"
-        v-for="(item, index) in nearCity"
+        v-for="(item, index) in $store.state.position.nearCity"
         :key="index"
         class="near-city"
-        >{{ item.name }}</a
+        >{{ item.name ? item.name : item}}</a
       >
       ]
     </div>
@@ -32,11 +32,11 @@ import { getPosition } from "@/api/place.js";
 export default {
   data() {
     return {
-      nearCity: [], // 附近的城市
+      nearCity: this.$store.state.position.nearCity, // 附近的城市
     };
   },
   watch: {
-    "$store.state.position": function () {
+    "this.$store.state.position": function () {
       this.nearCity = this.$store.state.position.nearCity;
     },
   },

@@ -19,7 +19,9 @@ export default new Vuex.Store({
             state.userName = info;
         },
         setPosition(state, data) {
+            // console.log(data)
             state.position.name = data.name;
+            state.position.nearCity = data.nearCity;
         }
     },
     actions: {

@@ -31,24 +31,25 @@ const routes = [{
             title: "首页",
         },
         children: [{
-            path: "/index",
-            name: "index",
-            component: () =>
-                import ("@/views/Index/index"),
-            meta: {
-                title: "首页",
+                path: "/index",
+                name: "index",
+                component: () =>
+                    import ("@/views/Index/index"),
+                meta: {
+                    title: "首页",
+                },
             },
-        }, ],
+            {
+                name: "changecity",
+                path: "/changecity",
+                component: () =>
+                    import ("@/views/ChangeCity/index"),
+                meta: {
+                    title: "切换城市",
+                },
+            },
+        ],
     },
-    {
-        name: 'changecity',
-        path: '/changecity',
-        component: () =>
-            import ('@/views/ChangeCity/index'),
-        meta: {
-            title: '切换城市'
-        }
-    }
 ];
 
 const router = new VueRouter({

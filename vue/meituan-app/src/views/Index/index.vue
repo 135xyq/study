@@ -21,6 +21,9 @@
         <User></User>
       </div>
     </div>
+    <div class="recommend">
+      <Recommend></Recommend>
+    </div>
   </div>
 </template>
 
@@ -28,6 +31,7 @@
 import Nav from "@/components/Nav";
 import Banner from "@/components/Banner";
 import User from "@/components/User";
+import Recommend from "./Recommend";
 const homeHeaderLinks = [
   "美团外卖",
   "猫眼电影",
@@ -40,7 +44,8 @@ export default {
   components: {
     Nav,
     Banner,
-    User
+    User,
+    Recommend
   },
   data() {
     return {
@@ -51,7 +56,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import '~@/styles/var.less';
+@import "~@/styles/var.less";
 .index-container {
   position: relative;
   .top-header-blank {
@@ -82,13 +87,19 @@ export default {
       margin: 0 20px;
       cursor: pointer;
       position: relative;
-      &:hover{
-        color:@linkHoverColor;
+      &:hover {
+        color: @linkHoverColor;
       }
     }
   }
-  .right-user{
+  .right-user {
     margin-left: 164px;
+  }
+  .recommend{
+    width: 1190px;
+    height: 733px;
+    margin-top: 40px;
+    margin: 0 auto;
   }
 }
 </style>

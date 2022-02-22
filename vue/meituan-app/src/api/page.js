@@ -15,3 +15,15 @@ export async function getNav() {
         }
     })
 }
+
+/**
+ * 获取推荐的内容
+ * @returns
+ */
+export async function getRecommend() {
+    return await request.get('/api/meituan/index/resultsByKeywords.json', {
+        params: {
+            appkey,
+        }
+    })
+}
