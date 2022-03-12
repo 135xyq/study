@@ -1,1 +1,1 @@
-require('./routes/init')
+require('./init');

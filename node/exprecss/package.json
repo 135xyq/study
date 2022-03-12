@@ -1,8 +1,20 @@
 {
-  "dependencies": {
-    "express": "^4.17.3"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.15"
-  }
+    "scripts": {
+        "start": "nodemon -x  node index"
+    },
+    "dependencies": {
+        "axios": "^0.26.0",
+        "cheerio": "^1.0.0-rc.10",
+        "express": "^4.17.3",
+        "log4js": "^6.4.2",
+        "md5": "^2.3.0",
+        "mockjs": "^1.1.0",
+        "mysql2": "^2.3.3",
+        "sequelize": "^6.17.0",
+        "validate.js": "^0.13.1",
+        "validatejs": "^0.0.2"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    }
 }

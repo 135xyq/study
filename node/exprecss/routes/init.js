@@ -36,7 +36,18 @@ app.use(express.urlencoded({
 }))
 app.use(express.json())
 
-app.post('/api/student', (req, res) => {
-    console.log(req.body)
-    res.send('api/student post')
-})
+// app.post('/api/student', (req, res) => {
+//     console.log(req.body)
+//     res.send('api/student post')
+// })
+
+app.use(require('./erroeMiddleware'))
+
+// 处理学生
+app.use('/api/student', require('./api/student'));
+//处理管理员
+app.use('/api/admin', require('./api/admin'));
+//处理书本
+app.use('/api/book', require('./api/book'));
+//处理班级
+app.use('/api/class', require('./api/class'));
