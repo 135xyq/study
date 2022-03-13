@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
@@ -7,23 +8,11 @@ app.listen(9527, () => {
     console.log('server is listening port 9527')
 })
 
-app.get('/news', (req, res, next) => {
-        console.log('第一个处理函数！');
-        throw new Error('报错了！');
-        next(); //需要手动移交
-    },
-    (error, req, res, next) => {
-        console.log('第二个处理函数抛出错误！');
-        res.send('123')
-        next();
-    }
-)
+// 使用cookie-parser中间件来设置cookie
+app.use(cookieParser());
 
-app.get('/news', (req, res, next) => {
-    //上一个中间件抛出错误，下一个中间件要捕获错误，需要传入error错误参数
-    console.log('第三个处理函数！');
-    next();
-})
+// 使用中间件来验证token的合法性
+app.use(require('./tokenMIddleware'));
 
 //静态资源
 const root = path.resolve(__dirname, '../public')

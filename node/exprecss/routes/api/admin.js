@@ -2,6 +2,7 @@
 const express = require('express');
 const adminService = require('../../services/adminService');
 const getMsg = require('../getSendResult');
+const crypt = require("../../utils/crypt");
 
 const router = express.Router();
 
@@ -39,6 +40,27 @@ router.delete('/:id', async(req, res) => {
         msg = '管理员不存在！'
     }
     res.send(getMsg.getResult(msg))
+})
+
+// 登录
+
+router.post('/login', async(req, res) => {
+    const loginId = req.body.loginId;
+    const loginPwd = req.body.loginPwd;
+    const result = await adminService.login(loginId, loginPwd)
+    if (result) {
+        let value = result.id;
+        value = crypt.encrypt(value.toString())
+        res.cookie('token', value, {
+            path: '/',
+            domain: 'localhost',
+            maxAge: 1000 * 3600 * 24, //单位是毫秒
+        });
+        res.header("authorization", value); // 适配其他终端
+        res.send(getMsg.getResult(result));
+    } else {
+        res.send('登录失败,账号或密码错误！')
+    }
 })
 
 
