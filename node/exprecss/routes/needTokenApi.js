@@ -80,4 +80,8 @@ module.exports = [{
         method: 'DELETE',
         path: '/api/admin/:id'
     },
+    {
+        method: 'GET',
+        path: '/api/admin/whoami'
+    }
 ]

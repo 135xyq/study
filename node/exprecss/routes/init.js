@@ -1,7 +1,8 @@
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const cors = require('cors')
+const cors = require('cors');
+// const session = require('express-session')
 
 const app = express();
 
@@ -9,12 +10,27 @@ app.listen(9527, () => {
     console.log('server is listening port 9527')
 })
 
+// 使用session
+// app.use(session({
+//     secret: 'hszmyall', //设置加密，必须
+//     name: 'sessionId', //cookie的名字
+// }))
+
+//静态资源
+const root = path.resolve(__dirname, '../public')
+app.use(express.static(root));
+
+
 // 处理跨域问题
 
-const whiteList = ["null"]; //白名单
+const whiteList = ["null", 'http://localhost:9527']; //白名单
 app.use(
     cors({
         origin(origin, callback) {
+            if (!origin) {
+                callback(null, '*');
+                return;
+            }
             if (whiteList.includes(origin)) {
                 callback(null, origin);
             } else {
@@ -31,9 +47,6 @@ app.use(cookieParser());
 // 使用中间件来验证token的合法性
 app.use(require('./tokenMIddleware'));
 
-//静态资源
-const root = path.resolve(__dirname, '../public')
-app.use(express.static(root));
 
 // 使用express.urlencoded解析消息体
 
