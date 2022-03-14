@@ -1,12 +1,29 @@
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const cors = require('cors')
 
 const app = express();
 
 app.listen(9527, () => {
     console.log('server is listening port 9527')
 })
+
+// 处理跨域问题
+
+const whiteList = ["null"]; //白名单
+app.use(
+    cors({
+        origin(origin, callback) {
+            if (whiteList.includes(origin)) {
+                callback(null, origin);
+            } else {
+                callback(new Error("not allowed"));
+            }
+        },
+        credentials: true,
+    })
+);
 
 // 使用cookie-parser中间件来设置cookie
 app.use(cookieParser());
