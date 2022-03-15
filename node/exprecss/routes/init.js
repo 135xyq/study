@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const history = require('connect-history-api-fallback');
 // const session = require('express-session')
 
 const app = express();
@@ -16,6 +17,9 @@ app.listen(9527, () => {
 //     name: 'sessionId', //cookie的名字
 // }))
 
+// 单个网页，请求统一跳转到首页
+app.use(history());
+
 //静态资源
 const root = path.resolve(__dirname, '../public')
 app.use(express.static(root));
@@ -23,7 +27,7 @@ app.use(express.static(root));
 
 // 处理跨域问题
 
-const whiteList = ["null", 'http://localhost:9527']; //白名单
+// const whiteList = ["null", 'http://localhost:9527']; //白名单
 app.use(
     cors({
         origin(origin, callback) {
@@ -31,11 +35,12 @@ app.use(
                 callback(null, '*');
                 return;
             }
-            if (whiteList.includes(origin)) {
-                callback(null, origin);
-            } else {
-                callback(new Error("not allowed"));
-            }
+            callback(null, origin);
+            // if (whiteList.includes(origin)) {
+            //     callback(null, origin);
+            // } else {
+            //     callback(new Error("not allowed"));
+            // }
         },
         credentials: true,
     })
