@@ -22,7 +22,19 @@ log4js.configure({
         },
         default: {
             type: 'stdout', //标准控制台输出
-        }
+        },
+        api: {
+            type: 'dateFile', //file普通文件，dateFile日期文件在备份时会在文件名中加入日期
+            filename: path.resolve(__dirname, 'logs', 'api', 'logging.log'), //写入文件地址
+            maxLogSize: 2 ** 20, // 一个文件写入的最大字节数，超过之后会自动备份到其他文件
+            keepFileExt: true, //保留备份文件的后缀名
+            // daysToKeep: 0, // 文件会保留多少天，默认为0，一直保留
+            // 写入的格式
+            layout: {
+                type: 'pattern', //pattern是自定义样式
+                pattern: '%c: %d{yyyy-MM-dd hh:mm:ss} %p  %m%n' //写入文件的格式
+            }
+        },
     },
     // 分类
     categories: {
@@ -30,10 +42,15 @@ log4js.configure({
             appenders: ["sql"], //该出口使用出口sql的配置
             level: 'all', //级别配置
         },
+        api: {
+            appenders: ["api"], //该出口使用出口default的配置
+            level: 'all', //级别配置
+        },
         default: {
             appenders: ["default"], //该出口使用出口default的配置
             level: 'all', //级别配置
-        }
+        },
+
     }
 })
 
@@ -44,8 +61,10 @@ process.on('exit', () => {
 
 const sqlLogger = log4js.getLogger('sql');
 const logger = log4js.getLogger();
+const apiLogger = log4js.getLogger('api');
 
 module.exports = {
     sqlLogger,
-    logger
+    logger,
+    apiLogger
 }

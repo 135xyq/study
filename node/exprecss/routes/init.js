@@ -18,7 +18,7 @@ app.listen(9527, () => {
 // }))
 
 // 单个网页，请求统一跳转到首页
-app.use(history());
+// app.use(history());
 
 //静态资源
 const root = path.resolve(__dirname, '../public')
@@ -65,7 +65,10 @@ app.use(express.json())
 //     res.send('api/student post')
 // })
 
-app.use(require('./erroeMiddleware'))
+app.use(require('./erroeMiddleware'));
+
+// 记录请求日志
+app.use(require('./logMiddleware'));
 
 // 处理学生
 app.use('/api/student', require('./api/student'));
