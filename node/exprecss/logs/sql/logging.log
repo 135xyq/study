@@ -5042,3 +5042,83 @@ sql: 2022-03-16 22:39:00 INFO  Executing (default): ALTER TABLE `Book` CHANGE `d
 
 sql: 2022-03-16 22:39:01 INFO  Executing (default): SHOW INDEX FROM `Book`
 
+sql: 2022-03-16 22:41:25 INFO  Executing (default): CREATE TABLE IF NOT EXISTS `Class` (`id` INTEGER NOT NULL auto_increment , `name` VARCHAR(255) NOT NULL, `startDate` DATETIME NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `deletedAt` DATETIME, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+
+sql: 2022-03-16 22:41:25 INFO  Executing (default): SHOW FULL COLUMNS FROM `Class`;
+
+sql: 2022-03-16 22:41:25 INFO  Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Class' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='my_school_db' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql: 2022-03-16 22:41:26 INFO  Executing (default): ALTER TABLE `Class` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql: 2022-03-16 22:41:28 INFO  Executing (default): ALTER TABLE `Class` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql: 2022-03-16 22:41:29 INFO  Executing (default): ALTER TABLE `Class` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql: 2022-03-16 22:41:31 INFO  Executing (default): ALTER TABLE `Class` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql: 2022-03-16 22:41:33 INFO  Executing (default): ALTER TABLE `Class` CHANGE `startDate` `startDate` DATETIME NOT NULL;
+
+sql: 2022-03-16 22:41:35 INFO  Executing (default): SHOW INDEX FROM `Class`
+
+sql: 2022-03-16 22:41:35 INFO  Executing (default): CREATE TABLE IF NOT EXISTS `Student` (`id` INTEGER NOT NULL auto_increment , `name` VARCHAR(255) NOT NULL, `birthDay` DATETIME NOT NULL, `sex` TINYINT(1) NOT NULL, `phone` VARCHAR(255) NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `deletedAt` DATETIME, `ClassId` INTEGER, PRIMARY KEY (`id`), FOREIGN KEY (`ClassId`) REFERENCES `Class` (`id`) ON DELETE SET NULL ON UPDATE CASCADE) ENGINE=InnoDB;
+
+sql: 2022-03-16 22:41:35 INFO  Executing (default): SHOW FULL COLUMNS FROM `Student`;
+
+sql: 2022-03-16 22:41:35 INFO  Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Student' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='my_school_db' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql: 2022-03-16 22:41:35 INFO  Executing (default): ALTER TABLE `Student` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql: 2022-03-16 22:41:35 INFO  Executing (default): ALTER TABLE `Student` CHANGE `birthDay` `birthDay` DATETIME NOT NULL;
+
+sql: 2022-03-16 22:41:35 INFO  Executing (default): ALTER TABLE `Student` CHANGE `sex` `sex` TINYINT(1) NOT NULL;
+
+sql: 2022-03-16 22:41:36 INFO  Executing (default): ALTER TABLE `Student` CHANGE `phone` `phone` VARCHAR(255) NOT NULL;
+
+sql: 2022-03-16 22:41:36 INFO  Executing (default): ALTER TABLE `Student` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql: 2022-03-16 22:41:36 INFO  Executing (default): ALTER TABLE `Student` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql: 2022-03-16 22:41:36 INFO  Executing (default): ALTER TABLE `Student` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql: 2022-03-16 22:41:36 INFO  Executing (default): ALTER TABLE `Student` ADD FOREIGN KEY (`ClassId`) REFERENCES `Class` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+sql: 2022-03-16 22:41:40 INFO  Executing (default): SHOW INDEX FROM `Student`
+
+sql: 2022-03-16 22:41:40 INFO  Executing (default): CREATE TABLE IF NOT EXISTS `Admin` (`id` INTEGER NOT NULL auto_increment , `loginId` VARCHAR(255) NOT NULL, `loginPwd` VARCHAR(255) NOT NULL, `name` VARCHAR(255) NOT NULL, `deletedAt` DATETIME, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+
+sql: 2022-03-16 22:41:40 INFO  Executing (default): SHOW FULL COLUMNS FROM `Admin`;
+
+sql: 2022-03-16 22:41:40 INFO  Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Admin' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='my_school_db' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql: 2022-03-16 22:41:40 INFO  Executing (default): ALTER TABLE `Admin` CHANGE `loginId` `loginId` VARCHAR(255) NOT NULL;
+
+sql: 2022-03-16 22:41:40 INFO  Executing (default): ALTER TABLE `Admin` CHANGE `loginPwd` `loginPwd` VARCHAR(255) NOT NULL;
+
+sql: 2022-03-16 22:41:40 INFO  Executing (default): ALTER TABLE `Admin` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql: 2022-03-16 22:41:41 INFO  Executing (default): ALTER TABLE `Admin` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql: 2022-03-16 22:41:41 INFO  Executing (default): SHOW INDEX FROM `Admin`
+
+sql: 2022-03-16 22:41:41 INFO  Executing (default): CREATE TABLE IF NOT EXISTS `Book` (`id` INTEGER NOT NULL auto_increment , `name` VARCHAR(255) NOT NULL, `imgUrl` VARCHAR(255), `publishDate` VARCHAR(255) NOT NULL, `author` VARCHAR(255) NOT NULL, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, `deletedAt` DATETIME, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+
+sql: 2022-03-16 22:41:41 INFO  Executing (default): SHOW FULL COLUMNS FROM `Book`;
+
+sql: 2022-03-16 22:41:41 INFO  Executing (default): SELECT CONSTRAINT_NAME as constraint_name,CONSTRAINT_NAME as constraintName,CONSTRAINT_SCHEMA as constraintSchema,CONSTRAINT_SCHEMA as constraintCatalog,TABLE_NAME as tableName,TABLE_SCHEMA as tableSchema,TABLE_SCHEMA as tableCatalog,COLUMN_NAME as columnName,REFERENCED_TABLE_SCHEMA as referencedTableSchema,REFERENCED_TABLE_SCHEMA as referencedTableCatalog,REFERENCED_TABLE_NAME as referencedTableName,REFERENCED_COLUMN_NAME as referencedColumnName FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_NAME = 'Book' AND CONSTRAINT_NAME!='PRIMARY' AND CONSTRAINT_SCHEMA='my_school_db' AND REFERENCED_TABLE_NAME IS NOT NULL;
+
+sql: 2022-03-16 22:41:41 INFO  Executing (default): ALTER TABLE `Book` CHANGE `name` `name` VARCHAR(255) NOT NULL;
+
+sql: 2022-03-16 22:41:41 INFO  Executing (default): ALTER TABLE `Book` CHANGE `imgUrl` `imgUrl` VARCHAR(255);
+
+sql: 2022-03-16 22:41:41 INFO  Executing (default): ALTER TABLE `Book` CHANGE `publishDate` `publishDate` VARCHAR(255) NOT NULL;
+
+sql: 2022-03-16 22:41:41 INFO  Executing (default): ALTER TABLE `Book` CHANGE `author` `author` VARCHAR(255) NOT NULL;
+
+sql: 2022-03-16 22:41:42 INFO  Executing (default): ALTER TABLE `Book` CHANGE `createdAt` `createdAt` DATETIME NOT NULL;
+
+sql: 2022-03-16 22:41:42 INFO  Executing (default): ALTER TABLE `Book` CHANGE `updatedAt` `updatedAt` DATETIME NOT NULL;
+
+sql: 2022-03-16 22:41:42 INFO  Executing (default): ALTER TABLE `Book` CHANGE `deletedAt` `deletedAt` DATETIME;
+
+sql: 2022-03-16 22:41:42 INFO  Executing (default): SHOW INDEX FROM `Book`
+
