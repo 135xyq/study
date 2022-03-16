@@ -81,3 +81,5 @@ app.use('/api/book', require('./api/book'));
 app.use('/api/class', require('./api/class'));
 // 文件上传
 app.use('/api/upload', require('./api/upload'));
+// 文件下载
+app.use('/download', require('./api/download'));
