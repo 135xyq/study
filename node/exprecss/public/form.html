@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>
+        <input type="file" name="img" multiple>
+    </p>
+    <p>
+        <button>上传</button>
+    </p>
+    <script>
+        const inputFile = document.querySelector('[name=img');
+
+        function upload() {
+            const formData = new FormData(); //构建一个form-data格式的消息体
+            for (const img of inputFile.files) {
+                formData.append('img', img, img.name);
+            }
+            fetch('/api/upload', {
+                    method: 'POST',
+                    body: formData,
+                })
+                // .then((resp) => resp.json())
+                .then((resp) => {
+                    console.log(resp)
+                })
+        }
+
+
+        document.querySelector('button').onclick = upload;
+    </script>
+</body>
+
+</html>

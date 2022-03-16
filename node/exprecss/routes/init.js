@@ -65,6 +65,7 @@ app.use(express.json())
 //     res.send('api/student post')
 // })
 
+// 处理错误
 app.use(require('./erroeMiddleware'));
 
 // 记录请求日志
@@ -78,3 +79,5 @@ app.use('/api/admin', require('./api/admin'));
 app.use('/api/book', require('./api/book'));
 //处理班级
 app.use('/api/class', require('./api/class'));
+// 文件上传
+app.use('/api/upload', require('./api/upload'));
