@@ -13,6 +13,10 @@ const Article = sequelize.define('Article', {
     content: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    adminId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
     }
 }, {
     freezeTableName: true,

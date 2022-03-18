@@ -1,7 +1,10 @@
 // 同步所有模型
 const sequelize = require('./db');
 
-const Admin = require('./Admin');
+require('./Admin');
+require('./Comments');
+require('./Article');
+require('./ArticleImages');
 
 sequelize.sync({
     alter: true

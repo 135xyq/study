@@ -6,6 +6,10 @@ const ArticleImages = sequelize.define('ArticleImages', {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    articleId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    }
 }, {
     freezeTableName: true,
     paranoid: true
