@@ -57,11 +57,16 @@ const login = async function(loginId, loginPwd) {
     return null
 }
 
+const getAdminById = async function(id) {
+    return await Admin.findByPk(id);
+}
+
 
 
 module.exports = {
     addAdmin,
     deleteAdmin,
     updateAdmin,
-    login
+    login,
+    getAdminById
 }

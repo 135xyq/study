@@ -30,6 +30,9 @@ module.exports = [{
     {
         method: 'POST',
         path: '/api/upload'
+    }, {
+        method: 'GET',
+        path: '/api/admin/whoami'
     }
 
 ]

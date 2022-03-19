@@ -17,5 +17,13 @@ router.post('/login', async(req, res) => {
     }
 })
 
+router.get('/whoami', async(req, res) => {
+    const result = await adminServices.getAdminById(req.userId);
+    res.send(getMsg.getResult({
+        id: result.id,
+        name: result.name
+    }))
+})
+
 
 module.exports = router;
