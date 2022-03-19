@@ -7,7 +7,7 @@ const sequelize = require('./db');
 const Article = sequelize.define('Article', {
     // 发布时间
     publishDate: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         allowNull: false,
     },
     content: {

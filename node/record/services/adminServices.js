@@ -45,7 +45,6 @@ const updateAdmin = async function(adminId, adminObj) {
 
 const login = async function(loginId, loginPwd) {
     loginPwd = md5(loginPwd);
-    console.log(loginPwd)
     const result = await Admin.findOne({
         where: {
             loginId,

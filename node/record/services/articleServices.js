@@ -14,12 +14,8 @@ const formatDate = require('../utils/formatDate');
  * @param {*} content 文章内容
  * @returns 
  */
-const addArticle = async function(adminId, publishDate, content) {
-    const resp = await Article.create({
-        adminId,
-        publishDate,
-        content
-    });
+const addArticle = async function(articlesObj) {
+    const resp = await Article.create(articlesObj);
     return resp.toJSON();
 }
 
@@ -37,7 +33,7 @@ const updateArticle = async function(articleId, content) {
             id: articleId
         }
     })
-    return resp
+    return resp;
 }
 
 /**
@@ -50,6 +46,7 @@ const deleteArticle = async function(articleId) {
             id: articleId
         }
     })
+    return resp;
 }
 
 /**
