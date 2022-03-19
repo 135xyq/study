@@ -20,6 +20,8 @@ app.use(express.urlencoded());
 // 错误处理
 app.use(require('./errorMiddleware'));
 
+// 日志记录
+app.use(require('./logMIddleware'));
 
 // 评论管理
 app.use('/api/comment', require('./api/comment'));
