@@ -15,7 +15,9 @@ app.listen(8080, () => {
 app.use(express.json());
 
 // 使用urlencoded
-app.use(express.urlencoded());
+app.use(express.urlencoded({
+    extended: true,
+}));
 
 // 错误处理
 app.use(require('./errorMiddleware'));
@@ -29,3 +31,5 @@ app.use('/api/comment', require('./api/comment'));
 app.use('/api/article', require('./api/article'));
 // 管理员
 app.use('/api/admin', require('./api/admin'));
+// 上传图片
+app.use('/api/upload', require('./api/upload'));
