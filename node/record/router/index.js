@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const cookieParser = require('cookie-parser')
 
 const app = express();
 
@@ -11,8 +12,14 @@ app.listen(8080, () => {
     console.log('server listening 8080!')
 })
 
+// 使用cookie-parser处理cookies
+app.use(cookieParser())
+
 // 使用json解析
 app.use(express.json());
+
+// 使用中间件来验证token的合法性
+app.use(require('./tokenMIddleware'));
 
 // 使用urlencoded
 app.use(express.urlencoded({
