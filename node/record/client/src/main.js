@@ -7,6 +7,11 @@ import 'element-ui/lib/theme-chalk/index.css';
 import '@/style/reset.less';
 Vue.use(ElementUi);
 
+import mavonEditor from 'mavon-editor';
+import 'mavon-editor/dist/css/index.css';
+
+Vue.use(mavonEditor);
+
 Vue.config.productionTip = false
 
 import { login, whoAmI, logout } from './api/login';

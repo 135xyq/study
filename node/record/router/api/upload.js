@@ -1,5 +1,6 @@
 // 上传图片
 
+const imageServices = require('../../services/imageServices')
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
@@ -30,10 +31,12 @@ const upload = multer({
     limits: {
         fileSize: 2 ** 20
     },
-    fileFilter,
+    // fileFilter,
 })
 
 router.post('/', upload.single('images'), (req, res) => {
+    // const articleId = req.body.articleId || 1;
+    imageServices.addArticleImage(1, 'sources/' + req.file.filename);
     res.send(getMsg.getResult({
         url: 'sources/' + req.file.filename
     }))

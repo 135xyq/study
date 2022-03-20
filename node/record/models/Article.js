@@ -11,7 +11,7 @@ const Article = sequelize.define('Article', {
         allowNull: false,
     },
     content: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false
     },
     adminId: {
