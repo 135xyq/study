@@ -19,7 +19,9 @@ export default {
             commit('setIsLoading', true);
             const result = await loginApi.login(loginId, loginPwd);
             commit('setUserData', result.data);
-            localStorage.setItem('my_record', JSON.stringify(result.data));
+            if (result.data) {
+                localStorage.setItem('my_record', JSON.stringify(result.data));
+            }
             commit('setIsLoading', false);
             return result.msg;
         },

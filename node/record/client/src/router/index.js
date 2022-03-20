@@ -2,8 +2,8 @@ import Vue from 'vue'
 import store from '@/store';
 import VueRouter from 'vue-router'
 import Home from '../views/Home'
-import routerGuard from '@/utils/routerGuard.js';
-
+import AddArticle from '@/views/Home/AddArticle'
+import HistoryRecord from '@/views/Home/HistoryRecord'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -12,10 +12,23 @@ const routes = [{
     meta: {
         title: '首页'
     },
+    redirect: 'history',
     component: Home,
-    beforeEnter(to, from, next) {
-        routerGuard(to, from, next);
-    }
+    children: [{
+        path: 'add',
+        name: 'Add',
+        meta: {
+            title: '新增一个记录'
+        },
+        component: AddArticle
+    }, {
+        path: 'history',
+        name: 'History',
+        meta: {
+            title: '历史记录'
+        },
+        component: HistoryRecord
+    }]
 }, {
     path: '/login',
     name: 'Login',

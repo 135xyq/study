@@ -49,7 +49,10 @@ export default {
 				loginPwd: this.loginPwd,
 			});
 			if (!result) {
-				this.$router.push({name:'Home'})
+				this.$router.push({name:'Home'});
+				setTimeout(()=>{
+					window.location.reload()
+				},0)
 			} else {
 				this.loginError = true;
 			}
