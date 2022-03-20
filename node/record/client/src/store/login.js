@@ -3,7 +3,7 @@ import * as loginApi from '@/api/login';
 export default {
     namespaced: true,
     state: {
-        userData: null,
+        userData: localStorage.getItem('my_record'),
         isLoading: false,
     },
     mutations: {
@@ -19,7 +19,9 @@ export default {
             commit('setIsLoading', true);
             const result = await loginApi.login(loginId, loginPwd);
             commit('setUserData', result.data);
+            localStorage.setItem('my_record', JSON.stringify(result.data));
             commit('setIsLoading', false);
+            return result.msg;
         },
         async whoAmI({ commit }) {
             commit('setIsLoading', true);
@@ -33,7 +35,8 @@ export default {
         },
         logout({ commit }) {
             commit('setUserData', null);
-            loginApi.logout()
+            loginApi.logout();
+            localStorage.removeItem('my_record')
         }
     }
 }
