@@ -1,7 +1,7 @@
 <template>
 	<div class="history-record-container">
 		<div class="main" :style="{ height: mainLength + 'px' }"></div>
-		<div class="content">
+		<div class="content" >
 			<template v-for="(item, index) in items">
 				<div
 					class="item"
@@ -22,6 +22,10 @@
 			</el-dialog>
 		</div>
 		<img src="../../../assets/root.jpg" alt="" class="root" />
+		<div class="to-top" @click="onHandleScroll">
+			<img src="../../../assets/toTop.png" alt="">
+		</div>
+
 	</div>
 </template>
 
@@ -40,9 +44,6 @@ export default {
 		mainLength() {
 			return (this.items.length - 1) * 300 + 600;
 		},
-    h1Length(){
-
-    }
 	},
 	created() {
 		getArticles().then((resp) => {
@@ -57,7 +58,6 @@ export default {
 					new Date(a.publishDate.slice(0, 19)).valueOf()
 				);
 			});
-      console.log(this.items)
 		});
 	},
 	methods: {
@@ -65,6 +65,9 @@ export default {
 			this.inner = this.items[index].content;
 			this.show = true;
 		},
+		onHandleScroll(){
+			window.scrollTo(0,0);
+		}
 	},
 };
 </script>
@@ -149,5 +152,15 @@ export default {
     overflow-x: auto;
     overflow-y: auto;
   }
+}
+
+.to-top{
+	img{
+		width: 50px;
+		position: relative;
+		bottom: 50px;
+		left: 90%;
+		cursor: pointer;
+	}
 }
 </style>>
