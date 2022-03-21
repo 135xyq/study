@@ -7,9 +7,7 @@ const router = express.Router();
 
 //获取文章
 router.get('/', async(req, res) => {
-    const page = req.query.page || 1;
-    const limit = req.query.limit || 10;
-    const result = await articleServices.getArticles(page, limit);
+    const result = await articleServices.getAllArticles();
     res.send(getMsg.getResult(result))
 })
 
@@ -27,7 +25,7 @@ router.post('/', async(req, res) => {
 
 router.delete('/:id', async(req, res) => {
     const result = await articleServices.deleteArticle(req.params.id);
-    console.log(result)
+    // console.log(result)
     res.send(getMsg.getResult(result))
 })
 

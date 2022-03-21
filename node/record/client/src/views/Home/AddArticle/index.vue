@@ -4,6 +4,7 @@
 			ref="md"
 			v-model="value"
 			@imgAdd="$imgAdd"
+			fontSize="16px"
 			style="width: 100%; height: 100%"
 		>
 			<template slot="left-toolbar-after">
@@ -57,7 +58,7 @@ export default {
       if(result.data){
         alert('上传成功！');
       }else{
-        console.log('上传失败!');
+        alert('上传失败!');
       }
 
       this.$router.push('/history')

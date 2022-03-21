@@ -70,9 +70,23 @@ const getArticles = async function(page = 1, limit = 10) {
 
 }
 
+/**
+ * 获取全部文章
+ * @returns 
+ */
+const getAllArticles = async function() {
+    const result = await Article.findAll({
+        attributes: ["id", "publishDate", "content"],
+    })
+    return JSON.parse(JSON.stringify(result));
+}
+
+
+
 module.exports = {
     addArticle,
     updateArticle,
     deleteArticle,
-    getArticles
+    getArticles,
+    getAllArticles
 }

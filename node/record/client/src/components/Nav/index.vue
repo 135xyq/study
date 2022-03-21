@@ -76,6 +76,7 @@ export default {
 
 	.left-nav {
 		.self-full();
+		position: fixed;
 		width: 200px;
 		background: #545c64;
 		.header-user {
