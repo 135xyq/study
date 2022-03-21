@@ -25,7 +25,7 @@ router.post('/', async(req, res) => {
 
 router.delete('/:id', async(req, res) => {
     const result = await articleServices.deleteArticle(req.params.id);
-    // console.log(result)
+    // console.log(result);
     res.send(getMsg.getResult(result))
 })
 

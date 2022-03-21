@@ -48,20 +48,27 @@ export default {
 				 * 1. 通过引入对象获取: `import {mavonEditor} from ...` 等方式引入后，`$vm`为`mavonEditor`
 				 * 2. 通过$refs获取: html声明ref : `<mavon-editor ref=md ></mavon-editor>，`$vm`为 `this.$refs.md`
 				 */
-        const imgUrl = 'http://localhost:8080/' + url.data.data.url
+				const imgUrl = "http://localhost:8080/" + url.data.data.url;
 				this.$refs.md.$img2Url(pos, imgUrl);
 			});
 		},
 		async onHandleUpload() {
 			const result = await upload(this.value);
-      // console.log(result);
-      if(result.data){
-        alert('上传成功！');
-      }else{
-        alert('上传失败!');
-      }
-
-      this.$router.push('/history')
+			// console.log(result);
+			if (result.data) {
+				this.$message({
+					type: "success",
+					message: "上传成功!",
+				});
+				setTimeout(()=>{
+					this.$router.push("/history");
+				},1000)
+			} else {
+				this.$message({
+					type: "errors",
+					message: "上传失败!",
+				});
+			}
 		},
 	},
 };

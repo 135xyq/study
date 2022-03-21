@@ -1,7 +1,7 @@
 <template>
 	<div class="history-record-container">
 		<div class="main" :style="{ height: mainLength + 'px' }"></div>
-		<div class="content" >
+		<div class="content">
 			<template v-for="(item, index) in items">
 				<div
 					class="item"
@@ -11,27 +11,49 @@
 					}"
 					:style="{ top: (index + 1) * 300 + 'px' }"
 					:key="index"
-					@click="onHandleShow(index)"
 					slot="reference"
 				>
-        <div v-html="item.content" class="over-hidden"></div>
-        <span class="publish-date">{{item.publishDate.slice(0,19)}} </span></div>
+					<div
+						v-html="item.content"
+						class="over-hidden"
+						@click="onHandleShow(index)"
+					></div>
+					<span class="publish-date"
+						>{{ item.publishDate.slice(0, 19) }}
+					</span>
+					<div>
+						<el-button
+							class="delete el-icon-delete"
+							type="danger"
+							@click="onHandleDelete(item.id)"
+						></el-button>
+						<el-button
+							class="edit el-icon-edit"
+							type="primary"
+							@click="onHandleEdit(item.id,item.content)"
+						></el-button>
+					</div>
+				</div>
 			</template>
-			<el-dialog title="文章详情"  class="dialog-my" width='80%' :visible.sync="show">
+			<el-dialog
+				title="文章详情"
+				class="dialog-my"
+				width="80%"
+				:visible.sync="show"
+			>
 				<div v-html="inner"></div>
 			</el-dialog>
 		</div>
 		<img src="../../../assets/root.jpg" alt="" class="root" />
 		<div class="to-top" @click="onHandleScroll">
-			<img src="../../../assets/toTop.png" alt="">
+			<img src="../../../assets/toTop.png" alt="" />
 		</div>
-
 	</div>
 </template>
 
 <script>
 import { marked } from "marked";
-import { getArticles } from "@/api/article";
+import { getArticles, deleteArticle } from "@/api/article";
 export default {
 	data() {
 		return {
@@ -65,9 +87,59 @@ export default {
 			this.inner = this.items[index].content;
 			this.show = true;
 		},
-		onHandleScroll(){
-			window.scrollTo(0,0);
-		}
+		onHandleScroll() {
+			window.scrollTo(0, 0);
+		},
+		onHandleDelete(index) {
+			this.$confirm("此操作将永久删除该文章, 是否继续?", "提示", {
+				confirmButtonText: "确定",
+				cancelButtonText: "取消",
+				type: "warning",
+			})
+				.then(() => {
+					deleteArticle(index).then((resp) => {
+						if (!resp.msg) {
+							this.$message({
+								type: "success",
+								message: "删除成功!",
+							});
+							getArticles().then((resp) => {
+								this.items = resp.data;
+								this.items.forEach((item) => {
+									item.content = marked(item.content);
+								});
+								// 按照时间排序
+								this.items.sort((a, b) => {
+									return (
+										new Date(
+											b.publishDate.slice(0, 19)
+										).valueOf() -
+										new Date(
+											a.publishDate.slice(0, 19)
+										).valueOf()
+									);
+								});
+							});
+						} else {
+							this.$message({
+								type: "error",
+								message: resp.msg,
+							});
+						}
+					});
+				})
+				.catch(() => {
+					this.$message({
+						type: "info",
+						message: "已取消删除",
+					});
+				});
+		},
+		onHandleEdit(index,content) {
+			  this.$alert(content, {
+          dangerouslyUseHTMLString: true
+        });
+		},
 	},
 };
 </script>
@@ -140,27 +212,38 @@ export default {
 		}
 	}
 
-  .publish-date{
-    position: absolute;
-    top: -25px;
-    left: 20%;
-  }
+	.publish-date {
+		position: absolute;
+		top: -25px;
+		left: 20%;
+	}
 
-  .over-hidden{
-    width: 100%;
-    height: 100%;
-    overflow-x: auto;
-    overflow-y: auto;
-  }
+	.over-hidden {
+		width: 100%;
+		height: 100%;
+		overflow-x: auto;
+		overflow-y: auto;
+	}
 }
 
-.to-top{
-	img{
+.to-top {
+	img {
 		width: 50px;
 		position: relative;
 		bottom: 50px;
 		left: 90%;
 		cursor: pointer;
 	}
+}
+
+.delete {
+	position: relative;
+	top: 10px;
+	right: -50px;
+}
+.edit {
+	position: relative;
+	top: 10px;
+	right: -100px;
 }
 </style>>
