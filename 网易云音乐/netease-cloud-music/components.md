@@ -6,9 +6,9 @@ icon图标
 
 ### 属性
 
-|name|type|description|default|
-|:---:|:---:|:---:|:---:|
-|type|String|图标类型|null|
+|name|type|description|default|required|
+|:---:|:---:|:---:|:---:|:---:|
+|type|String|图标类型|null|true|
 
 ### 属性列表
 |参数名|对应icon|
@@ -33,3 +33,14 @@ icon图标
 |   fenxiang| icon-share|
 |   suijibofang| icon-xunhuanbofang|
 |   huazhonghua| icon-huazhonghua|
+
+
+## Avatar
+
+### 属性
+
+|name|type|description|default|required|
+|:---:|:---:|:---:|:---:|:---:|
+|url|String|图片链接|null|true|
+|size|Number|图片尺寸|50|false|
+|round|Boolean|图片是否为圆形|null|false|

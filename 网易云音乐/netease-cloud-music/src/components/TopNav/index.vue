@@ -18,14 +18,16 @@
 				</li>
 			</ul>
 		</div>
-        		<!-- 用户登录信息 -->
-		<div class="userInfo"></div>
+		<!-- 用户登录信息 -->
+		<div class="userInfo">
+			<UserInfo></UserInfo>
+		</div>
 		<!-- 创作者中心 -->
-			<a
-				href="https://music.163.com/#/creatorcenter?module=creatorcenter"
-				class="create-center-link"
-				>创作者中心</a
-			>
+		<a
+			href="https://music.163.com/#/creatorcenter?module=creatorcenter"
+			class="create-center-link"
+			>创作者中心</a
+		>
 		<!-- 右侧搜索框 -->
 		<div class="search">
 			<SearchInput></SearchInput>
@@ -36,9 +38,11 @@
 <script>
 import navInfo from "@/config/topNav.js";
 import SearchInput from "./SearchInput";
+import UserInfo from "./UserInfo";
 export default {
 	components: {
 		SearchInput,
+		UserInfo,
 	},
 	data() {
 		return {
@@ -110,19 +114,33 @@ export default {
 	}
 	.search {
 		float: right;
+        margin-top: 19px;
 	}
-		.create-center-link {
-			float: right;
-			width: 90px;
-			height: 32px;
-			margin: 19px 0 0 12px;
-			box-sizing: border-box;
-			padding-left: 16px;
-			border: 1px solid #4f4f4f;
-			background-position: 0 -140px;
-			line-height: 33px;
-			color: #ccc;
-			border-radius: 20px;
-			font-size: 12px;}
+	.create-center-link {
+		float: right;
+		width: 90px;
+		height: 32px;
+		margin: 19px 0 0 12px;
+		box-sizing: border-box;
+		padding-left: 16px;
+		border: 1px solid #4f4f4f;
+		background-position: 0 -140px;
+		line-height: 33px;
+		color: #ccc;
+		border-radius: 20px;
+		font-size: 12px;
+        &:hover{
+            border: 1px solid @white;
+            color: @white;
+        }
+	}
+	.userInfo {
+		float: right;
+		height: 45px;
+		margin: 19px 0 0 20px;
+		padding: 0 22px 0 0;
+		background-position: right -251px;
+		background-image: none;
+	}
 }
 </style>
