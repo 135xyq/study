@@ -19,4 +19,8 @@ export default {
     fenxiang: 'icon-share',
     suijibofang: 'icon-xunhuanbofang',
     huazhonghua: 'icon-huazhonghua',
+    gedan: 'icon-gedan',
+    zhuanji: 'icon-zhuanji',
+    danqu: 'icon-yinle',
+    geshou: 'icon-ren-danren'
 }

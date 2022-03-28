@@ -26,6 +26,7 @@
 		<a
 			href="https://music.163.com/#/creatorcenter?module=creatorcenter"
 			class="create-center-link"
+			target="blank"
 			>创作者中心</a
 		>
 		<!-- 右侧搜索框 -->
