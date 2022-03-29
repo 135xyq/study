@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import '//at.alicdn.com/t/font_3281760_b5mpn5ttzbs.css';
+@import '//at.alicdn.com/t/font_3281760_4qnn2iujd8s.css';
 i{
     font-size: inherit;
 }

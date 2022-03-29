@@ -26,5 +26,11 @@ export default {
     weixin: 'icon-weixin',
     qq: 'icon-ic_tencent_qq',
     wangyiyouxiang: 'icon-WANGYI',
-    weibo: 'icon-weibo'
+    weibo: 'icon-weibo',
+    dengji: 'icon-dengji',
+    tuichu: 'icon-tuichu',
+    shimingrenzheng: 'icon-zhuanjifenshimingrenzheng',
+    viphuiyuan: 'icon-VIPhuiyuan',
+    xiaoxi: 'icon-xiaoxi',
+    shezhi: 'icon-gerenshezhi'
 }

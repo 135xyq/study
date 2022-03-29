@@ -41,7 +41,12 @@ icon图标
 |    qq| icon-ic_tencent_qq|
 |    wangyiyouxiang| icon-WANGYI|
 |    weibo| icon-weibo|
-## Avatar
+|    dengji| |icon-dengji|
+|    tuichu| |icon-tuichu|
+|    shimingrenzheng| |icon-zhuanjifenshimingrenzheng|
+|    viphuiyuan| |icon-VIPhuiyuan|
+|    xiaoxi| |icon-xiaoxi|
+|    shezhi| |icon-gerenshezhi|## Avatar
 
 ### 属性
 
