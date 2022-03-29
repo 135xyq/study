@@ -25,8 +25,10 @@ export default {
             const result = await loginApi.loginByPhone(phone, password);
             if (result) {
                 commit('setLogin', true);
+                return true;
             } else {
                 commit('setLogin', false);
+                return false; //登录失败
             }
         },
         async logined({ commit }) {

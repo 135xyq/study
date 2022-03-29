@@ -92,7 +92,7 @@ export default {
 					path: "#",
 				},
 			],
-			agree: false, //是否同意隐私服务
+			agree: true, //是否同意隐私服务
 			iShowMessage: false, //是否显示提示信息
 		};
 	},

@@ -5,15 +5,15 @@
 				<span class="place">+86</span>
 				<input type="text" placeholder="请输入手机号" v-model="phone" />
 			</p>
-			<p class="phone-code" v-show="loginMethod === '短信登录'">
+			<p class="phone-code" v-show="loginMethod === '密码登录'">
 				<input
 					type="text"
 					placeholder="请输入验证码"
 					v-model="phoneCode"
 				/>
-				<button>获取验证码</button>
+				<button @click="getCaptcha">获取验证码</button>
 			</p>
-			<p class="phone-password" v-show="loginMethod === '密码登录'">
+			<p class="phone-password" v-show="loginMethod === '短信登录'">
 				<input
 					type="password"
 					placeholder="请输入密码"
@@ -23,7 +23,7 @@
 			<div class="change-password" @click="changeLoginMethod">
 				{{ loginMethod }}
 			</div>
-			<button class="login">登录</button>
+			<button class="login" @click="login">登录</button>
 		</div>
 		<div class="other-methods">
 			<span class="to-other" @click="onHandleChange">&lt;&nbsp;其他登录方式</span>
@@ -33,10 +33,11 @@
 </template>
 
 <script>
+import * as loginApi from '@/api/login';
 export default {
 	data() {
 		return {
-			loginMethod: "密码登录", //登录方式
+			loginMethod: "短信登录", //登录方式
 			phone: "", //手机号
 			phoneCode: "", //验证码
 			password: "", //密码
@@ -54,7 +55,36 @@ export default {
         // 使用其他登录方法
         onHandleChange(){
             this.$emit('onChangeToMore');
-        }
+        },
+		// 获取验证码
+		async getCaptcha() {
+			// 如果手机号为空或不是11位则有误
+			if(!this.phone || this.phone.length !== 11) {
+				alert('手机号有误!')
+				return;
+			}
+			await loginApi.sendCaptcha(this.phone);//发送验证码
+		},
+		// 登录
+		async login() {
+			// 这时是密码登录
+			if(this.loginMethod === '短信登录') {
+				if(!this.phone || !this.password && !this.phone.length!==11) {
+					alert('输入有误！');
+					return;
+				}
+				const result = await this.$store.dispatch('login/login',{
+					phone:this.phone,
+					password:this.password
+				});
+				if(result){
+					alert('登录成功！');
+					this.$emit('loginSuccess');
+				}else{
+					alert('登录失败！')
+				}
+			}
+		}
 	},
 };
 </script>

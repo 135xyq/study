@@ -15,6 +15,7 @@
 					@onChangeToMore="onHandleChangeToMore"
 					@onChangeUsePhoneRegister="onHandleChangeUsePhoneRegister"
 					@onReturnLogin="onHandleReturnLogin"
+					@loginSuccess = "onLoginSuccess"
 				></component>
 			</div>
 		</div>
@@ -26,6 +27,7 @@ import QrLogin from "./QrLogin";
 import Phone from "./Phone";
 import LoginUsePhone from "./LoginUsePhone";
 import Register from "./Register";
+import * as loginApi from "@/api/login";
 export default {
 	components: {
 		QrLogin,
@@ -38,6 +40,11 @@ export default {
 			showWhichMethod: "QrLogin", //使用何种方式登录
 			showTitle: "登录", //要展示的标题
 		};
+	},
+	async created() {
+		// const key = await loginApi.createKey();
+		// const result = await loginApi.createQr(key);
+		// console.log(result);
 	},
 	methods: {
 		// 使用手机和微信等方式登录
@@ -65,10 +72,14 @@ export default {
 		//注册页面返回登录
 		onHandleReturnLogin(e) {
 			this.showWhichMethod = "Phone";
-			this.showTitle = e;
+			this.showTitl
 		},
 		// 关闭登录页面
 		onHandleClose(){
+			this.$emit('closeLogin');
+		},
+		// 登录成功
+		onLoginSuccess() {
 			this.$emit('closeLogin');
 		}
 	},

@@ -67,7 +67,6 @@ export async function createQr(key) {
             timestamp: date
         }
     })
-
     return result.data.data.qrurl;
 }
 
@@ -110,4 +109,31 @@ export async function loginStatus() {
  */
 export async function logout() {
     await ins.get('/logout');
+}
+
+/**
+ * 发送验证码
+ * @param {*} phone 
+ */
+export async function sendCaptcha(phone) {
+    await ins.get('/captcha/sent', {
+        params: {
+            phone,
+        }
+    })
+}
+
+/**
+ * 验证验证码是否正确
+ * @param {*} phone 手机号
+ * @param {*} captcha 验证码
+ */
+export async function captchaVerify(phone, captcha) {
+    const result = await ins.get('/captcha/verify', {
+        params: {
+            phone,
+            captcha
+        }
+    })
+    return result.data.data;
 }
