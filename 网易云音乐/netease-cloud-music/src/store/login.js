@@ -47,6 +47,12 @@ export default {
             if (resp && resp.code != 400) {
                 commit('setUserInfo', resp)
             }
+        },
+        async logout({ commit }) {
+            await loginApi.logout();
+            commit('setLogin', false);
+            commit('setUserId', '');
+            commit('setUserInfo', {});
         }
     }
 

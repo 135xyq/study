@@ -22,5 +22,9 @@ export default {
     gedan: 'icon-gedan',
     zhuanji: 'icon-zhuanji',
     danqu: 'icon-yinle',
-    geshou: 'icon-ren-danren'
+    geshou: 'icon-ren-danren',
+    weixin: 'icon-weixin',
+    qq: 'icon-ic_tencent_qq',
+    wangyiyouxiang: 'icon-WANGYI',
+    weibo: 'icon-weibo'
 }

@@ -66,9 +66,11 @@ export default {
 	height: 100%;
 	width: 1100px;
 	margin: 0 auto;
+	.self-clear();
 	.left-nav {
 		height: 100%;
 		float: left;
+		.self-clear();
 		.logo {
 			background: url("../../assets/topbar.png");
 			float: left;
@@ -116,6 +118,8 @@ export default {
 	.search {
 		float: right;
         margin-top: 19px;
+		// z-index: 0;
+		// position: relative;
 	}
 	.create-center-link {
 		float: right;
