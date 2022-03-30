@@ -10,7 +10,7 @@ export default {
     you: 'icon-you',
     shengyin: 'icon-shengyin',
     bofangliebiao: 'icon-wj-bflb',
-    bofang: 'icon-24gf-play',
+    bofang: 'icon-bofanganniu',
     shoucang: 'icon-24gl-folderPlus',
     shangyishou: 'icon-shangyishou',
     xiayishou: 'icon-xiayishou',

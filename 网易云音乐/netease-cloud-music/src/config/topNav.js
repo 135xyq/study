@@ -2,7 +2,7 @@
 
 export default [{
         name: '发现音乐',
-        path: '/'
+        path: '/discover'
     },
     {
         name: '我的音乐',

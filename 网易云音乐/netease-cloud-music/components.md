@@ -24,7 +24,7 @@ icon图标
 |   you| icon-you|
 |   shengyin| icon-shengyin|
 |   bofangliebiao| icon-wj-bflb|
-|   bofang| icon-24gf-play|
+|   bofang| icon-bofanganniu|
 |   shoucang| icon-24gl-folderPlus|
 |   shangyishou| icon-shangyishou|
 |   xiayishou| icon-xiayishou|
@@ -55,3 +55,29 @@ icon图标
 |url|String|图片链接|null|true|
 |size|Number|图片尺寸|50|false|
 |round|Boolean|图片是否为圆形|null|false|
+
+
+## SlideShow
+
+轮播图(一半轮播，一半固定)
+
+### 属性
+
+|name|type|description|default|required|
+|:---:|:---:|:---:|:---:|:---:|
+|bannerInfo|Array|轮播信息|null|true|
+|fixedImg|String|固定图片地址|u本地图片url|false|
+
+
+## PlayListCard
+
+歌单封面
+
+### 属性
+
+
+|name|type|description|default|required|
+|:---:|:---:|:---:|:---:|:---:|
+|img|String|图片|null|true|
+|listened|String|播放次数|null|true|
+|size|Number|卡片的尺寸|140|false|

@@ -1,4 +1,5 @@
 import UserRoutes from './userRoutes';
+import homeRoutes from './homeRoutes';
 
 export default [{
         path: '/',
@@ -8,7 +9,9 @@ export default [{
         meta: {
             title: '首页',
             auth: false,
-        }
+        },
+        children: homeRoutes,
+        redirect: '/discover'
     }, {
         path: '/user',
         name: 'User',

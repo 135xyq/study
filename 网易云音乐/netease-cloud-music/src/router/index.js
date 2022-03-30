@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import routes from './routes'
+import store from '../store'
 
 Vue.use(VueRouter)
 
@@ -12,9 +13,18 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-    console.log(to)
-        // if (to.name !== 'Login' && !isAuthenticated) next({ name: 'Login' })
-        // else next()
+    const status = store.state.login.isLogin;
+    if (to.meta.auth) {
+        // 需要登录权限
+        if (!status) {
+            // 没有登录
+            next('/')
+        } else {
+            next()
+        }
+    } else {
+        next()
+    }
 })
 
 export default router
