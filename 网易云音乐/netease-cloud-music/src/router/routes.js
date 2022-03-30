@@ -1,17 +1,43 @@
-import Home from '../views/Home.vue'
+import UserRoutes from './userRoutes';
 
 export default [{
         path: '/',
         name: 'Home',
-        component: Home
-    },
-    {
-        path: '/about',
-        name: 'About',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
         component: () =>
-            import ( /* webpackChunkName: "about" */ '../views/About.vue')
+            import ('@/views/Home'),
+        meta: {
+            title: '首页',
+            auth: false,
+        }
+    }, {
+        path: '/user',
+        name: 'User',
+        component: () =>
+            import ('@/views/User'),
+        meta: {
+            name: '用户',
+            auth: true,
+        },
+        children: UserRoutes,
+        redirect: '/user/home'
+    }, {
+        path: '/msg',
+        name: 'Msg',
+        component: () =>
+            import ('@/views/Msg'),
+        meta: {
+            name: '网易云音乐',
+            auth: true,
+        }
+    }, {
+        path: '/member',
+        name: 'Member',
+        component: () =>
+            import ('@/views/Member'),
+        meta: {
+            name: '会员页',
+            auth: true,
+        }
     }
+
 ]

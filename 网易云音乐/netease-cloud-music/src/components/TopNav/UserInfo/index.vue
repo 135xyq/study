@@ -5,25 +5,25 @@
 			<div class="user-hidden" v-show="isShowSelf">
 				<ul class="user-hidden-content user-self-info">
 					<li class="user-hidden-item">
-						<router-link to="/" class="user-hidden-item-link">
+						<router-link :to="{name:'UserHome'}" class="user-hidden-item-link">
 							<Icon type="geshou"></Icon>
 							<span>我的主页</span></router-link
 						>
 					</li>
 					<li class="user-hidden-item">
-						<router-link to="/" class="user-hidden-item-link">
+						<router-link :to="{name:'Msg'}" class="user-hidden-item-link">
 							<Icon type="xiaoxi"></Icon>
 							<span>我的消息</span></router-link
 						>
 					</li>
 					<li class="user-hidden-item">
-						<router-link to="/" class="user-hidden-item-link">
+						<router-link :to="{name:'UserLevel'}" class="user-hidden-item-link">
 							<Icon type="dengji"></Icon>
 							<span>我的等级</span></router-link
 						>
 					</li>
 					<li class="user-hidden-item">
-						<router-link to="/" class="user-hidden-item-link">
+						<router-link :to="{name:'Member'}" class="user-hidden-item-link">
 							<Icon type="viphuiyuan"></Icon>
 							<span>VIP会员</span></router-link
 						>
@@ -31,23 +31,23 @@
 				</ul>
 				<ul class="user-hidden-content">
 					<li class="user-hidden-item">
-						<router-link to="/" class="user-hidden-item-link">
+						<router-link :to="{name:'UserUpdate'}" class="user-hidden-item-link">
 							<Icon type="shezhi"></Icon>
 							<span>个人设置</span></router-link
 						>
 					</li>
 					<li class="user-hidden-item">
-						<router-link to="/" class="user-hidden-item-link">
+						<a target="_blank" href="https://music.163.com/st/userbasic/?module=st%2Fuserbasic%2F#/nameverify" class="user-hidden-item-link">
 							<Icon type="shimingrenzheng"></Icon>
-							<span>实名认证</span></router-link
+							<span>实名认证</span></a
 						>
 					</li>
 				</ul>
 				<ul class="user-hidden-content">
 					<li class="user-hidden-item">
-						<router-link to="/" class="user-hidden-item-link">
+						<p class="user-hidden-item-link" @click="logout">
 							<Icon type="tuichu"></Icon>
-							<span>退出</span></router-link
+							<span>退出</span></p
 						>
 					</li>
 				</ul>
@@ -102,6 +102,12 @@ export default {
 		// 鼠标移出图像，隐藏主页
 		onHandleMouseHidden() {
 			this.isShowSelf = false;
+		},
+		// 退出登录
+		async logout() {
+			await this.$store.dispatch('login/logout');
+			this.$router.push('/');
+			window.location.reload();
 		}
 	},
 };
@@ -152,6 +158,10 @@ export default {
 				font-size: 12px;
 				line-height: 34px;
 				cursor: pointer;
+				.user-hidden-item-link{
+					display: inline-block;
+					width: 100%;
+				}
 				.icon-container {
 					float: left;
 					color: #ffffff47;
