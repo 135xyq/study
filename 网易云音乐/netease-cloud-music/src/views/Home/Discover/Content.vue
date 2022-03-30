@@ -3,10 +3,6 @@
 		<div class="banner-container">
 			<SlideShow :bannerInfo="bannerInfo"></SlideShow>
 		</div>
-        <div class="card" style="margin:100px">
-            <PlayListCard @onHandlePlay="t" img="http://p1.music.126.net/lwHyvbi5zY_rK80RPV1NNQ==/109951167213141194.jpg"
-        listened='1234'></PlayListCard>
-        </div>
 	</div>
 </template>
 
