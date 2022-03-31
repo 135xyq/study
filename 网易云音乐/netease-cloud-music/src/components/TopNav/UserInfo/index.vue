@@ -139,6 +139,7 @@ export default {
 	position: relative;
 	.user-hidden {
 		position: absolute;
+		z-index: 999;
 		top: 38px;
 		right: -70px;
 		width: 158px;

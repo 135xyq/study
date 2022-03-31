@@ -3,25 +3,49 @@
 		<div class="banner-container">
 			<SlideShow :bannerInfo="bannerInfo"></SlideShow>
 		</div>
+		<div class="main-container">
+			<div class="left-songs">
+				<div class="content">
+					<div class="hot">
+						<HotDiscover :data="hotDiscoverData"></HotDiscover>
+					</div>
+					<div class="personal" v-if="$store.state.login.isLogin">
+						<PersonalDiscover
+							:data="personalDiscoverData"
+						></PersonalDiscover>
+					</div>
+				</div>
+			</div>
+			<div class="user-artist"></div>
+		</div>
 	</div>
 </template>
 
 <script>
 import SlideShow from "@/components/SlideShow";
 import PlayListCard from "@/components/PlayListCard";
-import { getBanner } from "@/api/discover";
+import TypeHead from "@/components/TypeHead";
+import HotDiscover from "./HotDiscover";
+import PersonalDiscover from "./PersonalDiscover";
+import { getBanner, getHotDiscover, getPersonalDiscover } from "@/api/discover";
 export default {
 	components: {
 		SlideShow,
-        PlayListCard
+		PlayListCard,
+		TypeHead,
+		HotDiscover,
+		PersonalDiscover,
 	},
 	data() {
 		return {
 			bannerInfo: [], //头部轮播图
-			fixed: "", //下载图片
+			fixed: "", //下载图片,
+			hotDiscoverData: [], //热门推荐数据
+			personalDiscoverData: [], //个性化推荐
 		};
 	},
 	created() {
+		// 获取轮播图
 		getBanner().then((res) => {
 			this.bannerInfo = res;
 			this.bannerInfo = this.bannerInfo.map((item) => {
@@ -32,19 +56,56 @@ export default {
 				};
 			});
 		});
+		// 获取热门推荐
+		getHotDiscover().then((res) => {
+			this.hotDiscoverData = res;
+		});
+		// 获取个性化推荐
+		getPersonalDiscover().then((res) => {
+			if (res) {
+				this.personalDiscoverData = res;
+			} else {
+				this.personalDiscoverData = [];
+			}
+		});
 	},
-    methods:{
-        t(e){
-            console.log(e)
-        }
-    }
+	methods: {
+		t(e) {
+			console.log(e);
+		},
+	},
 };
 </script>
 
 <style lang="less" scoped>
+@import "~@/style/self.less";
 .content-container {
 	.banner-container {
 		height: 285px;
+	}
+	.main-container {
+		width: 980px;
+		min-height: 700px;
+		margin: 0 auto;
+		background-color: #fff;
+		border: 1px solid #d3d3d3;
+		border-width: 0 1px;
+		.self-clear();
+		.left-songs {
+			float: left;
+			width: 100%;
+			margin-right: -250px;
+			.content {
+				margin-right: 251px;
+				padding: 20px 20px 40px;
+			}
+		}
+		.user-artist {
+			position: relative;
+			float: right;
+			width: 250px;
+			zoom: 1;
+		}
 	}
 }
 </style>

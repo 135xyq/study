@@ -13,6 +13,9 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
+    if (to.meta.name) {
+        document.title = to.meta.name;
+    }
     const status = store.state.login.isLogin;
     if (to.meta.auth) {
         // 需要登录权限

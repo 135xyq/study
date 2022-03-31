@@ -5,12 +5,12 @@
 		:style="{ width: size + 'px', height: size + 'px' }"
 	>
 		<div class="card-img-container">
-			<img :src="img" alt="" class="card-img" />
+			<img :src="img" :title="tipTitle" class="card-img" />
 		</div>
 		<div class="card-foot-button">
 			<div class="listen">
 				<Icon type="erji"></Icon>
-				<span class="listen-number">{{ listened }}</span>
+				<span class="listen-number">{{ listenedToString }}</span>
 			</div>
 			<div class="play" @click="onHandlePlay">
 				<div class="play-button" v-if="!isPlay">
@@ -38,7 +38,7 @@ export default {
 		},
 		// 听歌的人次
 		listened: {
-			type: String,
+			type: Number,
 			required: true,
 		},
 		// 卡片的尺寸
@@ -46,6 +46,11 @@ export default {
 			type: Number,
 			default: 140,
 		},
+		// 鼠标移入提示消息
+		tipTitle:{
+			type:String,
+			required:true,
+		}
 	},
     data(){
         return{
@@ -57,7 +62,18 @@ export default {
             this.$emit('onHandlePlay',this.isPlay);
             this.isPlay = !this.isPlay;
         }
-    }
+    },
+	computed:{
+		listenedToString(){
+			if(this.listened > 100000000) {
+				return Math.floor(this.listened / 100000000) + '亿'
+			}else if(this.listened > 10000) {
+				return Math.floor(this.listened / 10000) + '万'
+			}else{
+				return this.listened+'';
+			}
+		}
+	}
 };
 </script>
 

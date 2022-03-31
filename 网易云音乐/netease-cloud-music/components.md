@@ -79,5 +79,27 @@ icon图标
 |name|type|description|default|required|
 |:---:|:---:|:---:|:---:|:---:|
 |img|String|图片|null|true|
-|listened|String|播放次数|null|true|
+|listened|Number|播放次数|null|true|
 |size|Number|卡片的尺寸|140|false|
+|tipTitle|String|鼠标移入提示文字|null|true|
+
+### 事件
+
+#### onHandlePlay
+点击播放触发的事件
+
+参数一：true | false 播放 | 暂停
+
+
+## TypeHead
+
+分类的头部，更多
+
+### 属性
+
+
+|name|type|description|default|required|
+|:---:|:---:|:---:|:---:|:---:|
+|title|String|标题|null|true|
+|showMore|Boolean|是否显示更多|true|false|
+|path|String|点击更多要跳转的地址|Playlist|false|
