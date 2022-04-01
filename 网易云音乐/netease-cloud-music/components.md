@@ -1,16 +1,18 @@
+# 组件也页面布局
+
 ## 组件
 
-## Icon
+### Icon
 
 icon图标
 
-### 属性
+#### 属性
 
 |name|type|description|default|required|
 |:---:|:---:|:---:|:---:|:---:|
 |type|String|图标类型|null|true|
 
-### 属性列表
+#### 属性列表
 |参数名|对应icon|
 |:---:|:---:|
 |   zanting| icon-zanting|
@@ -48,7 +50,7 @@ icon图标
 |    xiaoxi| |icon-xiaoxi|
 |    shezhi| |icon-gerenshezhi|## Avatar
 
-### 属性
+#### 属性
 
 |name|type|description|default|required|
 |:---:|:---:|:---:|:---:|:---:|
@@ -57,11 +59,11 @@ icon图标
 |round|Boolean|图片是否为圆形|null|false|
 
 
-## SlideShow
+### SlideShow
 
 轮播图(一半轮播，一半固定)
 
-### 属性
+#### 属性
 
 |name|type|description|default|required|
 |:---:|:---:|:---:|:---:|:---:|
@@ -69,11 +71,11 @@ icon图标
 |fixedImg|String|固定图片地址|u本地图片url|false|
 
 
-## PlayListCard
+### PlayListCard
 
 歌单封面
 
-### 属性
+#### 属性
 
 
 |name|type|description|default|required|
@@ -83,19 +85,19 @@ icon图标
 |size|Number|卡片的尺寸|140|false|
 |tipTitle|String|鼠标移入提示文字|null|true|
 
-### 事件
+#### 事件
 
-#### onHandlePlay
+##### onHandlePlay
 点击播放触发的事件
 
 参数一：true | false 播放 | 暂停
 
 
-## TypeHead
+### TypeHead
 
 分类的头部，更多
 
-### 属性
+#### 属性
 
 
 |name|type|description|default|required|
@@ -103,3 +105,104 @@ icon图标
 |title|String|标题|null|true|
 |showMore|Boolean|是否显示更多|true|false|
 |path|String|点击更多要跳转的地址|Playlist|false|
+|routerPath|String|标题对应的地址|''|false|
+
+### AlbumListCard
+
+#### 属性
+|name|type|description|default|required|
+|:---:|:---:|:---:|:---:|:---:|
+|width|Number|宽度|null|true|
+|height|Number|高度|null|true|
+|imgUrl|String|图片地址|null|true|
+|title|String|唱片名称|null|true|
+|subTitle|String|歌手名字|null|true|
+|path|String|唱片地址|/discover/album|true|
+|artistPath|String|歌手名字|/discover/artist|true|
+|size|Number|图片尺寸|100|true|
+
+#### 事件
+
+onPlayAlbum
+
+点击播放触发
+
+参数一为：唱片的地址
+
+## Layout
+
+
+### Home
+
+首页
+
+
+#### Album
+
+新碟上架
+
+#### Artist
+
+歌手分类
+
+
+#### Discover
+
+推荐
+
+
+##### HotDiscover
+
+热门推荐
+
+##### NewAlbum
+
+新碟上架
+
+
+##### PersonalDiscover
+
+个性化推荐
+
+
+##### Content
+
+内容区
+
+#### Djradio
+
+主播电台
+
+#### Playlist
+
+歌单封面
+
+
+#### Toplist
+
+排行榜
+
+
+### Member
+
+VIP会员
+
+### Msg
+
+消息
+
+### User
+
+个人中心
+
+#### Home
+
+个人中心主页
+
+#### Level
+
+等级
+
+#### Update
+
+设置

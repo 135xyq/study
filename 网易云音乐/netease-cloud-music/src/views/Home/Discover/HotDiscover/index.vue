@@ -1,7 +1,7 @@
 <template>
 	<div class="hot-discover-container">
 		<div class="head">
-			<TypeHead title="热门推荐"></TypeHead>
+			<TypeHead title="热门推荐" routerPath="PlayList"></TypeHead>
 		</div>
 		<div class="songs-list">
 			<ul class="list-container">

@@ -43,3 +43,12 @@ export async function getPersonalDiscover() {
         return null;
     }
 }
+
+/**
+ * 新碟上架
+ * @returns 
+ */
+export async function getNewAlbum() {
+    const result = await ins.get('/album/newest');
+    return result.data.albums;
+}

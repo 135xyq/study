@@ -2,7 +2,8 @@
 	<div class="type-head-container">
 		<div class="content">
 			<span class="round"></span>
-			<span class="title">{{ title }}</span>
+			<router-link :to="{name:path}" class="title" v-if="routerPath">{{ title }}</router-link>
+			<span :to="{name:path}" class="title" v-if="!routerPath">{{ title }}</span>
             <div class="more-container" v-if="showMore">
                 <router-link :to="{name:path}" class="more">更多</router-link>
                 <Icon type="youjiantou"></Icon>
@@ -29,6 +30,10 @@ export default {
         path:{
             type:String,
             default:'Playlist'
+        },
+        routerPath:{
+            type:String,
+            default:''
         }
 	},
 };

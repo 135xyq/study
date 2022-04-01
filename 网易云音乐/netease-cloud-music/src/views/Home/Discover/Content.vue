@@ -14,6 +14,9 @@
 							:data="personalDiscoverData"
 						></PersonalDiscover>
 					</div>
+					<div class="album">
+						<NewAlbum :data="newAlbumData"></NewAlbum>
+					</div>
 				</div>
 			</div>
 			<div class="user-artist"></div>
@@ -26,8 +29,9 @@ import SlideShow from "@/components/SlideShow";
 import PlayListCard from "@/components/PlayListCard";
 import TypeHead from "@/components/TypeHead";
 import HotDiscover from "./HotDiscover";
+import NewAlbum from "./NewAlbum";
 import PersonalDiscover from "./PersonalDiscover";
-import { getBanner, getHotDiscover, getPersonalDiscover } from "@/api/discover";
+import { getBanner, getHotDiscover, getPersonalDiscover,getNewAlbum } from "@/api/discover";
 export default {
 	components: {
 		SlideShow,
@@ -35,6 +39,7 @@ export default {
 		TypeHead,
 		HotDiscover,
 		PersonalDiscover,
+		NewAlbum
 	},
 	data() {
 		return {
@@ -42,6 +47,7 @@ export default {
 			fixed: "", //下载图片,
 			hotDiscoverData: [], //热门推荐数据
 			personalDiscoverData: [], //个性化推荐
+			newAlbumData:[],//新碟上架数据
 		};
 	},
 	created() {
@@ -68,11 +74,12 @@ export default {
 				this.personalDiscoverData = [];
 			}
 		});
-	},
-	methods: {
-		t(e) {
-			console.log(e);
-		},
+		getNewAlbum().then(res=>{
+			this.newAlbumData = res;
+			if(res) {
+				this.newAlbumData = res;
+			}
+		})
 	},
 };
 </script>
