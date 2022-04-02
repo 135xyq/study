@@ -13,5 +13,14 @@ export async function getPlayListDetail(id) {
             id
         }
     });
-    return result.data.playlist.tracks;
+    return result.data.playlist;
+}
+
+/**
+ * 获取排行榜各歌单信息
+ * @returns 
+ */
+export async function getTopListDetail() {
+    const result = await ins.get('/toplist/detail');
+    return result.data.list;
 }

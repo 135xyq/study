@@ -32,5 +32,11 @@ export default {
     shimingrenzheng: 'icon-zhuanjifenshimingrenzheng',
     viphuiyuan: 'icon-VIPhuiyuan',
     xiaoxi: 'icon-xiaoxi',
-    shezhi: 'icon-gerenshezhi'
+    shezhi: 'icon-gerenshezhi',
+    shang: 'icon-zhixiangshangshangjiantou',
+    xia: 'icon-xiangxiajiantou',
+    xiazai1: 'icon-xiazai',
+    pinglun: 'icon-xiaoxi1',
+    jia: 'icon-jia',
+    shijian: 'icon-shijian'
 }
