@@ -132,11 +132,26 @@ onPlayAlbum
 
 ### SlideShowPlus
 
+另一种轮播图
 #### 属性
 
 |name|type|description|default|required|
 |:---:|:---:|:---:|:---:|:---:|
 |data|Array|唱片信息|null|true|
+
+
+### TopListCard
+
+推荐页热榜的头部卡片
+
+|name|type|description|default|required|
+|:---:|:---:|:---:|:---:|:---:|
+|title|String|标题|null|true|
+|imgUrl|String|图片|null|true|
+|path|String|歌单地址|null|true|
+
+
+
 
 ## Layout
 

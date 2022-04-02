@@ -52,3 +52,12 @@ export async function getNewAlbum() {
     const result = await ins.get('/album/newest');
     return result.data.albums;
 }
+
+/**
+ * 榜单
+ * @returns 
+ */
+export async function getTopList() {
+    const result = await ins.get('/toplist');
+    return result.data.list;
+}

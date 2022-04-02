@@ -17,6 +17,9 @@
 					<div class="album">
 						<NewAlbum :data="newAlbumData"></NewAlbum>
 					</div>
+					<div class="top-list">
+						<TopList :data="topListData.slice(0,3)" :songs="songsData"></TopList>
+					</div>
 				</div>
 			</div>
 			<div class="user-artist"></div>
@@ -31,7 +34,9 @@ import TypeHead from "@/components/TypeHead";
 import HotDiscover from "./HotDiscover";
 import NewAlbum from "./NewAlbum";
 import PersonalDiscover from "./PersonalDiscover";
-import { getBanner, getHotDiscover, getPersonalDiscover,getNewAlbum } from "@/api/discover";
+import TopList from "./TopList";
+import { getBanner, getHotDiscover, getPersonalDiscover,getNewAlbum ,getTopList} from "@/api/discover";
+import {getPlayListDetail} from '@/api/topList';
 export default {
 	components: {
 		SlideShow,
@@ -39,7 +44,8 @@ export default {
 		TypeHead,
 		HotDiscover,
 		PersonalDiscover,
-		NewAlbum
+		NewAlbum,
+		TopList
 	},
 	data() {
 		return {
@@ -48,6 +54,8 @@ export default {
 			hotDiscoverData: [], //热门推荐数据
 			personalDiscoverData: [], //个性化推荐
 			newAlbumData:[],//新碟上架数据
+			topListData:[],//榜单数据
+			songsData:[],//歌曲信息
 		};
 	},
 	created() {
@@ -79,8 +87,24 @@ export default {
 			if(res) {
 				this.newAlbumData = res;
 			}
+		}),
+		getTopList().then(res=>{
+			this.topListData = res;
+			this.songsData = this.getSongsData(this.topListData.slice(0,3));
 		})
 	},
+	methods:{
+		getSongsData(data) {
+			let result = [];
+			for(let i = 0; i < data.length;i++) {
+				getPlayListDetail(data[i].id).then((res) => {
+					result.push(res.slice(0,10))
+				})
+			}
+			return result;
+		}
+	}
+
 };
 </script>
 
