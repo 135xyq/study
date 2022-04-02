@@ -4,7 +4,7 @@
 		:style="{ width: width + 'px', height: height + 'px' }"
 	>
 		<div class="top-img">
-			<div class="card">
+			<div class="card" :title="title">
 				<router-link :to="path">
 					<img
 						:src="imgUrl"

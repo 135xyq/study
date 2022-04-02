@@ -129,6 +129,15 @@ onPlayAlbum
 
 参数一为：唱片的地址
 
+
+### SlideShowPlus
+
+#### 属性
+
+|name|type|description|default|required|
+|:---:|:---:|:---:|:---:|:---:|
+|data|Array|唱片信息|null|true|
+
 ## Layout
 
 
@@ -150,24 +159,28 @@ onPlayAlbum
 
 推荐
 
+##### Content
 
-##### HotDiscover
+内容区
+
+###### HotDiscover
 
 热门推荐
 
-##### NewAlbum
 
-新碟上架
-
-
-##### PersonalDiscover
+###### PersonalDiscover
 
 个性化推荐
 
 
-##### Content
+###### NewAlbum
 
-内容区
+新碟上架
+
+###### Topist
+
+榜单
+
 
 #### Djradio
 
