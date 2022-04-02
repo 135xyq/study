@@ -196,6 +196,14 @@ onPlayAlbum
 
 榜单
 
+###### User
+
+右侧的用户和推荐歌手
+
+PersonInfo
+用户信息
+
+
 
 #### Djradio
 

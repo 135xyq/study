@@ -22,7 +22,9 @@
 					</div>
 				</div>
 			</div>
-			<div class="user-artist"></div>
+			<div class="user-artist">
+				<User  :singers="topSingerData"></User>
+			</div>
 		</div>
 	</div>
 </template>
@@ -33,10 +35,12 @@ import PlayListCard from "@/components/PlayListCard";
 import TypeHead from "@/components/TypeHead";
 import HotDiscover from "./HotDiscover";
 import NewAlbum from "./NewAlbum";
+import User from "./User";
 import PersonalDiscover from "./PersonalDiscover";
 import TopList from "./TopList";
 import { getBanner, getHotDiscover, getPersonalDiscover,getNewAlbum ,getTopList} from "@/api/discover";
 import {getPlayListDetail} from '@/api/topList';
+import {getTopArtist} from '@/api/artist';
 export default {
 	components: {
 		SlideShow,
@@ -45,7 +49,8 @@ export default {
 		HotDiscover,
 		PersonalDiscover,
 		NewAlbum,
-		TopList
+		TopList,
+		User
 	},
 	data() {
 		return {
@@ -56,6 +61,7 @@ export default {
 			newAlbumData:[],//新碟上架数据
 			topListData:[],//榜单数据
 			songsData:[],//歌曲信息
+			topSingerData:[],//热门歌手信息
 		};
 	},
 	created() {
@@ -82,15 +88,20 @@ export default {
 				this.personalDiscoverData = [];
 			}
 		});
+		// 获取新碟发布
 		getNewAlbum().then(res=>{
 			this.newAlbumData = res;
 			if(res) {
 				this.newAlbumData = res;
 			}
 		}),
+		// 获取榜单数据
 		getTopList().then(res=>{
 			this.topListData = res;
 			this.songsData = this.getSongsData(this.topListData.slice(0,3));
+		}),
+		getTopArtist(0,15).then(res=>{
+			this.topSingerData = res;
 		})
 	},
 	methods:{

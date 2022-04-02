@@ -2,7 +2,7 @@
 
 export default [{
         path: 'discover',
-        name: 'Discover',
+        // name: 'Discover',
         component: () =>
             import ('@/views/Home/Discover'),
         meta: {
