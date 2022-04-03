@@ -48,8 +48,18 @@ icon图标
 |    shimingrenzheng| |icon-zhuanjifenshimingrenzheng|
 |    viphuiyuan| |icon-VIPhuiyuan|
 |    xiaoxi| |icon-xiaoxi|
-|    shezhi| |icon-gerenshezhi|## Avatar
+|    shezhi| |icon-gerenshezhi|
+|    shang| |icon-zhixiangshangshangjiantou|
+|    xia| |icon-xiangxiajiantou|
+|    xiazai1| |icon-xiazai|
+|    pinglun| |icon-xiaoxi1|
+|    jia| |icon-jia|
+|    shijian| |icon-shijian|
+|    bofang1| |icon-bofang|
 
+## Avatar
+
+头像
 #### 属性
 
 |name|type|description|default|required|
@@ -150,6 +160,16 @@ onPlayAlbum
 |imgUrl|String|图片|null|true|
 |path|String|歌单地址|null|true|
 
+
+### TopListTopListCard
+
+排行榜的分类卡片
+
+|name|type|description|default|required|
+|:---:|:---:|:---:|:---:|:---:|
+|title|String|标题|null|true|
+|imgUrl|String|图片|null|true|
+|description|String|描述信息|null|true|
 
 
 

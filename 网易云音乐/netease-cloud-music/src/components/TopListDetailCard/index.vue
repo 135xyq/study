@@ -19,11 +19,11 @@
 				</li>
 				<li class="item">
 					<Icon type="shoucang"></Icon>
-					<span class="text">({{star}})</span>
+					<span class="text">({{ star }})</span>
 				</li>
 				<li class="item">
 					<Icon type="fenxiang"></Icon>
-					<span class="text">({{share}})</span>
+					<span class="text">({{ share }})</span>
 				</li>
 				<li class="item">
 					<Icon type="xiazai1"></Icon>
@@ -31,7 +31,7 @@
 				</li>
 				<li class="item">
 					<Icon type="pinglun"></Icon>
-					<span class="text">({{comment}})</span>
+					<span class="text">({{ comment }})</span>
 				</li>
 			</ul>
 		</div>
@@ -41,7 +41,15 @@
 <script>
 import Icon from "@/components/Icon";
 export default {
-	props: ['imgUrl','title','time','updateTime','star','share','comment'],
+	props: [
+		"imgUrl",
+		"title",
+		"time",
+		"updateTime",
+		"star",
+		"share",
+		"comment",
+	],
 	components: {
 		Icon,
 	},
@@ -66,7 +74,7 @@ export default {
 		}
 	}
 	.right-info {
-        margin-left: 30px;
+		margin-left: 30px;
 		float: left;
 		.title {
 			line-height: 24px;
@@ -76,37 +84,40 @@ export default {
 		.update {
 			margin: 0 0 20px;
 			line-height: 35px;
+			font-size: 12px;
+			color: #666;
 			.self-clear();
 			.time {
 				float: left;
 			}
 			.date {
 				float: left;
+				margin-right: 15px;
 			}
 		}
 		.detail {
 			margin-bottom: 25px;
 			margin-right: -10px;
-            .self-clear();
+			.self-clear();
 			.item {
 				float: left;
-                border: 1px solid #ccc;
-                padding: 2px 10px;
-                margin: 0 5px;
-                border-radius: 5px;
-                background-color: #ffffffe0;
-                box-shadow: 1px 2px #000;
-                cursor: pointer;
-                .icon-container{
-                    float: left;
-                }
-                .text{
-                    float: left;
-                    margin-left: 5px;
-                    font-size: 12px;
+				border: 1px solid #ccc;
+				padding: 2px 10px;
+				margin: 0 5px;
+				border-radius: 5px;
+				background-color: #ffffffe0;
+				box-shadow: 1px 2px #000;
+				cursor: pointer;
+				.icon-container {
+					float: left;
+				}
+				.text {
+					float: left;
+					margin-left: 5px;
+					font-size: 12px;
 
-                    line-height: 22px;
-                }
+					line-height: 22px;
+				}
 			}
 		}
 	}
