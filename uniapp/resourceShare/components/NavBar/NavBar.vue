@@ -8,6 +8,7 @@
 				<view class="nav-bar-search-txt">输入文章标题进行搜索</view>
 			</view>
 		</view>
+		<view :style="{height:80 + statusHeight + 'rpx'}"></view>
 	</view>
 </template>
 

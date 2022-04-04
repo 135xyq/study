@@ -1,6 +1,9 @@
 <template>
 	<view class="content">
+		<!-- 头部搜索 -->
 		<NavBar></NavBar>
+		<!-- 标签切换 -->
+		<TabBar :labelList="labelList"></TabBar>
 	</view>
 </template>
 
@@ -8,14 +11,19 @@
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				labelList:null,//标签列表
 			}
 		},
 		onLoad() {
-
+			this._initLabelList();
 		},
 		methods: {
-
+			async _initLabelList(){
+				const res = await uniCloud.callFunction({
+					name:"db_label_get"
+				});
+				this.labelList = res.result.data;
+			}
 		}
 	}
 </script>
