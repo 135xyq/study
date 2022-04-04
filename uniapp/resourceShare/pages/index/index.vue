@@ -1,9 +1,11 @@
 <template>
-	<view class="content">
+	<view class="home-container">
 		<!-- 头部搜索 -->
 		<NavBar></NavBar>
 		<!-- 标签切换 -->
-		<TabBar :labelList="labelList"></TabBar>
+		<TabBar :labelList="labelList" :activeIndex="activeIndex" @onChangeActiveIndex = "onChangeActiveIndex"></TabBar>
+		<!-- 文章 -->
+		<ArticleList :labelList="labelList" :activeIndex="activeIndex" class="list-container" @onChangeActiveIndex = onChangeActiveIndex></ArticleList>
 	</view>
 </template>
 
@@ -12,46 +14,46 @@
 		data() {
 			return {
 				labelList:null,//标签列表
+				activeIndex:0,//当前选中的标签
 			}
 		},
 		onLoad() {
 			this._initLabelList();
 		},
 		methods: {
+			// 初始化获取标签数据
 			async _initLabelList(){
-				const res = await uniCloud.callFunction({
-					name:"db_label_get"
-				});
-				this.labelList = res.result.data;
+				// const res = await uniCloud.callFunction({
+				// 	name:"db_label_get"
+				// });
+				// this.labelList = res.result.data;
+				this.labelList = await this.$http.get_lable_list();
+			},
+			// 处理切换标签
+			onChangeActiveIndex(index){
+				this.activeIndex = index;
 			}
+			
 		}
 	}
 </script>
 
-<style>
-	.content {
+<style lang="scss">
+	page{
 		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
+		height: 100%;
 	}
-
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
+	.home-container{
+		flex: 1;
+		overflow: hidden;
+		box-sizing: border-box;
+		@include flex(flext-start,column);
+		align-items: inherit;
+		.list-container{
+			flex: 1;
+			box-sizing: border-box;
+		}
 	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
-	}
+	
+	
 </style>
