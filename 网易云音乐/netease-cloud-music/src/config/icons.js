@@ -39,5 +39,6 @@ export default {
     pinglun: 'icon-xiaoxi1',
     jia: 'icon-jia',
     shijian: 'icon-shijian',
-    bofang1: 'icon-bofang'
+    bofang1: 'icon-bofang',
+    xiala: 'icon-xiala'
 }

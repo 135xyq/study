@@ -56,6 +56,7 @@ icon图标
 |    jia| |icon-jia|
 |    shijian| |icon-shijian|
 |    bofang1| |icon-bofang|
+|    xiala| |icon-xiala|
 
 ## Avatar
 
