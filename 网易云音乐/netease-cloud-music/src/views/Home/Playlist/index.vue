@@ -10,11 +10,13 @@
 				<button class="hot">热门</button>
 			</div>
 		</div>
+		<PlayListType selectedType="古风" @onHandleChangeType="onHandleChangeType"></PlayListType>
 	</div>
 </template>
 
 <script>
 import Icon from "@/components/Icon";
+import PlayListType from './PlayListType';
 export default {
 	data() {
 		return {
@@ -23,7 +25,13 @@ export default {
 	},
 	components: {
 		Icon,
+		PlayListType
 	},
+	methods:{
+		onHandleChangeType(data){
+			console.log(data)
+		}
+	}
 };
 </script>
 
