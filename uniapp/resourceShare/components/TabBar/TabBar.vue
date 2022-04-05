@@ -13,6 +13,7 @@
 
 <script>
 	export default {
+		name:"TabBar",
 		props:{
 			labelList:{
 				type:Array
@@ -26,7 +27,7 @@
 				currentIndex:'item0',//当前选中的标签
 			}
 		},
-		name:"TabBar",
+		
 		methods:{
 			// 处理标签点击事件
 			onChangeActiveIndex(index){

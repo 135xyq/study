@@ -23,10 +23,6 @@
 		methods: {
 			// 初始化获取标签数据
 			async _initLabelList(){
-				// const res = await uniCloud.callFunction({
-				// 	name:"db_label_get"
-				// });
-				// this.labelList = res.result.data;
 				this.labelList = await this.$http.get_lable_list();
 			},
 			// 处理切换标签
