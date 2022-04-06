@@ -98,19 +98,20 @@ export default {
 		// 获取榜单数据
 		getTopList().then(res=>{
 			this.topListData = res;
-			this.songsData = this.getSongsData(this.topListData.slice(0,3));
+			this.getSongsData(this.topListData.slice(0,3)).then(res=>{
+				this.songsData = res;
+			});
 		}),
 		getTopArtist(0,15).then(res=>{
 			this.topSingerData = res;
 		})
 	},
 	methods:{
-		getSongsData(data) {
-			let result = [];
+		async getSongsData(data) {
+			let result = [[],[],[]];
 			for(let i = 0; i < data.length;i++) {
-				getPlayListDetail(data[i].id).then((res) => {
-					result.push(res.slice(0,10))
-				})
+				const res = await getPlayListDetail(data[i].id);
+				result[i].push(...(res.tracks.slice(0,10)))
 			}
 			return result;
 		}
