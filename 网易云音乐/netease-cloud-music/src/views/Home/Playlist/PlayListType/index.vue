@@ -114,6 +114,7 @@ export default {
 			.type-list-item-link {
 				line-height: 24px;
 				float: left;
+				text-decoration: none;
                 &.selected{
                     .link-text{
                         background-color: #ccc;
@@ -121,6 +122,11 @@ export default {
                         padding: 2px 5px;
                     }
                 }
+				.link-text{
+					&:hover{
+						text-decoration: underline;
+					}
+				}
 			}
 		}
 	}

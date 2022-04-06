@@ -24,3 +24,20 @@ export async function getTopListDetail() {
     const result = await ins.get('/toplist/detail');
     return result.data.list;
 }
+
+
+/**
+ * 获取歌单
+ */
+
+export async function getTopPlayList(order = "hot", cat = "全部", limit = 35, offset = 0) {
+    const res = await ins.get('/top/playlist', {
+        params: {
+            order,
+            cat,
+            limit,
+            offset
+        }
+    })
+    return res.data;
+}

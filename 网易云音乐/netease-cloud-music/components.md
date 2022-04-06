@@ -166,11 +166,31 @@ onPlayAlbum
 
 排行榜的分类卡片
 
+#### 属性
 |name|type|description|default|required|
 |:---:|:---:|:---:|:---:|:---:|
 |title|String|标题|null|true|
 |imgUrl|String|图片|null|true|
 |description|String|描述信息|null|true|
+
+
+### Page
+
+分页组件
+
+#### 属性
+
+|name|type|description|default|required|
+|:---:|:---:|:---:|:---:|:---:|
+|total|Number|总数量|null|true|
+|limit|Number|每页显示数量|35|false|
+|showCount|Number|显示多少个页码|10|false|
+
+#### 时间
+
+pageChange:换页触发
+
+参数为当前页码
 
 
 
@@ -234,6 +254,9 @@ PersonInfo
 
 歌单封面
 
+##### PlsyLIstType
+
+歌单分类
 
 #### Toplist
 
