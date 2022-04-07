@@ -5,7 +5,9 @@
 		:style="{ width: size + 'px', height: size + 'px' }"
 	>
 		<div class="card-img-container">
-			<img :src="img" :title="tipTitle" class="card-img" />
+			<router-link :to="'/playlist?id=' + id">
+				<img :src="img" :title="tipTitle" class="card-img" />
+			</router-link>
 		</div>
 		<div class="card-foot-button">
 			<div class="listen">
@@ -50,6 +52,11 @@ export default {
 		tipTitle:{
 			type:String,
 			required:true,
+		},
+		// 歌单ID
+		id:{
+			type:Number,
+			required:true
 		}
 	},
     data(){

@@ -23,6 +23,7 @@
 					:img="item.picUrl"
 					:listened="item.playcount"
 					:tipTitle="item.name"
+					:id="item.id"
 				></PlayListCard>
 				<p class="title">
 					<router-link to="">{{ item.name }}</router-link>

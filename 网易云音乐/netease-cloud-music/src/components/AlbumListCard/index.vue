@@ -5,7 +5,7 @@
 	>
 		<div class="top-img">
 			<div class="card" :title="title">
-				<router-link :to="path">
+				<router-link :to="path + '?id=' + id">
 					<img
 						:src="imgUrl"
 						alt=""
@@ -18,8 +18,8 @@
 			</div>
 		</div>
 		<div class="title-container">
-			<router-link :to="path" class="title">{{ title }}</router-link>
-			<router-link :to="artistPath" class="sub-title">{{
+			<router-link :to="path + '?id=' + id" class="title">{{ title }}</router-link>
+			<router-link :to="artistPath + '?id=' + artistId" class="sub-title">{{
 				subTitle
 			}}</router-link>
 		</div>
@@ -52,16 +52,24 @@ export default {
 		},
 		path: {
 			type: String,
-			default: "/discover/album",
+			default: "/album",
 		},
 		artistPath: {
 			type: String,
-			default: "/discover/artist",
+			default: "/artist",
 		},
 		size: {
 			type: Number,
 			default: 100,
 		},
+		id:{
+			type:Number,
+			required:true
+		},
+		artistId:{
+			type:Number,
+			required:true,
+		}
 	},
 	components: {
 		Icon,

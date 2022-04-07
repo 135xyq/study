@@ -28,12 +28,12 @@
                             :class="{'bg':index1 % 2 === 0}"
 						>
 							<span class="index" :class="{'top':index1<3}">{{ index1 + 1 }}</span>
-							<router-link class="song-link" to="/">{{
+							<router-link class="song-link" :to="'/song?=' + song.id">{{
 								song.name
 							}}</router-link>
 						</li>
                         <div class="more">
-                            <router-link to="/discover/toplist">查看全部&gt;</router-link>
+                            <router-link :to="'/discover/toplist?id=' + item.id">查看全部&gt;</router-link>
                         </div>
 					</ul>
 				</div>

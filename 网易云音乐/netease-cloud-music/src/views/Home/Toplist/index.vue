@@ -86,7 +86,9 @@ export default {
 			};
 		});
 		this.selectedId = this.topListData[0].id;
-        this.playData = await this.getSongs(this.selectedId)
+        this.playData = await this.getSongs(this.selectedId);
+		this.selectedId = this.$route.query.id;
+		this.playData = await this.getSongs(this.selectedId);
 	},
 	watch: {
 		$route: function (val, oldVal) {

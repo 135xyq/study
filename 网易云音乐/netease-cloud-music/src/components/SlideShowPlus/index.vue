@@ -11,7 +11,9 @@
 					:height="110"
 					:imgUrl="item.picUrl"
 					:title="item.name"
-					:subTitle="item.company"
+					:subTitle="item.artist.name"
+					:id="item.id"
+					:artistId="item.artist.id"
 					@onPlayAlbum="t"
 				></AlbumListCard>
 			</li>
@@ -27,7 +29,9 @@
 					:height="110"
 					:imgUrl="item.picUrl"
 					:title="item.name"
-					:subTitle="item.company"
+					:subTitle="item.artist.name"
+					:id="item.id"
+					:artistId="item.artist.id"
 					@onPlayAlbum="t"
 				></AlbumListCard>
 			</li>
@@ -43,7 +47,9 @@
 					:height="110"
 					:imgUrl="item.picUrl"
 					:title="item.name"
-					:subTitle="item.company"
+					:subTitle="item.artist.name"
+					:id="item.id"
+					:artistId="item.artist.id"
 					@onPlayAlbum="t"
 				></AlbumListCard>
 			</li>
@@ -59,7 +65,9 @@
 					:height="110"
 					:imgUrl="item.picUrl"
 					:title="item.name"
-					:subTitle="item.company"
+					:subTitle="item.artist.name"
+					:id="item.id"
+					:artistId="item.artist.id"
 					@onPlayAlbum="t"
 				></AlbumListCard>
 			</li>

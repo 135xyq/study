@@ -96,6 +96,7 @@ icon图标
 |listened|Number|播放次数|null|true|
 |size|Number|卡片的尺寸|140|false|
 |tipTitle|String|鼠标移入提示文字|null|true|
+|id|Number|歌单ID|null|true|
 
 #### 事件
 
@@ -129,9 +130,11 @@ icon图标
 |imgUrl|String|图片地址|null|true|
 |title|String|唱片名称|null|true|
 |subTitle|String|歌手名字|null|true|
-|path|String|唱片地址|/discover/album|true|
-|artistPath|String|歌手名字|/discover/artist|true|
+|path|String|唱片地址|/album|true|
+|artistPath|String|歌手名字|/artist|true|
 |size|Number|图片尺寸|100|true|
+|id|Number|唱片id|null|true|
+|artistId|Number|歌手ID|null|true|
 
 #### 事件
 

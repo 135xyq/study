@@ -24,6 +24,7 @@
 						:img="item.coverImgUrl"
 						:listened="item.playCount"
 						:tipTitle="item.name"
+						:id="item.id"
 					></PlayListCard>
 					</router-link>
 					<router-link :to="'/playlist?id='+item.id" class="list-item-link">{{item.name}}</router-link>
