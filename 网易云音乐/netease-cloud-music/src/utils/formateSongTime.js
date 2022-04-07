@@ -15,3 +15,15 @@ export function formateSongsTime(time) {
     }
     return minutes + ':' + seconds;
 }
+
+/**
+ * 格式化时间 xxxx年xx月xx日
+ * @param {*} time 
+ */
+export function formateDate(timestamp) {
+    const date = new Date(+timestamp);
+    let year = date.getFullYear();
+    let month = date.getMonth();
+    let day = date.getDate();
+    return `${year}年${month}月${day}日`
+}

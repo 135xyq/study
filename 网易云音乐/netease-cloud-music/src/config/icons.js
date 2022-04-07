@@ -40,5 +40,6 @@ export default {
     jia: 'icon-jia',
     shijian: 'icon-shijian',
     bofang1: 'icon-bofang',
-    xiala: 'icon-xiala'
+    xiala: 'icon-xiala',
+    dianzhan: 'icon-dianzan',
 }

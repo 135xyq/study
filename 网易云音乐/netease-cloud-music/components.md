@@ -44,19 +44,20 @@ icon图标
 |    wangyiyouxiang| icon-WANGYI|
 |    weibo| icon-weibo|
 |    dengji| |icon-dengji|
-|    tuichu| |icon-tuichu|
-|    shimingrenzheng| |icon-zhuanjifenshimingrenzheng|
-|    viphuiyuan| |icon-VIPhuiyuan|
-|    xiaoxi| |icon-xiaoxi|
-|    shezhi| |icon-gerenshezhi|
-|    shang| |icon-zhixiangshangshangjiantou|
-|    xia| |icon-xiangxiajiantou|
-|    xiazai1| |icon-xiazai|
-|    pinglun| |icon-xiaoxi1|
-|    jia| |icon-jia|
-|    shijian| |icon-shijian|
-|    bofang1| |icon-bofang|
-|    xiala| |icon-xiala|
+|    tuichu|icon-tuichu|
+|    shimingrenzheng| icon-zhuanjifenshimingrenzheng|
+|    viphuiyuan| icon-VIPhuiyuan|
+|    xiaoxi| icon-xiaoxi|
+|    shezhi| icon-gerenshezhi|
+|    shang| icon-zhixiangshangshangjiantou|
+|    xia| icon-xiangxiajiantou|
+|    xiazai1|icon-xiazai|
+|    pinglun|icon-xiaoxi1|
+|    jia| icon-jia|
+|    shijian |icon-shijian|
+|    bofang1|icon-bofang|
+|    xiala|icon-xiala|
+|    dianzhan |icon-dianzan|
 
 ## Avatar
 
@@ -192,7 +193,42 @@ pageChange:换页触发
 
 参数为当前页码
 
+### Comment
 
+评论
+		avatarUrl: {
+			type: String,
+			required: true,
+		},
+		nickName: {
+			type: String,
+			required: true,
+		},
+		content: {
+			type: String,
+			required: true,
+		},
+		time: {
+			type: Number,
+			required: true,
+		},
+		like: {
+			type: Number,
+			required: true,
+		},
+		id: {
+			type: String,
+			required: true,
+		},
+
+|name|type|description|default|required|
+|:---:|:---:|:---:|:---:|:---:|
+|avatarUrl|String|头像|null|true|
+|nickName|String|昵称|null|true|
+|content|String|评论内容|null|true|
+|id|String|用户ID|null|true|
+|time|Number|时间戳|null|true|
+|like|Number|评论电站数|null|true|
 
 ## Layout
 

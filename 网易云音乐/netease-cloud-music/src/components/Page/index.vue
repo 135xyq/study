@@ -82,7 +82,7 @@ export default {
 				arr.push(1);
 				arr.push(-99);
 			}
-			for (let i = this.start; i < this.end; i++) {
+			for (let i = this.start; i <= this.end; i++) {
 				arr.push(i);
 			}
 			if (this.end < this.pages) {

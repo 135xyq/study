@@ -11,3 +11,17 @@ export async function getPlayListType() {
     const result = await ins.get('/playlist/catlist');
     return result.data;
 }
+
+/**
+ * 根据歌单ID获取歌单信息
+ * @param {*} id 
+ * @returns 
+ */
+export async function getPlayListDetailById(id) {
+    const result = await ins.get('/playlist/detail', {
+        params: {
+            id,
+        }
+    });
+    return result.data;
+}

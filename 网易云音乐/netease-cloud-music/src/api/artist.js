@@ -12,3 +12,17 @@ export async function getTopArtist(offset = 0, limit = 50) {
 
     return result.data.artists;
 }
+
+/**
+ * 根据ID获取歌手信息
+ * @param {*} id 
+ * @returns 
+ */
+export async function getSingerById(id) {
+    const result = await ins.get('/artist/desc', {
+        params: {
+            id,
+        }
+    });
+    return result.data;
+}
