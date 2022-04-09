@@ -41,7 +41,8 @@ export default [{
             name: '会员页',
             auth: true,
         }
-    }, {
+    },
+    {
         path: '/playlist',
         name: 'HomePlayList',
         component: () =>
@@ -50,6 +51,16 @@ export default [{
             name: '网易云音乐',
             auth: false
         }
-    }
+    },
+    {
+        path: '/song',
+        name: 'Song',
+        component: () =>
+            import ('@/views/Song'),
+        meta: {
+            name: '网易云音乐',
+            auth: false
+        }
+    },
 
 ]
