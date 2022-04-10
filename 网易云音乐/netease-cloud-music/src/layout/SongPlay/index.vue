@@ -1,21 +1,22 @@
 <template>
 	<div class="song-play-container">
-		<div class="song-play-content">
+		<div class="song-play-content" v-if="songDetail">
 			<div class="play-buttons">
-				<div class="previous-song">
+				<div class="previous-song" title="上一首">
 					<Icon type="shangyishou"></Icon>
 				</div>
-				<div class="play-song">
-					<Icon type="bofang"></Icon>
+				<div class="play-song" title="播放/暂停" @click="onHandlePlay">
+					<Icon type="bofang" v-if="!isPlay"></Icon>
+					<Icon type="zanting" v-if="isPlay"></Icon>
 				</div>
 				<div class="next-song">
-					<Icon type="xiayishou"></Icon>
+					<Icon type="xiayishou" title="下一首"></Icon>
 				</div>
 			</div>
 			<div class="song-img">
 				<router-link to="/song">
 					<img
-						:src="songDetail.al.picUrl + '?param=34y34'"
+						:src="songDetail.songs[0].al.picUrl + '?param=34y34'"
 						alt=""
 					/>
 				</router-link>
@@ -23,34 +24,38 @@
 			<div class="process-container">
 				<div class="song-user">
 					<router-link
-						to="/song"
-						:title="songDetail.al.name"
+						:to="'/song?id=' + songDetail.songs[0].al.id"
+						:title="songDetail.songs[0].al.name"
 						class="singer"
-						>{{ songDetail.songs.al.name }}</router-link
+						>{{ songDetail.songs[0].al.name }}</router-link
 					>
-					<router-link to="/artist" title="李荣浩"
-						>李荣浩</router-link
+					<router-link
+						:to="'/artist?id=' + item.id"
+						v-for="item in songDetail.songs[0].ar"
+						:key="item.id"
+						:title="item.name"
+						>{{item.name}}</router-link
 					>
 				</div>
 				<div class="process">
 					<div class="process-content"></div>
-					<div class="play-process">
+					<div class="play-process" :style="{'width':processWidth}">
 						<span class="process-round"></span>
 					</div>
 					<div class="song-time">
-						<span class="status-time">03:30</span>
-						<span class="total-time"> / 04:30</span>
+						<span class="status-time">{{songCurrentTime}}</span>
+						<span class="total-time"> / {{songTime}}</span>
 					</div>
 				</div>
 			</div>
 			<div class="share-button">
-				<div class="song-lyric icon">
+				<div class="song-lyric icon" title="画中画歌词">
 					<Icon type="huazhonghua"></Icon>
 				</div>
-				<div class="song-star icon">
+				<div class="song-star icon" title="收藏">
 					<Icon type="shoucang"></Icon>
 				</div>
-				<div class="song-share icon">
+				<div class="song-share icon" title="分享">
 					<Icon type="fenxiang"></Icon>
 				</div>
 			</div>
@@ -67,23 +72,23 @@
 				<div class="play-type icon">
 					<Icon type="xunhuanbofang"></Icon>
 				</div>
-				<div class="play-list icon">
+				<div class="play-list icon" title="播放列表">
 					<Icon type="bofangliebiao"></Icon>
 					<span class="lits-number">20</span>
 				</div>
 			</div>
 		</div>
 		<audio
-			src="http://m701.music.126.net/20220409224709/471713a9dc9ac4805dd97974c30c8e0f/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/13321096355/e1be/8ab3/9217/63cc5012acd1dbe6934b3d2e08e03e56.mp3"
-			@play="onHandlePlay"
-			@pause="onHandlePause"
+			:src="songUrl"
+			ref="audio"
+			@timeupdate="timeupdate"
 		></audio>
 	</div>
 </template>
 
 <script>
 import Icon from "@/components/Icon";
-import { getSongUrl, getSongDetail } from "@/api/song";
+import {formateSongsTime} from "@/utils/formateSongTime";
 export default {
 	components: {
 		Icon,
@@ -92,21 +97,53 @@ export default {
 		return {
 			isPlay: false, //是否播放
 			id: "1925613150", //ID
-			songDetail: {al:{}}, //歌曲详细信息
+			songDetail: null, //歌曲详细信息
+			songUrl: "", //歌曲播放链接
+			currentTime:'',//当前时间
+			songCurrentTime:'',//当前时间的格式化
+			totalTime:null,//歌曲总时长
 		};
 	},
 	methods: {
-		onHandlePlay() {},
-		onHandlePause() {},
-		async _initSongDetail() {
-			const res = await getSongDetail(this.id);
-			this.songDetail = res.songs;
-            console.log(this.songDetail)
+		// 播放/暂停
+		onHandlePlay() {
+			if(this.isPlay){
+				// 正在播放
+				this.$refs.audio.pause();//暂停
+				this.isPlay = false;
+			}else{
+				this.$refs.audio.play();//播放
+				this.isPlay = true;
+			}
 		},
+		// 当前播放时间
+		timeupdate(e){
+			this.currentTime = this.$refs.audio.currentTime;
+		}
 	},
-	created() {
-		this._initSongDetail();
+	async created() {
+		await this.$store.dispatch("songs/setSongDetail", this.id);
+		this.songDetail = this.$store.state.songs.songDetail;
+		await this.$store.dispatch("songs/setSongUrl", this.id);
+		this.songUrl = this.$store.state.songs.songUrl[0].url;
+		this.totalTime = this.$store.state.songs.songDetail.songs[0].dt;
 	},
+	computed:{
+		// 歌曲的总时间
+		songTime(){
+			return formateSongsTime(this.totalTime)
+		},
+		// 进度条的长度
+		processWidth(){
+			return (this.currentTime / this.totalTime * 100000)+ '%';
+		}
+	},
+	watch:{
+		currentTime(val){
+			//当前时间
+			this.songCurrentTime = formateSongsTime(val*1000);
+		},
+	}
 };
 </script>
 
@@ -137,6 +174,7 @@ export default {
 				margin-right: 8px;
 				margin-top: 5px;
 				cursor: pointer;
+				text-align: center;
 			}
 			.play-song {
 				border: 2px solid #fff;
@@ -144,13 +182,15 @@ export default {
 				width: 32px;
 				height: 32px;
 				line-height: 32px;
+				text-align: center;
 				cursor: pointer;
-				font-size: 30px;
+				font-size: 20px;
 				margin-top: 2px;
 				float: left;
 				margin-right: 8px;
 			}
 			.next-song {
+				text-align: center;
 				border: 2px solid #fff;
 				border-radius: 50%;
 				float: left;
@@ -210,7 +250,7 @@ export default {
 				border-radius: 5px;
 			}
 			.play-process {
-				width: 30%;
+				width: 0;
 				background: #c20c0c;
 				height: 9px;
 				position: absolute;
@@ -224,8 +264,8 @@ export default {
 					background: #c20c0c;
 					border-radius: 50%;
 					position: absolute;
-					top: -3px;
-					right: 0px;
+					top: -4px;
+					right: -5px;
 					&:hover {
 						box-shadow: 0px 0px 5px #fff;
 						cursor: pointer;
