@@ -39,12 +39,26 @@
 								{{ item.name }}
 							</router-link>
 						</td>
-						<td class="table-body-time">{{formateSongsTime(item.dt) }}</td>
+						<td class="table-body-time">
+							{{ formateSongsTime(item.dt) }}
+						</td>
 						<td class="icons">
-							<div title="添加到播放列表" class="table-icon"><Icon type="jia"></Icon></div>
-							<div title="收藏" class="table-icon"><Icon type="shoucang"></Icon></div>
-							<div title="分享" class="table-icon"><Icon type="fenxiang"></Icon></div>
-							<div title="下载" class="table-icon"><Icon type="xiazai1"></Icon></div>
+							<div
+								title="添加到播放列表"
+								class="table-icon"
+								@click="onHandleAddPlayList(item.id)"
+							>
+								<Icon type="jia"></Icon>
+							</div>
+							<div title="收藏" class="table-icon">
+								<Icon type="shoucang"></Icon>
+							</div>
+							<div title="分享" class="table-icon">
+								<Icon type="fenxiang"></Icon>
+							</div>
+							<div title="下载" class="table-icon">
+								<Icon type="xiazai1"></Icon>
+							</div>
 						</td>
 						<td class="table-body-singer">
 							<router-link
@@ -73,19 +87,19 @@
 
 <script>
 import { formateSongsTime } from "@/utils/formateSongTime";
+import {getSongDetail} from "@/api/song"
 import Icon from "@/components/Icon";
 export default {
 	components: {
 		Icon,
 	},
-	props: ["data",'playCount','trackCount'],
+	props: ["data", "playCount", "trackCount"],
 	data() {
 		return {
 			songsInfo: [], //歌曲信息
 		};
 	},
-	watch: {
-	},
+	watch: {},
 	methods: {
 		// 处理多个歌手
 		handleSingers(item) {
@@ -94,6 +108,11 @@ export default {
 				str += "&" + item.ar[i].name;
 			}
 			return str;
+		},
+		// 将歌曲添加到播放列表
+		async onHandleAddPlayList(params) {
+			const res = await getSongDetail(params);
+			this.$store.dispatch('songs/pushPlayList',res.songs[0]);
 		},
 		formateSongsTime,
 	},
@@ -159,7 +178,7 @@ export default {
 				.table-time {
 					width: 91px;
 				}
-				.table-album{
+				.table-album {
 					width: 100px;
 				}
 				.table-singer {
@@ -210,8 +229,8 @@ export default {
 						float: left;
 						margin-left: 10px;
 						overflow: hidden;
-					text-overflow: ellipsis;
-					white-space: nowrap;
+						text-overflow: ellipsis;
+						white-space: nowrap;
 						&:hover {
 							text-decoration: underline;
 						}
@@ -225,40 +244,38 @@ export default {
 				.table-body-time {
 					color: #666;
 				}
-				.icons{
+				.icons {
 					display: none;
 					float: left;
 					color: #ccc;
 					height: 100%;
 					margin: 12px 0;
 					padding: 0;
-					.table-icon{
+					.table-icon {
 						float: left;
 						margin-left: 5px;
 						cursor: pointer;
 						font-size: 14px;
 						font-weight: bold;
-						&:hover{
+						&:hover {
 							color: #666;
 						}
-
 					}
 				}
 				.singer {
-				&:hover {
-					text-decoration: underline;
+					&:hover {
+						text-decoration: underline;
+					}
 				}
-			}
-				&:hover{
-					.table-body-time{
+				&:hover {
+					.table-body-time {
 						display: none;
 					}
-					.icons{
+					.icons {
 						display: inline-block;
 					}
 				}
 			}
-
 		}
 	}
 }

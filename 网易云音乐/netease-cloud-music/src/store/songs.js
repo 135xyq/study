@@ -15,6 +15,15 @@ export default {
         },
         pushPlayList(state, payload) {
             // 新增一个歌曲进入播放列表
+            let flag = false; //是否存在相同歌曲
+            state.playList.forEach(item => {
+                if (item.id === payload.id) {
+                    flag = true;
+                }
+            })
+            if (flag) {
+                return;
+            }
             state.playList.push(payload);
         },
         popPlayList(state, payload) {

@@ -1,28 +1,41 @@
 <template>
 	<div class="song-play-container">
-		<div class="song-play-content" v-if="songDetail">
+		<div class="song-play-content">
 			<div class="play-buttons">
-				<div class="previous-song" title="上一首">
+				<div
+					class="previous-song"
+					title="上一首"
+					@click="onHandlePreviousSong"
+				>
 					<Icon type="shangyishou"></Icon>
 				</div>
 				<div class="play-song" title="播放/暂停" @click="onHandlePlay">
 					<Icon type="bofang" v-if="!isPlay"></Icon>
 					<Icon type="zanting" v-if="isPlay"></Icon>
 				</div>
-				<div class="next-song">
+				<div class="next-song" @click="onHandleNextSong">
 					<Icon type="xiayishou" title="下一首"></Icon>
 				</div>
 			</div>
 			<div class="song-img">
-				<router-link to="/song">
+				<router-link
+					:to="'/song' + songDetail.songs[0].id"
+					v-if="songDetail"
+				>
 					<img
 						:src="songDetail.songs[0].al.picUrl + '?param=34y34'"
 						alt=""
 					/>
 				</router-link>
+				<router-link to="/song" v-if="!songDetail">
+					<img
+						src="http://s4.music.126.net/style/web2/img/default/default_album.jpg"
+						alt=""
+					/>
+				</router-link>
 			</div>
 			<div class="process-container">
-				<div class="song-user">
+				<div class="song-user" v-if="songDetail">
 					<router-link
 						:to="'/song?id=' + songDetail.songs[0].al.id"
 						:title="songDetail.songs[0].al.name"
@@ -36,6 +49,10 @@
 						:title="item.name"
 						>{{ item.name }}</router-link
 					>
+				</div>
+				<div class="song-user" v-if="!songDetail">
+					<router-link to="/"></router-link>
+					<router-link to="/"></router-link>
 				</div>
 				<div class="process">
 					<div class="process-content"></div>
@@ -54,9 +71,13 @@
 							draggable="true"
 						></span>
 					</div>
-					<div class="song-time">
+					<div class="song-time" v-if="songDetail">
 						<span class="status-time">{{ songCurrentTime }}</span>
 						<span class="total-time"> / {{ songTime }}</span>
+					</div>
+					<div class="song-time" v-if="!songDetail">
+						<span class="status-time">00:00</span>
+						<span class="total-time"> / 00:00</span>
 					</div>
 				</div>
 			</div>
@@ -72,8 +93,11 @@
 				</div>
 			</div>
 			<div class="play-info">
-				<div class="song-aloud icon" @click="isShowAloud = !isShowAloud">
-					<Icon type="shengyin" ></Icon>
+				<div
+					class="song-aloud icon"
+					@click="isShowAloud = !isShowAloud"
+				>
+					<Icon type="shengyin"></Icon>
 					<div class="aloud-container" v-if="isShowAloud">
 						<div class="aloud-all">
 							<div
@@ -92,16 +116,26 @@
 				<div class="play-type icon">
 					<Icon type="xunhuanbofang"></Icon>
 				</div>
-				<div class="play-list icon" title="播放列表" @click="onHandleShowPlayList">
+				<div
+					class="play-list icon"
+					title="播放列表"
+					@click="onHandleShowPlayList"
+				>
 					<Icon type="bofangliebiao"></Icon>
-					<span class="lits-number">20</span>
+					<span class="lits-number">{{ playList.length }}</span>
 				</div>
 				<div class="play-list-content">
-						<PlayList @onHandleClose="onHandleClose" :close="close"></PlayList>
-					</div>
+					<PlayList
+						@onHandleClose="onHandleClose"
+						@onHandleChange="onHandleChange"
+						:close="close"
+						:currentPlayId="id"
+					></PlayList>
+				</div>
 			</div>
 		</div>
 		<audio
+			v-if="songDetail"
 			:src="songUrl"
 			ref="audio"
 			@ended="onHandlePlayEnd"
@@ -113,16 +147,16 @@
 <script>
 import Icon from "@/components/Icon";
 import { formateSongsTime } from "@/utils/formateSongTime";
-import PlayList from "./PlayList"
+import PlayList from "./PlayList";
 export default {
 	components: {
 		Icon,
-		PlayList
+		PlayList,
 	},
 	data() {
 		return {
 			isPlay: false, //是否播放
-			id: "1925613150", //ID
+			id: "", //ID
 			songDetail: null, //歌曲详细信息
 			songUrl: "", //歌曲播放链接
 			currentTime: "", //当前时间
@@ -132,14 +166,17 @@ export default {
 			isDrag: false, //是否正在拖拽
 			aloud: "", //音量
 			currentAloud: "60%", //当前音量
-			isShowAloud:false,
-			playList:[],//播放列表
-			close:false,//关闭显示
+			isShowAloud: false,
+			playList: [], //播放列表
+			close: false, //关闭显示
 		};
 	},
 	methods: {
 		// 播放/暂停
 		onHandlePlay() {
+			if (!this.songDetail) {
+				return; //没有歌曲直接返回
+			}
 			if (this.isPlay) {
 				// 正在播放
 				this.$refs.audio.pause(); //暂停
@@ -184,6 +221,9 @@ export default {
 		},
 		// 进度条拖拽
 		onHandleDrag(e) {
+			if (!this.songDetail) {
+				return; //没有歌曲直接返回
+			}
 			this.isDrag = true;
 			const left = this.$refs.process.getBoundingClientRect().left;
 			const length = ((e.clientX - left) / 466) * this.totalTime;
@@ -195,6 +235,9 @@ export default {
 		},
 		// 进度条拖拽结束
 		onHandleDragEnd() {
+			if (!this.songDetail) {
+				return; //没有歌曲直接返回
+			}
 			this.$refs.audio.currentTime = this.currentLength;
 			if (!this.isPlay) {
 				this.isPlay = true;
@@ -204,6 +247,9 @@ export default {
 		},
 		// 进度条拖拽即将开始
 		onHandleDragStart() {
+			if (!this.songDetail) {
+				return; //没有歌曲直接返回
+			}
 			this.isDrag = true;
 		},
 		// 播放完毕
@@ -213,32 +259,107 @@ export default {
 			this.currentLength = "";
 		},
 		// 音量拖拽
-		onHandleAloudDrag(e){
+		onHandleAloudDrag(e) {
 			const bottom = this.$refs.aloud.getBoundingClientRect().bottom;
 			const height = e.screenY;
 			const rang = height - bottom;
-			if(rang > 93 || rang < 0) {
+			if (rang > 93 || rang < 0) {
 				return;
-			}else{
+			} else {
 				// console.log(rang)
 			}
 		},
-		onHandleClose(e){
+		onHandleClose(e) {
 			this.close = !e;
 		},
-		onHandleShowPlayList(){
+		onHandleShowPlayList() {
 			this.close = !this.close;
-		}
+		},
+		// update当前播放信息
+		async updateSongDetail() {
+			if (this.playList.length > 0 && !this.songDetail) {
+				// 播放列表有数据，默认播放第一条歌曲
+				this.id = this.playList[0].id;
+				await this.$store.dispatch(
+					"songs/setSongUrl",
+					this.playList[0].id
+				);
+				this.songUrl = this.$store.state.songs.songUrl[0].url;
+				await this.$store.dispatch("songs/setSongDetail", this.id);
+				this.songDetail = this.$store.state.songs.songDetail;
+				this.totalTime = this.$store.state.songs.songDetail.songs[0].dt;
+			}
+		},
+		// 下一首歌
+		async onHandleNextSong() {
+			// 播放列表为空
+			if (this.playList.length === 0) {
+				return;
+			}
+			const index = this.getCurrentIndex();
+			let newIndex = null; //新的下标
+			if (index === this.playList.length - 1) {
+				newIndex = 0;
+			} else {
+				newIndex = index + 1;
+			}
+			this.id = this.playList[newIndex].id;
+			await this.$store.dispatch("songs/setSongUrl", this.id);
+			this.songUrl = this.$store.state.songs.songUrl[0].url;
+			await this.$store.dispatch("songs/setSongDetail", this.id);
+			this.songDetail = this.$store.state.songs.songDetail;
+			this.totalTime = this.$store.state.songs.songDetail.songs[0].dt;
+			this.$refs.audio.play(); //播放
+			this.isPlay = true;
+		},
+		// 上一首歌
+		async onHandlePreviousSong() {
+			// 播放列表为空
+			if (this.playList.length === 0) {
+				return;
+			}
+			const index = this.getCurrentIndex();
+			let newIndex = null; //新的下标
+			if (index === 0) {
+				newIndex = this.playList.length - 1;
+			} else {
+				newIndex = index - 1;
+			}
+			this.id = this.playList[newIndex].id;
+			await this.$store.dispatch("songs/setSongUrl", this.id);
+			this.songUrl = this.$store.state.songs.songUrl[0].url;
+			await this.$store.dispatch("songs/setSongDetail", this.id);
+			this.songDetail = this.$store.state.songs.songDetail;
+			this.totalTime = this.$store.state.songs.songDetail.songs[0].dt;
+			this.$refs.audio.play(); //播放
+			this.isPlay = true;
+		},
+		// 获取当前歌曲的下标
+		getCurrentIndex() {
+			let currentSongIndex = null;
+			this.playList.forEach((item, index) => {
+				if (item.id === this.id) {
+					currentSongIndex = index;
+					return;
+				}
+			});
+			return currentSongIndex;
+		},
+		// 切换到指定歌曲
+		async onHandleChange(id) {
+			this.id = id;
+			await this.$store.dispatch("songs/setSongUrl", this.id);
+			this.songUrl = this.$store.state.songs.songUrl[0].url;
+			await this.$store.dispatch("songs/setSongDetail", this.id);
+			this.songDetail = this.$store.state.songs.songDetail;
+			this.totalTime = this.$store.state.songs.songDetail.songs[0].dt;
+			this.$refs.audio.play(); //播放
+			this.isPlay = true;
+		},
 	},
 	async created() {
-		await this.$store.dispatch("songs/setSongDetail", this.id);
-		this.songDetail = this.$store.state.songs.songDetail;
-		await this.$store.dispatch("songs/setSongUrl", this.id);
-		this.songUrl = this.$store.state.songs.songUrl[0].url;
-		this.totalTime = this.$store.state.songs.songDetail.songs[0].dt;
-		this.$store.dispatch("songs/pushPlayList", this.songDetail.songs[0]);
 		this.playList = this.$store.state.songs.playList;
-
+		this.updateSongDetail();
 	},
 	computed: {
 		// 歌曲的总时间
@@ -254,6 +375,9 @@ export default {
 		currentTime(val) {
 			//当前时间
 			this.songCurrentTime = formateSongsTime(val * 1000);
+		},
+		playList(val) {
+			this.updateSongDetail();
 		},
 	},
 };
@@ -483,9 +607,9 @@ export default {
 				text-shadow: 0px 0px 1px #fff;
 			}
 		}
-		.play-list-content{
+		.play-list-content {
 			position: absolute;
-			bottom:35px;
+			bottom: 35px;
 			left: calc(50% - 930px);
 		}
 	}

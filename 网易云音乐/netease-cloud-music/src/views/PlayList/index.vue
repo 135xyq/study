@@ -27,25 +27,25 @@
 						</div>
 						<div class="icons">
 							<ul class="detail">
-								<li class="item">
+								<li class="item" @click="onHandleAddPlayList">
 									<Icon type="bofang"></Icon>
 									<span class="text">播放</span>
 								</li>
 								<li class="item">
 									<Icon type="shoucang"></Icon>
-									<span class="text">2342</span>
+									<span class="text">{{userData.listenSongs}}</span>
 								</li>
 								<li class="item">
 									<Icon type="fenxiang"></Icon>
-									<span class="text">4545</span>
+									<span class="text">({{data.playlist.shareCount}})</span>
 								</li>
 								<li class="item">
 									<Icon type="xiazai1"></Icon>
-									<span class="text">播放</span>
+									<span class="text">下载</span>
 								</li>
 								<li class="item">
 									<Icon type="pinglun"></Icon>
-									<span class="text">44</span>
+									<span class="text">({{commentData.total}})</span>
 								</li>
 							</ul>
 						</div>
@@ -128,6 +128,7 @@ import { getPlayListDetailById } from "@/api/playList";
 import { userInfoDetail } from "@/api/user";
 import formateDate from "@/utils/formateDate";
 import { getPlayListComment } from "@/api/comment";
+import { getSongDetail } from "@/api/song";
 export default {
 	components: {
 		TopLink,
@@ -153,6 +154,7 @@ export default {
 		this.userData.name = result.profile.nickname;
 		this.userData.avatar = result.profile.avatarUrl;
 		this.userData.createDate = formateDate(res.playlist.createTime);
+		this.userData.listenSongs = result.listenSongs;
 		const resp = await getPlayListComment(this.id);
 		this.commentData = resp;
 	},
@@ -165,6 +167,15 @@ export default {
 			);
 			this.commentData = resp;
 		},
+		// 将歌曲添加到播放列表
+		async onHandleAddPlayList(){
+			if(this.data.privileges) {
+				this.data.privileges.forEach(item=>{
+					// const res = await getSongDetail(item.id);
+					// this.$store.dispatch('songs/pushPlayList',res)
+				})
+			}
+		}
 	},
 };
 </script>

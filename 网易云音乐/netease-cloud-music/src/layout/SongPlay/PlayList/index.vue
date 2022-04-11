@@ -17,9 +17,10 @@
 				<ul class="list-container">
 					<li
 						class="list-item"
-                        :class="{'selected':currentPlayId== item.al.id}"
+                        :class="{'selected':currentPlayId == item.id}"
 						v-for="item in playListData"
 						:key="item.id"
+                        @click="onHandleChange(item.id)"
 					>
 						<div class="which-one col"></div>
 						<div class="list-item-name col">{{ item.al.name }}</div>
@@ -57,11 +58,10 @@ export default {
 	components: {
 		Icon,
 	},
-    props:['close'],
+    props:['close','currentPlayId'],
 	data() {
 		return {
 			playListData: [], //播放列表歌曲
-            currentPlayId:'',//当前播放歌曲Id
 		};
 	},
 	created() {
@@ -75,6 +75,10 @@ export default {
         // 关闭列表
         onHandleClose(){
             this.$emit('onHandleClose',this.close)
+        },
+        // 切换到指定歌曲
+        onHandleChange(id){
+            this.$emit('onHandleChange',id)
         }
     }
 };
@@ -203,6 +207,7 @@ export default {
 						}
 					}
 					&.selected {
+                        background: #000;
 						.which-one {
 							position: relative;
 							background: #000;
