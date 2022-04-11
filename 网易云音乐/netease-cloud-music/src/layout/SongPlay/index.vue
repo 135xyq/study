@@ -92,10 +92,13 @@
 				<div class="play-type icon">
 					<Icon type="xunhuanbofang"></Icon>
 				</div>
-				<div class="play-list icon" title="播放列表">
+				<div class="play-list icon" title="播放列表" @click="onHandleShowPlayList">
 					<Icon type="bofangliebiao"></Icon>
 					<span class="lits-number">20</span>
 				</div>
+				<div class="play-list-content">
+						<PlayList @onHandleClose="onHandleClose" :close="close"></PlayList>
+					</div>
 			</div>
 		</div>
 		<audio
@@ -110,9 +113,11 @@
 <script>
 import Icon from "@/components/Icon";
 import { formateSongsTime } from "@/utils/formateSongTime";
+import PlayList from "./PlayList"
 export default {
 	components: {
 		Icon,
+		PlayList
 	},
 	data() {
 		return {
@@ -128,6 +133,8 @@ export default {
 			aloud: "", //音量
 			currentAloud: "60%", //当前音量
 			isShowAloud:false,
+			playList:[],//播放列表
+			close:false,//关闭显示
 		};
 	},
 	methods: {
@@ -215,6 +222,12 @@ export default {
 			}else{
 				// console.log(rang)
 			}
+		},
+		onHandleClose(e){
+			this.close = !e;
+		},
+		onHandleShowPlayList(){
+			this.close = !this.close;
 		}
 	},
 	async created() {
@@ -223,6 +236,9 @@ export default {
 		await this.$store.dispatch("songs/setSongUrl", this.id);
 		this.songUrl = this.$store.state.songs.songUrl[0].url;
 		this.totalTime = this.$store.state.songs.songDetail.songs[0].dt;
+		this.$store.dispatch("songs/pushPlayList", this.songDetail.songs[0]);
+		this.playList = this.$store.state.songs.playList;
+
 	},
 	computed: {
 		// 歌曲的总时间
@@ -466,6 +482,11 @@ export default {
 			&:hover {
 				text-shadow: 0px 0px 1px #fff;
 			}
+		}
+		.play-list-content{
+			position: absolute;
+			bottom:35px;
+			left: calc(50% - 930px);
 		}
 	}
 }

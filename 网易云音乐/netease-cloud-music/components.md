@@ -58,6 +58,7 @@ icon图标
 |    bofang1|icon-bofang|
 |    xiala|icon-xiala|
 |    dianzhan |icon-dianzan|
+|    shanchu |icon-shanchu|
 
 ## Avatar
 
