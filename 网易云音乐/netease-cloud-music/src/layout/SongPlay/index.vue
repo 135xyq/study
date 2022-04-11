@@ -34,17 +34,29 @@
 						v-for="item in songDetail.songs[0].ar"
 						:key="item.id"
 						:title="item.name"
-						>{{item.name}}</router-link
+						>{{ item.name }}</router-link
 					>
 				</div>
 				<div class="process">
 					<div class="process-content"></div>
-					<div class="play-process" :style="{'width':processWidth}">
-						<span class="process-round"></span>
+					<div
+						class="play-process"
+						ref="process"
+						:style="{ width: processWidth }"
+					>
+						<span
+							class="process-round"
+							@mouseup="onHandleMouseUp"
+							@mousedown="onHandleMouseDown"
+							@drag="onHandleDrag"
+							@dragend="onHandleDragEnd"
+							@dragstart="onHandleDragStart"
+							draggable="true"
+						></span>
 					</div>
 					<div class="song-time">
-						<span class="status-time">{{songCurrentTime}}</span>
-						<span class="total-time"> / {{songTime}}</span>
+						<span class="status-time">{{ songCurrentTime }}</span>
+						<span class="total-time"> / {{ songTime }}</span>
 					</div>
 				</div>
 			</div>
@@ -60,12 +72,20 @@
 				</div>
 			</div>
 			<div class="play-info">
-				<div class="song-aloud icon">
-					<Icon type="shengyin"></Icon>
-					<div class="aloud-container">
+				<div class="song-aloud icon" @click="isShowAloud = !isShowAloud">
+					<Icon type="shengyin" ></Icon>
+					<div class="aloud-container" v-if="isShowAloud">
 						<div class="aloud-all">
-							<div class="status-aloud"></div>
-							<span class="aloud-round"></span>
+							<div
+								class="status-aloud"
+								:style="{ height: currentAloud }"
+							></div>
+							<span
+								class="aloud-round"
+								:style="{ bottom: currentAloud }"
+								ref="aloud"
+								@drag="onHandleAloudDrag"
+							></span>
 						</div>
 					</div>
 				</div>
@@ -81,6 +101,7 @@
 		<audio
 			:src="songUrl"
 			ref="audio"
+			@ended="onHandlePlayEnd"
 			@timeupdate="timeupdate"
 		></audio>
 	</div>
@@ -88,7 +109,7 @@
 
 <script>
 import Icon from "@/components/Icon";
-import {formateSongsTime} from "@/utils/formateSongTime";
+import { formateSongsTime } from "@/utils/formateSongTime";
 export default {
 	components: {
 		Icon,
@@ -99,26 +120,101 @@ export default {
 			id: "1925613150", //ID
 			songDetail: null, //歌曲详细信息
 			songUrl: "", //歌曲播放链接
-			currentTime:'',//当前时间
-			songCurrentTime:'',//当前时间的格式化
-			totalTime:null,//歌曲总时长
+			currentTime: "", //当前时间
+			songCurrentTime: "", //当前时间的格式化
+			totalTime: null, //歌曲总时长,
+			currentLength: "", //小圆点应该走的长度
+			isDrag: false, //是否正在拖拽
+			aloud: "", //音量
+			currentAloud: "60%", //当前音量
+			isShowAloud:false,
 		};
 	},
 	methods: {
 		// 播放/暂停
 		onHandlePlay() {
-			if(this.isPlay){
+			if (this.isPlay) {
 				// 正在播放
-				this.$refs.audio.pause();//暂停
+				this.$refs.audio.pause(); //暂停
 				this.isPlay = false;
-			}else{
-				this.$refs.audio.play();//播放
+			} else {
+				this.$refs.audio.play(); //播放
 				this.isPlay = true;
 			}
 		},
 		// 当前播放时间
-		timeupdate(e){
-			this.currentTime = this.$refs.audio.currentTime;
+		timeupdate(e) {
+			if (this.$refs.audio) {
+				this.currentTime = this.$refs.audio.currentTime;
+			}
+			this.upDateCurrenTime();
+		},
+		// 按下进度条的按钮
+		onHandleMouseDown(e) {
+			// 进度条不再移动
+			// const width = this.$refs.process.clientWidth
+			// const length = this.$refs.audio.currentTime;
+			// this.currentTime = length;
+			this.isDrag = true;
+			// console.log(e.target.offsetY)
+			// this.currentLength = (e.screenX - 462) / 466 * this.totalTime / 1000
+			// console.log(this.currentLength)
+			// this.$refs.process.style.width = width + 'px';
+		},
+		// 离开进度条按钮
+		onHandleMouseUp() {
+			// console.log(1)
+			this.isDrag = false;
+		},
+		upDateCurrenTime() {
+			// 更新当前的播放时间
+			if (this.isDrag) {
+				// 正在拖拽不更新
+				return;
+			} else {
+				this.currentLength = this.$refs.audio.currentTime;
+			}
+		},
+		// 进度条拖拽
+		onHandleDrag(e) {
+			this.isDrag = true;
+			const left = this.$refs.process.getBoundingClientRect().left;
+			const length = ((e.clientX - left) / 466) * this.totalTime;
+			if (length < 0 || length > this.totalTime) {
+				return;
+			} else {
+				this.currentLength = length / 1000;
+			}
+		},
+		// 进度条拖拽结束
+		onHandleDragEnd() {
+			this.$refs.audio.currentTime = this.currentLength;
+			if (!this.isPlay) {
+				this.isPlay = true;
+				this.$refs.audio.play();
+			}
+			this.isDrag = false;
+		},
+		// 进度条拖拽即将开始
+		onHandleDragStart() {
+			this.isDrag = true;
+		},
+		// 播放完毕
+		onHandlePlayEnd() {
+			this.isPlay = false;
+			this.currentTime = "";
+			this.currentLength = "";
+		},
+		// 音量拖拽
+		onHandleAloudDrag(e){
+			const bottom = this.$refs.aloud.getBoundingClientRect().bottom;
+			const height = e.screenY;
+			const rang = height - bottom;
+			if(rang > 93 || rang < 0) {
+				return;
+			}else{
+				// console.log(rang)
+			}
 		}
 	},
 	async created() {
@@ -128,22 +224,22 @@ export default {
 		this.songUrl = this.$store.state.songs.songUrl[0].url;
 		this.totalTime = this.$store.state.songs.songDetail.songs[0].dt;
 	},
-	computed:{
+	computed: {
 		// 歌曲的总时间
-		songTime(){
-			return formateSongsTime(this.totalTime)
+		songTime() {
+			return formateSongsTime(this.totalTime);
 		},
 		// 进度条的长度
-		processWidth(){
-			return (this.currentTime / this.totalTime * 100000)+ '%';
-		}
-	},
-	watch:{
-		currentTime(val){
-			//当前时间
-			this.songCurrentTime = formateSongsTime(val*1000);
+		processWidth() {
+			return (this.currentLength / this.totalTime) * 100000 + "%";
 		},
-	}
+	},
+	watch: {
+		currentTime(val) {
+			//当前时间
+			this.songCurrentTime = formateSongsTime(val * 1000);
+		},
+	},
 };
 </script>
 
@@ -330,7 +426,7 @@ export default {
 			.aloud-container {
 				position: absolute;
 				top: -113px;
-				left: 0;
+				left: -10px;
 				width: 32px;
 				height: 113px;
 				background: #121212dc;
@@ -357,7 +453,7 @@ export default {
 					border: 4px solid #fff;
 					border-radius: 50%;
 					position: absolute;
-					bottom: 0;
+					// top: 0;
 					left: -5px;
 					&:hover {
 						box-shadow: 0px 0px 5px #fff;
