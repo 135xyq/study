@@ -13,7 +13,7 @@
 				<span>({{ updateTime }})</span>
 			</div>
 			<ul class="detail">
-				<li class="item">
+				<li class="item" @click="onHandlePlay">
 					<Icon type="bofang"></Icon>
 					<span class="text">播放</span>
 				</li>
@@ -40,6 +40,7 @@
 
 <script>
 import Icon from "@/components/Icon";
+import { getPlayListDetail } from "@/api/topList";
 export default {
 	props: [
 		"imgUrl",
@@ -49,9 +50,16 @@ export default {
 		"star",
 		"share",
 		"comment",
+		"id",
 	],
 	components: {
 		Icon,
+	},
+	methods: {
+		// 播放
+		onHandlePlay() {
+			this.$emit('onHandlePlay',this.id)
+		},
 	},
 };
 </script>

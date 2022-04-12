@@ -128,6 +128,7 @@
 					<PlayList
 						@onHandleClose="onHandleClose"
 						@onHandleChange="onHandleChange"
+						@onHandleClearAllPlayList="onHandleClearAllPlayList"
 						:close="close"
 						:currentPlayId="id"
 						:currentTime="currentTime * 1000"
@@ -357,10 +358,14 @@ export default {
 			this.$refs.audio.play(); //播放
 			this.isPlay = true;
 		},
+		// 清空播放列表
+		onHandleClearAllPlayList() {
+			console.log(1)
+		},
 	},
 	async created() {
 		this.playList = this.$store.state.songs.playList;
-		this.updateSongDetail();
+		this.$store.dispatch('songs/deletePlayList');
 	},
 	computed: {
 		// 歌曲的总时间
@@ -380,6 +385,9 @@ export default {
 		playList(val) {
 			this.updateSongDetail();
 		},
+		"$store.state.songs.playList":function(val){
+			this.playList = val;
+		}
 	},
 };
 </script>

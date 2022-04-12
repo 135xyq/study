@@ -34,6 +34,9 @@ export default {
         },
         setSongLrc(state, payload) {
             state.songLrc = payload;
+        },
+        deletePlayList(state, payload) {
+            state.playList = payload;
         }
     },
     actions: {
@@ -60,6 +63,9 @@ export default {
         },
         popPlayList({ commit }, song) {
             commit('popPlayList', song);
+        },
+        deletePlayList({ commit }) {
+            commit('deletePlayList', []);
         }
     }
 }

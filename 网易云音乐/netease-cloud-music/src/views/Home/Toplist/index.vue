@@ -48,6 +48,8 @@
 					:star="playData.star"
 					:share="playData.share"
 					:comment="playData.comment"
+					:id="selectedId"
+					@onHandlePlay="onHandlePlay"
 				></TopListDetailCard>
 			</div>
 			<div class="table">
@@ -94,13 +96,16 @@ export default {
 	},
 	watch: {
 		$route: function (val, oldVal) {
-			this.selectedId = val.query.id;
+			if(val.query.id){
+				this.selectedId = val.query.id;
+			}
 		},
 	},
 	methods: {
 		async getSongs(id) {
 			let res = await getPlayListDetail(this.selectedId);
 			return {
+				id:res.id,
                 title:res.name, //歌单标题
 				star: res.subscribedCount,//收藏数
 				share: res.shareCount,//分享数
@@ -116,7 +121,17 @@ export default {
         async onHandleChange(){
             this.selectedId = this.$route.query.id;
             this.playData = await this.getSongs(this.selectedId);
-        }
+        },
+		async onHandlePlay(id){
+			let newId = id;
+			if(!id){
+				newId = this.playData.id;
+			}
+			const res = await getPlayListDetail(newId);
+			res.tracks.forEach(item=>{
+				this.$store.dispatch('songs/pushPlayList',item);
+			})
+		}
 	},
 };
 </script>

@@ -17,11 +17,6 @@ export default {
 	created() {
 		this.data = this.$store.state.songs.songLrc;
 	},
-	watch: {
-		"$store.state.songs.songLrc": function (val) {
-			this.data = val;
-		},
-	},
     computed:{
         currentIndex(){
             for(let i = 0 ;i < this.data.length-1;i++) {
@@ -35,7 +30,10 @@ export default {
         "currentIndex":function(val){
             // console.log(this.$refs.container)
             this.$refs.container.scrollTo(0,val*32 - 130);
-        }
+        },
+		"$store.state.songs.songLrc": function (val) {
+			this.data = val;
+		},
     }
 };
 </script>

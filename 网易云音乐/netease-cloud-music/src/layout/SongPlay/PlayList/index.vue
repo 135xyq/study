@@ -9,7 +9,7 @@
 				<Icon type="shanchu"></Icon>
 				<p class="clear-all-text">清除</p>
 			</div>
-			<p class="top-song-title">城中人</p>
+			<p class="top-song-title">{{songName}}</p>
 			<span class="close" @click="onHandleClose">&times;</span>
 		</div>
 		<div class="main-container">
@@ -88,6 +88,12 @@ export default {
 			this.$emit("onHandleChange", id);
 		},
 	},
+	computed:{
+		songName(){
+			// 当前播放的歌曲名称
+			return this.$store.state.songs.songDetail?this.$store.state.songs.songDetail.name:''
+		}
+	}
 };
 </script>
 

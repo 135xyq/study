@@ -23,7 +23,7 @@
 					<tr
 						class="table-item"
 						v-for="(item, index) in songsInfo"
-						:key="item.id"
+						:key="index"
 						:class="{ bg: index % 2 === 0 }"
 					>
 						<td class="table-index">{{ index + 1 }}</td>
@@ -52,8 +52,8 @@
 						<td class="table-body-singer">
 							<router-link
 								class="singer"
-								v-for="singer in item.singer"
-								:key="singer.id"
+								v-for="(singer,index1) in item.singer"
+								:key="index1"
 								:to="'/artist?id=' + singer.id"
 							>
 								{{ singer.name }}
