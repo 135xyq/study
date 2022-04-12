@@ -10,7 +10,7 @@
                 <router-link :to="path">{{ title }}</router-link>
             </h3>
 			<div class="icons">
-				<div class="play">
+				<div class="play" @click="onHandlePlay">
 					<Icon type="bofang"></Icon>
 				</div>
 				<div class="star">
@@ -41,6 +41,15 @@ export default {
 			required: true,
 		},
 	},
+	methods:{
+		onHandlePlay(){
+			let  id = ''
+			if(this.path){
+				id = this.path.split('=')[1];
+			}
+			this.$emit('onHandlePlay',id)
+		}
+	}
 };
 </script>
 

@@ -66,8 +66,11 @@ export default {
     },
     methods:{
         onHandlePlay(){
-            this.$emit('onHandlePlay',this.isPlay);
+            this.$emit('onHandlePlay',this.id);
             this.isPlay = !this.isPlay;
+			setTimeout(()=>{
+				this.isPlay = !this.isPlay;
+			},1000)
         }
     },
 	computed:{

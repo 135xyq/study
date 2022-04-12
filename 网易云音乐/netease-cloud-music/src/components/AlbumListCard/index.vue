@@ -77,7 +77,7 @@ export default {
 	methods: {
 		// 点击播放按钮
 		onHandlePlay() {
-			this.$emit("onPlayAlbum", this.path);
+			this.$emit("onPlayAlbum", this.id);
 		},
 	},
 };

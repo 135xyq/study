@@ -1,5 +1,5 @@
 <template>
-	<div class="top-list-container">
+	<div class="top-list-container" v-if="topListData.length > 0">
 		<div class="left-list-container">
 			<div class="title">云音乐特色榜</div>
 			<ul class="list-container">
@@ -88,7 +88,9 @@ export default {
 		this.selectedId = this.topListData[0].id;
         this.playData = await this.getSongs(this.selectedId);
 		this.selectedId = this.$route.query.id;
-		this.playData = await this.getSongs(this.selectedId);
+		if(this.selectedId){
+			this.playData = await this.getSongs(this.selectedId);
+		}
 	},
 	watch: {
 		$route: function (val, oldVal) {

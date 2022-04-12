@@ -35,6 +35,7 @@
 							<router-link
 								class="song-name"
 								:to="'/song?id=' + item.id"
+								:title="item.name"
 							>
 								{{ item.name }}
 							</router-link>
@@ -66,6 +67,7 @@
 								v-for="singer in item.ar"
 								:key="singer.id"
 								:to="'/artist?id=' + singer.id"
+								:title="singer.name"
 							>
 								{{ singer.name }}
 							</router-link>
@@ -74,6 +76,7 @@
 							<router-link
 								class="album"
 								:to="'/album?id=' + item.al.id"
+								:title="item.al.name"
 							>
 								{{ item.al.name }}
 							</router-link>
@@ -87,7 +90,7 @@
 
 <script>
 import { formateSongsTime } from "@/utils/formateSongTime";
-import {getSongDetail} from "@/api/song"
+import { getSongDetail } from "@/api/song";
 import Icon from "@/components/Icon";
 export default {
 	components: {
@@ -112,7 +115,7 @@ export default {
 		// 将歌曲添加到播放列表
 		async onHandleAddPlayList(params) {
 			const res = await getSongDetail(params);
-			this.$store.dispatch('songs/pushPlayList',res.songs[0]);
+			this.$store.dispatch("songs/pushPlayList", res.songs[0]);
 		},
 		formateSongsTime,
 	},
@@ -230,7 +233,9 @@ export default {
 						margin-left: 10px;
 						overflow: hidden;
 						text-overflow: ellipsis;
+						width: 100px;
 						white-space: nowrap;
+						text-overflow: ellipsis;
 						&:hover {
 							text-decoration: underline;
 						}

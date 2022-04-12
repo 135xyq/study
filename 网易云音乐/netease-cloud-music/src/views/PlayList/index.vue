@@ -169,11 +169,18 @@ export default {
 		},
 		// 将歌曲添加到播放列表
 		async onHandleAddPlayList(){
+			let ids = '';
 			if(this.data.privileges) {
 				this.data.privileges.forEach(item=>{
-					// const res = await getSongDetail(item.id);
-					// this.$store.dispatch('songs/pushPlayList',res)
+					ids += item.id + ',';
 				})
+			}
+			if(ids[ids.length - 1] === ','){
+				ids = ids.slice(0,ids.length-1)
+			}
+			const res = await getSongDetail(ids);
+			for(let i = 0 ;i<res.songs.length;i++){
+				this.$store.dispatch('songs/pushPlayList',res.songs[i])
 			}
 		}
 	},
@@ -257,7 +264,7 @@ export default {
 			.item {
 				float: left;
 				border: 1px solid #ccc;
-				padding: 2px 10px;
+				padding: 2px 6px;
 				margin: 0 5px;
 				border-radius: 5px;
 				background-color: #ffffffe0;

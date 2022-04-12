@@ -104,7 +104,7 @@ icon图标
 ##### onHandlePlay
 点击播放触发的事件
 
-参数一：true | false 播放 | 暂停
+参数一：ID    歌单ID 
 
 
 ### TypeHead

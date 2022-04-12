@@ -1,6 +1,6 @@
 <template>
-	<div class="song-table-container">
-		<div class="title">
+	<div class="song-table-container" v-if="songsInfo.length > 0">
+		<div class="title" >
 			<h3 class="title-text">歌曲列表</h3>
 			<span class="song-count">{{ 100 }}首歌</span>
 			<p class="play">
@@ -95,14 +95,6 @@ export default {
 		},
 	},
 	methods: {
-		// 处理多个歌手
-		handleSingers(item) {
-			let str = item.ar[0].name;
-			for (let i = 1; i < item.ar.length; i++) {
-				str += "&" + item.ar[i].name;
-			}
-			return str;
-		},
 	},
 };
 </script>

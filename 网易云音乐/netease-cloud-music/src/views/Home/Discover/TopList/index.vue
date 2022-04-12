@@ -16,9 +16,10 @@
 				>
 					<TopListCard
 						:title="item.name"
-						path="/discover/toplist"
+						:path="'/discover/toplist?id=' + item.id"
 						:imgUrl="item.coverImgUrl"
 						class="top-img"
+						@onHandlePlay = "onHandlePlay"
 					></TopListCard>
 					<ul class="songs-list">
 						<li
@@ -61,6 +62,14 @@ export default {
 			required: true,
 		},
 	},
+	methods:{
+		async onHandlePlay(id){
+			const res = await getPlayListDetail(id);
+			res.tracks.forEach(item=>{
+				this.$store.dispatch('songs/pushPlayList',item);
+			})
+		}
+	}
 };
 </script>
 

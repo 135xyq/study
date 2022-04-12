@@ -14,7 +14,7 @@
 					:subTitle="item.artist.name"
 					:id="item.id"
 					:artistId="item.artist.id"
-					@onPlayAlbum="t"
+					@onPlayAlbum="onPlayAlbum"
 				></AlbumListCard>
 			</li>
 		</ul>
@@ -32,7 +32,7 @@
 					:subTitle="item.artist.name"
 					:id="item.id"
 					:artistId="item.artist.id"
-					@onPlayAlbum="t"
+					@onPlayAlbum="onPlayAlbum"
 				></AlbumListCard>
 			</li>
 		</ul>
@@ -50,7 +50,7 @@
 					:subTitle="item.artist.name"
 					:id="item.id"
 					:artistId="item.artist.id"
-					@onPlayAlbum="t"
+					@onPlayAlbum="onPlayAlbum"
 				></AlbumListCard>
 			</li>
 		</ul>
@@ -68,7 +68,7 @@
 					:subTitle="item.artist.name"
 					:id="item.id"
 					:artistId="item.artist.id"
-					@onPlayAlbum="t"
+					@onPlayAlbum="onPlayAlbum"
 				></AlbumListCard>
 			</li>
 		</ul>
@@ -103,8 +103,8 @@ export default {
 		}
 	},
 	methods: {
-		t(a) {
-			console.log(a);
+		onPlayAlbum(id) {
+			console.log(id);
 		},
 		// 上一张轮播图
 		previous(){

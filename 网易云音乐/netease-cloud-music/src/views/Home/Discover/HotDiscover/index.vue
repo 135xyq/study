@@ -11,6 +11,7 @@
 						:listened="item.playCount"
 						:tipTitle="item.name"
 						:id="item.id"
+						@onHandlePlay = "onHandlePlay"
 					></PlayListCard>
 					<p class="title">
 						<router-link to="">{{ item.name }}</router-link>
@@ -24,6 +25,8 @@
 <script>
 import PlayListCard from "@/components/PlayListCard";
 import TypeHead from "@/components/TypeHead";
+import {getPlayListDetailById} from "@/api/playList"
+import {getSongDetail} from "@/api/song"
 export default {
 	components: {
 		PlayListCard,
@@ -35,6 +38,23 @@ export default {
 			required: true,
 		},
 	},
+	methods:{
+		async onHandlePlay(id){
+			// 将歌曲添加到播放列表
+			const res = await getPlayListDetailById(id);
+			let ids = '';
+			for(let i = 0;i < res.privileges.length;i++){
+				ids += res.privileges[i].id + ','
+			}
+			if(ids[ids.length-1] === ','){
+				ids = ids.slice(0,ids.length-1)
+			}
+			const result = await getSongDetail(ids);
+			result.songs.forEach(item=>{
+				this.$store.dispatch('songs/pushPlayList',item)
+			})
+		}
+	}
 };
 </script>
 
