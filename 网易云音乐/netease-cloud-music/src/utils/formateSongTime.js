@@ -27,3 +27,24 @@ export function formateDate(timestamp) {
     let day = date.getDate();
     return `${year}年${month}月${day}日`
 }
+
+/**
+ * 将03:06.644  转为毫秒数
+ * @param {*} str 
+ */
+export function changeToTimeStamp(str) {
+    if (str) {
+        const minutes = str.split(':')[0]; //分
+        const seconds = str.split(':')[1].split('.')[0]; //秒
+        const ms = str.split(':')[1].split('.')[1]; //毫秒
+        let time = 0;
+        time = +minutes * 60000 + (+seconds) * 1000 + (+ms);
+        return time;
+    } else {
+        return ''
+    }
+
+}
+
+
+changeToTimeStamp('03:06.644')

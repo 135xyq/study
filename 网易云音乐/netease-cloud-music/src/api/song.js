@@ -28,3 +28,18 @@ export async function getSongDetail(ids) {
     });
     return res.data;
 }
+
+/**
+ * 获取歌曲的歌词
+ * @param {*} id 
+ * @returns 
+ */
+export async function getLyric(id) {
+    const res = await ins.get('/lyric', {
+        params: {
+            id,
+        }
+    })
+
+    return res.data.lrc.lyric;
+}

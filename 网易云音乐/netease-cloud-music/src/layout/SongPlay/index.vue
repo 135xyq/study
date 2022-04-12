@@ -130,6 +130,7 @@
 						@onHandleChange="onHandleChange"
 						:close="close"
 						:currentPlayId="id"
+						:currentTime="currentTime * 1000"
 					></PlayList>
 				</div>
 			</div>

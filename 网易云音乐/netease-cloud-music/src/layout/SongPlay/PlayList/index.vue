@@ -3,7 +3,7 @@
 		<div class="top-title">
 			<h4 class="play-title">
 				播放列表
-				<span play-list-count>({{playListData.length}})</span>
+				<span play-list-count>({{ playListData.length }})</span>
 			</h4>
 			<div class="clear-all">
 				<Icon type="shanchu"></Icon>
@@ -17,10 +17,10 @@
 				<ul class="list-container">
 					<li
 						class="list-item"
-                        :class="{'selected':currentPlayId == item.id}"
+						:class="{ selected: currentPlayId == item.id }"
 						v-for="item in playListData"
 						:key="item.id"
-                        @click="onHandleChange(item.id)"
+						@click="onHandleChange(item.id)"
 					>
 						<div class="which-one col"></div>
 						<div class="list-item-name col">{{ item.al.name }}</div>
@@ -43,9 +43,14 @@
 								singer.name
 							}}</span>
 						</div>
-						<div class="list-item-time col">{{formateSongsTime(item.dt)}}</div>
+						<div class="list-item-time col">
+							{{ formateSongsTime(item.dt) }}
+						</div>
 					</li>
 				</ul>
+			</div>
+			<div class="right-lrc">
+				<Lrc :currentTime = "currentTime"></Lrc>
 			</div>
 		</div>
 	</div>
@@ -53,12 +58,14 @@
 
 <script>
 import Icon from "@/components/Icon";
-import  {formateSongsTime} from "@/utils/formateSongTime"
+import Lrc from "@/components/Lrc";
+import { formateSongsTime } from "@/utils/formateSongTime";
 export default {
 	components: {
 		Icon,
+		Lrc,
 	},
-    props:['close','currentPlayId'],
+	props: ["close", "currentPlayId","currentTime"],
 	data() {
 		return {
 			playListData: [], //播放列表歌曲
@@ -66,21 +73,21 @@ export default {
 	},
 	created() {
 		this.playListData = this.$store.state.songs.playList;
-        if(this.$store.state.songs.songUrl.length > 0){
-            this.currentPlayId = this.$store.state.songs.songUrl[0].id
-        }
+		if (this.$store.state.songs.songUrl.length > 0) {
+			this.currentPlayId = this.$store.state.songs.songUrl[0].id;
+		}
 	},
-    methods:{
-        formateSongsTime,
-        // 关闭列表
-        onHandleClose(){
-            this.$emit('onHandleClose',this.close)
-        },
-        // 切换到指定歌曲
-        onHandleChange(id){
-            this.$emit('onHandleChange',id)
-        }
-    }
+	methods: {
+		formateSongsTime,
+		// 关闭列表
+		onHandleClose() {
+			this.$emit("onHandleClose", this.close);
+		},
+		// 切换到指定歌曲
+		onHandleChange(id) {
+			this.$emit("onHandleChange", id);
+		},
+	},
 };
 </script>
 
@@ -166,7 +173,7 @@ export default {
 				.list-item {
 					word-wrap: break-word;
 					word-break: break-word;
-                    text-overflow: ellipsis;
+					text-overflow: ellipsis;
 					float: left;
 					width: 100%;
 					.col {
@@ -207,7 +214,7 @@ export default {
 						}
 					}
 					&.selected {
-                        background: #000;
+						background: #000;
 						.which-one {
 							position: relative;
 							background: #000;
@@ -226,6 +233,17 @@ export default {
 					}
 				}
 			}
+		}
+		.right-lrc {
+			position: absolute;
+			right: 0px;
+			top: 0;
+			z-index: 4;
+			// margin: 21px 0 20px 0;
+			height: 100%;
+			width: 394px;
+			overflow: hidden;
+			background-color: #434343de;
 		}
 	}
 }

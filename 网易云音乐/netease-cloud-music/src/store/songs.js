@@ -1,10 +1,12 @@
-import { getSongUrl, getSongDetail } from "@/api/song";
+import { getSongUrl, getSongDetail, getLyric } from "@/api/song";
+import { changeToTimeStamp } from "@/utils/formateSongTime";
 export default {
     namespaced: true,
     state: {
         songDetail: {}, //歌曲详情
         songUrl: '', //歌曲播放地址
         playList: [], //播放列表
+        songLrc: [], //歌曲的歌词
     },
     mutations: {
         setSongDetail(state, payload) {
@@ -29,12 +31,25 @@ export default {
         popPlayList(state, payload) {
             // 从播放列表中删除指定的歌曲
             state.playList = state.playList.filter(item => item.id !== payload.id);
+        },
+        setSongLrc(state, payload) {
+            state.songLrc = payload;
         }
     },
     actions: {
         async setSongDetail(ctx, id) {
             const res = await getSongDetail(id);
             ctx.commit('setSongDetail', res);
+            const result = await getLyric(id);
+            let arr = result.split('\n'); //将字符串截取为数组
+            arr = arr.map(item => {
+                const temp = item.split(']');
+                return {
+                    time: changeToTimeStamp(temp[0] ? temp[0].slice(1) : ''),
+                    content: temp[1] ? temp[1] : ''
+                }
+            })
+            ctx.commit('setSongLrc', arr)
         },
         async setSongUrl(ctx, id) {
             const res = await getSongUrl(id);
