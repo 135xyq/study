@@ -4,7 +4,7 @@ require('./project');
 require('./category');
 require('./comment');
 require('./article')
-require('./category')
+require('./admin')
 
 // 同步所有模型
 

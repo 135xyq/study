@@ -1,6 +1,15 @@
 {
-  "dependencies": {
-    "express": "^4.17.3",
-    "sequelize": "^6.18.0"
-  }
+    "dependencies": {
+        "express": "^4.17.3",
+        "log4js": "^6.4.4",
+        "md5": "^2.3.0",
+        "mysql2": "^2.3.3",
+        "sequelize": "^6.18.0"
+    },
+    "scripts": {
+        "start": "nodemon  node index"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    }
 }
