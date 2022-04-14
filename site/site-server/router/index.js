@@ -63,3 +63,5 @@ app.use('/api/category', require('./api/category'));
 app.use('/api/project', require('./api/project'));
 // 评论信息
 app.use('/api/comment', require('./api/comment'));
+// 图片上传
+app.use('/api/upload', require('./api/upload'));

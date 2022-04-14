@@ -1,22 +1,14 @@
 // 需要token的API
 module.exports = [{
-        method: 'POST',
-        path: '/api/comments'
-    },
-    {
-        method: 'GET',
-        path: '/api/comments'
-    },
-    {
         method: 'DELETE',
-        path: '/api/comments'
+        path: '/api/comment'
+    },
+    {
+        method: 'PUT',
+        path: '/api/comment'
     },
     {
         method: 'POST',
-        path: '/api/article'
-    },
-    {
-        method: 'GET',
         path: '/api/article'
     },
     {
@@ -24,18 +16,44 @@ module.exports = [{
         path: '/api/article'
     },
     {
-        method: 'put',
+        method: 'PUT',
         path: '/api/article'
     },
     {
         method: 'POST',
         path: '/api/upload'
-    }, {
+    },
+    {
         method: 'GET',
         path: '/api/admin/whoami'
-    }, {
+    },
+    {
         method: 'PUT',
         path: '/api/admin'
-    }
+    },
+    {
+        method: 'PUT',
+        path: '/api/category'
+    },
+    {
+        method: 'POST',
+        path: '/api/category'
+    },
+    {
+        method: 'DELETE',
+        path: '/api/category'
+    },
+    {
+        method: 'PUT',
+        path: '/api/project'
+    },
+    {
+        method: 'POST',
+        path: '/api/project'
+    },
+    {
+        method: 'DELETE',
+        path: '/api/project'
+    },
 
 ]
