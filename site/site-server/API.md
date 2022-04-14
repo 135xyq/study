@@ -271,3 +271,281 @@ deleteCategory(2).then(res => {
     console.log(res)
 })
 ```
+
+### 管理员 admin
+
+#### 新增管理员 addAdmin
+
+
+#### 更改管理员信息  updateAdmin
+
+
+#### 删除管理员  deleteAdmin
+
+
+#### 登录 login
+
+#### 查询  getAdminById
+
+
+
+## API响应
+
+### admin   /api/admin
+
+#### login 管理员登录
+
+method:POST
+
+##### 请求参数
+```js
+{
+    userName:''
+    password:''
+},
+```
+
+##### 响应
+
+
+###### 成功
+
+```json
+{
+    "code": 0,
+    "msg": "",
+    "data": {
+        "id": 4,
+        "userName": "xyq",
+        "password": "e10adc3949ba59abbe56e057f20f883e",
+        "avatar": "d:\\学习\\前端\\前端代码\\study\\site\\site-server\\config\\public\\avatar\\default.avatar.jpeg",
+        "createdAt": "2022-04-14T03:42:01.000Z",
+        "updatedAt": "2022-04-14T03:42:01.000Z",
+        "deletedAt": null
+    }
+}
+```
+
+
+###### 失败
+
+```json
+{
+    "code": 404,
+    "msg": "账号或密码错误"
+}
+```
+
+
+#### whoami 管理员信息
+
+method:GET
+
+##### 响应
+
+
+###### 成功
+
+```json
+{
+    "code": 0,
+    "msg": "",
+    "data": {
+        "id": 4,
+        "userName": "xyq"
+    }
+}
+```
+
+
+###### 失败
+
+```json
+{
+    "code": 403,
+    "msg": "权限不够,禁止操作！"
+}
+```
+
+#### / 修改管理员信息
+
+method:GET
+
+##### 请求参数
+
+```js
+{
+    userName:''
+    password:''
+}
+
+```
+##### 响应
+
+
+###### 成功
+
+```json
+{
+    "code": 0,
+    "msg": "",
+    "data": "修改成功!"
+}
+```
+
+
+###### 失败
+
+```json
+{
+    "code": 0,
+    "msg": "",
+    "data": "修改失败!"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### article  /api/article
+
+#### / 分页获取文章
+
+method: GET
+
+##### 请求参数
+
+```js
+page:'',//页码
+limit：'',//每页多少数据
+
+```
+
+###### 响应
+
+```json
+{
+    "code": 0,
+    "msg": "",
+    "data": {
+        "total": 17,
+        "rows": [
+            {
+                "id": 3,
+                "title": "test2",
+                "content": "非常好2",
+                "readCount": 101,
+                "description": "good1",
+                "thumb": "2.jpg",
+                "createdAt": "2022-04-13T13:50:03.000Z",
+                "updatedAt": "2022-04-13T13:50:03.000Z",
+                "deletedAt": null,
+                "CategoryId": null
+            },
+            {
+                "id": 4,
+                "title": "test3",
+                "content": "非常好3",
+                "readCount": 102,
+                "description": "good2",
+                "thumb": "3.jpg",
+                "createdAt": "2022-04-13T13:50:03.000Z",
+                "updatedAt": "2022-04-13T13:50:03.000Z",
+                "deletedAt": null,
+                "CategoryId": null
+            }
+        ]
+    }
+}
+```
+
+
+
+
+#### / 新增一篇文章
+
+method:POST
+
+##### 请求参数
+
+```js
+title: test20
+content: 非常好20
+readCount: 120
+description: good20
+thumb: 20.jpg
+```
+
+##### 响应
+
+```json
+{
+    "code": 0,
+    "msg": "",
+    "data": {
+        "id": 18,
+        "title": " test20",
+        "content": " 非常好20",
+        "readCount": " 120",
+        "description": " good20",
+        "thumb": " 20.jpg",
+        "updatedAt": "2022-04-14T07:53:43.209Z",
+        "createdAt": "2022-04-14T07:53:43.209Z"
+    }
+}
+```
+
+#### / 修改文章
+
+method:PUT
+
+##### 请求参数
+
+```js
+title: test20
+content: 非常好20
+readCount: 120
+description: good20
+thumb: 20.jpg
+```
+
+##### 响应
+
+###### 成功
+
+
+```json
+{
+    "code": 0,
+    "msg": "",
+    "data": "修改成功"
+}
+```
+###### 失败
+
+
+```json
+{
+    "code": 0,
+    "msg": "",
+    "data": "修改失败"
+}
+```
+
+
+
+### 

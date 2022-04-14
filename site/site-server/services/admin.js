@@ -9,8 +9,12 @@ const md5 = require('md5');
  */
 const addAdmin = async function(adminObj) {
     adminObj.password = md5(adminObj.password);
-    const res = await Admin.create(adminObj);
-    return res.toJSON();
+    try {
+        const res = await Admin.create(adminObj);
+        return res.toJSON();
+    } catch (e) {
+        return JSON.parse(JSON.stringify(e))
+    }
 }
 
 
@@ -57,11 +61,31 @@ const login = async function(userName, password) {
             password
         }
     });
-    return res;
+    return JSON.parse(JSON.stringify(res));
 }
+
+/**
+ * 查找管理员
+ * @param {*} id 
+ * @returns 
+ */
+const getAdminById = async function(id) {
+    return await Admin.findByPk(id);
+}
+
+
+const { admin } = require('../config/config.default')
+
+addAdmin(admin).then(res => {
+    console.log('管理员初始化成功')
+})
+
+
 
 module.exports = {
     addAdmin,
     deleteAdmin,
-    updateAdmin
+    updateAdmin,
+    login,
+    getAdminById,
 }

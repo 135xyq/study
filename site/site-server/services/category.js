@@ -8,8 +8,12 @@ const Category = require('../models/category.js');
  * @returns 
  */
 const addCategory = async function(categoryObj) {
-    const res = await Category.create(categoryObj);
-    return res.toJSON();
+    try {
+        const res = await Category.create(categoryObj);
+        return res.toJSON();
+    } catch (e) {
+        return JSON.parse(JSON.stringify(e))
+    }
 }
 
 

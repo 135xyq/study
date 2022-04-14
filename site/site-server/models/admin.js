@@ -20,6 +20,10 @@ const Admin = sequelize.define('Admin', {
     },
 }, {
     freezeTableName: true,
-    paranoid: true
+    paranoid: true,
+    indexes: [{
+        unique: true,
+        fields: ['userName']
+    }],
 })
 module.exports = Admin;

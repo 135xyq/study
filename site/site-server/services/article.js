@@ -77,15 +77,3 @@ module.exports = {
     selectArticleById,
     updateArticle
 }
-
-
-addArticle({
-    title: 'test',
-    content: '非常好',
-    readCount: 100,
-    description: 'good',
-    categoryId: 1,
-    thumb: 'test.jpg',
-}).then(res => {
-    console.log(res)
-})

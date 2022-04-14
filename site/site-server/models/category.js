@@ -10,6 +10,6 @@ const Category = sequelize.define('Category', {
     },
 }, {
     freezeTableName: true,
-    paranoid: true
+    paranoid: true,
 })
 module.exports = Category;
