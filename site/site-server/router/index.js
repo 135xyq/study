@@ -10,6 +10,10 @@ app.listen(9527, () => {
     console.log('server is listening port 9527')
 })
 
+// 静态资源映射
+const rootPath = path.resolve(__dirname, '../public');
+app.use(express.static(rootPath))
+
 // 处理跨域问题
 
 // const whiteList = ["null", 'http://localhost:9527']; //白名单
@@ -65,3 +69,5 @@ app.use('/api/project', require('./api/project'));
 app.use('/api/comment', require('./api/comment'));
 // 图片上传
 app.use('/api/upload', require('./api/upload'));
+// 关于我信息
+app.use('/api/about', require('./api/about'));

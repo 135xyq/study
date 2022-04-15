@@ -11,5 +11,9 @@ const Category = sequelize.define('Category', {
 }, {
     freezeTableName: true,
     paranoid: true,
+    indexes: [{
+        unique: true,
+        fields: ['name']
+    }],
 })
 module.exports = Category;

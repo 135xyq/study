@@ -55,5 +55,17 @@ module.exports = [{
         method: 'DELETE',
         path: '/api/project'
     },
+    {
+        method: 'PUT',
+        path: '/api/about'
+    },
+    {
+        method: 'POST',
+        path: '/api/about'
+    },
+    {
+        method: 'DELETE',
+        path: '/api/about'
+    },
 
 ]

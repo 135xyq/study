@@ -1,14 +1,21 @@
 const Article = require('../models/article.js');
+const Comment = require('../models/comment');
+const Category = require('../models/category');
 
 // 文章
 
 /**
  * 添加一个文章
  * @param {文章内容} articleObj 
+ * @param {}分类ID
  * @returns 
  */
 const addArticle = async function(articleObj) {
-    const res = await Article.create(articleObj);
+    const res = await Article.create({
+        ...articleObj,
+        // CategoryId,
+        include: [Category]
+    });
     return res.toJSON();
 }
 
@@ -21,7 +28,8 @@ const addArticle = async function(articleObj) {
 const selectArticle = async function(offset = 0, limit = 10) {
     const res = await Article.findAndCountAll({
         offset,
-        limit
+        limit,
+        include: [Comment]
     })
     return {
         total: res.count,

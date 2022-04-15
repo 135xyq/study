@@ -1,6 +1,6 @@
 const Category = require('../models/category.js');
-
-// 分类
+const Article = require('../models/article')
+    // 分类
 
 /**
  * 添加一个分类
@@ -25,7 +25,8 @@ const addCategory = async function(categoryObj) {
 const selectCategory = async function(offset = 0, limit = 10) {
     const res = await Category.findAndCountAll({
         offset,
-        limit
+        limit,
+        include: [Article]
     })
     return {
         total: res.count,

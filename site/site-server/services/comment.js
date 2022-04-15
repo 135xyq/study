@@ -1,4 +1,5 @@
 const Comment = require('../models/comment.js');
+const Article = require('../models/article.js');
 
 // 评论
 
@@ -8,7 +9,10 @@ const Comment = require('../models/comment.js');
  * @returns 
  */
 const addComment = async function(commentObj) {
-    const res = await Comment.create(commentObj);
+    const res = await Comment.create({
+        ...commentObj,
+        include: [Article]
+    });
     return res.toJSON();
 }
 
