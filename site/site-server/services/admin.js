@@ -73,12 +73,6 @@ const getAdminById = async function(id) {
     return await Admin.findByPk(id);
 }
 
-const { admin } = require('../config/config.default')
-addAdmin(admin).then(res => {
-    console.log('管理员初始化成功')
-})
-
-
 
 module.exports = {
     addAdmin,

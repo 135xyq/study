@@ -22,7 +22,8 @@ router.get('/whoami', async(req, res) => {
     const result = await adminServices.getAdminById(req.userId);
     res.send(getMsg.getResult({
         id: result.id,
-        userName: result.userName
+        userName: result.userName,
+        avatar: result.avatar
     }))
 })
 

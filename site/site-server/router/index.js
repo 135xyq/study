@@ -17,23 +17,23 @@ app.use(express.static(rootPath))
 // 处理跨域问题
 
 // const whiteList = ["null", 'http://localhost:9527']; //白名单
-app.use(
-    cors({
-        origin(origin, callback) {
-            if (!origin) {
-                callback(null, '*');
-                return;
-            }
-            // callback(null, origin);
-            // if (whiteList.includes(origin)) {
-            //     callback(null, origin);
-            // } else {
-            //     callback(new Error("not allowed"));
-            // }
-        },
-        credentials: true,
-    })
-);
+// app.use(
+//     cors({
+//         origin(origin, callback) {
+//             if (!origin) {
+//                 callback(null, '*');
+//                 return;
+//             }
+//             // callback(null, origin);
+//             // if (whiteList.includes(origin)) {
+//             //     callback(null, origin);
+//             // } else {
+//             //     callback(new Error("not allowed"));
+//             // }
+//         },
+//         credentials: true,
+//     })
+// );
 
 // 使用cookie-parser处理cookies
 app.use(cookieParser())
