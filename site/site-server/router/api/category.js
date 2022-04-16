@@ -12,6 +12,11 @@ router.get('/', async(req, res) => {
     res.send(getMsg.getResult(result))
 })
 
+// 根据ID获取分类
+router.get('/:id', async(req, res) => {
+
+})
+
 
 // 新增一个分类
 

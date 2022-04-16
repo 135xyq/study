@@ -1,5 +1,6 @@
 const express = require('express');
 const articleServices = require('../../services/article');
+const categoryServices = require('../../services/category');
 const getMsg = require('../getSendResult');
 
 const router = express.Router();
@@ -9,6 +10,10 @@ router.get('/', async(req, res) => {
     const page = req.query.page ? req.query.page : 1;
     const limit = req.query.limit ? req.query.limit : 10;
     const result = await articleServices.selectArticle(parseInt((page - 1) * limit), parseInt(limit));
+    // result.rows
+    for (let i = 0; i < result.rows.length; i++) {
+        result.rows[i].category = await categoryServices.selectCategoryById(result.rows[i].CategoryId);
+    }
     res.send(getMsg.getResult(result))
 })
 

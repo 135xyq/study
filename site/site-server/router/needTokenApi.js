@@ -67,5 +67,9 @@ module.exports = [{
         method: 'DELETE',
         path: '/api/about/:id'
     },
+    {
+        method: 'POST',
+        path: '/api/admin/logout'
+    }
 
 ]
