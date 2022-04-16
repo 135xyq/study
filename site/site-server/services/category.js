@@ -18,29 +18,32 @@ const addCategory = async function(categoryObj) {
 
 
 /**
- * 分页查询分类
- * @param {*} offset 每页多少数据量
- * @param {*} limit 第几页
+ * 查询分类包含文章
  */
-const selectCategory = async function(offset = 0, limit = 10) {
-    const res = await Category.findAndCountAll({
-        offset,
-        limit,
+const selectCategory = async function() {
+    const res = await Category.findAll({
         include: [Article]
     })
-    return {
-        total: res.count,
-        rows: JSON.parse(JSON.stringify(res.rows)),
-    };
+    return res
 }
 
 /**
- * 通过ID查询分类
+ * 查询分类不包含文章
+ */
+const getCategory = async function() {
+    const res = await Category.findAll()
+    return res;
+}
+
+/**
+ * 通过ID查询分类包括文章
  * @param {*} id 分类ID
  * @returns 
  */
 const selectCategoryById = async function(id) {
-    const res = await Category.findByPk(id);
+    const res = await Category.findByPk(id, {
+        include: [Article]
+    });
     if (!res) {
         // 查不到数据
         return null;
@@ -80,5 +83,6 @@ module.exports = {
     selectCategory,
     selectCategoryById,
     updateCategory,
-    deleteCategory
+    deleteCategory,
+    getCategory
 }

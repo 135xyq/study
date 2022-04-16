@@ -4,18 +4,19 @@ const getMsg = require('../getSendResult');
 
 const router = express.Router();
 
-//分页获取分类
-router.get('/', async(req, res) => {
-    const page = req.query.page ? req.query.page : 1;
-    const limit = req.query.limit ? req.query.limit : 10;
-    const result = await categoryServices.selectCategory(parseInt((page - 1) * limit), parseInt(limit));
+//根据ID获取分类文章
+router.get('/:id', async(req, res) => {
+    const result = await categoryServices.selectCategoryById(req.params.id);
     res.send(getMsg.getResult(result))
 })
 
-// 根据ID获取分类
-router.get('/:id', async(req, res) => {
 
+// 获取全部分类
+router.get('/', async(req, res) => {
+    const result = await categoryServices.getCategory();
+    res.send(getMsg.getResult(result))
 })
+
 
 
 // 新增一个分类
