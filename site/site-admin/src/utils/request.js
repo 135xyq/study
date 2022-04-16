@@ -42,16 +42,18 @@ service.interceptors.response.use(
      * You can also judge the status by HTTP Status Code
      */
     response => {
-        return response.data
 
-        // if the custom code is not 20000, it is judged as an error.
-        // if (res.code !== 0) {
-        //     Message({
-        //         message: res.message || 'Error',
-        //         type: 'error',
-        //         duration: 5 * 1000
-        //     })
-        // }
+        // if the custom code is 0, it is judged as an error.
+        if (response.data.code !== 0) {
+            Message({
+                message: response.data.msg || 'Error',
+                type: 'error',
+                duration: 3 * 1000
+            })
+        } else {
+            return response.data
+        }
+
 
         //   // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
         //   if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
