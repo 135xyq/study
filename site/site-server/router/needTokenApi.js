@@ -5,7 +5,7 @@ module.exports = [{
     },
     {
         method: 'PUT',
-        path: '/api/comment'
+        path: '/api/comment/:id'
     },
     {
         method: 'POST',
@@ -13,11 +13,11 @@ module.exports = [{
     },
     {
         method: 'DELETE',
-        path: '/api/article'
+        path: '/api/article/:id'
     },
     {
         method: 'PUT',
-        path: '/api/article'
+        path: '/api/article/:id'
     },
     {
         method: 'POST',
@@ -33,7 +33,7 @@ module.exports = [{
     },
     {
         method: 'PUT',
-        path: '/api/category'
+        path: '/api/category/:id'
     },
     {
         method: 'POST',
@@ -41,11 +41,11 @@ module.exports = [{
     },
     {
         method: 'DELETE',
-        path: '/api/category'
+        path: '/api/category/:id'
     },
     {
         method: 'PUT',
-        path: '/api/project'
+        path: '/api/project/:id'
     },
     {
         method: 'POST',
@@ -53,11 +53,11 @@ module.exports = [{
     },
     {
         method: 'DELETE',
-        path: '/api/project'
+        path: '/api/project/:id'
     },
     {
         method: 'PUT',
-        path: '/api/about'
+        path: '/api/about/:id'
     },
     {
         method: 'POST',
@@ -65,7 +65,7 @@ module.exports = [{
     },
     {
         method: 'DELETE',
-        path: '/api/about'
+        path: '/api/about/:id'
     },
 
 ]

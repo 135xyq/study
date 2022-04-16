@@ -42,4 +42,12 @@ router.put('/', async(req, res) => {
     ))
 })
 
+//退出登录
+
+router.post('/logout', async(req, res) => {
+    // console.log(jwt)
+    jwt.publish(res, {}, -1)
+    res.send(getMsg.getResult('退出成功！'));
+})
+
 module.exports = router;
