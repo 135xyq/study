@@ -127,7 +127,7 @@ export const constantRoutes = [{
                 path: "projectadd",
                 component: () =>
                     import ("@/views/projectEdit/index"),
-                name: "ProjectAdd",
+                name: "ProjectEdit",
                 meta: {
                     title: "项目编辑",
                     icon: "el-icon-circle-plus-outline",
