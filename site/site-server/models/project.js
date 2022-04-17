@@ -30,7 +30,7 @@ const Project = sequelize.define('Project', {
     // 排序
     order: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        defaultValue: 1
     },
 }, {
     freezeTableName: true,

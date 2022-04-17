@@ -135,6 +135,19 @@ export const constantRoutes = [{
             },
         ],
     },
+    {
+        path: "/category",
+        component: Layout,
+        redirect: "/category/index",
+        children: [{
+            path: "index",
+            name: "Category",
+            component: () =>
+                import ("@/views/category/index"),
+            meta: { title: "分类", icon: "el-icon-more" },
+        }, ]
+
+    },
 
     // 404 page must be placed at the end !!!
     { path: "*", redirect: "/404", hidden: true },

@@ -60,6 +60,8 @@
 					label="分类"
 					width="100"
 					align="center"
+          sortable
+          prop="category"
 					header-align="center"
 				>
 					<template slot-scope="scope">

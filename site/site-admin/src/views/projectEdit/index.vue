@@ -129,7 +129,7 @@ export default {
 		},
 		// 取消修改
 		onHandleReturn() {
-			this.$router.push({ name: "project" });
+			this.$router.push({ name: "Project" });
 		},
 		// 保存新增项目
 		async onHandleSave() {

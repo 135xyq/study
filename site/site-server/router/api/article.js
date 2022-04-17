@@ -21,9 +21,10 @@ router.get('/', async(req, res) => {
 // 新增一个文章
 
 router.post('/', async(req, res) => {
-    const articlesObj = req.body;
+    const articleObj = req.body;
+    // console.log(articleObj, req.body)
     // const CategoryId = req.body.CategoryId;
-    const result = await articleServices.addArticle(articlesObj);
+    const result = await articleServices.addArticle(articleObj);
     res.send(getMsg.getResult(result));
 })
 
