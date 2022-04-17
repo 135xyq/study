@@ -5,7 +5,7 @@ import request from "@/utils/request";
  * @param {number} limit 每页数量
  * @returns
  */
-export async function getArticle(page, limit) {
+export async function getArticle(page = 1, limit = 10) {
     const res = await request.get('/api/article', {
         params: {
             page,
