@@ -20,7 +20,7 @@
 					></el-input>
 				</el-form-item>
 				<el-form-item label="文章内容" prop="content">
-					<mavon-editor v-model="articleData.content" />
+					<mavon-editor ref="md" v-model="articleData.content"  @imgAdd="imgAdd"/>
 				</el-form-item>
 				<el-form-item label="文章分类" prop="CategoryId">
 					<el-col :span="4">
@@ -87,6 +87,7 @@
 import { getCategory, addCategory } from "@/api/category";
 import { addArticle, editArticle } from "@/api/article";
 import { myBaseUrl } from "@/config/url";
+import request from "@/utils/request"
 export default {
 	data() {
 		return {
@@ -231,6 +232,23 @@ export default {
 				}
 			}
 		},
+    // 上传文章中的图片
+    imgAdd(pos, $file){
+            // 第一步.将图片上传到服务器.
+           var formdata = new FormData();
+           formdata.append('img', $file);
+           request({
+               url: '/api/upload',
+               method: 'post',
+               data: formdata,
+               headers: { 'Content-Type': 'multipart/form-data' },
+           }).then((res) => {
+               // 第二步.将返回的url替换到文本原位置![...](0) -> ![...](url)
+               // $vm.$img2Url 详情见本页末尾
+               let url  = myBaseUrl + res.data.url;
+               this.$refs.md.$img2Url(pos, url);
+           })
+        }
 	},
 };
 </script>
