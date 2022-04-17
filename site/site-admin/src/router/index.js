@@ -78,7 +78,7 @@ export const constantRoutes = [{
         redirect: "/article/articleList",
         name: "Article",
         meta: {
-            title: "文章",
+            title: "文章管理",
             icon: "el-icon-s-grid",
         },
         children: [{
@@ -110,7 +110,7 @@ export const constantRoutes = [{
         redirect: "/project/projectlist",
         name: "Project",
         meta: {
-            title: "项目",
+            title: "项目管理",
             icon: "el-icon-s-operation",
         },
         children: [{
@@ -136,6 +136,18 @@ export const constantRoutes = [{
         ],
     },
     {
+        path: "/comment",
+        component: Layout,
+        redirect: "/comment/index",
+        children: [{
+            path: "index",
+            name: "Comment",
+            component: () =>
+                import ("@/views/comment/index"),
+            meta: { title: "评论管理", icon: "el-icon-s-comment" },
+        }, ]
+    },
+    {
         path: "/category",
         component: Layout,
         redirect: "/category/index",
@@ -144,9 +156,8 @@ export const constantRoutes = [{
             name: "Category",
             component: () =>
                 import ("@/views/category/index"),
-            meta: { title: "分类", icon: "el-icon-more" },
+            meta: { title: "分类管理", icon: "el-icon-more" },
         }, ]
-
     },
 
     // 404 page must be placed at the end !!!
