@@ -1,8 +1,13 @@
 <template>
 	<div class="article-edit-container">
 		<div class="content">
-			<el-form ref="form" label-width="80px" :rules="rules" :model="articleData">
-				<el-form-item label="文章标题" prop='title'>
+			<el-form
+				ref="form"
+				label-width="80px"
+				:rules="rules"
+				:model="articleData"
+			>
+				<el-form-item label="文章标题" prop="title">
 					<el-input
 						v-model="articleData.title"
 						:style="{ width: '500px' }"
@@ -18,18 +23,34 @@
 					<mavon-editor v-model="articleData.content" />
 				</el-form-item>
 				<el-form-item label="文章分类" prop="CategoryId">
-					<el-select
-						v-model="articleData.CategoryId"
-						placeholder="请选择"
-					>
-						<el-option
-							v-for="item in categoryData"
-							:key="item.id"
-							:label="item.name"
-							:value="item.id"
+					<el-col :span="4">
+						<el-select
+							v-model="articleData.CategoryId"
+							placeholder="请选择"
 						>
-						</el-option>
-					</el-select>
+							<el-option
+								v-for="item in categoryData"
+								:key="item.id"
+								:label="item.name"
+								:value="item.id"
+							>
+							</el-option>
+						</el-select>
+					</el-col>
+					<el-col class="line" :span="2">-</el-col>
+					<el-col :span="6">
+						<el-input
+							placeholder="新增分类"
+							v-model="newCategory"
+							clearable
+						>
+						</el-input>
+					</el-col>
+					<el-col :span="2">
+						<el-button type="primary" @click="onHandleAddCategory">
+							确定
+						</el-button>
+					</el-col>
 				</el-form-item>
 				<el-form-item label="预览图"
 					><el-upload
@@ -63,7 +84,7 @@
 </template>
 
 <script>
-import { getCategory } from "@/api/category";
+import { getCategory,addCategory } from "@/api/category";
 import { addArticle, editArticle } from "@/api/article";
 import { myBaseUrl } from "@/config/url";
 export default {
@@ -76,20 +97,30 @@ export default {
 			dialogImageUrl: "", //预览图片地址
 			imgList: [], //上传的图片列表
 			isEdit: false, //是否是修改文章
-      rules:{
-        title:[{
-           required: true, message: '请输入文章标题', trigger: 'blur',
-        }],
-        description:[{
-           required: true, message: '请输入文章描述', trigger: 'blur',
-        }],
-        content:[{
-           required: true, message: '请输入文章内容', trigger: 'blur',
-        }],
-        CategoryId:[{
-           required: true, message: '请选择文章分类', trigger: 'change',
-        }],
-      },//表单验证规则
+			newCategory: "", //新增分类
+			rules: {
+				title: [
+					{
+						required: true,
+						message: "请输入文章标题",
+						trigger: "blur",
+					},
+				],
+				description: [
+					{
+						required: true,
+						message: "请输入文章描述",
+						trigger: "blur",
+					},
+				],
+				content: [
+					{
+						required: true,
+						message: "请输入文章内容",
+						trigger: "blur",
+					},
+				],
+			}, //表单验证规则
 		};
 	},
 	created() {
@@ -119,10 +150,10 @@ export default {
 		handlePictureCardSuccess(res, file, fileList) {
 			this.articleData.thumb = res.data.url;
 		},
-    // 取消修改
-    onHandleReturn(){
-				this.$router.push({ name: "Article" });
-    },
+		// 取消修改
+		onHandleReturn() {
+			this.$router.push({ name: "Article" });
+		},
 		// 保存新增文章
 		async onHandleSave() {
 			this.$refs.upload.submit();
@@ -154,6 +185,42 @@ export default {
 				}
 				this.$router.push({ name: "Article" });
 			}, 2000);
+		},
+		// 新增一个分类
+		async onHandleAddCategory() {
+			if (this.newCategory.trim().length === 0) {
+				this.$message({
+					type: "error",
+					message: "分类名不能为空！",
+				});
+        return;
+			}
+      let flag = false;//是否已经存在
+			this.categoryData.forEach((item) => {
+				if (item.name === this.newCategory.trim()) {
+					this.$message({
+						type: "error",
+						message: "分类已存在！",
+					});
+          flag = true;
+          return;
+				}
+			});
+      if(!flag){
+        // 不存在
+        const res = await addCategory({
+          name:this.newCategory.trim()
+        });
+        if(res.code == '0'){
+          this.$message({
+            type:'success',
+            message:res.data.name + '  新增成功!'
+          })
+          this.__initCategory();
+        }
+      }
+
+
 		},
 	},
 };

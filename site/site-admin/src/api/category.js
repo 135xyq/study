@@ -1,5 +1,10 @@
 import request from '@/utils/request'
 
+/**
+ * 新增一个分类
+ * @param {*} 分类数据
+ * @returns
+ */
 export function addCategory(data) {
     return request({
         url: '/api/category',
