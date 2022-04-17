@@ -26,3 +26,24 @@ export async function deleteProject(id) {
     const res = await request.delete('/api/project/' + id);
     return res.data;
 }
+
+/**
+ *根据项目id修改项目
+ * @param {*} id
+ * @param {*} projectObj
+ * @returns
+ */
+export async function editProject(id, projectObj) {
+    const res = await request.put('/api/project/' + id, projectObj);
+    return res.data;
+}
+
+/**
+ * 新增一个项目
+ * @param {*} projectObj
+ * @returns
+ */
+export async function addProject(projectObj) {
+    const res = await request.post('/api/project', projectObj);
+    return res.data;
+}

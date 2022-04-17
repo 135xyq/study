@@ -209,14 +209,14 @@ export default {
 						message: res,
 						duration: 2000,
 					});
+          this.__initProjectData(); //重新获取数据
 				})
 				.catch(() => {
 					this.$message({
 						type: "info",
 						message: "已取消删除",
 					});
-				});
-			this.__initProjectData(); //重新获取数据
+				})
 		},
 	},
 };
