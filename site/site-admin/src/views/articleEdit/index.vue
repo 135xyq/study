@@ -84,7 +84,7 @@
 </template>
 
 <script>
-import { getCategory,addCategory } from "@/api/category";
+import { getCategory, addCategory } from "@/api/category";
 import { addArticle, editArticle } from "@/api/article";
 import { myBaseUrl } from "@/config/url";
 export default {
@@ -156,35 +156,46 @@ export default {
 		},
 		// 保存新增文章
 		async onHandleSave() {
-			this.$refs.upload.submit();
-			setTimeout(async () => {
-				// 判断评论数和阅读量如果有则继续使用
-				if (!this.articleData.thumb) {
+			this.$refs.form.validate(async (valid) => {
+				if (valid) {
+					// 校验通过
+					this.$refs.upload.submit();
+					setTimeout(async () => {
+						// 判断图片是否上传成功
+						if (!this.articleData.thumb) {
+							this.$message({
+								type: "error",
+								message: "请重新选择图片！",
+							});
+							return;
+						}
+						// 修改文章
+						if (this.isEdit) {
+							const res = await editArticle(
+								this.articleId,
+								this.articleData
+							);
+							this.$message({
+								type: "success",
+								message: res,
+							});
+						} else {
+							const res = await addArticle(this.articleData);
+							this.$message({
+								type: "success",
+								message: "添加成功！",
+							});
+						}
+						this.$router.push({ name: "Article" });
+					}, 2000);
+				} else {
 					this.$message({
 						type: "error",
-						message: "请重新选择图片！",
+						message: "请填写完整的数据！",
 					});
-					return;
+					return false;
 				}
-				// 修改文章
-				if (this.isEdit) {
-					const res = await editArticle(
-						this.articleId,
-						this.articleData
-					);
-					this.$message({
-						type: "success",
-						message: res,
-					});
-				} else {
-					const res = await addArticle(this.articleData);
-					this.$message({
-						type: "success",
-						message: "添加成功！",
-					});
-				}
-				this.$router.push({ name: "Article" });
-			}, 2000);
+			});
 		},
 		// 新增一个分类
 		async onHandleAddCategory() {
@@ -193,34 +204,32 @@ export default {
 					type: "error",
 					message: "分类名不能为空！",
 				});
-        return;
+				return;
 			}
-      let flag = false;//是否已经存在
+			let flag = false; //是否已经存在
 			this.categoryData.forEach((item) => {
 				if (item.name === this.newCategory.trim()) {
 					this.$message({
 						type: "error",
 						message: "分类已存在！",
 					});
-          flag = true;
-          return;
+					flag = true;
+					return;
 				}
 			});
-      if(!flag){
-        // 不存在
-        const res = await addCategory({
-          name:this.newCategory.trim()
-        });
-        if(res.code == '0'){
-          this.$message({
-            type:'success',
-            message:res.data.name + '  新增成功!'
-          })
-          this.__initCategory();
-        }
-      }
-
-
+			if (!flag) {
+				// 不存在
+				const res = await addCategory({
+					name: this.newCategory.trim(),
+				});
+				if (res.code == "0") {
+					this.$message({
+						type: "success",
+						message: res.data.name + "  新增成功!",
+					});
+					this.__initCategory();
+				}
+			}
 		},
 	},
 };
