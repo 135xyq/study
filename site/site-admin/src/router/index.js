@@ -92,16 +92,6 @@ export const constantRoutes = [{
                 },
             },
             {
-                path: "articleadd",
-                component: () =>
-                    import ("@/views/articleAdd/index"),
-                name: "ArticleAdd",
-                meta: {
-                    title: "文章新增",
-                    icon: "el-icon-circle-plus-outline",
-                },
-            },
-            {
                 path: "articleedit",
                 component: () =>
                     import ("@/views/articleEdit/index"),

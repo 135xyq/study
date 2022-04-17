@@ -1,7 +1,7 @@
 <template>
 	<div class="article-list-container">
 		<div class="add-article">
-			<router-link :to="{name:'ArticleAdd'}">
+			<router-link :to="{name:'ArticleEdit'}">
 				<el-button type="success">新增文章</el-button>
 			</router-link>
 		</div>
@@ -183,7 +183,8 @@ export default {
       const res = await articleApi.deleteArticle(articleId);//删除
       this.$message({
         type:'success',
-        message:res
+        message:res,
+duration:2000
       });
 	  this.__initArticleData();//重新获取数据
     }

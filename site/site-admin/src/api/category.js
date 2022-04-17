@@ -12,9 +12,7 @@ export function addCategory(data) {
  * 获取分类
  * @returns
  */
-export function getCategory() {
-    return request({
-        url: '/api/category',
-        method: 'GET'
-    })
+export async function getCategory() {
+    const res = await request.get('/api/category');
+    return res.data;
 }
