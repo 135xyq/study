@@ -43,7 +43,9 @@ const selectArticle = async function(offset = 0, limit = 10) {
  * @returns 
  */
 const selectArticleById = async function(id) {
-    const res = await Article.findByPk(id);
+    const res = await Article.findByPk(id, {
+        include: [Comment]
+    });
     if (!res) {
         // 查不到数据
         return null;
@@ -78,10 +80,29 @@ const deleteArticle = async function(id) {
     })
 }
 
+
+/**
+ * 分页查询文章值查询缩略图、标题和描述
+ * @param {*} offset 每页多少数据量
+ * @param {*} limit 第几页
+ */
+const selectArticleInfo = async function(offset = 0, limit = 10) {
+    const res = await Article.findAndCountAll({
+        offset,
+        limit,
+        attributes: ['readCount', 'title', 'description', 'id', 'thumb', 'createdAt', 'CategoryId'],
+    })
+    return {
+        total: res.count,
+        rows: JSON.parse(JSON.stringify(res.rows)),
+    };
+}
+
 module.exports = {
     addArticle,
     deleteArticle,
     selectArticle,
     selectArticleById,
-    updateArticle
+    updateArticle,
+    selectArticleInfo
 }

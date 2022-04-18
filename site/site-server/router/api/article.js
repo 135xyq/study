@@ -17,6 +17,14 @@ router.get('/', async(req, res) => {
     res.send(getMsg.getResult(result))
 })
 
+//分页获取文章不获取文章内容
+router.get('/info', async(req, res) => {
+    const page = req.query.page ? req.query.page : 1;
+    const limit = req.query.limit ? req.query.limit : 10;
+    const result = await articleServices.selectArticleInfo(parseInt((page - 1) * limit), parseInt(limit));
+    res.send(getMsg.getResult(result))
+})
+
 
 // 新增一个文章
 
@@ -54,6 +62,12 @@ router.put('/:id', async(req, res) => {
         data = '修改失败'
     }
     res.send(getMsg.getResult(data));
+})
+
+router.get('/:id', async(req, res) => {
+    const id = req.params.id;
+    const result = await articleServices.selectArticleById(id);
+    res.send(getMsg.getResult(result));
 })
 
 
