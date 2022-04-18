@@ -1,34 +1,43 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/project">project</router-link>
-      <router-link to="/article">article</router-link>
-      <router-link to="/all">all</router-link>
-    </div>
-    <router-view/>
+  <div id="app" class="app-container">
+    <Layout>
+      <template #left>
+        <div class="aside">
+          <SiteAside />
+        </div>
+      </template>
+      <template #default>
+        <router-view/>
+      </template>
+    </Layout>
+    <ToTop></ToTop>
   </div>
 </template>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+<script>
+import Layout from "@/components/Layout";
+import SiteAside from "@/components/SiteAside"
+import ToTop from '@/components/ToTop';
+export default {
+  components:{
+    Layout,
+    SiteAside,
+    ToTop
   }
+}
+</script>
+
+<style lang="less" scoped>
+@import "~@/styles/mixin.less";
+.app-container{
+    .self-full(fixed);
+    .aside{
+        width:250px;
+        height:100%;
+    }
+    .main{
+        // background-color:red;
+        height:100%;
+    }
 }
 </style>
