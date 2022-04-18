@@ -21,7 +21,8 @@ router.get('/', async(req, res) => {
 router.get('/info', async(req, res) => {
     const page = req.query.page ? req.query.page : 1;
     const limit = req.query.limit ? req.query.limit : 10;
-    const result = await articleServices.selectArticleInfo(parseInt((page - 1) * limit), parseInt(limit));
+    const categoryId = req.query.categoryId ? req.query.categoryId : -1;
+    const result = await articleServices.selectArticleInfo(parseInt((page - 1) * limit), parseInt(limit), categoryId);
     res.send(getMsg.getResult(result))
 })
 

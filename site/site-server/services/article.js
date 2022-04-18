@@ -86,10 +86,16 @@ const deleteArticle = async function(id) {
  * @param {*} offset 每页多少数据量
  * @param {*} limit 第几页
  */
-const selectArticleInfo = async function(offset = 0, limit = 10) {
+const selectArticleInfo = async function(offset = 0, limit = 10, categoryId = '-1') {
+    let where = {}
+    if (categoryId != '-1') {
+        where = { CategoryId: categoryId }
+    }
     const res = await Article.findAndCountAll({
         offset,
         limit,
+        where,
+        include: ['Category'],
         attributes: ['readCount', 'title', 'description', 'id', 'thumb', 'createdAt', 'CategoryId'],
     })
     return {
