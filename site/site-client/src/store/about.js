@@ -6,7 +6,6 @@ export default {
     state: {
         data: {}, //个人数据
         icp: '筱-123456', //公安备案号
-        myBaseUrl: 'http://127.0.0.1:9527/'
     },
     mutations: {
         getData(state, payload) {

@@ -15,12 +15,18 @@
 import Avatar from "@/components/Avatar";
 import Menu from "./Menu";
 import { mapState } from "vuex";
+import {myBaseUrl} from '@/config'
 export default {
 	components: {
 		Avatar,
 		Menu,
 	},
-  computed:mapState('about',['data','icp','myBaseUrl'])
+	data(){
+		return{
+			myBaseUrl
+		}
+	},
+  computed:mapState('about',['data','icp'])
 };
 </script>
 
