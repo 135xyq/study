@@ -37,6 +37,7 @@
 					<div class="aside">
 						<span>日期：{{ formateDate(item.createdAt) }}</span>
 						<span>浏览：{{ item.readCount }}</span>
+						分类：
 						<RouterLink
 							:to="{
 								name: 'CategoryArticle',
@@ -45,7 +46,7 @@
 								},
 							}"
 						>
-							{{ item.Category.name }}
+						{{ item.Category.name }}
 						</RouterLink>
 					</div>
 					<div class="desc">

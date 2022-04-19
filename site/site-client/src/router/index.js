@@ -53,7 +53,7 @@ const routes = [{
         name: "ArticleDetail",
         path: "/article/:id",
         component: () =>
-            import ( /* webpackChunkName: "blogdetail" */ "@/views/Article/ArticleDetail/index"),
+            import ( /* webpackChunkName: "blogdetail" */ "@/views/Article/Detail/index"),
         meta: {
             title: "文章详情",
         },
