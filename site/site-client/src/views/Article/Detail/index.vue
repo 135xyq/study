@@ -2,12 +2,11 @@
   <Layout>
     <div ref="mainContainer" class="main-container" v-vLoading="isLoading">
       <ArticleDetail :article="data" v-if="data" />
-      <!-- <ArticleComment v-if="!isLoading" /> -->
+      <ArticleComment v-if="!isLoading" :comments="data.Comments" />
     </div>
     <template #right>
       <div class="right-container" v-vLoading="isLoading">
-        <!-- <ArticleTOC :toc="data.toc" v-if="data" /> -->
-        目录
+        <CategoryList></CategoryList>
       </div>
     </template>
   </Layout>
@@ -19,15 +18,17 @@ import { getArticleDetail } from "@/api/article";
 import Layout from "@/components/Layout";
 import ArticleDetail from "../ArticleDetail";
 // import ArticleTOC from "./components/ArticleTOC";
-// import ArticleComment from "./components/ArticleComment";
+import ArticleComment from "../ArticleComments";
 import mainScroll from "@/mixins/mainScroll.js";
 import titleController  from "@/utils/controlTitle";
+import CategoryList from '../CategoryList'
 export default {
   components: {
     Layout,
     ArticleDetail,
     // ArticleTOC,
-    // ArticleComment,
+    ArticleComment,
+    CategoryList
   },
   mixins: [fetchData(null), mainScroll("mainContainer")],
   methods: {

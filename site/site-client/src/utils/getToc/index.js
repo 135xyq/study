@@ -47,10 +47,6 @@ function transfer(flatArr) {
 
 
 function tran(result) {
-    console.log(toc)
-        // console.log(toc())
-        // result = toc(result).json;
-    console.log(result)
     let info = {};
     info.toc = transfer(result);
 

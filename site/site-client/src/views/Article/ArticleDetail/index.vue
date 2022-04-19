@@ -26,7 +26,7 @@ import "highlight.js/styles/github.css";
 import "@/styles/markdown.css";
 import {marked} from 'marked'
 import tran from "@/utils/getToc";
-// import toc from "markdown-toc";
+import toc from "markdown-toc";
 export default {
   props: {
     article: {
@@ -46,7 +46,6 @@ export default {
     contentHtml(){
       if(this.article.content){
         const md = marked(this.article.content);
-        // console.log(tran(this.article.content))
         return md;
       }
       return null;
