@@ -20,10 +20,6 @@ module.exports = [{
         path: '/api/article/:id'
     },
     {
-        method: 'POST',
-        path: '/api/upload'
-    },
-    {
         method: 'GET',
         path: '/api/admin/whoami'
     },
@@ -68,8 +64,20 @@ module.exports = [{
         path: '/api/about/:id'
     },
     {
+        method: 'PUT',
+        path: '/api/daily/:id'
+    },
+    {
+        method: 'POST',
+        path: '/api/daily'
+    },
+    {
+        method: 'DELETE',
+        path: '/api/daily/:id'
+    },
+    {
         method: 'POST',
         path: '/api/admin/logout'
-    }
+    },
 
 ]

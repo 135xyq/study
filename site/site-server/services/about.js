@@ -1,4 +1,4 @@
-const About = require('../models/About.js');
+const About = require('../models/about.js');
 
 
 // 关于我

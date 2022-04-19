@@ -71,3 +71,5 @@ app.use('/api/comment', require('./api/comment'));
 app.use('/api/upload', require('./api/upload'));
 // 关于我信息
 app.use('/api/about', require('./api/about'));
+// 每日一句信息
+app.use('/api/daily', require('./api/daily'));

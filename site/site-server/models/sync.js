@@ -7,6 +7,7 @@ require('./comment');
 require('./article');
 require('./admin');
 require('./about');
+require('./daily')
 
 // 同步所有模型
 

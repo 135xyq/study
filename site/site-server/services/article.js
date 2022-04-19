@@ -44,7 +44,7 @@ const selectArticle = async function(offset = 0, limit = 10) {
  */
 const selectArticleById = async function(id) {
     const res = await Article.findByPk(id, {
-        include: [Comment]
+        include: [Comment, Category]
     });
     if (!res) {
         // 查不到数据
