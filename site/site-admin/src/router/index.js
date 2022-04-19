@@ -159,6 +159,18 @@ export const constantRoutes = [{
             meta: { title: "分类管理", icon: "el-icon-more" },
         }, ]
     },
+    {
+        path: "/daily",
+        component: Layout,
+        redirect: "/daily/index",
+        children: [{
+            path: "index",
+            name: "Daily",
+            component: () =>
+                import ("@/views/daily/index"),
+            meta: { title: "每日一句", icon: "el-icon-date" },
+        }, ]
+    },
 
     // 404 page must be placed at the end !!!
     { path: "*", redirect: "/404", hidden: true },
