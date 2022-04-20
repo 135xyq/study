@@ -40,7 +40,7 @@ export default {
 	},
 	computed: {
 		mainLength() {
-			return (this.items.length - 1) * 200 + 130;
+			return (this.items.length - 1) * 200 + 600;
 		},
 	},
 	created() {

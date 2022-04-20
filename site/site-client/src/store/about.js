@@ -5,7 +5,6 @@ export default {
     namespaced: true,
     state: {
         data: {}, //个人数据
-        icp: '筱-123456', //公安备案号
     },
     mutations: {
         getData(state, payload) {
