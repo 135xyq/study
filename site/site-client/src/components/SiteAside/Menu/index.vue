@@ -44,8 +44,8 @@ export default {
           exact: true,
         },
         {
-          name: "All",
-          title: "归档",
+          name: "Daily",
+          title: "每日一句",
           icon: "chat",
           exact: true,
         },

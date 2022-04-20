@@ -23,12 +23,12 @@ const routes = [{
         }
     },
     {
-        path: '/all',
-        name: 'All',
+        path: '/daily',
+        name: 'Daily',
         component: () =>
-            import ('../views/All/index'),
+            import ('../views/Daily/index'),
         meta: {
-            title: '归档'
+            title: '每日一句'
         }
     },
     {
