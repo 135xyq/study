@@ -54,7 +54,7 @@ app.use(require('./erroeMiddleware'));
 app.use(require('./logMiddleware'));
 
 // 使用中间件来验证token的合法性
-app.use(require('./tokenMIddleware'));
+app.use(require('./tokenMiddleware'));
 
 
 // 管理员信息

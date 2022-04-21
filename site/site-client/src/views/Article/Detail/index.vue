@@ -68,8 +68,8 @@ export default {
 }
 .right-container {
   width: 300px;
+  box-sizing: border-box;
   height: 100%;
-  overflow-y: scroll;
   box-sizing: border-box;
   position: relative;
   padding: 20px;

@@ -161,7 +161,7 @@ export default {
 		},
 		// 头像上传成功的钩子函数
 		handleAvatarSuccess(res, file, fileList) {
-			this.self.avatar = res.data.url;
+			this.selfData.avatar = res.data.url;
 		},
     // 背景图片放大
 		handleBgPreview(file) {
