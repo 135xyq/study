@@ -34,6 +34,22 @@ const router = sequelize.define('About', {
         type: DataTypes.TEXT,
         allowNull: false,
     },
+    // icp
+    icp: {
+        type: DataTypes.STRING,
+    },
+    //banner
+    banner: {
+        type: DataTypes.STRING,
+    },
+    // 个人标语
+    bannerText: {
+        type: DataTypes.TEXT,
+    },
+    // 简历
+    resume: {
+        type: DataTypes.STRING,
+    },
 }, {
     freezeTableName: true,
     paranoid: true,

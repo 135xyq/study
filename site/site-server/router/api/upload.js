@@ -25,7 +25,7 @@ const storage = multer.diskStorage({
 
 function fileFilter(req, file, cb) {
     // 允许上传的文件类型
-    const whiteList = ['.jpg', '.png', '.jpeg', '.gif'];
+    const whiteList = ['.jpg', '.png', '.jpeg', '.gif', '.pdf', '.doc'];
     if (whiteList.includes(path.extname(file.originalname))) {
         cb(null, true);
     } else {
