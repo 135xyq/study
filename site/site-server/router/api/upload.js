@@ -37,7 +37,7 @@ function fileFilter(req, file, cb) {
 const upload = multer({
     storage,
     limits: {
-        fileSize: 2000 * 1024,
+        fileSize: 20000 * 1024,
     }, //限制文件大小
     fileFilter
 })

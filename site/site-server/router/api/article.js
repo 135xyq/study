@@ -65,9 +65,13 @@ router.put('/:id', async(req, res) => {
     res.send(getMsg.getResult(data));
 })
 
+// 根据ID获取文章
 router.get('/:id', async(req, res) => {
     const id = req.params.id;
     const result = await articleServices.selectArticleById(id);
+    const rest = await articleServices.updateArticle(id, {
+        readCount: result.readCount + 1,
+    })
     res.send(getMsg.getResult(result));
 })
 
