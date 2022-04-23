@@ -7,7 +7,7 @@
 		</div>
 		<p class="title">谢永强的个人空间</p>
 		<Menu />
-		<div class="footer">{{icp}}</div>
+		<div class="footer">{{data.icp}}</div>
 	</div>
 </template>
 
@@ -15,7 +15,7 @@
 import Avatar from "@/components/Avatar";
 import Menu from "./Menu";
 import { mapState } from "vuex";
-import {myBaseUrl,icp} from '@/config'
+import {myBaseUrl} from '@/config'
 export default {
 	components: {
 		Avatar,
@@ -24,8 +24,6 @@ export default {
 	data(){
 		return{
 			myBaseUrl,
-			icp
-			
 		}
 	},
   computed:mapState('about',['data'])

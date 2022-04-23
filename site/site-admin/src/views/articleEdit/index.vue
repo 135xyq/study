@@ -57,7 +57,6 @@
 						ref="upload"
 						action="/api/upload"
 						list-type="picture-card"
-						:auto-upload="false"
 						:limit="1"
 						:file-list="imgList"
 						accept="image"
@@ -160,8 +159,6 @@ export default {
 			this.$refs.form.validate(async (valid) => {
 				if (valid) {
 					// 校验通过
-					this.$refs.upload.submit();
-					setTimeout(async () => {
 						// 判断图片是否上传成功
 						if (!this.articleData.thumb) {
 							this.$message({
@@ -188,7 +185,6 @@ export default {
 							});
 						}
 						this.$router.push({ name: "Article" });
-					}, 2000);
 				} else {
 					this.$message({
 						type: "error",
