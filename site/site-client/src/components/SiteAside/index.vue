@@ -7,7 +7,7 @@
 		</div>
 		<p class="title">谢永强的个人空间</p>
 		<Menu />
-		<div class="footer">{{data.icp}}</div>
+		<a class="footer" href="https://beian.miit.gov.cn/" target="_blank">{{data.icp}}</a>
 	</div>
 </template>
 
@@ -61,6 +61,7 @@ export default {
 	font-size: 14px;
 	color: #ccc;
 	margin-top: 100px;
+	display: block;
 }
 .title {
 	font-size: 1.2em;
