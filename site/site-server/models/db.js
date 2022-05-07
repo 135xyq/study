@@ -1,8 +1,9 @@
 const { Sequelize } = require("sequelize");
+const { db } = require('../config/db.default')
 const log = require('../logger');
-const sequelize = new Sequelize("site", "root", "xyq2386152296", {
+const sequelize = new Sequelize(db.dbName, db.dbUser, db.dbPassword, {
     host: 'localhost',
-    dialect: 'mysql',
+    dialect: db.dbType,
     logging: (msg) => {
         log.sqlLogger.info(msg);
     }
