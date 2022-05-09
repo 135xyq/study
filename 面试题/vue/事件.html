@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+</head>
+
+<body>
+    <div class="app">
+        <p>{{number}}</p>
+        <button v-on:click="addNumber('a',$event)">加一</button>
+        <input type="text" placeholder="请输入...." v-on:keyup.enter="keyEnter" @keydown.enter="keyDown">
+        <input type="text" placeholder="按下Ctrl + d 清空" @keydown.ctrl.d="keyClear">
+        <button @click.prevent.right="mouseRight" @click.left="clickLeft" @click.middle="clickMiddle">鼠标事件</button>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '.app',
+            data: {
+                number: 0,
+            },
+            methods: {
+                addNumber(a, e) {
+                    console.log(a, e)
+                },
+                keyEnter() {
+                    console.log('keyEnter')
+                },
+                keyDown() {
+                    console.log('keyDown')
+                },
+                keyClear() {
+                    console.log('keyClear');
+                },
+                mouseRight() {
+                    console.log('mouseRight')
+                },
+                clickLeft() {
+                    console.log('clickLeft')
+                },
+                clickMiddle() {
+                    console.log('clickMiddle')
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>
