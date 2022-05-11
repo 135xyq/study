@@ -19,3 +19,5 @@ let text = "cat, bat, sat, fat";
 let pattern = /.at/g;
 let matches = text.match(pattern);
 console.log(matches); // "cat"
+
+console.log(String(null))
