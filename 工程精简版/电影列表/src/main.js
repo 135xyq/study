@@ -1,4 +1,4 @@
 import './global.less';
 
-// import './cover';
+import './cover';
 import ('./movie');
