@@ -1,12 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Tick from "./components/Tick";
-
+import BallList from "./components/Ball/BallList";
 
 const container = document.getElementById("root");
 
 const root = ReactDOM.createRoot(container);
 
-root.render((<Tick number={10}></Tick>))
+root.render((<BallList ></BallList>))
 
 
