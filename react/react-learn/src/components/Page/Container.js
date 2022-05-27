@@ -18,23 +18,18 @@ export default class Container extends Component {
 		this.setState({
 			currentPage: page,
 		});
-        this.fetchData();
+		this.fetchData();
 	};
 
 	async fetchData() {
 		const result = await fetch(
-			`https://yapi.duyiedu.com/mock/72/api/movies?page=${this.state.currentPage}&size=${this.state.count}`,
-			{
-				method: "GET",
-				mode: "no-cors",
-			}
+			`https://study.duyiedu.com/api/movies?page=${this.state.currentPage}&size=${this.state.count}`
 		)
-			.then((resp) =>{
-                return resp.json();
-            })
 			.then((resp) => {
-                return resp.data
-            });
+				return resp.json();
+			})
+			.then((resp) => resp.data);
+		console.log(result);
 		this.setState({
 			total: result.movieTotal,
 			movieList: result.movieList,
