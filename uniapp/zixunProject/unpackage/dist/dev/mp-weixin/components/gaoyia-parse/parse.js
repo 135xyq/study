@@ -179,7 +179,7 @@ var wxParseTemplate = function wxParseTemplate() {__webpack_require__.e(/*! requ
 
     noData: {
       type: String,
-      default: '<div style="color: red;">数据不能为空</div>' },
+      default: '' },
 
     startHandler: {
       type: Function,
