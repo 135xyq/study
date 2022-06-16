@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Test from "./components/common/ThreeLayout/Test"
+import FormTest from "./components/FormTest";
 export default class App extends Component {
 	render() {
-		return <Test></Test>
+		return <FormTest></FormTest>
 	}
 }
