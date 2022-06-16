@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Test from "./components/common/Modal/Test.js";
+import App from "./App";
 
 const container = document.getElementById("root");
 
 const root = ReactDOM.createRoot(container);
 
 
-root.render(<Test></Test>);
+root.render(<App></App>);
 
 
