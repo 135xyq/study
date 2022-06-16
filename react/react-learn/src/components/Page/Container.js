@@ -23,7 +23,12 @@ export default class Container extends Component {
 
 	async fetchData() {
 		const result = await fetch(
-			`https://study.duyiedu.com/api/movies?page=${this.state.currentPage}&size=${this.state.count}`
+			`https://study.duyiedu.com/api/movies?page=${this.state.currentPage}&size=${this.state.count}`,
+			{
+				"mode": "cors",
+				"Access-Control-Allow-Origin": "*",
+				"Access-Control-Allow-Credentials": true,
+			}
 		)
 			.then((resp) => {
 				return resp.json();
