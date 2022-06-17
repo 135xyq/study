@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import FormTest from "./components/FormTest";
+import Test from '../src/components/common/FormCom/Select/Test';
 export default class App extends Component {
 	render() {
-		return <FormTest></FormTest>
+		return <Test></Test>
 	}
 }
