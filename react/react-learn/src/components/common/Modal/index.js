@@ -2,12 +2,8 @@ import React, { Component } from "react";
 import "./index.css";
 
 export default class Modal extends Component {
-	constructor(props) {
-        super(props);
-        this.selfData = {
-            bg:"rgba(0,0,0,0.5)",
-        }
-        this.finalData = Object.assign({},this.selfData,this.props);
+    static defaultProps = {
+        bg:"rgba(0,0,0,0.5)",
     }
 
 	render() {
