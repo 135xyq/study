@@ -1,11 +1,17 @@
 import React, { Component } from "react";
-import PropTypeUse from "./components/PropTypeUse";
+import WithTest  from "./HOC/WithTestHoc";
+import HocTestA from "./components/HocTestA";
+import HocTestB from "./components/HocTestB";
+
+const TestA = WithTest(HocTestA);
+const TestB = WithTest(HocTestB)
 export default class App extends Component {
 	render() {
-		return <PropTypeUse a="1" b={1} c d={[1, 2, <h1></h1>]} e={{
-			name:"xyq",
-			age:21,
-			sex:"女"
-		}}></PropTypeUse>;
+		return (
+			<>
+			<TestA></TestA>
+			<TestB></TestB>
+			</>
+		)
 	}
 }
