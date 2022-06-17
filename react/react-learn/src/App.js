@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import Test from '../src/components/common/FormCom/Select/Test';
+import ClassDefaultProps from './components/ClassDefaultProps';
 export default class App extends Component {
 	render() {
-		return <Test></Test>
+		return <ClassDefaultProps></ClassDefaultProps>
 	}
 }
+
