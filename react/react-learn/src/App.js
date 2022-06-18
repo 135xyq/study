@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import Test from "./components/common/FormComHoc/Select/Test"
+import Ref from "./components/进阶/Ref"
 
 export default class App extends Component {
 	render() {
 		return (
-			<Test>
-			</Test>
+			<Ref>
+			</Ref>
 		)
 	}
 }
