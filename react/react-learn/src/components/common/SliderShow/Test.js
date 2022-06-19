@@ -13,7 +13,7 @@ export default class Test extends Component {
   render() {
     return (
       <div>
-        <SliderShow imgSrc={imgs} isShowDots={false}></SliderShow>
+        <SliderShow imgSrc={imgs} isShowDots={false} ></SliderShow>
       </div>
     )
   }

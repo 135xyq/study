@@ -112,15 +112,18 @@ export default class SliderShow extends Component {
 					imgHeight={this.props.height}
 					duration={this.props.duration}
 				></ImgContainer>
+				{this.props.isShowArrow && (
 					<SwitchArrow
 						onChange={this.onHandleArrowSwitch}
 					></SwitchArrow>
+				)}
+				{this.props.isShowDots && (
 					<SwitchDots
 						total={this.props.imgSrc.length}
 						currentIndex={this.state.currentIndex}
 						onChange={this.switchTo}
 					></SwitchDots>
-                {false}
+				)}
 			</div>
 		);
 	}
