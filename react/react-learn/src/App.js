@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import Ref from "./components/进阶/Ref"
+import Test from "./components/common/SliderShow/Test"
 
 export default class App extends Component {
 	render() {
 		return (
-			<Ref>
-			</Ref>
+			<Test>
+			</Test>
 		)
 	}
 }
