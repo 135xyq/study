@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Test from "./components/common/SliderShow/Test"
+import Test from "./components/进阶/ForwardRef/Test"
 
 export default class App extends Component {
 	render() {
