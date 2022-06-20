@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import OldApi from './OldApi'
+import NewApi from './NewApi'
 
 export default class Test extends Component {
   render() {
     return (
       <div>
-        <OldApi></OldApi>
+        <NewApi></NewApi>
       </div>
     )
   }
