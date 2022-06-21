@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Test from "./components/进阶/Context/Test"
+import Test from "./components/进阶/RenderProps/Test"
 
 export default class App extends Component {
 	render() {
