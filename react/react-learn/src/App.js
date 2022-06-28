@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import EffectHookTest from "./Hook/Effect Hook"
+import TestMyHooks from "./Hook/自定义Hook"
 
 export default class App extends Component {
   render() {
 	return (
-	  <div><EffectHookTest/></div>
+	  <div><TestMyHooks/></div>
 	)
   }
 }
