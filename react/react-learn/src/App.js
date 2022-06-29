@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import RefHookTest from "./Hook/Ref Hook"
+import Test from "./Hook/ImperativeHandle Hook/Test"
 
 
 export default class App extends Component {
   render() {
 	return (
 	  <div>
-		<RefHookTest/>
+		<Test/>
 	  </div>
 	)
   }
