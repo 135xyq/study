@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Test from "./Hook/ImperativeHandle Hook/Test"
+import Test from "./动画/Transition"
 
 
 export default class App extends Component {
