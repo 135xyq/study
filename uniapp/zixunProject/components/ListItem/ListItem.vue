@@ -1,11 +1,16 @@
 <template>
   <view class="list-scroll-container">
-    <scroll-view scroll-y="true" class="list-scroll" @scrolltolower="loadmore">
-      <view>
-        <ListCard :item="item" v-for="item in articleList" :key="item._id" @saveHistory="$emit('saveHistory')"></ListCard>
-      </view>
-      <uni-load-more v-if="isShowLoading && (articleList.length === 0 || articleList.length> 7)" :status="loadData.loading || 'loading'"></uni-load-more>
-    </scroll-view>
+	  <view class="no-article" v-if="articleList.length===0">
+	  	 暂无文章
+	  </view>
+    <view class="" v-if="articleList.length>0">
+    	<scroll-view scroll-y="true" class="list-scroll" @scrolltolower="loadmore">
+    	  <view>
+    	    <ListCard :item="item" v-for="item in articleList" :key="item._id" @saveHistory="$emit('saveHistory')"></ListCard>
+    	  </view>
+    	  <uni-load-more v-if="isShowLoading && (articleList.length === 0 || articleList.length> 7)" :status="loadData.loading || 'loading'"></uni-load-more>
+    	</scroll-view>
+    </view>
   </view>
 </template>
 
@@ -41,6 +46,9 @@ export default {
       this.$emit('loadmore')
     }
   },
+  created(){
+	  console.log(this.articleList)
+  }
 }
 </script>
 
@@ -52,5 +60,10 @@ export default {
     height: 100%;
     box-sizing: border-box;
   }
+}
+.no-article{
+	text-align: center;
+	margin-top: 20px;
+	color: #3e3939;
 }
 </style>

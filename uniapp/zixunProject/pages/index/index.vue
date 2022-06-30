@@ -33,8 +33,10 @@ export default {
   },
   computed: {
     labelList () {
+		// console.log(this.userInfo)
       if (this.userInfo) {
         this.activeIndex = 0;
+		// console.log(this.$store.state.labelList)
         return [...this.$store.state.labelList.slice(0,1),...this.$store.state.labelList.filter(item => this.userInfo.label_ids.includes(item._id))]
       } else {
         return this.$store.state.labelList

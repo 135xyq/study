@@ -16,6 +16,7 @@ export default {
   },
   created () {
     this.labelList.length && this._getArticleList(this.activeIndex)
+
   },
   data () {
     return {
@@ -81,6 +82,7 @@ export default {
       let oldList = this.articleData[currentIndex] || []
       oldList.push(...articleList)
       this.loadData[currentIndex].total = total
+	  // console.log(this.articleData,currentIndex)
       this.$set(this.articleData, currentIndex, oldList)
       // this.$forceUpdate()
     }
