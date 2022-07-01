@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
-import Test from "./动画/Transition"
+import { BrowserRouter as Router } from "react-router-dom";
+import TestStaticRouterComp from "./路由/基础路由组件/index"
 
 
 export default class App extends Component {
   render() {
 	return (
-	  <div>
-		<Test/>
-	  </div>
+		<Router>
+		<TestStaticRouterComp/>
+		</Router>
 	)
   }
 }
