@@ -1,4 +1,4 @@
-import {createStore} from "redux";
+import createStore from "../my_redux/createStore";
 
 /**
  * reducer本质上就是一个普通的函数
@@ -18,13 +18,19 @@ function reducer(state,action){
 
 const store = createStore(reducer,10);
 
+console.log(store)
+
 console.log(store.getState());
+
+const unListener = store.subscribe(()=>{
+    console.log("32423")
+})
 
 store.dispatch({type:"increase"});
 
 console.log(store.getState());
 store.dispatch({type:"increase"});
-
+unListener()
 console.log(store.getState());
 store.dispatch({type:"increase"});
 
