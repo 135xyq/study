@@ -34,4 +34,9 @@
   height: 100%;
   box-sizing: border-box;
 }
+.no-article {
+  text-align: center;
+  margin-top: 20px;
+  color: #3e3939;
+}
 

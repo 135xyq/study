@@ -151,6 +151,11 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
+//
 var _default2 =
 {
   name: "ListItem",
@@ -181,7 +186,11 @@ var _default2 =
   methods: {
     loadmore: function loadmore() {// 监听触底事件，通知articleLIs组件到底状态
       this.$emit('loadmore');
-    } } };exports.default = _default2;
+    } },
+
+  created: function created() {
+    console.log(this.articleList);
+  } };exports.default = _default2;
 
 /***/ }),
 

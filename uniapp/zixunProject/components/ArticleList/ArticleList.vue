@@ -16,6 +16,7 @@ export default {
   },
   created () {
     this.labelList.length && this._getArticleList(this.activeIndex)
+	console.log(this.articleData);
 
   },
   data () {

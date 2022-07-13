@@ -155,6 +155,8 @@ var _default =
 
   created: function created() {
     this.labelList.length && this._getArticleList(this.activeIndex);
+    console.log(this.articleData);
+
   },
   data: function data() {
     return {
@@ -220,6 +222,7 @@ var _default =
                 oldList = _this.articleData[currentIndex] || [];
                 oldList.push.apply(oldList, _toConsumableArray(articleList));
                 _this.loadData[currentIndex].total = total;
+                // console.log(this.articleData,currentIndex)
                 _this.$set(_this.articleData, currentIndex, oldList);
                 // this.$forceUpdate()
               case 10:case "end":return _context.stop();}}}, _callee);}))();} } };exports.default = _default;
