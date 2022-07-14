@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware } from "redux";
 import logger from "redux-logger";
-import thunk from "redux-thunk";
+// import thunk from "redux-thunk";
+import thunk from "./thunk"
 
 function reducer(state, action) {
 	switch (action.type) {
