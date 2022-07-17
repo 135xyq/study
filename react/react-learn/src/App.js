@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import "./redux/使用中间件/redux-actions/test.js";
+import Test from "./react中文网";
 export default class App extends Component {
 	render() {
 		return (
-			<></>
+			<><Test></Test></>
 		);
 	}
 }
