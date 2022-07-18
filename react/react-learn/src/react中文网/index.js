@@ -1,7 +1,7 @@
-import Test from "./表单";
+import Test from "./Context";
 
 export default function Test1(){
     return <>
-    <Test t="w"></Test>
+    <Test></Test>
     </>
 }
