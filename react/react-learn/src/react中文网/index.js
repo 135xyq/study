@@ -1,7 +1,7 @@
-import State from "./components/State";
+import Test from "./事件处理/test";
 
-export default function Test(){
+export default function Test1(){
     return <>
-    <State></State>
+    <Test t="w"></Test>
     </>
 }
