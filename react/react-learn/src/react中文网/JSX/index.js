@@ -1,25 +1,16 @@
-//测试原生创建元素
-import { createElement } from "react";
-
-export default function Jsx() {
-	const div = createElement(
-		"div",
-		{
-			style: {
-				color: "#fff",
-				backgroundColor: "green",
-			},
-		},
-        4,
-        createElement(
-            "p",
-            {
-                style:{
-                    color:"red"
-                }
-            },
-            '你好'
-        )
+export default function Test() {
+	return (
+		<div className="test-bool">
+			<div />
+			<div></div>
+			<div>{false}</div>
+			<div>{null}</div>
+			<div>{undefined}</div>
+			<div>{true}</div>
+			<div>{String(false)}</div>
+			<div>{String(null)}</div>
+			<div>{String(undefined)}</div>
+			<div>{String(true)}</div>
+		</div>
 	);
-	return div;
 }

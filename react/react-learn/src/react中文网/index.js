@@ -1,4 +1,4 @@
-import Test from "./高阶组件";
+import Test from "./JSX";
 
 export default function Test1(){
     return <>
