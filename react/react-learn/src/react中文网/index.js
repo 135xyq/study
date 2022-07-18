@@ -1,7 +1,7 @@
-import Jsx from "./components/JSX";
+import State from "./components/State";
 
 export default function Test(){
     return <>
-    <Jsx></Jsx>
+    <State></State>
     </>
 }
