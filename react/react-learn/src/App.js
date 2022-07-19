@@ -1,9 +1,12 @@
 import React, { Component } from "react";
-import Test from "./react中文网";
+import {Provider} from "react-redux"
+import Test from "./react-redux";
+import store from "./redux/使用中间件/redux-saga"
+
 export default class App extends Component {
 	render() {
 		return (
-			<><div id="test"></div><Test></Test></>
+			<Provider store={store}><Test></Test></Provider>
 		);
 	}
 }
