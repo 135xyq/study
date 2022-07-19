@@ -1,4 +1,4 @@
-import Test from "./Hook/State Hook";
+import Test from "./Hook/Effect Hook";
 
 export default function Test1(){
     return <>
