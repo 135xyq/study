@@ -1,4 +1,4 @@
-import Test from "./Profiler";
+import Test from "./Refs";
 
 export default function Test1(){
     return <>
