@@ -1,4 +1,4 @@
-import Test from "./Refs";
+import Test from "./PropTypes";
 
 export default function Test1(){
     return <>
