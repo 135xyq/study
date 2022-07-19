@@ -1,4 +1,4 @@
-import Test from "./Portals";
+import Test from "./Profiler";
 
 export default function Test1(){
     return <>
