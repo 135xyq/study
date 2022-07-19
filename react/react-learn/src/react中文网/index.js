@@ -1,4 +1,4 @@
-import Test from "./非受控组件";
+import Test from "./合成事件";
 
 export default function Test1(){
     return <>
