@@ -1,10 +1,5 @@
 import store from "../index"
+const selectCounterValue = state => state.number
 
-import { increase,decrease } from "../action/number"
-
-store.dispatch(increase())
-store.dispatch(increase())
-console.log(store.getState())
-store.dispatch(increase())
-store.dispatch(decrease())
-console.log(store.getState())
+const currentValue = selectCounterValue(store.getState())
+console.log(currentValue)
