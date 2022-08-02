@@ -2,7 +2,6 @@ import React from 'react'
 import { Routes,Route ,useLocation} from 'react-router-dom'
 import Login from "./pages/Login"
 import Admin from "./pages/Admin"
-
 export default function Test() {
   let location = useLocation ();
   console.log(location);

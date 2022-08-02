@@ -1,10 +1,14 @@
 import {combineReducers} from "redux"
 import number from "./number"
 import student from "./student"
+import { connectRouter } from 'connected-react-router'
 
 
 
-export default combineReducers({
+const  reducer =  (history) => combineReducers({
     number,
-    student
+    student,
+    router:connectRouter(history)
 })
+
+export default reducer;
