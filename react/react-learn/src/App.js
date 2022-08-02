@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import {BrowserRouter} from "react-router-dom";
-import Installation from "./React Router官网/Installation"
+import QuickStart from "./React Router官网/Quick Start"
 
 export default class App extends Component {
 	render() {
 		return (
 			<BrowserRouter >
-				<Installation></Installation>
+				<QuickStart></QuickStart>
 			</BrowserRouter>
 		);
 	}
