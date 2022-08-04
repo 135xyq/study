@@ -16,5 +16,6 @@ export default {
             title:"欢迎",
             wrappers:["@/components/setPageTitle.js"]
         },
-    ]
+    ],
+    
 }

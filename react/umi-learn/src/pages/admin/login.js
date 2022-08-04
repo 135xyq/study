@@ -1,5 +1,9 @@
 import React,{useRef,useEffect} from 'react';
 import {useNavigate } from "umi";
+import "./login.css"
+import style from "./login.css"
+
+console.log(style)
 
 function Login(props) {
     const loginId = useRef();
@@ -15,8 +19,8 @@ function Login(props) {
     }
 
     return (
-        <div>
-            <p>
+        <div className='container'>
+            <p className={style.username}>
                 用户名：<input type="text" ref={loginId} />
             </p>
             <p>
