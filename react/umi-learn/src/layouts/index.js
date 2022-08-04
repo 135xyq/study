@@ -1,10 +1,13 @@
 import React from 'react';
-import {Outlet} from "umi"
+import {Outlet,Link} from "umi"
+import style from "./index.less"
 function Index(props) {
     return (
-        <div>
-            <div>
-                <p>布局顶部</p>
+        <div> 
+            <div className={style.head}>
+                <Link className={style.link} to="/">首页</Link>
+                <Link className={style.link} to="/login">登录页</Link>
+                <Link className={style.link} to="/welcome">欢迎页</Link>
             </div>
             <Outlet></Outlet>
             <div>

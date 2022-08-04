@@ -17,5 +17,10 @@ export default {
             wrappers:["@/components/setPageTitle.js"]
         },
     ],
-    
+    proxy:{
+        "/api":{
+            "target":"http://xyq135.top/",
+            "changeOrigin":true
+        }
+    }
 }
