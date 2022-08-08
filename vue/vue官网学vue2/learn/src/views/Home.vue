@@ -151,15 +151,31 @@
 		<div>Props</div>
 		<hr>
 		<Article :article="{title:'你好',content:'这是一个欢快的事情！'}"></Article>
+		<hr>
+		<div>插槽</div>
+		<hr>
+		<TestSlot>
+			<template v-slot:header>
+				插槽的头部
+			</template>
+			<template #main>
+				插槽的主区域
+			</template>
+			<template v-slot:foot>
+				插槽的底部
+			</template>
+		</TestSlot>
 	</div>
 </template>
 
 <script>
 import Article from "@/components/Article";
+import TestSlot from "@/components/TestSlot";
 export default {
 	name: "Home",
 	components:{
-		Article
+		Article,
+		TestSlot
 	},
 	data() {
 		return {
