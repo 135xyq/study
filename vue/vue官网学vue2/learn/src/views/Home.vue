@@ -1,6 +1,9 @@
 <template>
 	<div class="home">
 		<img alt="Vue logo" src="../assets/logo.png" />
+		<hr>
+		<div>模板语法</div>
+		<hr>
 		<div class="title">
 			<span v-bind:title="'title'">提示标题</span>
 		</div>
@@ -18,6 +21,17 @@
 		<div>
 			<a v-bind:[testAttribute]="'/about'">about</a>
 		</div>
+		<hr>
+		<div>计算属性和侦听器</div>
+		<hr>
+		<div class="computed">
+			<p>computed:{{reverseMessage}}</p>
+		</div>
+		<div class="name">
+			<p>姓名(直接使用data)：{{firstName}}{{lastName}}</p>
+			<p>姓名(使用computed)：{{fullName}}</p>
+			<button @click="onHandleComputedName">点击使用computed的set修改姓名</button>
+		</div>
 	</div>
 </template>
 
@@ -29,7 +43,9 @@ export default {
 			message:'hello world!',
 			inputVal:"test",
 			onceData:"不会改变的数据",
-			testAttribute:"href"
+			testAttribute:"href",
+			firstName:'谢',
+			lastName:"永强"
 		}
 	},
 	beforeCreate(){
@@ -38,6 +54,25 @@ export default {
 	methods:{
 		onHandleReverseMessage(){
 			this.message = this.message.split('').reverse().join('');
+		},
+		// 点击修改姓名
+		onHandleComputedName(){
+			this.fullName === "谢永强" ? this.fullName = "黄 双珍" : this.fullName = "谢 永强"
+		}
+	},
+	computed:{
+		reverseMessage(){
+			return this.message.split('').reverse().join('');
+		},
+		fullName:{
+			get(){
+				return this.firstName+ this.lastName;
+			},
+			set(val){
+				var nameArr = val.split(' ');
+				this.firstName = nameArr[0];
+				this.lastName = nameArr[1];
+			}
 		}
 	}
 };
