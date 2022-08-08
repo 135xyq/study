@@ -147,12 +147,20 @@
 				<option value="C">C</option>
 			</select>
 		</div>
+		<hr>
+		<div>Props</div>
+		<hr>
+		<Article :article="{title:'你好',content:'这是一个欢快的事情！'}"></Article>
 	</div>
 </template>
 
 <script>
+import Article from "@/components/Article";
 export default {
 	name: "Home",
+	components:{
+		Article
+	},
 	data() {
 		return {
 			message: "hello world!",
