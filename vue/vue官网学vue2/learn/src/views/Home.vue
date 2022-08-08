@@ -165,6 +165,12 @@
 				插槽的底部
 			</template>
 		</TestSlot>
+		<hr>
+		<div>自定义指令</div>
+		<hr>
+		<div>
+			<input type="text" v-focus>
+		</div>
 	</div>
 </template>
 
@@ -198,6 +204,9 @@ export default {
 	},
 	beforeCreate() {
 		// console.log(this)
+	},
+	created(){
+		// console.log(this,this.$root)
 	},
 	methods: {
 		onHandleReverseMessage() {
