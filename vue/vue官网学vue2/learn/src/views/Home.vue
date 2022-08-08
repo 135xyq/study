@@ -68,21 +68,84 @@
 		<div>事件处理</div>
 		<hr />
 		<div>
-			<p>被点击的次数： {{count}}</p>
-			<button @click="count+=1">加一</button>
+			<p>被点击的次数： {{ count }}</p>
+			<button @click="count += 1">加一</button>
 		</div>
 		<div>
-			<p>当前时间：{{currentTime}}</p>
+			<p>当前时间：{{ currentTime }}</p>
 			<button @click="onHandleUpdateTime($event)">更新当前时间</button>
 		</div>
 		<div>
 			<p>点击enter提交</p>
-			<input type="text" v-model="eventMessage" @keyup.enter="onHandleAlertInputText">
+			<input
+				type="text"
+				v-model="eventMessage"
+				@keyup.enter="onHandleAlertInputText"
+			/>
 		</div>
 		<div>
 			<p @click.left="onHandleMouseClick('左键')">鼠标左键被点击</p>
-			<p @click.right.prevent="onHandleMouseClick('右键')">鼠标右键被点击</p>
+			<p @click.right.prevent="onHandleMouseClick('右键')">
+				鼠标右键被点击
+			</p>
 			<p @click.middle="onHandleMouseClick('中间键')">鼠标中间键被点击</p>
+		</div>
+		<hr />
+		<div>表单输入绑定</div>
+		<hr />
+		<div>
+			<p>输入框：{{ formInput }}</p>
+			<input
+				type="text"
+				v-model="formInput"
+				minlength="2"
+				maxlength="4"
+			/>
+		</div>
+		<div>
+			<p>单选框：{{ formRadio }}</p>
+
+			<label>
+				<input type="radio" v-model="formRadio" value="One" />One
+			</label>
+			<br />
+			<label
+				><input type="radio" v-model="formRadio" value="Two" />Two
+			</label>
+		</div>
+		<div>
+			<p>多选框： {{ formChecked }}</p>
+			<label>
+				<input
+					type="checkbox"
+					v-model="formChecked"
+					value="football"
+				/>football
+			</label>
+			<br />
+			<label
+				><input
+					type="checkbox"
+					v-model="formChecked"
+					value="basketball"
+				/>basketball
+			</label>
+			<br />
+			<label
+				><input
+					type="checkbox"
+					v-model="formChecked"
+					value="swimming"
+				/>swimming
+			</label>
+		</div>
+		<div>
+			<p>选择框： {{formSelect}}</p>
+			<select v-model="formSelect">
+				<option value="A">A</option>
+				<option value="B">B</option>
+				<option value="C">C</option>
+			</select>
 		</div>
 	</div>
 </template>
@@ -100,9 +163,13 @@ export default {
 			lastName: "永强",
 			hasError: false,
 			isShowIf: false,
-			count:0,
-			currentTime:new Date(),
-			eventMessage:''
+			count: 0,
+			currentTime: new Date(),
+			eventMessage: "",
+			formInput: "",
+			formRadio: "",
+			formChecked: [],
+			formSelect:''
 		};
 	},
 	beforeCreate() {
@@ -127,18 +194,18 @@ export default {
 			this.isShowIf = !this.isShowIf;
 		},
 		// 更新当前时间
-		onHandleUpdateTime(e){
+		onHandleUpdateTime(e) {
 			this.currentTime = new Date();
-			console.log(e)
+			console.log(e);
 		},
 		//弹出输入内容
-		onHandleAlertInputText(){
-			alert(this.eventMessage)
+		onHandleAlertInputText() {
+			alert(this.eventMessage);
 		},
 		// 处理鼠标按键被点击
-		onHandleMouseClick(key){
-			alert(key+ " 被点击了！")
-		}
+		onHandleMouseClick(key) {
+			alert(key + " 被点击了！");
+		},
 	},
 	computed: {
 		reverseMessage() {
@@ -158,7 +225,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-button{
+button {
 	cursor: pointer;
 	background-color: rgb(25, 48, 116);
 	color: #fff;
