@@ -56,6 +56,14 @@
 			<p v-else>展示Else的内容</p>
 			<button @click="onHandleChangeShowIf">切换</button>
 		</div>
+		<hr />
+		<div>列表渲染</div>
+		<hr />
+		<div>
+			<ul>
+				<li v-for="item in 10" :key="item">列表的第 {{item}} 项</li>
+			</ul>
+		</div>
 	</div>
 </template>
 
