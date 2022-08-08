@@ -38,8 +38,23 @@
 		<div>Class和Style绑定</div>
 		<hr />
 		<div class="hasError">
-			<p :class="{danger:hasError}">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto sunt, alias dolor voluptatum ad, pariatur suscipit perferendis, eum repellat consequuntur error at nostrum necessitatibus dignissimos atque magni nihil sint libero?</p>
-			<button @click="onHandleChangeError">{{hasError?"正确":"错误"}}</button>
+			<p :class="{ danger: hasError }">
+				Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto
+				sunt, alias dolor voluptatum ad, pariatur suscipit perferendis,
+				eum repellat consequuntur error at nostrum necessitatibus
+				dignissimos atque magni nihil sint libero?
+			</p>
+			<button @click="onHandleChangeError">
+				{{ hasError ? "正确" : "错误" }}
+			</button>
+		</div>
+		<hr />
+		<div>条件渲染</div>
+		<hr />
+		<div>
+			<p v-if="isShowIf">展示If的内容</p>
+			<p v-else>展示Else的内容</p>
+			<button @click="onHandleChangeShowIf">切换</button>
 		</div>
 	</div>
 </template>
@@ -55,7 +70,8 @@ export default {
 			testAttribute: "href",
 			firstName: "谢",
 			lastName: "永强",
-			hasError:false
+			hasError: false,
+			isShowIf:false,
 		};
 	},
 	beforeCreate() {
@@ -72,8 +88,12 @@ export default {
 				: (this.fullName = "谢 永强");
 		},
 		// 切换是否右错误
-		onHandleChangeError(){
+		onHandleChangeError() {
 			this.hasError = !this.hasError;
+		},
+		// 切换条件显示
+		onHandleChangeShowIf(){
+			this.isShowIf = !this.isShowIf
 		}
 	},
 	computed: {
@@ -94,7 +114,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.danger{
+.danger {
 	color: red;
 }
 </style>
