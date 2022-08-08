@@ -61,8 +61,28 @@
 		<hr />
 		<div>
 			<ul>
-				<li v-for="item in 10" :key="item">列表的第 {{item}} 项</li>
+				<li v-for="item in 10" :key="item">列表的第 {{ item }} 项</li>
 			</ul>
+		</div>
+		<hr />
+		<div>事件处理</div>
+		<hr />
+		<div>
+			<p>被点击的次数： {{count}}</p>
+			<button @click="count+=1">加一</button>
+		</div>
+		<div>
+			<p>当前时间：{{currentTime}}</p>
+			<button @click="onHandleUpdateTime($event)">更新当前时间</button>
+		</div>
+		<div>
+			<p>点击enter提交</p>
+			<input type="text" v-model="eventMessage" @keyup.enter="onHandleAlertInputText">
+		</div>
+		<div>
+			<p @click.left="onHandleMouseClick('左键')">鼠标左键被点击</p>
+			<p @click.right.prevent="onHandleMouseClick('右键')">鼠标右键被点击</p>
+			<p @click.middle="onHandleMouseClick('中间键')">鼠标中间键被点击</p>
 		</div>
 	</div>
 </template>
@@ -79,7 +99,10 @@ export default {
 			firstName: "谢",
 			lastName: "永强",
 			hasError: false,
-			isShowIf:false,
+			isShowIf: false,
+			count:0,
+			currentTime:new Date(),
+			eventMessage:''
 		};
 	},
 	beforeCreate() {
@@ -100,8 +123,21 @@ export default {
 			this.hasError = !this.hasError;
 		},
 		// 切换条件显示
-		onHandleChangeShowIf(){
-			this.isShowIf = !this.isShowIf
+		onHandleChangeShowIf() {
+			this.isShowIf = !this.isShowIf;
+		},
+		// 更新当前时间
+		onHandleUpdateTime(e){
+			this.currentTime = new Date();
+			console.log(e)
+		},
+		//弹出输入内容
+		onHandleAlertInputText(){
+			alert(this.eventMessage)
+		},
+		// 处理鼠标按键被点击
+		onHandleMouseClick(key){
+			alert(key+ " 被点击了！")
 		}
 	},
 	computed: {
@@ -122,6 +158,11 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+button{
+	cursor: pointer;
+	background-color: rgb(25, 48, 116);
+	color: #fff;
+}
 .danger {
 	color: red;
 }
