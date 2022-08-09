@@ -140,48 +140,55 @@
 			</label>
 		</div>
 		<div>
-			<p>选择框： {{formSelect}}</p>
+			<p>选择框： {{ formSelect }}</p>
 			<select v-model="formSelect">
 				<option value="A">A</option>
 				<option value="B">B</option>
 				<option value="C">C</option>
 			</select>
 		</div>
-		<hr>
+		<hr />
 		<div>Props</div>
-		<hr>
-		<Article :article="{title:'你好',content:'这是一个欢快的事情！'}"></Article>
-		<hr>
+		<hr />
+		<Article
+			:article="{ title: '你好', content: '这是一个欢快的事情！' }"
+		></Article>
+		<hr />
 		<div>插槽</div>
-		<hr>
+		<hr />
 		<TestSlot>
-			<template v-slot:header>
-				插槽的头部
-			</template>
-			<template #main>
-				插槽的主区域
-			</template>
-			<template v-slot:foot>
-				插槽的底部
-			</template>
+			<template v-slot:header> 插槽的头部 </template>
+			<template #main> 插槽的主区域 </template>
+			<template v-slot:foot> 插槽的底部 </template>
 		</TestSlot>
-		<hr>
+		<hr />
 		<div>自定义指令</div>
-		<hr>
+		<hr />
 		<div>
-			<input type="text" v-focus>
+			<input type="text" v-focus />
 		</div>
+		<hr />
+		<div>渲染函数 & JSX</div>
+		<hr />
+		<Render :level="1">一级标题</Render>
+		<Render :level="2">二级标题</Render>
+		<Render :level="3">三级标题</Render>
+		<Render :level="4">四级标题</Render>
+		<Render :level="5">五级标题</Render>
+		<Render :level="6">六级标题</Render>
 	</div>
 </template>
 
 <script>
 import Article from "@/components/Article";
 import TestSlot from "@/components/TestSlot";
+import Render from "@/components/Render";
 export default {
 	name: "Home",
-	components:{
+	components: {
 		Article,
-		TestSlot
+		TestSlot,
+		Render,
 	},
 	data() {
 		return {
@@ -199,13 +206,13 @@ export default {
 			formInput: "",
 			formRadio: "",
 			formChecked: [],
-			formSelect:''
+			formSelect: "",
 		};
 	},
 	beforeCreate() {
 		// console.log(this)
 	},
-	created(){
+	created() {
 		// console.log(this,this.$root)
 	},
 	methods: {
