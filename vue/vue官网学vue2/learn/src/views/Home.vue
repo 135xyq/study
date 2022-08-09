@@ -180,8 +180,22 @@
 		<div>过滤器</div>
 		<hr />
 		<div>
-			<p>输入的数据自动切换为大写：{{filtersInput | capitalize('过滤器参数')}}</p>
-			<input v-focus type="text" v-model="filtersInput">
+			<p>
+				输入的数据自动切换为大写：{{
+					filtersInput | capitalize("过滤器参数")
+				}}
+			</p>
+			<input v-focus type="text" v-model="filtersInput" />
+		</div>
+		<hr />
+		<div>API</div>
+		<hr />
+		<div>
+			<p v-pre>{{ 可以保留双大括号 }}</p>
+		</div>
+		<div>
+			<component :is="currentComponent">切换组件</component>
+			<button @click="onHandleChangeComponent">切换组件</button>
 		</div>
 	</div>
 </template>
@@ -214,13 +228,16 @@ export default {
 			formRadio: "",
 			formChecked: [],
 			formSelect: "",
-			filtersInput:''
+			filtersInput: "",
+			currentComponent: TestSlot,
 		};
 	},
 	beforeCreate() {
 		// console.log(this)
 	},
 	created() {
+		// console.log(this.$el)
+		// console.log(this.$data)
 		// console.log(this,this.$root)
 	},
 	methods: {
@@ -254,6 +271,10 @@ export default {
 		onHandleMouseClick(key) {
 			alert(key + " 被点击了！");
 		},
+		// 切换组件
+		onHandleChangeComponent(){
+			this.currentComponent = this.currentComponent === TestSlot ? '':TestSlot
+		}
 	},
 	computed: {
 		reverseMessage() {
@@ -270,11 +291,11 @@ export default {
 			},
 		},
 	},
-	filters:{
-		capitalize(value,params){
-			return value.toUpperCase() + '  ' + params;
-		}
-	}
+	filters: {
+		capitalize(value, params) {
+			return value.toUpperCase() + "  " + params;
+		},
+	},
 };
 </script>
 <style lang="less" scoped>
