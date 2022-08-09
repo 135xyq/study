@@ -197,6 +197,9 @@
 			<component :is="currentComponent">切换组件</component>
 			<button @click="onHandleChangeComponent">切换组件</button>
 		</div>
+		<hr>
+		<hr>
+		<TestStyle></TestStyle>
 	</div>
 </template>
 
@@ -204,12 +207,14 @@
 import Article from "@/components/Article";
 import TestSlot from "@/components/TestSlot";
 import Render from "@/components/Render";
+import TestStyle from "@/components/TestStyle"
 export default {
 	name: "Home",
 	components: {
 		Article,
 		TestSlot,
 		Render,
+		TestStyle
 	},
 	data() {
 		return {
