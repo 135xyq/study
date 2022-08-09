@@ -176,6 +176,13 @@
 		<Render :level="4">四级标题</Render>
 		<Render :level="5">五级标题</Render>
 		<Render :level="6">六级标题</Render>
+		<hr />
+		<div>过滤器</div>
+		<hr />
+		<div>
+			<p>输入的数据自动切换为大写：{{filtersInput | capitalize('过滤器参数')}}</p>
+			<input v-focus type="text" v-model="filtersInput">
+		</div>
 	</div>
 </template>
 
@@ -207,6 +214,7 @@ export default {
 			formRadio: "",
 			formChecked: [],
 			formSelect: "",
+			filtersInput:''
 		};
 	},
 	beforeCreate() {
@@ -262,6 +270,11 @@ export default {
 			},
 		},
 	},
+	filters:{
+		capitalize(value,params){
+			return value.toUpperCase() + '  ' + params;
+		}
+	}
 };
 </script>
 <style lang="less" scoped>
