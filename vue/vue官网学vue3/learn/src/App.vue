@@ -42,6 +42,17 @@ function onHandleChangeStyleColor(){
 function onHandleChangeStyleBgColor(){
     styleActiveRef.value = !styleActiveRef.value;
 }
+
+/**
+ * 条件渲染
+ */
+const ifShowContentRef = ref(true);
+// 切换if和else显示
+function onHandleChangeShow(){
+	ifShowContentRef.value = !ifShowContentRef.value;
+}
+
+
 </script>
 
 <template>
@@ -70,6 +81,15 @@ function onHandleChangeStyleBgColor(){
         <button @click="onHandleChangeStyleColor">改变字体颜色</button>
         <button @click="onHandleChangeStyleBgColor">改变背景颜色</button>
 		<p :style="{color:'green',fontSize:'20px'}">style内联样式</p>
+
+    </div>
+    <div>
+        <hr>
+        <div>条件渲染</div>
+        <hr>
+		<p v-if="ifShowContentRef">展示IF里面的内容</p>
+		<p v-else>展示else的内容</p>
+		<button @click="onHandleChangeShow">切换显示</button>
 
     </div>
 </template>
