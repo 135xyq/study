@@ -1,6 +1,6 @@
 <script setup>
 import Count from "./components/Count.vue";
-import { ref, computed } from "vue";
+import { ref, computed ,watch,onMounted,onUnmounted} from "vue";
 /**
  * 计算属性
  */
@@ -75,6 +75,27 @@ function onHandleSay(message) {
 
 const formInputTextRef = ref("");
 const formCheckedRef = ref(false);
+
+
+/**
+ * watch
+ */
+
+const watchCountRef = ref(0);
+let timer;
+onMounted(()=>{
+	timer = setInterval(()=>{
+		watchCountRef.value++;
+	},1000)
+})
+
+onUnmounted(()=>{
+	clearInterval(timer)
+})
+
+watch(watchCountRef,(newData,oldData)=>{
+	// console.log(newData,oldData)
+})
 </script>
 
 <template>
@@ -150,6 +171,14 @@ const formCheckedRef = ref(false);
 				v-model="formCheckedRef"
 			/>
 		</p>
+	</div>
+	<div>
+		<hr>
+		<div>watch 侦听器</div>
+		<hr>
+		<div>
+			计时器：{{watchCountRef}}
+		</div>
 	</div>
 </template>
 
