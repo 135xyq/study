@@ -12,7 +12,7 @@ const computedFirstNameRef = ref("谢");
 const computedSecondNameRef = ref("永强");
 const computedFullName = computed({
 	get() {
-		return computedFirstNameRef.value + ' ' + computedSecondNameRef.value;
+		return computedFirstNameRef.value + " " + computedSecondNameRef.value;
 	},
 	set(newName) {
 		[computedFirstNameRef.value, computedSecondNameRef.value] =
@@ -22,10 +22,10 @@ const computedFullName = computed({
 
 function onHandleChangeName() {
 	if (computedFullName.value === "谢 永强") {
-        computedFullName.value = "x yq"
-	}else{
-        computedFullName.value = "谢 永强"
-    }
+		computedFullName.value = "x yq";
+	} else {
+		computedFullName.value = "谢 永强";
+	}
 }
 
 /**
@@ -35,12 +35,12 @@ function onHandleChangeName() {
 const styleErrorRef = ref(true);
 const styleActiveRef = ref(false);
 //改变字体颜色
-function onHandleChangeStyleColor(){
-    styleErrorRef.value = !styleErrorRef.value;
+function onHandleChangeStyleColor() {
+	styleErrorRef.value = !styleErrorRef.value;
 }
 // 改变背景颜色
-function onHandleChangeStyleBgColor(){
-    styleActiveRef.value = !styleActiveRef.value;
+function onHandleChangeStyleBgColor() {
+	styleActiveRef.value = !styleActiveRef.value;
 }
 
 /**
@@ -48,7 +48,7 @@ function onHandleChangeStyleBgColor(){
  */
 const ifShowContentRef = ref(true);
 // 切换if和else显示
-function onHandleChangeShow(){
+function onHandleChangeShow() {
 	ifShowContentRef.value = !ifShowContentRef.value;
 }
 
@@ -56,14 +56,25 @@ function onHandleChangeShow(){
  * 列表渲染
  */
 
-const listShowMessage = ref([{text:'football'},{text:'basketball'},{text:'ping-pong'}])
+const listShowMessage = ref([
+	{ text: "football" },
+	{ text: "basketball" },
+	{ text: "ping-pong" },
+]);
 
 /**
  * 事件处理
  */
-function onHandleSay(message){
-	alert(message)
+function onHandleSay(message) {
+	alert(message);
 }
+
+/**
+ * 表单输入绑定
+ */
+
+const formInputTextRef = ref("");
+const formCheckedRef = ref(false);
 </script>
 
 <template>
@@ -84,50 +95,70 @@ function onHandleSay(message){
 			<button @click="onHandleChangeName">更改名字</button>
 		</p>
 	</div>
-    <div>
-        <hr>
-        <div>类和样式绑定</div>
-        <hr>
-        <p :class="{'error':styleErrorRef,'active':styleActiveRef}">这是一段话，当有错误字体会变红，选中时背景会变绿</p>
-        <button @click="onHandleChangeStyleColor">改变字体颜色</button>
-        <button @click="onHandleChangeStyleBgColor">改变背景颜色</button>
-		<p :style="{color:'green',fontSize:'20px'}">style内联样式</p>
-
-    </div>
-    <div>
-        <hr>
-        <div>条件渲染</div>
-        <hr>
+	<div>
+		<hr />
+		<div>类和样式绑定</div>
+		<hr />
+		<p :class="{ error: styleErrorRef, active: styleActiveRef }">
+			这是一段话，当有错误字体会变红，选中时背景会变绿
+		</p>
+		<button @click="onHandleChangeStyleColor">改变字体颜色</button>
+		<button @click="onHandleChangeStyleBgColor">改变背景颜色</button>
+		<p :style="{ color: 'green', fontSize: '20px' }">style内联样式</p>
+	</div>
+	<div>
+		<hr />
+		<div>条件渲染</div>
+		<hr />
 		<p v-if="ifShowContentRef">展示IF里面的内容</p>
 		<p v-else>展示else的内容</p>
 		<button @click="onHandleChangeShow">切换显示</button>
-
-    </div>
+	</div>
 	<div>
-		<hr>
+		<hr />
 		<div>列表渲染</div>
-		<hr>
+		<hr />
 		<ul>
-			<li v-for="(item,index) in listShowMessage" :key="item.text">{{index}} :   {{item.text}}</li>
+			<li v-for="(item, index) in listShowMessage" :key="item.text">
+				{{ index }} : {{ item.text }}
+			</li>
 		</ul>
 	</div>
 	<div>
-		<hr>
+		<hr />
 		<div>事件处理</div>
-		<hr>
+		<hr />
 		<p>
 			<button @click="onHandleSay('hello')">弹出hello</button>
 			<button @click="onHandleSay('你好')">弹出你好</button>
 		</p>
 	</div>
+	<div>
+		<hr />
+		<div>表单输入绑定</div>
+		<hr />
+		<p>
+			<span>输入内容： {{ formInputTextRef }}</span> |
+			<input type="text" v-model.number="formInputTextRef" />
+		</p>
+		<p>
+			复选框：{{ formCheckedRef }}
+			<input
+				type="checkbox"
+				true-value="yes"
+				false-value="no"
+				v-model="formCheckedRef"
+			/>
+		</p>
+	</div>
 </template>
 
 <style scoped>
-.error{
-    color: red;
+.error {
+	color: red;
 }
 
-.active{
-    background-color: rgb(21, 188, 63);
+.active {
+	background-color: rgb(21, 188, 63);
 }
 </style>
