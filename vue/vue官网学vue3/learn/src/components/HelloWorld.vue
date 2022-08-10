@@ -1,19 +1,23 @@
 <script >
 export default {
-	data() {
+	props: ["title"],
+	emits: ["helloWorldClick"],
+	setup(props,ctx) {
+		function onHandleClick() {
+			ctx.emit("helloWorldClick", "hello");
+		}
+		console.log(props.title);
 		return {
-			str: "Hello World",
+			onHandleClick,
 		};
 	},
 };
 </script>
 
 <template>
-	<div>{{str}}</div>
+	<div>{{ title }}</div>
+	<button @click="onHandleClick">给父组件传递事件</button>
 </template>
 
 <style scoped>
-.read-the-docs {
-	color: #888;
-}
 </style>

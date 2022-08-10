@@ -1,5 +1,6 @@
 <script setup>
 import Count from "./components/Count.vue";
+import HelloWorld from "./components/HelloWorld.vue";
 import { ref, computed ,watch,onMounted,onUnmounted} from "vue";
 /**
  * 计算属性
@@ -105,10 +106,18 @@ const input = ref(null);
 
 onMounted(()=>{
 	input.value.focus();
-	console.log(itemsRef.value,itemsRef.value[0])
+	// console.log(itemsRef.value,itemsRef.value[0])
 })
 
 const itemsRef = ref(['a','b','c'])
+
+/**
+ * 组件基础
+ */
+
+function onHandleHelloWorldEvent(e){
+	console.log(e)
+}
 </script>
 
 <template>
@@ -203,6 +212,12 @@ const itemsRef = ref(['a','b','c'])
 		<ul>
 			<li v-for="item in 3" :key="item" ref="itemsRef">{{item}}</li>
 		</ul>
+	</div>
+	<div>
+		<hr>
+		<div>组件基础</div>
+		<hr>
+		<HelloWorld @helloWorldClick="onHandleHelloWorldEvent" title="hello world!"></HelloWorld>
 	</div>
 </template>
 
