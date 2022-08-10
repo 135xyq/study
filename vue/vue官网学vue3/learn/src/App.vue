@@ -58,6 +58,12 @@ function onHandleChangeShow(){
 
 const listShowMessage = ref([{text:'football'},{text:'basketball'},{text:'ping-pong'}])
 
+/**
+ * 事件处理
+ */
+function onHandleSay(message){
+	alert(message)
+}
 </script>
 
 <template>
@@ -104,6 +110,15 @@ const listShowMessage = ref([{text:'football'},{text:'basketball'},{text:'ping-p
 		<ul>
 			<li v-for="(item,index) in listShowMessage" :key="item.text">{{index}} :   {{item.text}}</li>
 		</ul>
+	</div>
+	<div>
+		<hr>
+		<div>事件处理</div>
+		<hr>
+		<p>
+			<button @click="onHandleSay('hello')">弹出hello</button>
+			<button @click="onHandleSay('你好')">弹出你好</button>
+		</p>
 	</div>
 </template>
 
