@@ -96,6 +96,19 @@ onUnmounted(()=>{
 watch(watchCountRef,(newData,oldData)=>{
 	// console.log(newData,oldData)
 })
+
+/**
+ * 模板引用
+ */
+
+const input = ref(null);
+
+onMounted(()=>{
+	input.value.focus();
+	console.log(itemsRef.value,itemsRef.value[0])
+})
+
+const itemsRef = ref(['a','b','c'])
 </script>
 
 <template>
@@ -179,6 +192,17 @@ watch(watchCountRef,(newData,oldData)=>{
 		<div>
 			计时器：{{watchCountRef}}
 		</div>
+	</div>
+	<div>
+		<hr>
+		<div>模板引用</div>
+		<hr>
+		<p>
+			<input type="text" ref="input">
+		</p>
+		<ul>
+			<li v-for="item in 3" :key="item" ref="itemsRef">{{item}}</li>
+		</ul>
 	</div>
 </template>
 
