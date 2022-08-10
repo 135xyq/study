@@ -27,6 +27,21 @@ function onHandleChangeName() {
         computedFullName.value = "谢 永强"
     }
 }
+
+/**
+ * 类和样式绑定
+ */
+
+const styleErrorRef = ref(true);
+const styleActiveRef = ref(false);
+//改变字体颜色
+function onHandleChangeStyleColor(){
+    styleErrorRef.value = !styleErrorRef.value;
+}
+// 改变背景颜色
+function onHandleChangeStyleBgColor(){
+    styleActiveRef.value = !styleActiveRef.value;
+}
 </script>
 
 <template>
@@ -47,7 +62,24 @@ function onHandleChangeName() {
 			<button @click="onHandleChangeName">更改名字</button>
 		</p>
 	</div>
+    <div>
+        <hr>
+        <div>类和样式绑定</div>
+        <hr>
+        <p :class="{'error':styleErrorRef,'active':styleActiveRef}">这是一段话，当有错误字体会变红，选中时背景会变绿</p>
+        <button @click="onHandleChangeStyleColor">改变字体颜色</button>
+        <button @click="onHandleChangeStyleBgColor">改变背景颜色</button>
+		<p :style="{color:'green',fontSize:'20px'}">style内联样式</p>
+
+    </div>
 </template>
 
 <style scoped>
+.error{
+    color: red;
+}
+
+.active{
+    background-color: rgb(21, 188, 63);
+}
 </style>
