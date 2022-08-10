@@ -52,6 +52,11 @@ function onHandleChangeShow(){
 	ifShowContentRef.value = !ifShowContentRef.value;
 }
 
+/**
+ * 列表渲染
+ */
+
+const listShowMessage = ref([{text:'football'},{text:'basketball'},{text:'ping-pong'}])
 
 </script>
 
@@ -92,6 +97,14 @@ function onHandleChangeShow(){
 		<button @click="onHandleChangeShow">切换显示</button>
 
     </div>
+	<div>
+		<hr>
+		<div>列表渲染</div>
+		<hr>
+		<ul>
+			<li v-for="(item,index) in listShowMessage" :key="item.text">{{index}} :   {{item.text}}</li>
+		</ul>
+	</div>
 </template>
 
 <style scoped>
