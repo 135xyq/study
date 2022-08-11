@@ -3,6 +3,7 @@
 		<h1>选项式组件</h1>
 		<p>props: {{content}}</p>
 		<button @click="onHandleClick">点击触发父组件事件</button>
+		<p>{{$attrs}}</p>
 	</div>
 </template>
 
@@ -13,7 +14,7 @@ export default {
 	},
 	emits:["childClick"],
 	setup(props,ctx){
-		// console.log(props)
+		console.log('透传Attributes',ctx.attrs)
 		function onHandleClick(){
 			ctx.emit('childClick',12)
 		}

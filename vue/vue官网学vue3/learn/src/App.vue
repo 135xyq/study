@@ -119,11 +119,12 @@ function onHandleHelloWorldEvent(e) {
 }
 /**
  * 事件
-  */
-function onHandleNormalEmitClick(n){
-	alert("点击" + n)
+ */
+function onHandleNormalEmitClick(n) {
+	alert("点击" + n);
 }
 
+const newTypeAndNormal = ref(0);
 </script>
 
 <template>
@@ -232,8 +233,19 @@ function onHandleNormalEmitClick(n){
 		<hr />
 		<GlobalComponent></GlobalComponent>
 	</div>
-	<NewType content="组合式" @child-click="onHandleNormalEmitClick"></NewType>
-	<Normal content ="选项式" @child-click="onHandleNormalEmitClick"></Normal>
+	{{ newTypeAndNormal }}
+	<NewType
+		content="组合式"
+		@child-click="onHandleNormalEmitClick"
+		class="newType"
+		@click="newTypeAndNormal = newTypeAndNormal + 1"
+	></NewType>
+	<Normal
+		content="选项式"
+		@child-click="onHandleNormalEmitClick"
+		class="normal"
+		@click="newTypeAndNormal = newTypeAndNormal + 1"
+	></Normal>
 </template>
 
 <style scoped>

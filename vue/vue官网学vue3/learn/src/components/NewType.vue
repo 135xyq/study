@@ -7,7 +7,10 @@
 </template>
 
 <script setup>
+import {useAttrs} from "vue"
 const props = defineProps(['content'])
+const attrs = useAttrs();
+console.log("透传Attributes： ",attrs)
 const emit = defineEmits({
 	childClick:null,
 	submit:({user,password})=>{
