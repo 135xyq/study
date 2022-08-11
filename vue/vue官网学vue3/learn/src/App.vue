@@ -225,6 +225,8 @@ function onHandleHelloWorldEvent(e) {
 		<hr />
 		<GlobalComponent></GlobalComponent>
 	</div>
+	<NewType content="组合式"></NewType>
+	<Normal content ="选项式"></Normal>
 </template>
 
 <style scoped>
