@@ -1,7 +1,7 @@
 <script setup>
 import Count from "./components/Count.vue";
 import HelloWorld from "./components/HelloWorld.vue";
-import { ref, computed ,watch,onMounted,onUnmounted} from "vue";
+import { ref, computed, watch, onMounted, onUnmounted } from "vue";
 /**
  * 计算属性
  */
@@ -77,26 +77,25 @@ function onHandleSay(message) {
 const formInputTextRef = ref("");
 const formCheckedRef = ref(false);
 
-
 /**
  * watch
  */
 
 const watchCountRef = ref(0);
 let timer;
-onMounted(()=>{
-	timer = setInterval(()=>{
+onMounted(() => {
+	timer = setInterval(() => {
 		watchCountRef.value++;
-	},1000)
-})
+	}, 1000);
+});
 
-onUnmounted(()=>{
-	clearInterval(timer)
-})
+onUnmounted(() => {
+	clearInterval(timer);
+});
 
-watch(watchCountRef,(newData,oldData)=>{
+watch(watchCountRef, (newData, oldData) => {
 	// console.log(newData,oldData)
-})
+});
 
 /**
  * 模板引用
@@ -104,19 +103,19 @@ watch(watchCountRef,(newData,oldData)=>{
 
 const input = ref(null);
 
-onMounted(()=>{
+onMounted(() => {
 	input.value.focus();
 	// console.log(itemsRef.value,itemsRef.value[0])
-})
+});
 
-const itemsRef = ref(['a','b','c'])
+const itemsRef = ref(["a", "b", "c"]);
 
 /**
  * 组件基础
  */
 
-function onHandleHelloWorldEvent(e){
-	console.log(e)
+function onHandleHelloWorldEvent(e) {
+	console.log(e);
 }
 </script>
 
@@ -195,29 +194,36 @@ function onHandleHelloWorldEvent(e){
 		</p>
 	</div>
 	<div>
-		<hr>
+		<hr />
 		<div>watch 侦听器</div>
-		<hr>
-		<div>
-			计时器：{{watchCountRef}}
-		</div>
+		<hr />
+		<div>计时器：{{ watchCountRef }}</div>
 	</div>
 	<div>
-		<hr>
+		<hr />
 		<div>模板引用</div>
-		<hr>
+		<hr />
 		<p>
-			<input type="text" ref="input">
+			<input type="text" ref="input" />
 		</p>
 		<ul>
-			<li v-for="item in 3" :key="item" ref="itemsRef">{{item}}</li>
+			<li v-for="item in 3" :key="item" ref="itemsRef">{{ item }}</li>
 		</ul>
 	</div>
 	<div>
-		<hr>
+		<hr />
 		<div>组件基础</div>
-		<hr>
-		<HelloWorld @helloWorldClick="onHandleHelloWorldEvent" title="hello world!"></HelloWorld>
+		<hr />
+		<HelloWorld
+			@helloWorldClick="onHandleHelloWorldEvent"
+			title="hello world!"
+		></HelloWorld>
+	</div>
+	<div>
+		<hr />
+		<div>组件注册</div>
+		<hr />
+		<GlobalComponent></GlobalComponent>
 	</div>
 </template>
 
