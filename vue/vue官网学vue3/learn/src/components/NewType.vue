@@ -4,7 +4,7 @@
 		<p>props:  {{content}}</p>
 		<button @click="onHandleClick">点击传递给父组件</button>
 		<div>
-			<p>注入依赖的数据：{{provideData}}</p>
+			<p v-color="{color:'green'}">注入依赖的数据：{{provideData}}</p>
 			<button @click="updateProvideData(2)">修改依赖的数据</button>
 		</div>
 	</div>

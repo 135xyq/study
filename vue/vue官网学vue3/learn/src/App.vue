@@ -83,15 +83,15 @@ const formCheckedRef = ref(false);
 
 const watchCountRef = ref(0);
 let timer;
-onMounted(() => {
-	timer = setInterval(() => {
-		watchCountRef.value++;
-	}, 1000);
-});
+// onMounted(() => {
+// 	timer = setInterval(() => {
+// 		watchCountRef.value++;
+// 	}, 1000);
+// });
 
-onUnmounted(() => {
-	clearInterval(timer);
-});
+// onUnmounted(() => {
+// 	clearInterval(timer);
+// });
 
 watch(watchCountRef, (newData, oldData) => {
 	// console.log(newData,oldData)
@@ -267,6 +267,9 @@ const newTypeAndNormal = ref(0);
 		</template>
 		<p>主区域插槽内容，由父组件提供</p>
 	</Normal>
+	<div>
+		<p v-color="{color:'red'}">这是一段话</p>
+	</div>
 </template>
 
 <style scoped>

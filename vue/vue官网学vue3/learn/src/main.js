@@ -10,4 +10,10 @@ app.component("GlobalComponent", GlobalComponent)
 	.component("Normal", Normal)
 	.component("NewType", NewType);
 
+app.directive("color",(el,{value = {}})=>{
+	el.style.color = value.color;
+})
+
+console.log(1)
+
 app.mount("#app");
