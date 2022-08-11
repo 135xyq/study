@@ -245,7 +245,13 @@ const newTypeAndNormal = ref(0);
 		@child-click="onHandleNormalEmitClick"
 		class="normal"
 		@click="newTypeAndNormal = newTypeAndNormal + 1"
-	></Normal>
+	>
+		<template #header="defaultProps">
+			<p>头部插槽内容，由父组件提供</p>
+			<p>插槽传递的数据：{{defaultProps.message}}</p>
+		</template>
+		<p>主区域插槽内容，由父组件提供</p>
+	</Normal>
 </template>
 
 <style scoped>
