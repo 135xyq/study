@@ -3,11 +3,15 @@
 		<h1>组合式组件</h1>
 		<p>props:  {{content}}</p>
 		<button @click="onHandleClick">点击传递给父组件</button>
+		<div>
+			<p>注入依赖的数据：{{provideData}}</p>
+			<button @click="updateProvideData(2)">修改依赖的数据</button>
+		</div>
 	</div>
 </template>
 
 <script setup>
-import {useAttrs} from "vue"
+import {useAttrs,inject} from "vue"
 const props = defineProps(['content'])
 const attrs = useAttrs();
 console.log("透传Attributes： ",attrs)
@@ -27,6 +31,8 @@ function onHandleClick(n){
 	emit("submit",{user:1,password:2})
 	emit('childClick','newType')
 }
+
+const {provideData,updateProvideData} = inject("count");
 
 </script>
 

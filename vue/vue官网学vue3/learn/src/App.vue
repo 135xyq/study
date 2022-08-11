@@ -1,7 +1,7 @@
 <script setup>
 import Count from "./components/Count.vue";
 import HelloWorld from "./components/HelloWorld.vue";
-import { ref, computed, watch, onMounted, onUnmounted } from "vue";
+import { ref, computed, watch, onMounted, onUnmounted ,provide} from "vue";
 /**
  * 计算属性
  */
@@ -123,6 +123,21 @@ function onHandleHelloWorldEvent(e) {
 function onHandleNormalEmitClick(n) {
 	alert("点击" + n);
 }
+
+/**
+ * 依赖注入
+ */
+provide("message","注入依赖的数据")
+const provideData = ref(0);
+function updateProvideData(n){
+	provideData.value = provideData.value + n;
+}
+
+provide('count',{
+	provideData,
+	updateProvideData
+})
+
 
 const newTypeAndNormal = ref(0);
 </script>

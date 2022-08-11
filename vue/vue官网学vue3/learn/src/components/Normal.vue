@@ -18,11 +18,15 @@
 				<slot name="footer">底部区域插槽,默认值</slot>
 			</div>
 		</div>
+		<div>
+			注入依赖： {{messageInject}}
+		</div>
+		<div>注入依赖 count的值：{{provideData}}</div>
 	</div>
 </template>
 
 <script>
-import {ref} from "vue";
+import {ref,inject} from "vue";
 export default {
 	props:{
 		content:String
@@ -34,9 +38,13 @@ export default {
 		function onHandleClick(){
 			ctx.emit('childClick',12)
 		}
+		const messageInject = inject("message");
+		const {provideData} = inject("count")
 		return {
 			message,
-			onHandleClick
+			onHandleClick,
+			messageInject,
+			provideData
 		}
 	}
 };
