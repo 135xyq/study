@@ -117,6 +117,13 @@ const itemsRef = ref(["a", "b", "c"]);
 function onHandleHelloWorldEvent(e) {
 	console.log(e);
 }
+/**
+ * 事件
+  */
+function onHandleNormalEmitClick(n){
+	alert("点击" + n)
+}
+
 </script>
 
 <template>
@@ -225,8 +232,8 @@ function onHandleHelloWorldEvent(e) {
 		<hr />
 		<GlobalComponent></GlobalComponent>
 	</div>
-	<NewType content="组合式"></NewType>
-	<Normal content ="选项式"></Normal>
+	<NewType content="组合式" @child-click="onHandleNormalEmitClick"></NewType>
+	<Normal content ="选项式" @child-click="onHandleNormalEmitClick"></Normal>
 </template>
 
 <style scoped>
