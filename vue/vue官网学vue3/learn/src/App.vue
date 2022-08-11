@@ -1,7 +1,18 @@
 <script setup>
 import Count from "./components/Count.vue";
 import HelloWorld from "./components/HelloWorld.vue";
-import { ref, computed, watch, onMounted, onUnmounted ,provide} from "vue";
+import CompA from "./components/TestA.vue";
+import CompB from "./components/TestB.vue";
+import CompC from "./components/TestC.vue";
+import {
+	ref,
+	computed,
+	watch,
+	onMounted,
+	shallowRef,
+	onUnmounted,
+	provide,
+} from "vue";
 /**
  * 计算属性
  */
@@ -127,19 +138,25 @@ function onHandleNormalEmitClick(n) {
 /**
  * 依赖注入
  */
-provide("message","注入依赖的数据")
+provide("message", "注入依赖的数据");
 const provideData = ref(0);
-function updateProvideData(n){
+function updateProvideData(n) {
 	provideData.value = provideData.value + n;
 }
 
-provide('count',{
+provide("count", {
 	provideData,
-	updateProvideData
-})
-
+	updateProvideData,
+});
 
 const newTypeAndNormal = ref(0);
+
+/**
+ * KeepAlive
+ */
+
+const showWhichComponent = shallowRef(CompA);
+const showWhichComponentKeepAlive = shallowRef(CompA);
 </script>
 
 <template>
@@ -263,12 +280,83 @@ const newTypeAndNormal = ref(0);
 	>
 		<template #header="defaultProps">
 			<p>头部插槽内容，由父组件提供</p>
-			<p>插槽传递的数据：{{defaultProps.message}}</p>
+			<p>插槽传递的数据：{{ defaultProps.message }}</p>
 		</template>
 		<p>主区域插槽内容，由父组件提供</p>
 	</Normal>
 	<div>
-		<p v-color="{color:'red'}">这是一段话</p>
+		<p v-color="{ color: 'red' }">这是一段话</p>
+	</div>
+	<div>
+		<hr />
+		<div>KeepAlive</div>
+		<hr />
+		<div>
+			<p>未使用KeepAlive</p>
+			<div>
+				<p>使用KeepAlive</p>
+				<div>
+					<label>
+						<input
+							type="radio"
+							:value="CompA"
+							v-model="showWhichComponent"
+						/>组件A
+					</label>
+					<label>
+						<input
+							type="radio"
+							:value="CompB"
+							v-model="showWhichComponent"
+						/>
+						组件B
+					</label>
+					<label>
+						<input
+							type="radio"
+							:value="CompC"
+							v-model="showWhichComponent"
+						/>
+						组件C
+					</label>
+				</div>
+				<component :is="showWhichComponent"></component>
+			</div>
+		</div>
+		<br />
+		<br />
+		<br />
+		<div>
+			<p>使用KeepAlive</p>
+			<div>
+				<label>
+					<input
+						type="radio"
+						:value="CompA"
+						v-model="showWhichComponentKeepAlive"
+					/>组件A
+				</label>
+				<label>
+					<input
+						type="radio"
+						:value="CompB"
+						v-model="showWhichComponentKeepAlive"
+					/>
+					组件B
+				</label>
+				<label>
+					<input
+						type="radio"
+						:value="CompC"
+						v-model="showWhichComponentKeepAlive"
+					/>
+					组件C
+				</label>
+			</div>
+			<KeepAlive include="TestA,TestB" :max="0">
+				<component :is="showWhichComponentKeepAlive"></component>
+			</KeepAlive>
+		</div>
 	</div>
 </template>
 
