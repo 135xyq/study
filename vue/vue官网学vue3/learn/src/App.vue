@@ -12,6 +12,7 @@ import {
 	shallowRef,
 	onUnmounted,
 	provide,
+	nextTick
 } from "vue";
 /**
  * 计算属性
@@ -157,6 +158,22 @@ const newTypeAndNormal = ref(0);
 
 const showWhichComponent = shallowRef(CompA);
 const showWhichComponentKeepAlive = shallowRef(CompA);
+
+
+/**
+ * 通用API
+ */
+const apiCountNumber = ref(0)
+async function apiIncrement() {
+  apiCountNumber.value++
+
+  // DOM 还未更新
+  console.log(document.getElementById('apiCount').textContent) // 0
+
+  await nextTick()
+  // DOM 此时已经更新
+  console.log(document.getElementById('apiCount').textContent) // 1
+}
 </script>
 
 <template>
@@ -356,6 +373,12 @@ const showWhichComponentKeepAlive = shallowRef(CompA);
 			<KeepAlive include="TestA,TestB" :max="0">
 				<component :is="showWhichComponentKeepAlive"></component>
 			</KeepAlive>
+		</div>
+		<div>
+			<hr>
+			<div>通用API</div>
+			<hr>
+			<button @click="apiIncrement" id="apiCount">{{apiCountNumber}}</button>
 		</div>
 	</div>
 </template>

@@ -7,10 +7,12 @@ export default defineConfig({
 	css: {
 		// css预处理器
 		preprocessorOptions: {
-		  less: {
-			charset: false,
-		  },
+			less: {
+				charset: false,
+			},
 		},
-	  },
-	
+	},
+	server: {
+		host: "0.0.0.0",
+	},
 });

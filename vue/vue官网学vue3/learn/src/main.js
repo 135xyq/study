@@ -14,6 +14,9 @@ app.directive("color",(el,{value = {}})=>{
 	el.style.color = value.color;
 })
 
-console.log(1)
+// console.log(app.directive('color'))
+
+console.log("Vue版本:   ",app.version);
+console.log("Vue配置：  ",app.config)
 
 app.mount("#app");
