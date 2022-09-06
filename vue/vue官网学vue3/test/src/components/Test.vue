@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import First from "./响应式基础/First.vue";
+import First from "./计算属性/Computed.vue";
 </script>
 
 <style>
