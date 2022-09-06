@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import First from "./表单输入绑定/Form.vue";
+import First from "./侦听器/Watch.vue";
 </script>
 
 <style>
