@@ -1,9 +1,9 @@
 <template>
-	<First></First>
+	<First class="one"></First>
 </template>
 
 <script setup>
-import First from "./计算属性/Computed.vue";
+import First from "./类和样式/Style.vue";
 </script>
 
 <style>
