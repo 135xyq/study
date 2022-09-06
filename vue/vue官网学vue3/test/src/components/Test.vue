@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import First from "./类和样式/Style.vue";
+import First from "./事件处理/Event.vue";
 </script>
 
 <style>
