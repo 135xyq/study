@@ -2,6 +2,7 @@
 namespace app\controller;
 
 use app\BaseController;
+use think\facade\Env;
 
 class Index extends BaseController
 {
@@ -13,5 +14,10 @@ class Index extends BaseController
     public function hello($name = 'ThinkPHP6')
     {
         return 'hello,' . $name;
+    }
+
+    public function config(){
+        echo '主机：'. Env::get('database.hostname').'<br>';
+        echo '数据库名称: '. Env::get('database.database');
     }
 }
