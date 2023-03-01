@@ -124,4 +124,16 @@ class DbTest
 
         return json($result);
     }
+
+    public function advanced()
+    {
+//        $user = Db::name('user')->where('username|email','like','%xiao%')->select();
+
+        $user = Db::name('user')
+            ->where('username|email','like','%xiao%')
+            ->where('price','>','70')
+            ->select();
+        return Db::getlastSql();
+        return json($user);
+    }
 }
