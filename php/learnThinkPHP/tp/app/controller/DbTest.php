@@ -61,5 +61,32 @@ class DbTest
         return json($user);
     }
 
+    public function poly()
+    {
+        $user = Db::name('user')->count('uid');
+//        return Db::getLastSql();
+//        $user = Db::name('user')->max('price');
+//        $user = Db::name('user')->min('price');
+//        $user = Db::name('user')->fetchSql(true)->select();
+//        $user = Db::name('user')->buildSql(true);
+
+//        $subQuery = Db::name('two')->field('uid')->where('gender','男')->buildSql();
+//        $result = Db::name('one')->where('id','exp','IN '.$subQuery)->select();
+//        return Db::getLastSql();
+
+//        $result = Db::name('one')->where('id','in',function($query){
+//            $query->name('two')->field('uid')->where('gender','男');
+//        })->select();
+//
+
+//        $result = Db::query('select * from tp_one');
+
+        $result = Db::execute('update tp_one  set chinese = 98 where id = 25');
+//        $result = Db::query('select * from tp_one');
+        return json($result );
+    }
+
+
+
 
 }
