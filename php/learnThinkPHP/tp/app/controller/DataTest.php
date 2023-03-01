@@ -2,7 +2,6 @@
 
 namespace app\controller;
 
-use think\db\Where;
 use think\facade\Db;
 use app\model\User;
 
