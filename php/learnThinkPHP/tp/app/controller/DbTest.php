@@ -51,4 +51,15 @@ class DbTest
         $user = Db::name('user')->where('email','like',['xiao%','wu%'],'or')->select();
         return json($user);
     }
+
+    public function time()
+    {
+//        $user = Db::name('user')->where('create_time','>','2016-01-01')->select();
+//        $user = Db::name('user')->where('create_time','not between',['2016-01-01','2016-12-12'])->select();
+        $user = Db::name('user')->whereDay('create_time','last day')->select();
+        echo Db::getLastSql();
+        return json($user);
+    }
+
+
 }
