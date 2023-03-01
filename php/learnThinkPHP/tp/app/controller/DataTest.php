@@ -56,4 +56,11 @@ class DataTest
             }
         });
     }
+
+
+    public function findColumn()
+    {
+        $user = Db::name('user')->where('id',19)->order('id','desc')->find();
+        dump($user);
+    }
 }
