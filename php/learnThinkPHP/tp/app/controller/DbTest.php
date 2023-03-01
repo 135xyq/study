@@ -86,7 +86,42 @@ class DbTest
         return json($result );
     }
 
+    public function linkUp()
+    {
+//         $result = Db::name('user')->where([
+//             'gender' => '男',
+//             'price' => [110,112]
+//         ])->select();
+
+//        $result = Db::name('user')->where([
+//            ['gender' ,'=','男'],
+//            ['price' ,'>=', 120]
+//        ])->select();
 
 
+//        $map[] = ['gender', '=', '男'];
+//        $map[] = ['price', 'in', [60, 70, 80]];
+//        $result = Db::name('user')->where($map)->select();
+//        return Db::getLastSql();
 
+
+        $result = Db::name('user')->field('username as name,price')->select();
+//        $result = Db::name('user')->field(['username' =>'name','price'])->select();
+         return json($result);
+    }
+
+
+    public function linkDown()
+    {
+//        $result = Db::name('user')->limit(2)->select();
+
+//        $result = Db::name('user')->limit(2,2)->select();
+
+//        $result = Db::name('user')->page(3,2)->select();
+
+//        $result = Db::name('user')->order(['price'=>'asc','username'=>'desc'])->select();
+        $result = Db::name('user')->fieldRaw('gender,SUM(price) as sum')->group('gender')->having('sum > 100')->select();
+
+        return json($result);
+    }
 }
