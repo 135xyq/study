@@ -43,4 +43,12 @@ class DbTest
 //        return Db::name('user')->delete(304);
         return Db::name('user')->where('id',305)->delete();
     }
+
+    public function selectWhere()
+    {
+//        $user= Db::name('user')->where('id','<>','306')->select();
+//        $user= Db::name('user')->where('email','like','Xiao%')->select();
+        $user = Db::name('user')->where('email','like',['xiao%','wu%'],'or')->select();
+        return json($user);
+    }
 }
