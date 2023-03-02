@@ -49,4 +49,15 @@ class DataModel
         ],['username','email','password','details'],false);
         return json($return->username);
     }
+
+    public function delete()
+    {
+//        $user = UserModel::find(309);
+//        dump($user->delete());
+
+
+//        UserModel::destroy(311);
+
+        UserModel::where('id','>',310)->delete();
+    }
 }
