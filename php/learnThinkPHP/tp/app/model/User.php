@@ -24,6 +24,12 @@ class User extends Model
         return $this->hasMany(Book::class,'user_id','id');
     }
 
+//    多对多
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class,Access::class);
+    }
+
 //    protected $connection = 'mysql';
 
 //    public function getUserName($id)

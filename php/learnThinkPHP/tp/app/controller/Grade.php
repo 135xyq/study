@@ -93,4 +93,11 @@ class Grade
             echo $user->profile_sum.'<br>';
         }
     }
+
+    public function many()
+    {
+        $user = UserModel::find(19);
+        $roles  =$user->roles;
+        return json($roles);
+    }
 }
