@@ -7,7 +7,12 @@ use think\model\concern\SoftDelete;
 
 class User extends Model
 {
-    protected $connection = 'mysql';
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
+
+//    protected $connection = 'mysql';
 
 //    public function getUserName($id)
 //    {
@@ -49,12 +54,12 @@ class User extends Model
 //        'create_time' => 'datetime:Y/m/d'
 //    ];
 
-    protected $json = ['list'];
-    use SoftDelete;
-
-    protected static function onAfterRead($query)
-    {
-        echo '执行了查询方法';
-    }
+//    protected $json = ['list'];
+//    use SoftDelete;
+//
+//    protected static function onAfterRead($query)
+//    {
+//        echo '执行了查询方法';
+//    }
 
 }
