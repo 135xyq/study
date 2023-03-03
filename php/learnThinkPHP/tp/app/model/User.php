@@ -52,4 +52,9 @@ class User extends Model
     protected $json = ['list'];
     use SoftDelete;
 
+    protected static function onAfterRead($query)
+    {
+        echo '执行了查询方法';
+    }
+
 }

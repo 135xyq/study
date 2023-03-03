@@ -3,10 +3,19 @@
 namespace app\controller;
 
 
+use app\BaseController;
 use think\facade\Db;
 
-class DbTest
+class DbTest extends BaseController
 {
+
+    public function initialize()
+    {
+        Db::event('before_select', function ($query) {
+            echo '执行了批量查询操作！';
+        });
+    }
+
 //    插入
     public function insert()
     {
