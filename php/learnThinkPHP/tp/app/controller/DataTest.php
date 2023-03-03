@@ -32,8 +32,8 @@ class DataTest
     public function select()
     {
 //        $user = Db::table("tp_user")->select()->toArray();
-        $user = Db::name("user")->select()->toArray();
-        dump($user);
+        $user = Db::name("user")->json(['list'])->find(315);
+        return json($user);
     }
 
     public function value()

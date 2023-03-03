@@ -42,11 +42,13 @@ class User extends Model
 //        $query->where('email','like','%'.$value.'%');
 //    }
 
-    protected $type = [
-        'status' => 'boolean',
-        'price' => 'float',
-        'create_time' => 'datetime:Y/m/d'
-    ];
+//    protected $type = [
+//        'status' => 'boolean',
+//        'price' => 'float',
+//        'create_time' => 'datetime:Y/m/d'
+//    ];
+
+    protected $json = ['list'];
 
 
 }

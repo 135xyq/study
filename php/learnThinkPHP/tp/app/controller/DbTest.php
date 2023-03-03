@@ -16,9 +16,10 @@ class DbTest
             'gender' => '男',
             'email' => 'huiye@163.com',
             'price' => 90,
-            'details' => '123'
+            'details' => '123',
+            'list'=>['username'=>'小红','email'=>'123@qq.com']
         ];
-        return Db::name('user')->save($data);
+        return Db::name('user')->json(['list'])->save($data);
     }
 
 //    修改

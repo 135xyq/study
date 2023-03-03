@@ -27,7 +27,6 @@ class DataModel
 //        return json($user->save());
 
 
-
 //        $user = new UserModel();
 //        $user->save([
 //            'username' => '李白',
@@ -40,16 +39,29 @@ class DataModel
 //        ]);
 
 
-        $return = UserModel::create([
-            'username' => '李白1',
-            'password' => '123',
-            'gender' => '男',
-            'email' => 'libai@163.com',
-            'price' => 100,
-            'details' => '123',
-            'uid' => 1011
-        ],['username','email','password','details'],false);
-        return json($return->username);
+//        $return = UserModel::create([
+//            'username' => '李白1',
+//            'password' => '123',
+//            'gender' => '男',
+//            'email' => 'libai@163.com',
+//            'price' => 100,
+//            'details' => '123',
+//            'uid' => 1011
+//        ],['username','email','password','details'],false);
+//        return json($return->username);
+
+
+        $user = new UserModel();
+        $user->username = '张飞';
+        $user->password = '123';
+        $user->gender = '男';
+        $user->email = 'libai@163.com';
+        $user->price = 100;
+        $user->uid = 1011;
+        $user->status = 1;
+        $user->details = 123;
+        $user->list = ['username' => '张翼德', 'gender' => '男', 'email' => 'zhangfei@163.com'];
+        $user->save();
     }
 
     public function delete()
@@ -60,7 +72,7 @@ class DataModel
 
 //        UserModel::destroy(311);
 
-        UserModel::where('id','>',310)->delete();
+        UserModel::where('id', '>', 310)->delete();
     }
 
 
@@ -71,9 +83,9 @@ class DataModel
 //        $user->save();
 
         UserModel::update([
-            'username'=>'哪吒',
-            'email' =>'neza@163.com'
-        ],['id'=>310]);
+            'username' => '哪吒',
+            'email' => 'neza@163.com'
+        ], ['id' => 310]);
     }
 
     public function select()
@@ -87,10 +99,14 @@ class DataModel
 //        $user = UserModel::select([19,20,21]);
 //        return json($user);
 
-        $user = UserModel::where('price','>=',100)
-            ->limit(2)
-            ->order('price','desc')
-            ->select();
+//        $user = UserModel::where('price', '>=', 100)
+//            ->limit(2)
+//            ->order('price', 'desc')
+//            ->select();
+//        return json($user);
+
+
+        $user = UserModel::where('list->username','张翼德')->find();
         return json($user);
     }
 
@@ -112,7 +128,7 @@ class DataModel
     public function setAttr()
     {
         $user = UserModel::find(310);
-        $user->price =$user->price + 20;
+        $user->price = $user->price + 20;
         $user->save();
     }
 
