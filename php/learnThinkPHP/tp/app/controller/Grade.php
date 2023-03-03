@@ -79,4 +79,18 @@ class Grade
             dump($user->toArray());
         }
     }
+
+    public function count()
+    {
+//        $list = UserModel::withCount(['profile'])->select([19,20,21]);
+//        foreach($list as $user){
+//            echo $user->profile_count.'<br>';
+//        }
+
+
+        $list = UserModel::withSum(['profile'],'status')->select([19,20,21]);
+        foreach($list as $user){
+            echo $user->profile_sum.'<br>';
+        }
+    }
 }
