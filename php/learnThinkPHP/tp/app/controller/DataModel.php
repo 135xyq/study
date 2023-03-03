@@ -100,4 +100,18 @@ class DataModel
         $username = $model->getUserName(21);
         return $username;
     }
+
+
+    public function getAttr()
+    {
+        $user = UserModel::find(310);
+        echo $user->status;
+    }
+
+    public function setAttr()
+    {
+        $user = UserModel::find(310);
+        $user->price =$user->price + 20;
+        $user->save();
+    }
 }
