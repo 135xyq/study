@@ -148,4 +148,25 @@ class DataModel
         $user = UserModel::find(20);
         return json($user);
     }
+
+
+    public function softDelete()
+    {
+//        UserModel::destroy(306);
+
+//        $user = UserModel::withTrashed()->select();
+//        return json($user);
+
+//        $user = UserModel::onlyTrashed()->select();
+//        return json($user);
+
+
+        $user = UserModel::onlyTrashed()->find(306);
+        $user->restore();
+        UserModel::destroy(306,true);
+
+
+
+
+    }
 }

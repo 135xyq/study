@@ -3,6 +3,7 @@
 namespace app\model;
 
 use think\Model;
+use think\model\concern\SoftDelete;
 
 class User extends Model
 {
@@ -49,6 +50,6 @@ class User extends Model
 //    ];
 
     protected $json = ['list'];
-
+    use SoftDelete;
 
 }
