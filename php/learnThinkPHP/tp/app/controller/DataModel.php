@@ -60,4 +60,17 @@ class DataModel
 
         UserModel::where('id','>',310)->delete();
     }
+
+
+    public function update()
+    {
+//        $user = UserModel::find(308);
+//        $user->username = '李黑';
+//        $user->save();
+
+        UserModel::update([
+            'username'=>'哪吒',
+            'email' =>'neza@163.com'
+        ],['id'=>310]);
+    }
 }
