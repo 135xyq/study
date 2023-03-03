@@ -7,9 +7,16 @@ use think\model\concern\SoftDelete;
 
 class User extends Model
 {
+//    一对一
+//    public function profile()
+//    {
+//        return $this->hasOne(Profile::class);
+//    }
+
+//    一对多
     public function profile()
     {
-        return $this->hasOne(Profile::class);
+        return $this->hasMany(Profile::class,'user_id','id');
     }
 
 //    protected $connection = 'mysql';
