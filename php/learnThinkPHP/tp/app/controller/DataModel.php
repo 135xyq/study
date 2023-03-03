@@ -73,4 +73,22 @@ class DataModel
             'email' =>'neza@163.com'
         ],['id'=>310]);
     }
+
+    public function select()
+    {
+//        $user = UserModel::find(19);//find查询
+//        return json($user);
+
+//        $user = UserModel::findOrEmpty(34);
+//        return json($user);
+
+//        $user = UserModel::select([19,20,21]);
+//        return json($user);
+
+        $user = UserModel::where('price','>=',100)
+            ->limit(2)
+            ->order('price','desc')
+            ->select();
+        return json($user);
+    }
 }
