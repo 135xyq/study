@@ -8,24 +8,37 @@ class User extends Model
 {
     protected $connection = 'mysql';
 
-    public function getUserName($id)
-    {
-        $user = $this->find($id);
-        return $user->getAttr('username');
-    }
+//    public function getUserName($id)
+//    {
+//        $user = $this->find($id);
+//        return $user->getAttr('username');
+//    }
 
 //    获取器
-    public function getStatusAttr($value)
-    {
-        $status = [-1 => '删除', 0 => '禁用', 1 => '正常', 2 => '待审核'];
-        return $status[$value];
-    }
+//    public function getStatusAttr($value)
+//    {
+//        $status = [-1 => '删除', 0 => '禁用', 1 => '正常', 2 => '待审核'];
+//        return $status[$value];
+//    }
 
 
 //    修改器
-    public function setPriceAttr($value)
+//    public function setPriceAttr($value)
+//    {
+//        return $value + 100;
+//    }
+
+
+    public function scopePrice($query,$value)
     {
-        return $value + 100;
+        $query->where('price','>',$value)
+            ->field(['id','username','price'])
+            ->order('price','desc')
+            ->limit(5);
     }
 
+    public function scopeEmail($query,$value)
+    {
+        $query->where('email','like','%'.$value.'%');
+    }
 }

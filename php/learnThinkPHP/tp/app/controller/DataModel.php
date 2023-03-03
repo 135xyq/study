@@ -4,6 +4,7 @@ namespace app\controller;
 
 use app\model\User;
 use app\model\User as UserModel;
+use think\facade\Db;
 
 class DataModel
 {
@@ -113,5 +114,16 @@ class DataModel
         $user = UserModel::find(310);
         $user->price =$user->price + 20;
         $user->save();
+    }
+
+
+    public function scope()
+    {
+//        $user = UserModel::scope('price')->select();
+//        return json($user);
+
+        $user = UserModel::price(60)->email('xiao')->select();
+//        return Db::getLastSql();
+        return json($user);
     }
 }
