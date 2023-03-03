@@ -58,4 +58,25 @@ class Grade
             ['hobby'=>'吃豆芽2','status'=>1]
         ]);
     }
+
+    public function list()
+    {
+//        $list = UserModel::with(['profile'])->select([19,20,21]);
+//        foreach ($list as $user){
+//            dump($user->profile->toArray());
+//        }
+
+//        $list = UserModel::with(['book','profile'])->select([19,20,21]);
+//        foreach ($list as $user){
+//            dump($user->profile.$user->book);
+//        }
+
+
+        $list = UserModel::with(['profile'=>function($query){
+            $query->field('user_id,hobby');
+        }])->field('id,username')->select([19,20,21]);
+        foreach ($list as $user){
+            dump($user->toArray());
+        }
+    }
 }

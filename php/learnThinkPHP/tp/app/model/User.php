@@ -19,6 +19,11 @@ class User extends Model
         return $this->hasMany(Profile::class,'user_id','id');
     }
 
+    public function book()
+    {
+        return $this->hasMany(Book::class,'user_id','id');
+    }
+
 //    protected $connection = 'mysql';
 
 //    public function getUserName($id)
