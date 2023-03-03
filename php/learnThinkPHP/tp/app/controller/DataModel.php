@@ -2,6 +2,7 @@
 
 namespace app\controller;
 
+use app\model\User;
 use app\model\User as UserModel;
 
 class DataModel
@@ -90,5 +91,13 @@ class DataModel
             ->order('price','desc')
             ->select();
         return json($user);
+    }
+
+
+    public function field()
+    {
+        $model = new UserModel();
+        $username = $model->getUserName(21);
+        return $username;
     }
 }
