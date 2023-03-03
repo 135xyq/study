@@ -126,4 +126,10 @@ class DataModel
 //        return Db::getLastSql();
         return json($user);
     }
+
+    public function typec()
+    {
+        $user = UserModel::find(20);
+        return json($user);
+    }
 }

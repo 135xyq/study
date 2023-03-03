@@ -29,16 +29,24 @@ class User extends Model
 //    }
 
 
-    public function scopePrice($query,$value)
-    {
-        $query->where('price','>',$value)
-            ->field(['id','username','price'])
-            ->order('price','desc')
-            ->limit(5);
-    }
+//    public function scopePrice($query,$value)
+//    {
+//        $query->where('price','>',$value)
+//            ->field(['id','username','price'])
+//            ->order('price','desc')
+//            ->limit(5);
+//    }
 
-    public function scopeEmail($query,$value)
-    {
-        $query->where('email','like','%'.$value.'%');
-    }
+//    public function scopeEmail($query,$value)
+//    {
+//        $query->where('email','like','%'.$value.'%');
+//    }
+
+    protected $type = [
+        'status' => 'boolean',
+        'price' => 'float',
+        'create_time' => 'datetime:Y/m/d'
+    ];
+
+
 }
