@@ -27,4 +27,12 @@ use think\facade\Route;
 //});
 
 
-Route::rule('ds/:id','address/detail');
+//Route::rule('ds/:id','address/detail');
+
+Route::group(function (){
+    Route::rule('ds/:id','detail');
+    Route::rule('rd/:name','read');
+})->prefix('Address/')
+    ->ext('html');
+
+Route::miss('public/miss');

@@ -18,4 +18,9 @@ class Address
     {
         return '详情id: '.$id. ' 详情uid:'.$uid;
     }
+
+    public function read($name)
+    {
+        return '读取名称：'.$name;
+    }
 }
