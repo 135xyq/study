@@ -20,4 +20,11 @@ use think\facade\Route;
 
 //Route::rule('/','Index/index','GET');
 
-Route::rule('sc/:id/:uid','address/search')->pattern(['id'=>'\d+','uid'=>'\d+']);
+//Route::rule('sc/:id/:uid','address/search')->pattern(['id'=>'\d+','uid'=>'\d+']);
+
+//Route::domain('xyq.hsz.com',function(){
+//    Route::rule('ds/:id','address/detail');
+//});
+
+
+Route::rule('ds/:id','address/detail');
