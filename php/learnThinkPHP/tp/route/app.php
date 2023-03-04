@@ -16,6 +16,8 @@ use think\facade\Route;
 //
 //Route::get('hello/:name', 'index/hello');
 
-Route::rule('ds/:id','address/detail');
+//Route::rule('ds/:id','address/detail')->pattern(['id'=>'\d+']);
 
-Route::rule('/','Index/index','GET');
+//Route::rule('/','Index/index','GET');
+
+Route::rule('sc/:id/:uid','address/search')->pattern(['id'=>'\d+','uid'=>'\d+']);
