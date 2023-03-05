@@ -53,4 +53,11 @@ class Verify
     {
         return 'id: ' . $id;
     }
+
+    public function single()
+    {
+        dump(Validate::isEmail('322@qq.com'));
+
+        dump(Validate::must(''));
+    }
 }
