@@ -2,7 +2,9 @@
 
 namespace app\controller;
 
-use think\Request;
+//use think\Request;
+
+use think\facade\Request;
 
 class Rely
 {
@@ -20,7 +22,12 @@ class Rely
     public function get()
     {
 //        return request()->param('sex');
-        return $this->request->url(true);
+//        return $this->request->url(true);
+//        dump(Request::has('sex','post'));
+//        return json(Request::param('user'));
+//        return json(Request::param('user','默认姓名'));
+        dump(input('param.user'));
     }
+
 
 }
