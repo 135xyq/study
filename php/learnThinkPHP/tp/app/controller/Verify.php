@@ -5,6 +5,7 @@ namespace app\controller;
 use app\validate\User;
 use think\exception\ValidateException;
 use think\facade\Validate;
+use think\validate\ValidateRule;
 
 class Verify
 {
@@ -26,19 +27,30 @@ class Verify
         $validate = Validate::rule([
             'name' => 'require|max:20',
             'price' => 'number|between:1,100',
-            'email' => 'email'
+            'email' => 'email',
+
+//            格式验证
+//            'test' => 'require'
+//            'test'=>ValidateRule::isRequire()
+
+//            区间长度验证
+//            'test'=>'length:4'
+            'test' => ValidateRule::length(4)
         ]);
         $result = $validate->batch(true)->check([
-            'name' => '',
-            'price' => 910,
-            'email' => 'xiaoxin@163.com'
+            'name' => '蜡笔小新',
+            'price' => 10,
+            'email' => 'xiaoxin@163.com',
+
+            'test' => 'ss'
         ]);
-        if(!$result){
+        if (!$result) {
             dump($validate->getError());
         }
     }
 
-    public function route($id){
-        return 'id: '.$id;
+    public function route($id)
+    {
+        return 'id: ' . $id;
     }
 }
