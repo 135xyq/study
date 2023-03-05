@@ -30,5 +30,13 @@ class User extends Validate
         'name.max' => '姓名不得大于 20 位',
         'price.number' => '价格必须是数字',
         'price.between' => '价格必须 1-100 之间',
-        'email' => '邮箱的格式错误'];
+        'email' => '邮箱的格式错误'
+    ];
+
+
+    // 场景验证
+    protected $scene =[
+        'insert' => ['name','price','email'],
+        'edit' =>  ['name','price']
+    ];
 }

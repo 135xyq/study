@@ -11,10 +11,10 @@ class Verify
     public function index()
     {
         try {
-            validate(User::class)->batch(true)->check([
+            validate(User::class)->batch(true)->scene('edit')->check([
                 'name' => '',
                 'price' => 910,
-                'email' => 'xiaoxin@163.com'
+                'email' => 'xiaoxin@163com'
             ]);
         } catch (ValidateException $e) {
             dump($e->getError());
@@ -36,5 +36,9 @@ class Verify
         if(!$result){
             dump($validate->getError());
         }
+    }
+
+    public function route($id){
+        return 'id: '.$id;
     }
 }
