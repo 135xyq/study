@@ -3,6 +3,7 @@
 namespace app\controller;
 
 use app\BaseController;
+use app\facade\Test as TestFacade;
 
 class Test extends BaseController
 {
@@ -20,5 +21,10 @@ class Test extends BaseController
         $array = ['a'=>'1','b'=>2,'c'=>3];
         halt('中断输出！');
         return json($array);
+    }
+
+    public function test()
+    {
+        return TestFacade::hello('xyq');
     }
 }
