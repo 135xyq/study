@@ -2,6 +2,7 @@
 
 namespace app\controller;
 
+use think\facade\Cache;
 use think\facade\Cookie;
 use think\facade\Request;
 use think\facade\Session;
@@ -45,6 +46,14 @@ class Store
 
         dump(Cookie::get('value','默认值'));
 
+    }
+
+    public function redis()
+    {
+        Cache::set('name','xyq',3600);
+        dump(Cache::get('name'));
+        Cache::inc('number',3);
+        dump(Cache::get('number'));
     }
 
 }
