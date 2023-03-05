@@ -2,6 +2,7 @@
 
 namespace app\controller;
 
+use think\facade\Cookie;
 use think\facade\Request;
 use think\facade\Session;
 
@@ -23,6 +24,26 @@ class Store
 
         dump(session());
         dump(session('name'));
+
+    }
+
+    public function cookie()
+    {
+//        Cookie::set('user','xyq');
+
+//        Cookie::set('value','9999');
+
+//        Cookie::set('user','xyq',3600);
+
+//        dump(Cookie::get('user'));
+
+        dump(Request::cookie());
+
+        dump(Cookie::has('value'));
+
+        Cookie::delete('value');
+
+        dump(Cookie::get('value','默认值'));
 
     }
 
