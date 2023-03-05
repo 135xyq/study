@@ -26,7 +26,16 @@ class Rely
 //        dump(Request::has('sex','post'));
 //        return json(Request::param('user'));
 //        return json(Request::param('user','默认姓名'));
-        dump(input('param.user'));
+//        dump(input('param.user'));
+
+
+        dump(Request::isGet());
+        dump(Request::isPost());
+        dump(Request::method());
+        dump(Request::header());
+
+
+
     }
 
 
