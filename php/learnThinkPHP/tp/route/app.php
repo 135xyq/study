@@ -14,7 +14,7 @@ use think\facade\Route;
 //    return 'hello,ThinkPHP6!';
 //});
 //
-Route::get('hello/:name', 'index/hello');
+//Route::get('hello/:name', 'index/hello');
 
 //Route::rule('ds/:id','address/detail')->pattern(['id'=>'\d+']);
 
@@ -41,4 +41,4 @@ Route::get('hello/:name', 'index/hello');
 
 //Route::resource('blog','Blog');
 
-Route::resource('blog.comment', 'Comment');
+//Route::resource('blog.comment', 'Comment');

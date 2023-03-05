@@ -6,6 +6,7 @@ class Address
 {
     public function index()
     {
+//        echo session('name');
         return 'index';
     }
 
