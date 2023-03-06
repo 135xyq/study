@@ -4,6 +4,7 @@ namespace app\controller;
 
 use think\facade\Cache;
 use think\facade\Cookie;
+use think\facade\Log;
 use think\facade\Request;
 use think\facade\Session;
 
@@ -54,6 +55,16 @@ class Store
         dump(Cache::get('name'));
         Cache::inc('number',3);
         dump(Cache::get('number'));
+    }
+
+    public function log()
+    {
+//        Log::record('测试日志');
+
+//        Log::record('错误日志','error');
+
+        Log::write('实时写入','error');
+        Log::close();
     }
 
 

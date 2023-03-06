@@ -15,6 +15,7 @@ return [
     // 全局日志处理 支持闭包
     'processor'    => null,
 
+
     // 日志通道列表
     'channels'     => [
         'file' => [
@@ -29,7 +30,7 @@ return [
             // 最大日志文件数量
             'max_files'      => 0,
             // 使用JSON格式记录
-            'json'           => false,
+            'json'           => true,
             // 日志处理
             'processor'      => null,
             // 关闭通道日志写入
