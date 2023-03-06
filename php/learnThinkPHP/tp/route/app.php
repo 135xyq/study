@@ -43,11 +43,14 @@ use think\facade\Route;
 
 //Route::resource('blog.comment', 'Comment');
 
-Route::rule('vr/:id','Verify/route')
-    ->validate([
-        'id' => 'number|between:1,10',
-        'email' => \think\validate\ValidateRule::isEmail()
-    ], null, [
-        'id.between' => 'id 限定在 1-10 之间',
-        'email' => '邮箱格式错误'
-    ], true);
+//Route::rule('vr/:id','Verify/route')
+//    ->validate([
+//        'id' => 'number|between:1,10',
+//        'email' => \think\validate\ValidateRule::isEmail()
+//    ], null, [
+//        'id.between' => 'id 限定在 1-10 之间',
+//        'email' => '邮箱格式错误'
+//    ], true);
+
+
+//Route::rule('vc','Code/verify');
