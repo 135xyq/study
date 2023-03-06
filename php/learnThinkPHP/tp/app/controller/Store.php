@@ -56,4 +56,7 @@ class Store
         dump(Cache::get('number'));
     }
 
+
+
+
 }
