@@ -9,5 +9,8 @@ return [
      \think\middleware\SessionInit::class,
 
 //    注册一个中间件
-    \app\middleware\Check::class
+    \app\middleware\Check::class,
+
+//    允许跨域
+    \think\middleware\AllowCrossDomain::class
 ];
