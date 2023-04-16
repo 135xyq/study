@@ -26,7 +26,8 @@
         "topthink/think-filesystem": "^1.0",
         "topthink/think-captcha": "^3.0",
         "topthink/think-multi-app": "^1.0",
-        "curl/curl": "^2.4"
+        "curl/curl": "^2.4",
+        "fukuball/jieba-php": "^0.33.0"
     },
     "require-dev": {
         "symfony/var-dumper": "^4.2",
