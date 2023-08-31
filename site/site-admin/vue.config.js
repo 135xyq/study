@@ -37,8 +37,8 @@ module.exports = {
             errors: true
         },
         proxy: {
-            '/api': {
-                target: 'http://127.0.0.1:9527'
+            '/': {
+                target: '10.47.74.82:9900'
             }
         },
         // before: require('./mock/mock-server.js')

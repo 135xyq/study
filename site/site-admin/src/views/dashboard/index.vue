@@ -68,7 +68,7 @@ export default {
 					{
 						name: "数据总览",
 						type: "pie",
-						radius: ["40%", "70%"],
+						radius: ["s%", "70%"],
 						avoidLabelOverlap: false,
 						label: {
 							show: false,
