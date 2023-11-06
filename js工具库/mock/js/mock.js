@@ -7972,7 +7972,7 @@
                         无类型转换：直接比较
                         有类型转换：先试着解析 template，然后再检查？
                     ## value vs. template
-                        基本类型
+                        baseType
                             无生成规则：直接比较
                             有生成规则：
                                 number
