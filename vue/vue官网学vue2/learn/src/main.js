@@ -6,6 +6,7 @@ import focus from "@/directives/focus";
 
 
 Vue.config.productionTip = false
+Vue.config.devtools =  true
 Vue.directive('focus',focus);
 
 new Vue({
