@@ -59,3 +59,31 @@ function testInterfaceExtendPoint(pt: testExtend) {
 
 testInterfaceExtendPoint({x: 1, y: 2, z: '3'})
 
+let arrNUmber1: number[] = [1, 23]
+
+let arrNUmber2: Array<number[]> = [[1], []]
+
+let nickName: string | undefined = undefined
+
+let user: {
+  name: string,
+  age: number
+}
+
+user = {
+  name: 'xyq',
+  age: 22
+}
+
+function combine(a: number, b: number): number
+function combine(a: string, b: string): string
+function combine(a: number | string, b: number | string): number | string {
+  if (typeof a === 'number' && typeof b === 'number') {
+    return a * b
+  } else if (typeof a === 'string' && typeof b === 'string') {
+    return a + b
+  }
+}
+
+const result1 = combine(1, 2)
+const result2 = combine('1', '2')
