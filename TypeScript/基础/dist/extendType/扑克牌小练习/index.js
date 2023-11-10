@@ -21,7 +21,7 @@ var point;
     point["twelve"] = "Q";
     point["thirteen"] = "K";
 })(point || (point = {}));
-function createPokers() {
+function createPokers1() {
     let pokerList = [];
     const colors = Object.values(suit1);
     let pointList = Object.values(point);
@@ -35,15 +35,14 @@ function createPokers() {
     }
     return pokerList;
 }
-function printPoker(poker) {
+function printPoker1(poker) {
     let result = "\n";
-    for (let i = 1; i <= poker.length; i++) {
-        console.log(i, poker[i]);
+    for (let i = 0; i < poker.length; i++) {
         result += poker[i].playingCardSuit + poker[i].point + '\t';
-        if (i % 8 === 0) {
+        if ((i + 1) % 8 === 0) {
             result += '\n';
         }
     }
     console.log(result);
 }
-printPoker(createPokers());
+printPoker1(createPokers1());
