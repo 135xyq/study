@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>绘制点</title>
+</head>
+
+<body>
+    <canvas width="500" height="500" id="oCanvas"></canvas>
+
+    <script type="gl" id="vertext">
+        void main() {
+            gl_Position = vec4(0,0,0,0);
+            gl_PointSize = 10.0;
+        }
+    </script>
+    <script type="gl" id="fragment">
+        void main() {
+            gl_FragColor = vec4(0,0,0,1);
+        }
+    </script>
+    <script>
+        const oCanvas = document.getElementById("oCanvas");
+        const gl = oCanvas.getContext("webgl");
+        if (!gl) {
+            alert('浏览器不支持webgl');
+        } else {
+
+        }
+    </script>
+</body>
+
+</html>
