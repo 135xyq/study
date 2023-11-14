@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{title}}</h1>
+        <ul>
+            <li v-for="(item,i) in products" key="item.id">商品名称：{{item.name}} 商品存货：
+                <button @click="changeNum(item,item.stock - 1)">-</button> {{item.stock ? item.stock:"缺货"}}
+                <button @click="changeNum(item,item.stock + 1)">+</button>
+                <button @click="remove(i)">删除</button>
+            </li>
+        </ul>
+        <p>商品总数：{{total}}</p>
+        <img v-bind:src="images" alt="">
+        <img :src="images" alt="">
+    </div>
+    <script src="./vue.min.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                title: "First Vue",
+                products: [{
+                    id: 1,
+                    name: 'OnePlus',
+                    stock: 9
+                }, {
+                    id: 2,
+                    name: 'HuaWei',
+                    stock: 9
+                }, {
+                    id: 3,
+                    name: 'XiaoMi',
+                    stock: 9
+                }, {
+                    id: 4,
+                    name: 'ipone',
+                    stock: 9
+                }],
+                images: "https://vuejs.org/images/logo.svg",
+            },
+            computed: {
+                total() {
+                    var sum = 0;
+                    for (var i = 0; i < this.products.length; i++) {
+                        sum += this.products[i].stock;
+                    }
+                    return sum;
+                }
+            },
+            methods: {
+                changeNum(product, newStock) {
+                    if (newStock < 0) {
+                        newStock = 0;
+                    }
+                    product.stock = newStock;
+                },
+                remove(index) {
+                    this.products.splice(index, 1);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
