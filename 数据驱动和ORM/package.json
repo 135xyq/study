@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "axios": "^0.26.0",
+    "cheerio": "^1.0.0-rc.10",
+    "log4js": "^6.4.2",
+    "mockjs": "^1.1.0",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.17.0",
+    "validate.js": "^0.13.1",
+    "validatejs": "^0.0.2"
+  }
+}
