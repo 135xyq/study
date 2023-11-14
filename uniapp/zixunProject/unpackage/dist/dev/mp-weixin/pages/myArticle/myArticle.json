@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "我的文章",
-  "enablePullDownRefresh": false,
-  "usingComponents": {
-    "list-card": "/components/ListCard/ListCard"
-  }
-}
