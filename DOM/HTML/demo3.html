@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- https://www.baidu.com/s?ie=utf-8&f=8。 -->
+    <script>
+        function find(str) {
+            var obj = {};
+            var reg1 = /(\w)+(?=:\/\/)/;
+            var iProtocol = str.match(reg1)[0];
+            obj.protocol = iProtocol;
+            var reg2 = /\/\/(\D)*\//;
+            var b = str.match(reg2)[0];
+            var reg3 = /\//g; //将/ 去掉
+            var iHost = b.replace(reg3, '');
+            obj.host = iHost;
+            var reg4 = /\/(\w)+(?=\?)/;
+            var iPath = str.match(reg4)[0];
+            obj.path = iPath;
+
+            var reg5 = /(.)+\?/; //将前面匹配过的都删除
+            var newStr = str.replace(reg5, '');
+            var newArray = newStr.split('&'); //将每一组值分开
+            var obj1 = {};
+            newArray.forEach(function(ele, index, self) {
+                // ["ie=utf-8", "f=8"]
+                var reg6 = /(\w)+(?=\=)/;
+                var key = ele.match(reg6)[0];
+                var reg7 = /(\w)+=/;
+                var temp = ele.replace(reg7, ''); //将匹配过的删除
+                value = temp;
+                obj1[key] = value; //为对象赋值
+            })
+            obj.search = obj1;
+            return obj;
+        }
+    </script>
+</body>
+
+</html>

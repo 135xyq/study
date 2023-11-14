@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../static/img/facivon.ico" type="image/x-icon">
+    <title>主页面</title>
+    <link rel="stylesheet" href="../../static/css/reset.css">
+    <link rel="stylesheet" href="../../static/css/main.css">
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div class="header-container clear">
+        <a href="../login/login.html">
+            <img src="../../static/img/logo.png" alt="logo" class="logo-img">
+            <span class="logo-text">筱的学生管理系统</span>
+        </a>
+        <div class="header-user-name">谢永强</div>
+
+    </div>
+
+    <!-- 侧边导航栏 -->
+    <div class="nav-container">
+        <div class="nav-container-item   active">学生列表</div>
+        <div class="nav-container-item">新增学生</div>
+        <div class="nav-container-item">查找学生</div>
+    </div>
+
+    <!-- 主体部分 -->
+
+    <div class="main-container active">
+        <!-- 学生列表部分 -->
+        <div class="content-item">
+            <table class="table-container">
+                <thead>
+                    <tr>
+                        <th>学号</th>
+                        <th>姓名</th>
+                        <th>性别</th>
+                        <th>年龄</th>
+                        <th>电话</th>
+                        <th>邮箱</th>
+                        <th>地址</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="tableContainer">
+
+                </tbody>
+            </table>
+
+            <!-- 分页 -->
+            <div class="page-controller-container">
+                <span id="previous">&lt</span>
+                <div id="paginationContainer" class="page-item-wrapper"></div>
+                <span id="next">&gt</span>
+            </div>
+        </div>
+
+        <!-- 新增学生 -->
+        <div class="content-item">
+            <form id="addForm" class="user-form">
+                <div class="item form-item">
+                    <label for="name">姓名：</label>
+                    <input type="text" id="userName">
+                </div>
+                <div class="item form-item">
+                    <label for="sNo">学号：</label>
+                    <input type="text" id="userSNo">
+                </div>
+                <div class="item form-item">
+                    <label for="sex">性别：</label>
+                    <select id="userSex">
+                    <option value="0" name = "userSex">男</option>
+                    <option value="1" name = "userSex">女</option>
+                </select>
+                </div>
+                <div class="item form-item">
+                    <label for="birth">生日：</label>
+                    <input type="text" id="userBirth">
+                </div>
+                <div class="item form-item">
+                    <label for="phone">电话：</label>
+                    <input type="text" id="userPhone">
+                </div>
+                <div class="item form-item">
+                    <label for="address">地址：</label>
+                    <input type="text" id="userAddress">
+                </div>
+                <div class="item form-item">
+                    <label for="email">邮件：</label>
+                    <input type="text" id="userEmail">
+                </div>
+                <div class="btns">
+                    <div class="add-btn" id="addBtn">添加</div>
+                    <input type="reset" value="重置" class="reset-btn">
+                </div>
+            </form>
+        </div>
+        <!-- 查找学生 -->
+        <div class="content-item">
+            <form class="search-form">
+                <label for="search">请输入要查找学生的关键字：</label>
+                <input type="text" class="search-input" id="searchKeyword" placeholder="可输入学生的学号，邮箱，地址">
+                <label for="selectSex">性别：</label>
+                <select name="sex" id="selectSex">
+                    <option value="-1">全部</option>
+                    <option value="0">男</option>
+                    <option value="1">女</option>
+                </select>
+                <label for="selectPage">查询页数</label>
+                <select name="page" id="selectPage">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="55">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <label for="selectSize">每页显示数量</label>
+                <select name="size" id="selectSize">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <input type="submit" value="提交" class="search-btn" id="searchBtn">
+            </form>
+            <div>
+                <table class="select-table-container">
+                    <thead class="select-table-header">
+                        <tr>
+                            <th>学号</th>
+                            <th>姓名</th>
+                            <th>性别</th>
+                            <th>年龄</th>
+                            <th>电话</th>
+                            <th>邮箱</th>
+                            <th>地址</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="selectTableContainer">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- 对话框 -->
+    <div id="dialogContainer" class="dialog-container">
+        <div class="dialog-main ">
+            <form id="updateForm" class="user-form">
+                <div class="item form-item ">
+                    <label for="name ">姓名：</label>
+                    <input type="text" id="name">
+                </div>
+                <div class="item form-item">
+                    <label for="sNo">学号：</label>
+                    <input type="text" id="sNo" readonly="">
+                </div>
+                <div class="item form-item">
+                    <label for="sex">性别：</label>
+                    <select id="sex">
+                        <option value="0">男</option>
+                        <option value="1">女</option>
+                    </select>
+                </div>
+                <div class="item form-item">
+                    <label for="birth">生日：</label>
+                    <input type="text" id="birth">
+                </div>
+                <div class="item form-item">
+                    <label for="phone">电话：</label>
+                    <input type="text" id="phone">
+                </div>
+                <div class="item form-item">
+                    <label for="address">地址：</label>
+                    <input type="text" id="address">
+                </div>
+                <div class="item form-item">
+                    <label for="email">邮件：</label>
+                    <input type="text" id="email">
+                </div>
+                <div class="btns">
+                    <div class="add-btn" id="updateBtn">修改</div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="../../utils/ajax.js"></script>
+    <script src="../../static/js/main.js"></script>
+</body>
+
+</html>

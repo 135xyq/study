@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=b, initial-scale=1.0">
+    <title>通过cookie来实现</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            background-color: green;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        // document.cookie = 'name = xyq';
+        // document.cookie = 'margin = 20px;max-age = 10';
+        var manageCookie = {
+            //设置cookie
+            set: function(name, value, date) {
+                // expires 要求用户传入的是一个时间节点(这里函数规定传入的是天数)
+                var endDate = new Date();
+                endDate.setDate(endDate.getDate() + date); //过期时间点
+                document.cookie = name + '=' + value + '; expires =' + endDate;
+
+                // document.cookie = name + '=' + value + '; max-age=' + date; //传入第三个参数为过期的秒数
+            },
+            // 移除cookie
+            remove: function(name) {
+                //参数为cookie 的名
+                this.set(name, '', -1); //只需把时间设置到过去
+            },
+            //获取cookie
+            get: function(name) {
+                //参数为cookie 的名
+                var cookies = document.cookie.split('; ');
+                for (var i = 0; i < cookies.length; i++) {
+                    var item = cookies[i].split('=');
+                    if (item[0] == name) { //找到了
+                        return item[1];
+                    }
+                }
+            }
+        }
+        var drag = {
+            init: function(dom) {
+                this.dom = dom;
+                this.bindEvent();
+                var left = manageCookie.get('left');
+                var top = manageCookie.get('top');
+                this.dom.style.left = left ? left + 'px' : '100px';
+                this.dom.style.top = top ? top + 'px' : '100px';
+
+                box.style.left = manageCookie.get('left');
+            },
+            bindEvent: function() {
+                this.dom.onmousedown = this.mouseDown.bind(this);
+            },
+            mouseDown: function(e) {
+                document.onmousemove = this.mousemove.bind(this);
+                document.onmouseup = this.mouseup.bind(this);
+
+                this.disX = e.clientX - this.dom.offsetLeft;
+                this.disY = e.clientY - this.dom.offsetTop;
+            },
+            mousemove: function(e) {
+                this.newLeft = e.clientX - this.disX;
+                this.newTop = e.clientY - this.disY;
+
+                this.dom.style.left = this.newLeft + 'px';
+                this.dom.style.top = this.newTop + 'px';
+            },
+            mouseup: function() {
+                document.onmousemove = null;
+                document.onmouseup = null;
+
+                //鼠标抬起需存储在cookie中
+                manageCookie.set('left', this.newLeft, 100);
+                manageCookie.set('top', this.newTop, 100);
+            }
+        }
+        var box = document.getElementById('box');
+        // box.style.left = manageCookie.get('left');
+        // box.style.top = manageCookie.get('top');
+        drag.init(box);
+    </script>
+
+</body>
+
+</html>

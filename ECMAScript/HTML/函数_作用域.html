@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="函数_作用域">
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+    <title>函数_作用域</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        // function w(x, y) {
+        //     // document.write("a" + "<br>");
+        //     // document.write("xyq" + "<br>");
+        //     // document.write(x + y);
+        //     arguments[2] = 4;
+        //     console.log(arguments);
+        // }
+        // w(1, 2, 3);
+
+        /*
+        function animals(animal) {
+            console.log(animal + "的叫声！");
+        }
+        animals("小狗");
+        */
+
+        /*
+         function sum() {
+             var i;
+             var result = 0;
+             for (i = 0; i < arguments.length; i++) {
+                 result += arguments[i];
+             }
+             return result;
+         }
+         console.log(sum(1, 2, 3, 4, 5, 6));
+         */
+
+        /*
+        function numToChinese(a) {
+            var arr = [0];
+            var i = 0;
+            var result = 0;
+            while (a > 0) {
+                arr[i] = a % 10;
+                a = parseInt(a / 10);
+                i++;
+                console.log(a);
+            }
+            for (i = 0; i < arr.length; i++) {
+                switch (arr[i]) {
+                    case 1:
+                        console.log("一")
+                        break;
+                    case 2:
+                        console.log("二")
+                        break;
+                    case 3:
+                        console.log("三")
+                        break;
+                }
+            }
+            return result;
+        }
+        console.log(String(numToChinese(1234)));
+        */
+        /*
+        function multiply(n) {
+            var i;
+            var result = 1;
+            for (i = 1; i <= n; i++) {
+                result *= i;
+            }
+            return result;
+        }
+        console.log(multiply(5));
+        */
+        /*
+         var n = parseInt(window.prompt("imput"));
+
+         function jc(n) {
+             if (n < 3) {
+                 return 1;
+             } else {
+                 return jc(n - 1) + jc(n - 2);
+             }
+         }
+         console.log(jc(n));
+         */
+        /*
+         function fb(n) {
+             if (n < 3) {
+                 return 1;
+             } else {
+                 var i, result;
+                 var first = 1;
+                 var second = 1;
+                 for (i = 0; i < n - 2; i++) {
+                     result = first + second;
+                     first = second;
+                     second = result;
+                 }
+                 return result;
+             }
+         }
+         console.log(fb(5));
+         console.log(fb(2));
+         */
+        // (function() {
+        //     var a = 124;
+        //     var b = 12;
+        //     console.log(a + b);
+        // }())
+        // var num = 100;
+
+        // function test() {
+        //     console.log(num);
+        // }
+
+        // num = 200;
+        // var f = (
+        //     function f() {
+        //         return "1";
+        //     },
+        //     function g() {
+        //         return 2;
+        //     }
+        // )();
+        // console.log(typeof f);
+        var x = 1;
+        if (function f() {}) { //立即执行函数
+            x += typeof f;
+        }
+        console.log(x);
+    </script>
+</body>
+
+</html>
