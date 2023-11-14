@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>旋转</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            perspective: 1800px;
+            transform-style: preserve-3d;
+            perspective-origin: 0px 0px;
+        }
+        
+        div {
+            width: 200px;
+            height: 200px;
+            background-image: url(../img/3.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: absolute;
+            top: 200px;
+            transform: rotateY(45deg);
+            /* transform: skew(0deg, 45deg) */
+        }
+        
+        div:first-child {
+            left: 200px;
+        }
+        
+        div:nth-of-type(2) {
+            left: 600px;
+        }
+        
+        div:last-of-type {
+            left: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+
+</html>

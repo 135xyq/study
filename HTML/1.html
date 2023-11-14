@@ -1,0 +1,8 @@
+Set Wshshell=Wscript.CreateObject("WScript.shell")
+WshShell.AppActivate"谢永强"
+for i=1 to 9
+WScript.Sleep 99
+WshShell.SendKeys"^v"
+WshShell.SendKeys"%s"
+Next
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const arr1 = [24, 42, 32, 34, 42, 31, 32, 90, 86, 32];
+        const arr2 = [24, 47, 32, 38, 49, 11, 32, 90, 47];
+        // 求两个数组的并集
+        const arr3 = [...new Set([...arr1, ...arr2])];
+        console.log(arr3);
+
+        // 求两个数组的交集
+        const arr4 = new Set(arr1);
+        const arr5 = [...new Set(arr2)];
+        const result = arr5.filter(item => {
+            return arr4.has(item);
+        })
+        console.log(result);
+
+        // 求两个数组的差集
+        const result1 = arr3.filter(item => {
+            return !(arr4.has(item))
+        })
+        console.log(result1)
+    </script>
+</body>
+
+</html>

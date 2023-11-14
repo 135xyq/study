@@ -1,0 +1,137 @@
+/* 通用样式开始 */
+
+@font-face {
+    font-family: 'iconfont';
+    src: url('http://at.alicdn.com/t/font_2289209_k45eprt6cm.eot');
+    src: url('http://at.alicdn.com/t/font_2289209_k45eprt6cm.eot?#iefix') format('embedded-opentype'), url('http://at.alicdn.com/t/font_2289209_k45eprt6cm.woff2') format('woff2'), url('http://at.alicdn.com/t/font_2289209_k45eprt6cm.woff') format('woff'), url('http://at.alicdn.com/t/font_2289209_k45eprt6cm.ttf') format('truetype'), url('http://at.alicdn.com/t/font_2289209_k45eprt6cm.svg#iconfont') format('svg');
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #eee;
+}
+
+.w {
+    width: 1190px;
+    margin: 0 auto;
+    min-height: 100%;
+}
+
+.iconfont {
+    font-family: iconfont;
+    font-style: normal;
+    font-size: 12px;
+    display: inline-block;
+    width: 12px;
+}
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+i {
+    font-style: normal;
+}
+
+
+/* 通用样式结束 */
+
+
+/* 快捷区域样式开始 */
+
+.shortcut {
+    height: 30px;
+    border-bottom: 1px solid #ddd;
+    background-color: #e3e4e5;
+}
+
+
+/* 快捷区域样式结束 */
+
+
+/* 头部区域样式开始 */
+
+.header {
+    height: 140px;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+
+/* 头部区域样式结束 */
+
+
+/* 轮播图区域开始 */
+
+.fs {
+    height: 470px;
+    margin-top: 10px;
+}
+
+.fs-1 {
+    width: 190px;
+    background-color: #fff;
+    height: 100%;
+    float: left;
+    margin-right: 10px;
+    /* outline: 1px solid; */
+}
+
+.fs-2 {
+    float: left;
+    width: 790px;
+    height: 100%;
+    margin-right: 10px;
+    /* outline: 1px solid; */
+}
+
+.fs-3 {
+    float: right;
+    width: 190px;
+    background-color: #fff;
+    height: 100%;
+    /* outline: 1px solid; */
+}
+
+.fs-2 .sliderWrapper {
+    width: 590px;
+    height: 470px;
+    float: left;
+    background-color: #ddd;
+    /* outline: 1px solid; */
+}
+
+.fs-2 .sliderBanner {
+    width: 190px;
+    height: 470px;
+    float: right;
+    background-color: #ddd;
+    /* outline: 1px solid; */
+}
+
+
+/* 轮播图区域结束 */
+
+.seckill {
+    height: 260px;
+    margin-top: 20px;
+    background-color: #fff;
+    /* outline: 1px solid; */
+}
+
+
+/* 秒杀区域样式结束 */

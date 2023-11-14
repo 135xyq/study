@@ -1,0 +1,35 @@
+<a href="#"> <img src="../images/1.webp" alt="第一张图片" width="590px"></a>
+<a href="#"> <img src="../images/2.webp" alt="第二张图片" width="590px"></a>
+<a href="#"><img src="../images/3.webp" alt="第三张图片" width="590px"></a>
+<a href="#"> <img src="../images/4.webp" alt="第四张图片" width="590px"></a>
+<a href="#"><img src="../images/5.jpg" alt="第五张图片" width="590px"></a>
+<a href="#"> <img src="../images/6.jpg" alt="第六张图片" width="590px"></a>
+<a href="#"><img src="../images/7.jpg" alt="第七张图片" width="590px"></a>
+<a href="#"> <img src="../images/8.webp" alt="第八张图片" width="590px"></a>
+<script>
+    $('.sliderWrapper').swiper({
+        contentList: $('.sliderWrapper img'),
+        width: 590,
+        height: 470,
+        // 自动轮播的间隔时间
+        autoChangeTime: 2000,
+        // 轮播的动画类型：fade 淡入淡出 animate 从左到右
+        type: 'animate',
+        // 是否自动轮播
+        isAuto: true,
+        // 左右按钮的显示状态，共有 3 种 
+        // 1. always 代表一支显示   2. hide 代表隐藏    3. hover 移入显示
+        showChangeBtn: 'always',
+        // 是否显示小圆点
+        showSpots: true,
+        // 小圆点的大小
+        spotSize: 10,
+        // 小圆点的位置，可选值有 3 个 
+        // 1. left 2. center 3. right
+        spotPosition: 'left',
+        // 小圆点的背景颜色
+        spotColor: '#8B8E8F',
+        // 当前图片的小圆点的颜色
+        curSptColor: '#DDDEDE',
+    })
+</script>

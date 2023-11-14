@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+    <div class="app">
+        <ul>
+            <li v-for="item in datas" v-text="item" :key="item"></li>
+        </ul>
+        <item :hello="hello"></item>
+    </div>
+    <script>
+        Vue.component('item', {
+            template: `<p>{{hello}}</p>`,
+            props: ['hello']
+        })
+        const vm = new Vue({
+            el: '.app',
+            data: {
+                datas: [1, 2, 3, 4],
+                hello: 'hello  world'
+            }
+        })
+        console.log(vm)
+    </script>
+</body>
+
+</html>

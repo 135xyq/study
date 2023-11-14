@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
+    <title>日历</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <div class="time1"></div>
+            <div class="time2"></div>
+        </div>
+        <div class="content">
+            <div class="controls">
+                <div class="time3"></div>
+                <select name="year" id="year">
+                </select>
+                <select name="month" id="month"></select>
+                <button id="btn">Go</button>
+                <div>
+                    <span class="up iconfont">&#xe519;</span>
+                    <span class="down iconfont">&#xe504;</span>
+                </div>
+
+            </div>
+            <div class="main">
+                <div class="week">
+                    <!-- <span>一</span>
+                    <span>二</span>
+                    <span>三</span>
+                    <span>四</span>
+                    <span>五</span>
+                    <span>六</span>
+                    <span>日</span> -->
+                </div>
+                <ul class="date">
+                    <!-- <li class="color"><span>15</span><span>初八</span></li>
+                    <li class="color"><span>15</span><span>初八</span></li>
+                    <li class="color"><span>15</span><span>初八</span></li>
+                    <li class="color"><span>15</span><span>初八</span></li>
+                    <li class="color"><span>15</span><span>初八</span></li>
+                    <li class="color"><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li class="active"><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li><span>15</span><span>初八</span></li>
+                    <li class="color"><span>15</span><span>初八</span></li>
+                    <li class="color"><span>15</span><span>初八</span></li>
+                    <li class="color"><span>15</span><span>初八</span></li>
+                    <li class="color"><span>15</span><span>初八</span></li>
+                    <li class="color"><span>15</span><span>初八</span></li> -->
+
+                </ul>
+                <div class="dissected">
+                    <ul class="datenow clear">
+                        <li>年: <span id="dateNow1"></span></li>
+                        <li>月: <span id="dateNow2"></span></li>
+                        <li>日: <span id="dateNow3"></span></li>
+                    </ul>
+                    <ul class="gu clear">
+                        天干地支纪年法：
+                        <li>年: <span id="gu1"></span></li>
+                        <li>月: <span id="gu2"></span></li>
+                        <li>日: <span id="gu3"></span></li>
+                    </ul>
+                    <ul class="clear foregin">
+                        <li>属相：<span id="foregin1"></span></li>
+                        <li>星座：<span id="foregin2"></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/moment-with-locales.js"></script>
+    <script src="../js/calendar.js"></script>
+    <script src="../js/index.js"></script>
+</body>
+
+</html>

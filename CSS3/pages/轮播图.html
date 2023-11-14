@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        @keyframes run {
+            0% {
+                left: 0px;
+            }
+            25% {
+                left: -400px;
+            }
+            50% {
+                left: -800px;
+            }
+            75% {
+                left: -1200px;
+            }
+            100% {
+                left: -1600px;
+            }
+        }
+        
+        tjcfg img {
+            width: 400px;
+        }
+        
+        .content {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            display: flex;
+            flex: 0 0 auto;
+            animation: run 20s linear infinite;
+        }
+        
+        .window {
+            position: absolute;
+            border: 1px solid #f00;
+            z-index: 1;
+            top: 200px;
+            left: 500px;
+            width: 400px;
+            height: 225px;
+            box-sizing: border-box;
+            overflow: hidden;
+            /* animation: run 10s linear infinite; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="window">
+        <div class="content">
+            <img src="../img/3.jpg" alt="">
+            <img src="../img/4.jpg" alt="">
+            <img src="../img/5.jpg" alt="">
+            <img src="../img/6.jpg" alt="">
+            <img src="../img/3.jpg" alt="">
+        </div>
+    </div>
+
+</body>
+
+</html>

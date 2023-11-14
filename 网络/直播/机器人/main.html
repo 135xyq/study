@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="谢永强">
+    <title>智能机器人</title>
+    <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        html,
+        body {
+            font-size: 14px;
+            height: 100%;
+        }
+        /* 头部 */
+        
+        .header {
+            height: 56px;
+            line-height: 56px;
+            text-align: center;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #3b3a3f;
+        }
+        /* 中间部分 */
+        
+        .main {
+            background-color: #f5f5f5;
+            background-image: url(./bac.jpeg);
+            background-size: cover;
+            overflow-y: scroll;
+            padding: 20px;
+            box-sizing: border-box;
+            height: calc(100% - 108px);
+            max-height: calc(100% - 108px);
+        }
+        
+        .chat-container {
+            padding-bottom: 20px;
+        }
+        /* 清除浮动 */
+        
+        .chat-container::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        
+        .chat-container>img {
+            width: 40px;
+            border-radius: 50%;
+        }
+        
+        .robot-container>* {
+            float: left;
+        }
+        
+        .avatar-container>* {
+            float: right;
+        }
+        
+        .text-container {
+            max-width: 251px;
+            padding: 8px;
+            box-sizing: border-box;
+            background-color: #fff;
+            border: 1px solid #d8d8d8;
+            color: #333;
+            border-radius: 6px;
+            margin-left: 10px;
+        }
+        
+        .avatar-container .text-container {
+            margin-right: 10px;
+            background-color: #98e855;
+            position: relative;
+        }
+        
+        .robot-container .text-container {
+            /* margin-right: 10px; */
+            background-color: #5dcccf;
+            position: relative;
+        }
+        
+        .robot-container .text-container::before {
+            position: absolute;
+            content: "";
+            width: 0;
+            padding: 0;
+            top: 14px;
+            border: 6px solid transparent;
+            border-right-color: #5dcccf;
+            left: -12px;
+            margin-top: -6px;
+        }
+        
+        .avatar-container .text-container::after {
+            position: absolute;
+            content: "";
+            width: 0;
+            padding: 0;
+            top: 14px;
+            border: 6px solid transparent;
+            border-left-color: #98e855;
+            right: -12px;
+            margin-top: -6px;
+        }
+        /* 底部 */
+        
+        .footer {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            bottom: 0;
+            height: 52px;
+            line-height: 52px;
+            background-color: #ebebeb;
+            box-sizing: border-box;
+            box-shadow: 0 -2px 5px #d8d8d8;
+            text-align: center;
+        }
+        
+        .footer input {
+            width: 270px;
+            height: 36px;
+            line-height: 36px;
+            margin: 0;
+            padding: 5px 10px;
+            border: 1px solid #d8d8d8;
+            color: #333;
+            box-sizing: border-box;
+            background-color: #fff;
+            border-radius: 18px;
+            outline: none;
+            text-indent: 10px;
+            font-size: 16px;
+        }
+        
+        .footer .btn {
+            width: 54px;
+            height: 34px;
+            line-height: 34px;
+            text-align: center;
+            color: #fff;
+            background-color: #02cb0b;
+            display: inline-block;
+            border-radius: 2px;
+        }
+        
+        .footer .input-null {
+            position: absolute;
+            top: -30px;
+            right: 30px;
+            width: 120px;
+            height: 25px;
+            line-height: 25px;
+            background-color: #fff;
+            padding: 2px 10px;
+            text-align: center;
+            border-radius: 6px;
+            display: none;
+        }
+        
+        .footer .input-null::after {
+            position: absolute;
+            top: 27px;
+            left: 100px;
+            content: "";
+            width: 0;
+            height: 0;
+            border: 12px solid transparent;
+            border-top-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">对方正在输入......</div>
+    <div class="main" id="content">
+        <div class="robot-container chat-container">
+            <img src="./hsz.jpg">
+            <div class="text-container">
+                您好！我是专业陪筱聊天的机器人，非常欢迎您的到来，有什么想和我聊聊的吗？
+            </div>
+        </div>
+        <!-- <div class="avatar-container chat-container">
+            <img src="./img/avatar.jpg">
+            <div class="text-container">你好</div>
+        </div> -->
+    </div>
+    <div class="footer">
+        <input type="text" placeholder="请输入聊天信息">
+        <span class="input-null">不能发送空白消息</span>
+        <span class="btn">发送</span>
+    </div>
+
+    <script>
+        function ajax(option) {
+
+            // 处理请求的参数
+            option.method = option.method ? option.method.toUpperCase() : 'GET';
+            option.data = option.data || {}
+
+            var formData = [];
+
+            for (var key in option.data) {
+                formData.push(''.concat(key, '=', option.data[key]))
+            }
+
+            option.data = formData.join('&')
+
+            if (option.method === 'GET' && formData.length > 0) {
+                option.url += ''.concat('?', option.data)
+            }
+
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open(option.method, option.url)
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        option.onSuccess(JSON.parse(xhr.responseText))
+                    } else {
+                        option.onError(new Error(xhr.statusText))
+                    }
+                }
+            }
+
+            if (option.method === 'POST') {
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+            }
+            xhr.send(option.method === 'POST' ? option.data : null)
+        }
+    </script>
+    <script>
+        (function() {
+            var btn = document.querySelector('.footer .btn');
+            var ipt = document.querySelector('.footer input');
+            var iptNull = document.getElementsByClassName('input-null')[0];
+            var init = function() {
+                addEvents();
+            }
+
+            // 事件函数
+            var addEvents = function() {
+                btn.addEventListener('click', setData); //发送按钮添加事件
+                // ipt.addEventListener('focus', setDisplay);//将提示框隐藏
+            }
+
+            var setDisplay = function() {
+                if (ipt.value) {
+                    // console.log('gtrb');
+                    iptNull.style.display = 'none';
+                }
+            }
+
+            var setData = function() {
+                var txt = ipt.value.trim(); //输入框内容（去除空格）
+                // console.log(txt);
+                if (!txt) { //输入框为空
+                    iptNull.style.display = 'block';
+                    setTimeout(function() {
+                        iptNull.style.display = 'none';
+                    }, 1500); //发送内容为空就在1.5秒后提示框消失
+                    return;
+                } else {
+                    // scrollToBottom();
+                    // 渲染页面
+                    renderPage(txt);
+                    // scrollToBottom();
+                }
+            }
+
+            // 每次发送完信息，让页面滚动到最底部
+            var scrollToBottom = function() {
+                var height = content.scrollHeight;
+                // console.log(height);
+                content.scrollTop = height;
+            }
+
+            var renderPage = function(txt) {
+                // 将信息添加到自己的信息栏中
+                txtInToHtml(txt, 'right');
+                scrollToBottom(); //每次渲染完消息都自动滚动到可见区域
+
+
+                // 清空输入框
+                ipt.value = '';
+
+                // 向后台请求数据
+                setDataToBackEnd(txt);
+            }
+
+            var setDataToBackEnd = function(txt) {
+                ajax({
+                    url: 'https://api.hyfarsight.com/test/testRequest/robotChat',
+                    method: 'POST',
+                    data: {
+                        txt: txt
+                    }, // 参数也是由后端约定
+                    onSuccess: function(res) {
+                        var reg1 = /喜欢谁/;
+                        var reg2 = /爱谁/;
+                        if (reg1.test(txt) || reg2.test(txt)) {
+                            txtInToHtml("我喜欢黄双珍！");
+                        } else {
+                            txtInToHtml(res.responseTxt, 'left');
+                        }
+
+                        scrollToBottom(); //每次渲染完消息都自动滚动到可见区域
+                    }
+                })
+            }
+
+            var txtInToHtml = function(txt, str) {
+                var divNode = document.createElement('div');
+                divNode.className = str === 'right' ? 'avatar-container chat-container' : 'robot-container chat-container';
+                var img = document.createElement('img');
+                img.src = str === 'right' ? "./xyq.jpg" : "./hsz.jpg";
+                var childDiv = document.createElement('div');
+                childDiv.className = 'text-container';
+                childDiv.innerHTML = txt.replace(/{br}/g, '<br/>');
+                divNode.appendChild(img);
+                divNode.appendChild(childDiv);
+                content.appendChild(divNode);
+            }
+            init();
+        })();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+ul{
+    list-style: none;
+    margin: 0 auto;
+}
+
+
+.page-item{
+    width: 40px;
+    height: 40px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    float: left;
+    margin: 0 5px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.page-item.disabled{
+    color: #ccc;
+    border: 1px solid #ccc;
+    cursor: not-allowed;
+}
+
+.page-item.active{
+    background: rgb(35, 155, 85);
+}
+
+.page-item:hover:not(.disabled){
+    background-color: lightblue;
+}
+
+.previous-page,.next-page{
+    width: 60px;
+}

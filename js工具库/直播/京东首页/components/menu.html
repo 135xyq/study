@@ -1,0 +1,72 @@
+<!-- 左侧的菜单栏，一开始是空的，动态请求数据 -->
+<ul class="menu">
+</ul>
+<!-- 隐藏栏目，鼠标放到菜单栏时会出现 -->
+<div class="menu-content">
+    <!-- 上面黑色的 tab 栏目 -->
+    <div class="tabs"></div>
+    <!-- 下面的各个分类 -->
+    <div class="details"></div>
+</div>
+
+<script>
+    var data = [];
+    $.ajax({
+        url: './menuList',
+        type: 'GET',
+        dataType: 'json',
+        success: function(response) {
+            data = response.lists;
+            // 渲染左侧列表
+            renderMenu(data);
+        }
+    })
+    var renderMenu = function(data) {
+        var allList = data.map(function(items) {
+            var everyList = items.title.map(function(item) {
+                return `<a href="${item.href}">${item.name}</a>`;
+            });
+            return `<li class="menu-item cate_menu_item">${everyList.join("<span class='cate_menu_line'>/</span>")}</li>`;
+        }).join("");
+        $('.menu').html(allList)
+    }
+
+    $('.menu').on('mouseenter', 'li', function() {
+        // 给当前元素添menu-active类并且删除其他
+        $(this).addClass('menu-active').siblings().removeClass('menu-active')
+        var index = $(this).index();
+        renderMenuContent(data[index].content);
+    })
+
+    var renderMenuContent = function(content) {
+        // content的最上面标题  tabs
+        var contentTabs = content.tabs.map(function(tab) {
+            return `<a href="${tab.href}">${tab.name}<i class="iconfont">&#xe625;</i></a>`
+        }).join('');
+        $('.tabs').html(contentTabs);
+
+        // content的主体部分
+        var contentDetails = content.details.map(function(details) {
+            // 先添加前面的小标题
+            var odts = `<dt  class="menu-item-title><a href="#">${details.smallTitle}</a><i class="iconfont">&#xe625;</i></dt>`;
+
+            var oas = details.items.map(function(item) {
+                return `<a href="${item.href}">${item.name}</a>`
+            }).join("");
+
+            var odds = `<dd class="menu-item">${oas}</dd>`;
+            return `<dl class="menu-item-details">${odts}${odds}</dl>`
+        }).join("");
+        $('.details').html(contentDetails);
+
+        // console.log(contentDetails)
+        // console.log(contentItems)
+        // 显示右侧的隐藏内容区
+        $(".menu-content").show();
+    }
+
+    $('.fs-1').mouseleave(function() {
+        $('.menu-content').hide();
+        $('.menu-active').removeClass('menu-active');
+    })
+</script>

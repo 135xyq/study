@@ -1,0 +1,92 @@
+/* 四分之一圆 */
+
+
+/* div {
+    width: 100px;
+    height: 100px;
+    border: 1px solid rgb(0, 0, 0);
+    position: absolute;
+    top: calc(50% - 50px);
+    left: calc(50% - 50px);
+    border-top-left-radius: 100px;
+} */
+
+
+/* 半圆 */
+
+
+/* div {
+    width: 200px;
+    height: 100px;
+    border: 1px solid rgb(0, 0, 0);
+    position: absolute;
+    top: calc(50% - 50px);
+    left: calc(50% - 50px);
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+} */
+
+
+/* box-shadow */
+
+
+/* body {
+    background-color: black;
+}
+
+div {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #fff;
+    background-color: transparent;
+    position: absolute;
+    top: calc(50% - 50px);
+    left: calc(50% - 50px);
+    box-shadow: 20px 20px 3px 0px #f40;
+} */
+
+
+/* div {
+    width: 100px;
+    height: 100px;
+    border-width: 20px;
+    background-color: red;
+    border-color: green;
+    border-style: solid;
+    border-image-source: url(../图片点击背景切换/img/wallhaven-j3xm5w.png);
+    border-image-slice: 100 200 300 400;
+} */
+
+div {
+    width: 200px;
+    height: 200px;
+    background-image: url(../img/1.jpeg), url(../img/2.jpeg);
+    background-repeat: no-repeat, repeat;
+    background-size: 100px 100px, 100px 100px;
+    background-position: 0 0, 100px 100px;
+}
+
+
+/* p {
+    width: 300px;
+    height: 300px;
+    background-image: url(../img/3.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(0deg, red, green);
+} */
+
+
+/* p {
+    width: 300px;
+    height: 300px;
+    background-image: radial-gradient(circle 10px at 50px 50px, red, green);
+} */
+
+p {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    /* background-image: repeating-linear-gradient(red 10%, green 30%); */
+    background-image: repeating-radial-gradient(red 99%, green);
+}

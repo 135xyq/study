@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伪元素选择器</title>
+    <style>
+        /* 第一个字母 */
+        
+        p::first-letter {
+            font-size: 30px;
+        }
+        /* 第一行 */
+        
+        p::first-line {
+            background-color: red;
+        }
+        /* 选中的部分 */
+        
+        p::selection {
+            background-color: green;
+        }
+        /* 元素的开始位置 */
+        
+        div::before {
+            content: "气死你，选不中我";
+            color: blue;
+        }
+        /* 元素的结束位置 */
+        
+        div::after {
+            content: "你也选不中我";
+            color: blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+
+    <p>百度是全球领先的人工智能平台型公司。 百度大脑是中国唯一的“软硬一体AI大生产平台”，是百度AI的集大成， 对外全方位输出超过240项AI能力。飞桨是中国首个也是国内目前唯一一个全面开源开放、 功能完备的产业级深度学习平台，是中国自主研发的“智能时代的操作系统”。 百度智能云是百度AI To B 业务的重要承载者和输出者，是产业智能化领导者。 小度助手是中国最大的对话式人工智能操作系统，拥有中国市场规模最大、最繁荣的对话式人工智能生态， 12月小度助手语音交互次数超过50亿次。作为全球最大自动驾驶开放平台，Apollo代表中国最强自动驾驶实力。
+        目前已形成自动驾驶、车路协同、智能车联三大开放平台。自动驾驶方面，超过十项中国第一，技术实力领跑行业。 百度以技术创新为信仰，在创新投入、研发布局、人才引进方面均走在国际前列。 根据国家工业信息安全发展研究中心《人工智能中国专利技术分析报告》显示， 2019年中国人工智能专利申请量排名中，百度以5712件位列第一。
+    </p>
+
+    <div>
+        Hello Hello How are you?
+    </div>
+</body>
+
+</html>

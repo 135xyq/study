@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="谢永强">
+    <meta name="description" content="表格元素">
+    <link rel="icon" href="3.jpg">
+    <title>表格元素</title>
+    <style>
+        tr>th {
+            background-color: grey;
+            color: white;
+            text-align: left;
+        }
+        
+        tr>th:only-of-type {
+            text-align: right;
+            background: lightgrey;
+            color: grey;
+        }
+        
+        thead th,
+        tfoot th {
+            background-color: green;
+        }
+        
+        tbody th {
+            background-color: red;
+        }
+        
+        td {
+            border: thin solid black;
+            padding: 5px;
+            font-size: x-large;
+        }
+        
+        caption {
+            font-weight: bold;
+            font-size: large;
+            margin-bottom: 5px;
+        }
+        
+        #colgroup1 {
+            background-color: red;
+        }
+        
+        #colgroup2 {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>First</th>
+            <th>Second</th>
+            <th>Third</th>
+            <th>Fourth</th>
+        </tr>
+        <tr>
+            <th>One</th>
+            <td>Apple</td>
+            <td>Peach</td>
+            <td>Green</td>
+        </tr>
+        <tr>
+            <th>Two</th>
+            <td>Book</td>
+            <td>Fruit</td>
+            <td>Desk</td>
+        </tr>
+        <tr>
+            <th>Three</th>
+            <td>Are you ok?</td>
+            <td>Total is total and </td>
+            <td>I am fine</td>
+        </tr>
+    </table>
+
+    <table>
+        <caption>Result of the 2021 Fruits Survey</caption>
+        <colgroup id="colgroup1" span="2"></colgroup>
+        <colgroup id="colgroup2" span="1"></colgroup>
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Color</th>
+                <th>Size</th>
+            </tr>
+            <tbody>
+                <tr>
+                    <th>Favorite:</th>
+                    <td>Apples</td>
+                    <td>Green</td>
+                    <td>Medium</td>
+                </tr>
+                <tr>
+                    <th>2nd Favorite:</th>
+                    <td>Oranges</td>
+                    <td>orange</td>
+                    <td>large</td>
+                </tr>
+                <tr>
+                    <th>3rd Favorite:</th>
+                    <td>Pomegranate</td>
+                    <td>A kind of green-red</td>
+                    <td>Varies from medium to large</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>H</th>
+                    <th>T</th>
+                    <th>M</th>
+                    <th>L</th>
+                </tr>
+            </tfoot>
+        </thead>
+    </table>
+    <table>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td rowspan="3">1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <!-- <td>4</td> -->
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <!-- <td>7</td> -->
+            <!-- <td >8</td> -->
+            <td colspan="2">9</td>
+        </tr>
+    </table>
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <footer style="text-align:center; background-color:green; font-size:small;color: white;">&copy 谢永强 版权所有</footer>
+</body>
+
+</html>

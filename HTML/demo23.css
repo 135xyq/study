@@ -1,0 +1,90 @@
+#second {
+    padding: 5px;
+    border: medium double black;
+    font-size: 30px;
+    background-color: lightgray;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#third {
+    display: block;
+    font-size: 40px;
+    border: medium solid black;
+    background-color: green;
+    color: white;
+    transform: rotate(45deg) scale(1.2);
+    padding: 4px;
+    width: 200px;
+    /* transform-origin: right top; */
+    /* transition-delay: 10ms;
+    transition-duration: 200ms; */
+}
+
+
+/* div {
+    font-size: 40px;
+    border: medium solid black;
+    background-color: green;
+    color: white;
+    transform: rotate(45deg) scale(1.2);
+    padding: 4px;
+} */
+
+
+/* #third {
+    font-size: 40px;
+    border: medium solid black;
+    animation-delay: 100ms;
+    animation-duration: 5000ms;
+    animation-iteration-count: 2;
+    animation-timing-function: linear;
+    animation-direction: alternate;
+    animation-name: G;
+} */
+
+
+/* #first:hover {
+    font-size: 50px;
+    color: white;
+    background-color: green;
+    border: medium double red;
+    padding: 5px;
+    transition-delay: 100ms;
+    transition-property: all;
+    transition-duration: 5000ms;
+    transition-timing-function: ease;
+} */
+
+
+/* #first:hover {
+    animation-delay: 100ms;
+    animation-duration: 5000ms;
+    animation-iteration-count: 2;
+    animation-timing-function: linear;
+    animation-direction: alternate;
+    animation-name: G;
+}
+
+@keyframes G {
+    from {
+        font-size: 30px;
+        background-color: rgb(156, 105, 105);
+    }
+    25% {
+        background-color: crimson;
+    }
+    50% {
+        font-size: 40px;
+        background-color: blue;
+    }
+    75% {
+        background-color: white;
+    }
+    to {
+        font-size: 50px;
+        border: medium double black;
+        background-color: green;
+        color: white;
+        padding: 5px;
+    }
+} */

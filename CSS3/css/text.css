@@ -1,0 +1,99 @@
+/* * {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #000;
+}
+
+div {
+    width: 600px;
+    height: 200px;
+    font-size: 100px;
+    font-weight: bold;
+    position: absolute;
+    top: 100px;
+    color: #ddd;
+    left: calc(50% - 250px);
+    text-shadow: 0px 0px 5px #0f0, 0px 0px 10px #0f0, 0px 0px 20px #0f0, 0px 0px 30px #0f0;
+    transition: all 2s;
+}
+
+div:hover {
+    cursor: pointer;
+    text-shadow: 0px 0px 5px #f00, 0px 0px 10px #f10, 0px 0px 20px #f20, 0px 0px 30px #f30, 0px 0px 40px #f40;
+}
+
+div::before {
+    content: "NO ";
+    opacity: 0;
+    transition: all 2s;
+    text-shadow: 0px 0px 5px #ff0, 0px 0px 20px #ff0, 0px 0px 30px #ff0, 0px -5px 5px #ff0, 0px -10px 10px #ff0, 0px -20px 20px #ff0, 0px -30px 30px #ff0;
+}
+
+div:hover::before {
+    opacity: 1;
+} */
+
+
+/* body {
+    background-color: #000;
+} */
+
+
+/* div {
+    width: 400px;
+    height: 150px;
+    font-size: 100px;
+    font-weight: bold;
+    position: absolute;
+    top: 100px;
+    left: calc(50% - 200px);
+    background-image: url(../字体艺术/pages/R-C.jpg);
+    background-size: 400px 300px;
+    background-repeat: no-repeat;
+    background-position: -400px -50px;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    text-shadow: -5px -5px 5px rgba(255, 0, 255, 0.2), 5px 5px 5px rgba(0, 255, 255, 0.3);
+}
+
+div:hover {
+    background-position: 0px -50px;
+    transition: all 2s;
+} */
+
+
+/* div {
+    width: 550px;
+    height: 150px;
+    font-size: 60px;
+    font-weight: bold;
+    position: absolute;
+    top: 100px;
+    left: calc(50% - 250px);
+    color: #f10;
+    text-shadow: 0px 0px 5px #f10, 0px 0px 10px #f10, 0px 0px 20px #f10;
+    transition: all 2s;
+}
+
+div:hover {
+    text-shadow: 5px 5px 5px #f00, -5px 5px 5px #f0f, -5px -5px 5px #ff0, 5px -5px 5px #0ff, 30px 30px 10px #fff, 15px 15px 15px #f00, -15px 15px 15px #f0f, -15px -15px 15px #ff0, 15px -15px 15px #0ff, 30px 30px 10px #fff, -50px -50px 10px #00f;
+} */
+
+
+/* 
+div {
+    width: 550px;
+    height: 150px;
+    font-size: 100px;
+    font-weight: bold;
+    position: absolute;
+    top: 100px;
+    left: calc(50% - 250px);
+    font-family: stimson;
+    -webkit-text-stroke: 1px red;
+} */

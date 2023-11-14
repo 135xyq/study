@@ -1,0 +1,229 @@
+/* service 部分样式开始 */
+
+.service {
+    /* service 整体盒子 */
+    position: relative;
+    height: 240px;
+    overflow: hidden;
+    font-size: 12px;
+    /* outline: 1px solid; */
+}
+
+.service_entry {
+    /* 12 个图标的外层盒子 */
+    width: 190px;
+    height: 240px;
+    box-sizing: border-box;
+    background-color: #fff;
+    overflow: hidden;
+    padding: 5px .5px;
+}
+
+.service_entry .service_list {
+    /* 外层 ul */
+    margin-top: 5px;
+    height: 238px;
+    overflow: hidden;
+}
+
+.service_entry .service_list li {
+    width: 63px;
+    height: 55px;
+    float: left;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.service_entry .service_list li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    text-align: center;
+    position: relative;
+}
+
+.service_entry .service_list .service_ico {
+    /* 图标公共样式 */
+    width: 28px;
+    height: 28px;
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    transition: margin-top 0.3s;
+}
+
+.service_entry .service_list .service_ico img {
+    /* 图标下图片样式 */
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+}
+
+.service_corner_txt {
+    /* 图标下方的文字 */
+    position: absolute;
+    font-style: normal;
+    right: 3px;
+    top: 0;
+    background: #e1251b;
+    color: #fff;
+    width: 14px;
+    height: 14px;
+    text-align: center;
+    line-height: 14px;
+}
+
+.service_ico_img_hover {
+    /* 下面的图片默认不显示 */
+    display: none;
+}
+
+.service_entry .service_list li:hover .service_ico_img_hover {
+    /* li 被 hover 的时候，下面的图片才显示 */
+    display: block;
+}
+
+.service_pop {
+    /* 弹出层样式 */
+    position: absolute;
+    width: 190px;
+    height: 206px;
+    background-color: #fff;
+    top: 240px;
+    /* display: none; */
+    /* top 的值设置为 service 盒子的高度 */
+    /* outline: 1px solid; */
+}
+
+.service .service_frame.service_active a .service_txt {
+    /* 下面的红色小横线 */
+    border-bottom: 2px solid red;
+}
+
+.service_pop .close {
+    /* 关闭按钮，中间的那个 X 使用伪元素来制作 */
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -10px;
+    cursor: pointer;
+}
+
+.service_pop .close::after,
+.service_pop .close::before {
+    /* 一前一后两根竖线，然后各自选择 45 度得到一个 X */
+    content: "";
+    position: absolute;
+    left: 50%;
+    margin-left: -1px;
+    width: 1px;
+    height: 15px;
+    background-color: rgb(116, 116, 116);
+}
+
+.service_pop .close::after {
+    transform: rotateZ(45deg);
+}
+
+.service_pop .close::before {
+    transform: rotateZ(-45deg);
+}
+
+
+/* 弹出层 */
+
+.service_pop1-content .serve_pop1_head {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+.service_pop1-content .serve_pop1_head span {
+    color: #666666;
+}
+
+.service_pop1-content .serve_pop1_head span:hover {
+    color: #e1251b;
+    cursor: pointer;
+}
+
+.serve-mt {
+    margin-left: 10px;
+}
+
+#telphoneMoney .phone-type {
+    margin-bottom: 8px;
+}
+
+#telphoneMoney .phone-type input {
+    margin-left: 5px;
+    width: 120px;
+    outline: none;
+    border-color: #666666;
+}
+
+#telphoneMoney .phone-number {
+    margin-bottom: 10px;
+}
+
+#telphoneMoney .phone-number select {
+    margin-left: 5px;
+    width: 125px;
+    border-color: #666;
+}
+
+#telphoneMoney button {
+    margin-top: 10px;
+    padding: 2px 10px;
+    color: #ffff;
+    background-color: #e1251b;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.random-number {
+    color: #e1251b;
+}
+
+#telphoneOther .phone-type-2 {
+    margin-bottom: 8px;
+}
+
+#telphoneOther .phone-type-2 input {
+    margin-left: 5px;
+    width: 120px;
+    outline: none;
+    border-color: #666666;
+}
+
+#telphoneOther .phone-number-2 select {
+    margin-left: 5px;
+    width: 60px;
+    border-color: #666;
+}
+
+#telphoneOther button {
+    margin-top: 10px;
+    padding: 2px 10px;
+    color: #ffff;
+    background-color: #e1251b;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#telphoneOther .phone-number-2 {
+    margin-bottom: 10px;
+}
+
+.service_pop img {
+    width: 100%;
+}
+
+
+/* service 部分样式结束 */

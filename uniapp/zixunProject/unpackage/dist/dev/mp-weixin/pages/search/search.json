@@ -1,0 +1,8 @@
+{
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "nav-bar": "/components/NavBar/NavBar",
+    "list-item": "/components/ListItem/ListItem"
+  }
+}

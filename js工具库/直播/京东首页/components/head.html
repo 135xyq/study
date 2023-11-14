@@ -1,0 +1,185 @@
+<div class="header-content">
+    <!-- logo -->
+    <!-- <div class="logo">
+        <img class="static-logo" src="../images/logo.png" alt="" class="target" />
+        <img src="../images/logo1.gif" alt="" class="img-gif animate_end">
+    </div> -->
+    <div class="logo">
+        <!-- logo 区域是两张图，第一张是静态的 png，第二张是隐藏的 gif -->
+        <img src="http://misc.360buyimg.com/mtd/pc/index_2019/1.0.0/assets/sprite/header/sprite.png" alt="" class="target" />
+        <img src="http://img1.360buyimg.com/da/jfs/t1/14716/32/11447/94000/5c90a83bEaa611013/18490bf08654ba09.gif?v=0.36068380359321317" alt="" class="img-gif animate_end" />
+    </div>
+
+    <!-- 搜索区域 -->
+    <div class="search-box">
+        <!-- 搜索框表单 -->
+        <div class="search-form">
+            <input type="text" name="" id="search-inp" placeholder="随便搜啥">
+            <a href="#" class="search-btn iconfont">&#xe66d;</a>
+            <!-- 联想项目 -->
+            <ul class="search-list"></ul>
+        </div>
+
+        <!-- 热门词汇 -->
+        <div class="hotwords"></div>
+
+        <!-- 购物车模块 -->
+        <div class="settleup">
+            <div class="cw-icon">
+                <i class="iconfont">&#xe621;</i>
+                <a target="_blank" href="//cart.jd.com/cart.action">我的购物车</a>
+                <i class="ci-count" id="shopping-amount">0</i>
+            </div>
+        </div>
+
+        <!-- 导航栏模块 -->
+        <ul class="navitems">
+            <li><a href="#" class="red">秒杀</a></li>
+            <li><a href="#" class="red">优惠券</a></li>
+            <li><a href="#">PLUS会员</a></li>
+            <li><a href="#">品牌闪购</a></li>
+            <li><a href="#">拍卖</a></li>
+            <li><a href="#">京东家电</a></li>
+            <li><a href="#">京东超市</a></li>
+            <li><a href="#">京东生鲜</a></li>
+            <li><a href="#">京东国际</a></li>
+            <li><a href="#">京东金融</a></li>
+        </ul>
+    </div>
+
+    <!-- 右侧二维码区域 -->
+    <div class="right-ad"></div>
+</div>
+
+<script>
+    var gifFadeOutTimer = null;
+    $('.logo').mouseenter(function() {
+        clearInterval(gifFadeOutTimer);
+        if ($('.img-gif').hasClass('animate_end')) {
+            // 如果有这个类，说明动画是播放完毕了或者没有播放
+            // 这个时候我们要做的事情就是播放
+            $(this).find('.img-gif')
+                .fadeIn()
+                .addClass('animate_start')
+                .removeClass('animate_end')
+                .attr(
+                    'src',
+                    'http://img1.360buyimg.com/da/jfs/t1/14716/32/11447/94000/5c90a83bEaa611013/18490bf08654ba09.gif'
+                )
+
+            setTimeout(function() {
+                $('.img-gif').addClass('animate_end').removeClass('animate_start')
+            }, 4000)
+        }
+
+    }).mouseleave(function() {
+
+        if ($('.img-gif').hasClass('animate_end')) {
+            // 说明动画播放完毕
+            $('.img-gif').fadeOut();
+        } else {
+            clearInterval(gifFadeOutTimer);
+            gifFadeOutTimer = setInterval(function() {
+                if ($('.img-gif').hasClass('animate_end')) {
+                    // 说明动画播放完毕
+                    $('.img-gif').fadeOut();
+                }
+            }, 1000)
+        }
+    })
+
+
+    // 请求数据
+    $.ajax({
+        url: "/hotWords",
+        dataType: "json",
+        success: function(res) {
+            // console.log(res)
+            var str = res.result.map(function(item) {
+                return `<a href="${item.href}">${item.name}</a>`
+            }).join('');
+            $('.hotwords').html(str)
+        }
+    });
+
+    //第一个词不断更新，鼠标移入停止更新，移开继续更新
+    var timer = null;
+
+    var showFirstWord = function() {
+        $.ajax({
+            url: "/firstHotWord",
+            dataType: "json",
+            success: function(res) {
+                // console.log(res)
+                // console.log(str);
+                $('.hotwords')
+                    .find('a')
+                    .eq(0)
+                    .text(res.result.name)
+                    .attr('href', res.result.href)
+            }
+        });
+    }
+    timer = setInterval(showFirstWord, 3000);
+    $('.hotwords')
+        .hover(function() {
+            clearInterval(timer);
+        }, function() {
+            timer = setInterval(showFirstWord, 3000);
+        })
+
+    //给出联想内容
+    // 给input绑定事件
+    $('#search-inp').on('input', function() {
+        var val = $(this).val();
+
+        if (val) {
+            var timer = null;
+            clearInterval(timer);
+            timer = setTimeout(function() {
+                $.ajax({
+                    url: 'https://suggest.taobao.com/sug',
+                    data: {
+                        code: 'utf-8',
+                        q: val,
+                        callback: 'searchCb',
+                    },
+                    dataType: 'jsonp'
+                }, 500)
+
+            })
+        }
+    })
+
+    window.searchCb = function(res) {
+        var str = res.result.reduce(function(prev, item) {
+            return (
+                prev + `
+                        <li>
+                            <span class="product-name">${item[0]}</span>
+                            <span class="product-number">约${parseInt(item[1])}个商品</span>
+                        </li>
+                    `
+            )
+        }, "");
+
+        if (res.result.length === 0) {
+            str = '<li>未查询到相关商品</li>'
+        }
+        // console.log(str);
+        $('.search-list').html(str).show()
+    }
+
+    var listHideTimer = null;
+    $('.search-form').mouseleave(function() {
+        clearTimeout(listHideTimer);
+        listHideTimer = setTimeout(function() {
+            $('.search-list').hide();
+        }, 1000)
+    }).mouseenter(function() {
+        // 快速移入移出不隐藏，清除之前的定时器
+        if (listHideTimer) {
+            clearTimeout(listHideTimer);
+        }
+    });
+</script>

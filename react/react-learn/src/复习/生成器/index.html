@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function setTime(){
+            return new Promise(resolve=>{
+                setTimeout(()=>{
+                    resolve("成功！");
+                },2000)
+            })
+        }
+        function* createGenerator() {
+            console.log("开始获取数据！");
+            let result = yield setTime();
+            console.log("获取数据：",result)
+            let result1 = yield setTime();
+            console.log("获取数据1：",result1)
+            let result2 = yield setTime();
+            console.log("获取数据2：",result2)
+            return 3;
+        }
+
+
+
+        /**
+         * 通用函数：调用函数
+         */
+        function run(generatorFunction){
+            const generator = generatorFunction();
+            next();
+
+            function next(nextValue){
+                let result = generator.next(nextValue);
+                if(result.done){
+                    return;
+                }else{
+                    const value = result.value;
+                    if(typeof value.then === "function"){
+                        value.then((data) => {
+                            next(data)
+                        })
+                    }else{
+                        neat(result.value)
+                    }
+                }
+            }
+        }
+        run(createGenerator)
+    </script>
+</body>
+</html>
