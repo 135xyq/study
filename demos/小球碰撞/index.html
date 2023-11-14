@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>小球碰撞</title>
+    <style>
+        .ball {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            cursor: pointer;
+            position: fixed;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.0.0-beta.3/babel.min.js"></script>
+
+    <script type="text/babel">
+        const container = document.getElementById("root");
+			function getRandom(min, max) {
+				return Math.floor(Math.random() * (max - min) + min);
+			}
+
+			class Ball extends React.Component {
+				constructor(props) {
+					super(props);
+					this.state = {
+						left: props.left || 100, //小球的横坐标
+						top: props.top || 100, //小球的纵坐标
+						xSpeed: props.xSpeed || 200, //小球的横向速度
+						ySpeed: props.ySpeed || 100, //小球的纵向速度
+					};
+
+					const duration = 16; //每个16毫秒变动一下位置
+
+					setInterval(() => {
+						const xDistance = (this.state.xSpeed * duration) / 1000;
+						const yDistance = (this.state.ySpeed * duration) / 1000;
+						let newTop = this.state.top + yDistance;
+						let newLeft = this.state.left + xDistance;
+						if (newTop <= 0) {
+							newTop = 0;
+							this.setState({
+								ySpeed: -this.state.ySpeed,
+							});
+						} else if (
+							newTop >=
+							document.documentElement.clientHeight - 100
+						) {
+							newTop =
+								document.documentElement.clientHeight - 100;
+							this.setState({
+								ySpeed: -this.state.ySpeed,
+							});
+						}
+						if (newLeft <= 0) {
+							newLeft = 0;
+							this.setState({
+								xSpeed: -this.state.xSpeed,
+							});
+						} else if (
+							newLeft >=
+							document.documentElement.clientWidth - 100
+						) {
+							newLeft =
+								document.documentElement.clientWidth - 100;
+							this.setState({
+								xSpeed: -this.state.xSpeed,
+							});
+						}
+						this.setState({
+							left: newLeft,
+							top: newTop,
+						});
+					}, duration);
+				}
+				render() {
+					return (
+						<div
+							className="ball"
+							style={{
+								left: this.state.left + "px",
+								top: this.state.top + "px",
+								background: this.props.bg,
+							}}
+						></div>
+					);
+				}
+			}
+			class BallList extends React.Component {
+				constructor(props) {
+					super(props);
+					this.state = {
+						ballInfos: [],
+					};
+					let timer = setInterval(() => {
+						const ball = {
+							left: getRandom(0, 900),
+							top: getRandom(0, 200),
+							xSpeed: getRandom(50, 500),
+							ySpeed: getRandom(50, 300),
+							bg: `rgb(${getRandom(0, 255)},${getRandom(
+								0,
+								255
+							)},${getRandom(0, 255)})`,
+						};
+						this.setState({
+							ballInfos: [...this.state.ballInfos, ball],
+						});
+						if (this.state.ballInfos.length === 50) {
+							clearInterval(timer);
+						}
+					}, 1000);
+				}
+				render() {
+					let ballList = this.state.ballInfos.map((item, i) => (
+						<Ball {...item} key={i}></Ball>
+					));
+					return <React.Fragment>{ballList}</React.Fragment>;
+				}
+			}
+			ReactDOM.render(<BallList></BallList>, container);
+		</script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+.switch-dots-container{
+    display: flex;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255,255,255,.3);
+    border-radius: 8px;
+    padding: 2px 4px;
+}
+
+.switch-dot-item{
+    width: 8px;
+    height: 8px;
+    margin: 3px;
+    background-color: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.switch-dot-item.active{
+    background: #f40;
+}

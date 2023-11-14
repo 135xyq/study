@@ -1,0 +1,19 @@
+.three-layout-container{
+    display:flex;
+    /* height: 300px; */
+}
+
+.left-aside{
+    order: 1;
+    /* border: 1px solid #ccc; */
+}
+.main{
+    order: 2;
+    flex : 1 1 auto;
+    /* border: 1px solid #0ff; */
+}
+
+.right-aside{
+    order: 3;
+    /* border: 1px solid #000; */
+}
