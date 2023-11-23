@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import TestProps from "@/components/TestProps.vue";
+import {ref} from "vue";
+
+const count = ref(0)
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <TestProps :count="count" @add="count++"/>
 </template>
