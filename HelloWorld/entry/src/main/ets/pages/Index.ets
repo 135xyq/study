@@ -1,33 +1,22 @@
-import HelloComponent  from './HelloComponent'
-
 @Entry
 @Component
-struct Index {
-  @State count: number = 0
-  @State message:string = '点我'
-
+struct ColumnRow {
   build() {
-    Row() {
-      Column() {
-        Button(this.message)
-          .onClick(()=>{
-            this.message = '谁让你点我的！'
-          })
-          .fontSize(30)
-          .padding(20)
-          .fontColor('red')
-          .fontWeight(FontWeight.Bold)
-        Button('返回')
-          .onClick(()=>{
-            console.log('111')
-            this.message = '又回来了！'
-          })
-          .margin(20)
-          .padding(20)
-        HelloComponent({message: '测试'})
-      }
-      .width('100%')
+    Row(){
+      Text('12')
+        .fontColor(Color.Red)
+        .backgroundColor(Color.Black)
+        .fontSize(50)
+        .padding(20)
+      Text('22')
+        .fontColor(Color.Blue)
+        .backgroundColor(Color.Green)
+        .fontSize(20)
+        .padding(20)
     }
-    .height('100%')
+    .width('100%')
+    .height(500)
+    .alignItems(VerticalAlign.Bottom)
+    .justifyContent(FlexAlign.SpaceAround)
   }
 }
