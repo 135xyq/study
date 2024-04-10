@@ -1,14 +1,26 @@
+import router from '@ohos.router';
 @Entry
 @Component
 struct ColumnRow {
   build() {
-    Row(){
-      Text('12')
+    Column(){
+      Button('去列表页')
+        .onClick(()=>{
+          router.pushUrl({
+            url:'pages/List'
+          })
+        })
         .fontColor(Color.Red)
         .backgroundColor(Color.Black)
-        .fontSize(50)
-        .padding(20)
-      Text('22')
+        .fontSize(40)
+        .padding(10)
+        .margin(50)
+      Button('去布局页')
+        .onClick(()=>{
+          router.pushUrl({
+            url:'pages/ColumnRow'
+          })
+        })
         .fontColor(Color.Blue)
         .backgroundColor(Color.Green)
         .fontSize(20)
@@ -16,7 +28,5 @@ struct ColumnRow {
     }
     .width('100%')
     .height(500)
-    .alignItems(VerticalAlign.Bottom)
-    .justifyContent(FlexAlign.SpaceAround)
   }
 }

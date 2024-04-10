@@ -1,5 +1,7 @@
 {
   "src": [
-    "pages/Index"
+    "pages/List",
+    "pages/Index",
+    "pages/ColumnRow"
   ]
 }
