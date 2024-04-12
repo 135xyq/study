@@ -2,6 +2,7 @@
   "src": [
     "pages/List",
     "pages/Index",
-    "pages/ColumnRow"
+    "pages/ColumnRow",
+    "pages/HelloWorld/Light/Light"
   ]
 }

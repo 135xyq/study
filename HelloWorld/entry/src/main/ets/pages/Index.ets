@@ -2,6 +2,7 @@ import router from '@ohos.router';
 @Entry
 @Component
 struct ColumnRow {
+  @State message:string = '你好'
   build() {
     Column(){
       Button('去列表页')
