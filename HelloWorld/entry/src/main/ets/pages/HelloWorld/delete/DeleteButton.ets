@@ -1,0 +1,23 @@
+@Entry
+@Component
+struct DeleteButton{
+  build(){
+    Column(){
+      Button(){
+        Image('/pages/HelloWorld/delete/img1.png')
+          .width(50)
+          .height(50)
+      }
+      .width(100)
+      .height(100)
+      .type(ButtonType.Circle)
+      .backgroundColor(Color.Red)
+      .onClick(()=>{
+        console.log('点击')
+      })
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
