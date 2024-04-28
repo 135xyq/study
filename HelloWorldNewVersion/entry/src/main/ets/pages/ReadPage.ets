@@ -6,7 +6,7 @@ struct ReadPage {
   @State dataSource:ReadListData[] = [];
 
   aboutToAppear(): void {
-    this.dataSource =
+    this.dataSource = ''
   }
 
 
