@@ -1,4 +1,3 @@
-@Entry
 @Component
 export default  struct ReadListItem {
   @Prop index: number

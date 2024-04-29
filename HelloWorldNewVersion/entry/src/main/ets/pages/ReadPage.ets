@@ -1,50 +1,45 @@
 import ReadListItem from '../view/ReadListItem'
-import ReadListData from '../viewModel/ReadListData'
+import ReadData from '../viewModel/ReadListData'
+import { ReadViewModel } from '../viewModel/ReadListDataModel'
+import ReadListHeader from '../view/ReadListHeader'
+import ReadListTitle from '../view/ReadListTitle'
+
+let readModel: ReadViewModel = new ReadViewModel()
+
 @Entry
 @Component
 struct ReadPage {
-  @State dataSource:ReadListData[] = [];
+  @State dataSource: ReadData[] = [];
+  @State dataSource1: ReadData[] = [];
+  @State isRefreshData: boolean = false
 
   aboutToAppear(): void {
-    this.dataSource = ''
+    this.dataSource = readModel.loadDataSource()
+    this.dataSource1 = readModel.loadDataSource1()
   }
 
-
   build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-      }
-      .width('100%')
+    Column() {
+      ReadListTitle({isRefreshData: this.isRefreshData})
+      ReadListHeader()
+      this.ReadList()
     }
     .height('100%')
   }
 
-  @Builder RankList() {
+  @Builder
+  ReadList() {
     Column() {
       List() {
-        ForEach(this.dataSource,
-          (item: RankData, index?: number) => {
-            ListItem() {
-              ListItemComponent({ index: (Number(index) + 1), name: item.name, vote: item.vote,
-                isSwitchDataSource: this.isSwitchDataSource
-              })
-            }
-          }, (item: RankData) => JSON.stringify(item))
+        ForEach(this.isRefreshData ? this.dataSource: this.dataSource1, (item: ReadData, index: number) => {
+          ListItem() {
+            ReadListItem({ index: (Number(index) + 1), name: item.name, vote: item.vote })
+          }
+        })
       }
-      .width(WEIGHT)
-      .height(Style.LIST_HEIGHT)
-      .divider({ strokeWidth: Style.STROKE_WIDTH })
+      .width('100%')
+      .height('100%')
+      .divider({ strokeWidth: 2 })
     }
-    .padding({
-      left: Style.RANK_PADDING,
-      right: Style.RANK_PADDING
-    })
-    .borderRadius(Style.BORDER_RADIUS)
-    .width(widthValue)
-    .alignItems(HorizontalAlign.Center)
-    .backgroundColor(Color.White)
   }
 }
