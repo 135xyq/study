@@ -18,6 +18,9 @@ struct Index {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .fontColor(Color.Red)
+          .padding({
+            bottom: 10
+          })
         Button('读书排行榜')
           .onClick(()=>{
             router.pushUrl({
