@@ -18,10 +18,22 @@ struct Index {
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .fontColor(Color.Red)
+          .padding({
+            bottom: 10
+          })
         Button('读书排行榜')
           .onClick(()=>{
             router.pushUrl({
               url: 'pages/ReadPage'
+            })
+          })
+        Button('待办列表')
+          .margin({
+            top: 20
+          })
+          .onClick(()=>{
+            router.pushUrl({
+              url: 'pages/TodoList'
             })
           })
       }

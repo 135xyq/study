@@ -2,6 +2,7 @@
   "src": [
     "pages/Index",
     "pages/Login",
-    "pages/ReadPage"
+    "pages/ReadPage",
+    "pages/TodoList"
   ]
 }
