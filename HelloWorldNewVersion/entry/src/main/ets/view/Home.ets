@@ -25,6 +25,7 @@ export default struct Index {
     new ListItemData('待办列表', 'pages/TodoList'),
     new ListItemData('State装饰器', 'pages/StatePage'),
     new ListItemData('Video视频播放器', 'pages/VideoPage'),
+    new ListItemData('弹窗', 'pages/DialogPage'),
   ]
 
   build() {

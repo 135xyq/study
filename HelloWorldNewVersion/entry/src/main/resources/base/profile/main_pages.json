@@ -5,6 +5,7 @@
     "pages/ReadPage",
     "pages/TodoList",
     "pages/StatePage",
-    "pages/VideoPage"
+    "pages/VideoPage",
+    "pages/DialogPage"
   ]
 }
