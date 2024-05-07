@@ -6,6 +6,7 @@
     "pages/TodoList",
     "pages/StatePage",
     "pages/VideoPage",
-    "pages/DialogPage"
+    "pages/DialogPage",
+    "pages/PreferencesPage"
   ]
 }
