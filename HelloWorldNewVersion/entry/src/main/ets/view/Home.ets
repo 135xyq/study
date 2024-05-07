@@ -24,6 +24,7 @@ export default struct Index {
     new ListItemData('读书排行榜', 'pages/ReadPage'),
     new ListItemData('待办列表', 'pages/TodoList'),
     new ListItemData('State装饰器', 'pages/StatePage'),
+    new ListItemData('Video视频播放器', 'pages/VideoPage'),
   ]
 
   build() {
