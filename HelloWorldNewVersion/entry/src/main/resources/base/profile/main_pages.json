@@ -3,6 +3,7 @@
     "pages/Index",
     "pages/Login",
     "pages/ReadPage",
-    "pages/TodoList"
+    "pages/TodoList",
+    "pages/StatePage"
   ]
 }

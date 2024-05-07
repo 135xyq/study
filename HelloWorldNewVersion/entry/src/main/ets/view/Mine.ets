@@ -6,7 +6,7 @@
  */
 
 
-@Entry
+
 @Component
 export default struct Index {
   @State message: string = '我的';

@@ -17,13 +17,13 @@ class ListItemData {
   }
 }
 
-@Entry
 @Component
 export default struct Index {
   @State message: string = '首页';
   @State list: ListItemData[] = [
     new ListItemData('读书排行榜', 'pages/ReadPage'),
-    new ListItemData('待办列表', 'pages/TodoList')
+    new ListItemData('待办列表', 'pages/TodoList'),
+    new ListItemData('State装饰器', 'pages/StatePage'),
   ]
 
   build() {
