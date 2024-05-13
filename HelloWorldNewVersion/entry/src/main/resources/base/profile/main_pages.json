@@ -9,6 +9,7 @@
     "pages/DialogPage",
     "pages/PreferencesPage",
     "pages/AnimatePage",
-    "pages/WebPage"
+    "pages/WebPage",
+    "pages/NotificationPage"
   ]
 }

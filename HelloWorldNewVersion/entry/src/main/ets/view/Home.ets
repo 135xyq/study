@@ -29,6 +29,9 @@ export default struct Index {
     new ListItemData('首选项-设置字体', 'pages/PreferencesPage'),
     new ListItemData('动画', 'pages/AnimatePage'),
     new ListItemData('WebView', 'pages/WebPage'),
+    new ListItemData('通知和后台提醒', 'pages/NotificationPage'),
+
+
   ]
 
   build() {
