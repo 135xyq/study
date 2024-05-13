@@ -8,6 +8,7 @@
     "pages/VideoPage",
     "pages/DialogPage",
     "pages/PreferencesPage",
-    "pages/AnimatePage"
+    "pages/AnimatePage",
+    "pages/WebPage"
   ]
 }
