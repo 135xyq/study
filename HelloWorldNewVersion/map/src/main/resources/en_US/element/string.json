@@ -15,6 +15,14 @@
     {
       "name": "internet_permission_reason",
       "value": "Used to access the network to obtain map data."
+    },
+    {
+      "name": "Harmony_location_permission_reason",
+      "value": "Harmony_location_permission_reason"
+    },
+    {
+      "name": "approximately_location_permission",
+      "value": "Harmony_approximately_location_permission"
     }
   ]
 }

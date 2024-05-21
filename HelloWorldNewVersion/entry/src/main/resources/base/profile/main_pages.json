@@ -10,6 +10,7 @@
     "pages/PreferencesPage",
     "pages/AnimatePage",
     "pages/WebPage",
-    "pages/NotificationPage"
+    "pages/NotificationPage",
+    "pages/MapPage"
   ]
 }

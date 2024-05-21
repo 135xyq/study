@@ -15,6 +15,10 @@
     {
       "name": "login_name",
       "value": "login"
+    },
+    {
+      "name": "Harmony_location_permission_reason",
+      "value": "Harmony_location_permission_reason"
     }
   ]
 }

@@ -1,52 +1,45 @@
 import { MapComponent, mapCommon, map } from '@kit.MapKit';
 import { AsyncCallback } from '@kit.BasicServicesKit';
-
-/**
- * A page that allows the user to add a marker to Huawei Map using the MapKit API.
- *
- * If you are using this template to create a custom page, you will need to sign into the
- * AppGallery Connect Console, create a new project, and enable the Map API Permission.
- */
 @Entry
 @Component
-struct Index {
-  private mapOptions?: mapCommon.MapOptions;
+struct HuaweiMapDemo {
+  private TAG = "HuaweiMapDemo";
+  private mapOption?: mapCommon.MapOptions;
   private callback?: AsyncCallback<map.MapComponentController>;
   private mapController?: map.MapComponentController;
 
   aboutToAppear(): void {
-    let target: mapCommon.LatLng = {
-      latitude: 39.9181,
-      longitude: 116.3970193
+    // 地图初始化参数，设置地图中心点坐标及层级
+    this.mapOption = {
+      position: {
+        target: {
+          latitude: 39.9,
+          longitude: 116.4
+        },
+        zoom: 10
+      },
+      mapType: mapCommon.MapType.TERRAIN,
+      myLocationControlsEnabled: true,
+      scaleControlsEnabled: true,
     };
-    let cameraPosition: mapCommon.CameraPosition = {
-      target: target,
-      zoom: 15
-    };
-    this.mapOptions = {
-      position: cameraPosition
-    };
+
+    // 地图初始化的回调
     this.callback = async (err, mapController) => {
       if (!err) {
+        // 获取地图的控制器类，用来操作地图
         this.mapController = mapController;
-        let markerOptions: mapCommon.MarkerOptions = {
-          position: {
-            latitude: 39.9181,
-            longitude: 116.3970193
-          }
-        };
-        await this.mapController?.addMarker(markerOptions);
+        this.mapController.setBuildingEnabled(true);
+        this.mapController.on("mapLoad", () => {
+          console.info(this.TAG, `on-mapLoad`);
+        });
       }
     };
   }
 
   build() {
-    Column() {
-      MapComponent({ mapOptions: this.mapOptions, mapCallback: this.callback })
-        .width('100%')
-        .height('100%')
-    }
-    .width('100%')
-    .height('100%')
+    Stack() {
+      // 调用MapComponent组件初始化地图
+      MapComponent({ mapOptions: this.mapOption, mapCallback: this.callback }).width('100%').height('100%');
+    }.height('100%')
   }
 }

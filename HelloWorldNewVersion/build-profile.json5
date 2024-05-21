@@ -1,10 +1,25 @@
 {
   "app": {
-    "signingConfigs": [],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "storePassword": "0000001E2C4D62680B1C487E592DF67F04AA00985212A6C5B9B0D7A29D7C643C31E8A3E177406AD49F734DBAF300",
+          "certpath": "E:/harmony/door/鸿蒙学习.cer",
+          "keyAlias": "harmonyStudy",
+          "keyPassword": "0000001EBEC792CED2C52813ACA50571230BC31BE5EB95AF91EBF9C6B50BCEBFCF8A6EFE0F73263BC0943F1AB32B",
+          "profile": "E:/harmony/door/鸿蒙学习Debug.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "E:/harmony/door/.p12"
+        }
+      }
+    ],
     "products": [
       {
         "name": "default",
         "signingConfig": "default",
+        "compileSdkVersion": "4.1.0(11)",
         "compatibleSdkVersion": "4.1.0(11)",
         "runtimeOS": "HarmonyOS",
       }

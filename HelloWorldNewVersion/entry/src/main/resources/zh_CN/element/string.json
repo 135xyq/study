@@ -15,6 +15,10 @@
     {
       "name": "login_name",
       "value": "登录"
+    },
+    {
+      "name": "Harmony_location_permission_reason",
+      "value": "获取位置信息测试"
     }
   ]
 }
