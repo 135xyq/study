@@ -30,9 +30,8 @@ export default struct Index {
     new ListItemData('动画', 'pages/AnimatePage'),
     new ListItemData('WebView', 'pages/WebPage'),
     new ListItemData('通知和后台提醒', 'pages/NotificationPage'),
-    new ListItemData('高德地图', 'pages/MapPage'),
-
-
+    new ListItemData('地图', 'pages/MapPage'),
+    new ListItemData('高德地图', 'pages/GdMapPage'),
   ]
 
   build() {

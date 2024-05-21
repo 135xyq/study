@@ -11,6 +11,7 @@
     "pages/AnimatePage",
     "pages/WebPage",
     "pages/NotificationPage",
-    "pages/MapPage"
+    "pages/MapPage",
+    "pages/GdMapPage"
   ]
 }
