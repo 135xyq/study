@@ -1,0 +1,8 @@
+{
+  "src": [
+    "pages/List",
+    "pages/Index",
+    "pages/ColumnRow",
+    "pages/HelloWorld/Light/Light"
+  ]
+}

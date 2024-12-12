@@ -1,0 +1,17 @@
+{
+  "src": [
+    "pages/Index",
+    "pages/Login",
+    "pages/ReadPage",
+    "pages/TodoList",
+    "pages/StatePage",
+    "pages/VideoPage",
+    "pages/DialogPage",
+    "pages/PreferencesPage",
+    "pages/AnimatePage",
+    "pages/WebPage",
+    "pages/NotificationPage",
+    "pages/MapPage",
+    "pages/GdMapPage"
+  ]
+}

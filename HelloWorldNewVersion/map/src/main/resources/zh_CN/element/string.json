@@ -1,0 +1,28 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "模块描述"
+    },
+    {
+      "name": "ability_desc",
+      "value": "description"
+    },
+    {
+      "name": "ability_label",
+      "value": "Map ability"
+    },
+    {
+      "name": "internet_permission_reason",
+      "value": "Used to access the network to obtain map data."
+    },
+    {
+      "name": "Harmony_location_permission_reason",
+      "value": "获取地址信息哈哈哈"
+    },
+    {
+      "name": "approximately_location_permission",
+      "value": "获取模糊定位"
+    }
+  ]
+}
